@@ -6,6 +6,7 @@ Refer to these resources if you are in doubt about using Git:
 
 * [Pro Git](https://git-scm.com/book/en/v2)
 * [Git Visualised](http://gitup.co/)
+  [Video Tutorial](https://www.youtube.com/watch?v=Gg4bLk8cGNo&t=551s)
 
 ## Why are we using Git? 
 It's good training for SEP and Git is one of the most widely used Version Control Systems (VCS) used in the industry right now.
