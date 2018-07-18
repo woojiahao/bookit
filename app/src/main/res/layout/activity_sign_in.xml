@@ -45,7 +45,7 @@
 		<TextView
 			style="@style/RegularText"
 			android:text="@string/forgot_password_get_help"
-			android:textColor="@color/secondaryTextColor"/>
+			android:textColor="@color/colorAccent"/>
 
 	</LinearLayout>
 
