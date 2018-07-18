@@ -13,6 +13,7 @@
 		<item name="android:fontFamily">@font/josefin_sans_bold</item>
 		<item name="android:text">@string/logo</item>
 		<item name="android:textColor">@color/primaryTextColor</item>
+		<item name="android:layout_gravity">center</item>
 	</style>
 
 	<style name="CustomTextField">
@@ -35,6 +36,17 @@
 		<item name="android:textSize">24sp</item>
 		<item name="android:background">@drawable/red_button_background</item>
 		<item name="android:textColor">@android:color/white</item>
+	</style>
+
+	<style name="FullWidthButton">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:background">@color/colorPrimaryLight</item>
+		<item name="android:fontFamily">@font/karla_regular</item>
+		<item name="android:textSize">18sp</item>
+		<item name="android:textAllCaps">false</item>
+		<item name="android:paddingTop">@dimen/small_padding</item>
+		<item name="android:paddingBottom">@dimen/small_padding</item>
 	</style>
 
 </resources>
