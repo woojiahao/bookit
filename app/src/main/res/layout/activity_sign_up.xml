@@ -6,6 +6,7 @@
 	android:orientation="vertical">
 
 	<LinearLayout
+		android:gravity="center"
 		android:layout_width="match_parent"
 		android:layout_height="0sp"
 		android:layout_weight="1"
@@ -18,23 +19,27 @@
 		android:paddingTop="@dimen/large_padding">
 
 		<TextView
-			style="@style/Logo"/>
+			style="@style/Logo"
+			android:layout_marginBottom="@dimen/large_padding"/>
 
 		<EditText
 			android:id="@+id/emailField"
 			style="@style/CustomTextField"
+			android:layout_marginBottom="@dimen/small_padding"
 			android:hint="@string/email"
 			android:inputType="textEmailAddress"/>
 
 		<EditText
 			android:id="@+id/usernameField"
 			style="@style/CustomTextField"
+			android:layout_marginBottom="@dimen/small_padding"
 			android:hint="@string/username"
 			android:inputType="text"/>
 
 		<EditText
 			android:id="@+id/passwordField"
 			style="@style/CustomTextField"
+			android:layout_marginBottom="@dimen/large_padding"
 			android:hint="@string/password"
 			android:inputType="textPassword"/>
 
@@ -45,9 +50,9 @@
 	</LinearLayout>
 
 	<Button
+		style="@style/FullWidthButton"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		style="@style/FullWidthButton"
 		android:text="@string/sign_up_full_width"/>
 
 </LinearLayout>
