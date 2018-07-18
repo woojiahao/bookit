@@ -7,6 +7,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import team.android.projects.com.booktit.utils.UIUtils;
+
+import static team.android.projects.com.booktit.utils.UIUtils.clearInputs;
+
 public class SignUp extends AppCompatActivity {
 	private Button mSignUpBtn;
 	private Button mSignInBtn;
@@ -41,6 +45,9 @@ public class SignUp extends AppCompatActivity {
 			Toast.makeText(this, String.format("Email: %s, Username: %s, Password: %s", enteredEmail, enteredUsername, enteredPassword), Toast.LENGTH_SHORT).show();
 		});
 		
-		mSignInBtn.setOnClickListener(ev -> startActivity(new Intent(this, SignIn.class)));
+		mSignInBtn.setOnClickListener(ev -> {
+			clearInputs(mEmailField, mUsernameField, mPasswordField);
+			startActivity(new Intent(this, SignIn.class));
+		});
 	}
 }
