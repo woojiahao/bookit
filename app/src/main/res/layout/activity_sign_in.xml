@@ -1,10 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	tools:context=".SignIn">
+	android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+	<LinearLayout
+		android:gravity="center"
+		android:layout_width="match_parent"
+		android:layout_height="0sp"
+		android:layout_weight="1"
+		android:orientation="vertical"
+		android:paddingBottom="@dimen/large_padding"
+		android:paddingEnd="@dimen/small_padding"
+		android:paddingLeft="@dimen/small_padding"
+		android:paddingRight="@dimen/small_padding"
+		android:paddingStart="@dimen/small_padding"
+		android:paddingTop="@dimen/large_padding">
+
+		<TextView
+			style="@style/Logo"
+			android:layout_marginBottom="@dimen/large_padding"/>
+
+		<EditText
+			android:id="@+id/loginUsernameField"
+			style="@style/CustomTextField"
+			android:layout_marginBottom="@dimen/small_padding"
+			android:hint="@string/username_email"
+			android:inputType="text"/>
+
+		<EditText
+			android:id="@+id/loginPasswordField"
+			style="@style/CustomTextField"
+			android:layout_marginBottom="@dimen/large_padding"
+			android:hint="@string/password"
+			android:inputType="textPassword"/>
+
+		<Button
+			style="@style/CustomRedButton"
+			android:text="@string/sign_in"/>
+
+	</LinearLayout>
+
+	<Button
+		android:id="@+id/switchSignUpBtn"
+		style="@style/FullWidthButton"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/sign_in_full_width"/>
+
+</LinearLayout>
