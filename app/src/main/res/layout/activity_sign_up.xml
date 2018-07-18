@@ -20,4 +20,16 @@
 		android:hint="@string/email"
 		android:inputType="textEmailAddress"/>
 
+	<EditText
+		android:id="@+id/usernameField"
+		style="@style/CustomTextField"
+		android:hint="@string/username"
+		android:inputType="text"/>
+
+	<EditText
+		android:id="@+id/passwordField"
+		style="@style/CustomTextField"
+		android:hint="@string/password"
+		android:inputType="textPassword"/>
+
 </LinearLayout>
