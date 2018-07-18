@@ -23,27 +23,28 @@
 			android:layout_marginBottom="@dimen/large_padding"/>
 
 		<EditText
-			android:id="@+id/emailField"
+			android:id="@+id/signupEmailField"
 			style="@style/CustomTextField"
 			android:layout_marginBottom="@dimen/small_padding"
 			android:hint="@string/email"
 			android:inputType="textEmailAddress"/>
 
 		<EditText
-			android:id="@+id/usernameField"
+			android:id="@+id/signupUsernameField"
 			style="@style/CustomTextField"
 			android:layout_marginBottom="@dimen/small_padding"
 			android:hint="@string/username"
 			android:inputType="text"/>
 
 		<EditText
-			android:id="@+id/passwordField"
+			android:id="@+id/signupPasswordField"
 			style="@style/CustomTextField"
 			android:layout_marginBottom="@dimen/large_padding"
 			android:hint="@string/password"
 			android:inputType="textPassword"/>
 
 		<Button
+			android:id="@+id/signUpBtn"
 			style="@style/CustomRedButton"
 			android:text="@string/sign_up"/>
 

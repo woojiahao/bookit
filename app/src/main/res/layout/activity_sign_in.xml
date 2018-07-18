@@ -6,10 +6,10 @@
 	android:orientation="vertical">
 
 	<LinearLayout
-		android:gravity="center"
 		android:layout_width="match_parent"
 		android:layout_height="0sp"
 		android:layout_weight="1"
+		android:gravity="center"
 		android:orientation="vertical"
 		android:paddingBottom="@dimen/large_padding"
 		android:paddingEnd="@dimen/small_padding"
@@ -38,7 +38,14 @@
 
 		<Button
 			style="@style/CustomRedButton"
+			android:layout_marginBottom="@dimen/small_padding"
 			android:text="@string/sign_in"/>
+
+
+		<TextView
+			style="@style/RegularText"
+			android:text="@string/forgot_password_get_help"
+			android:textColor="@color/secondaryTextColor"/>
 
 	</LinearLayout>
 
