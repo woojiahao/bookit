@@ -23,8 +23,8 @@
 		<item name="android:textSize">24sp</item>
 		<item name="android:paddingLeft">@dimen/small_padding</item>
 		<item name="android:paddingRight">@dimen/small_padding</item>
-		<item name="android:paddingTop">@dimen/smallest_padding</item>
-		<item name="android:paddingBottom">@dimen/smallest_padding</item>
+		<item name="android:paddingTop">@dimen/small_padding</item>
+		<item name="android:paddingBottom">@dimen/small_padding</item>
 		<item name="android:background">@drawable/edit_text_background</item>
 	</style>
 
