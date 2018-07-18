@@ -15,8 +15,9 @@
 		style="@style/Logo"/>
 
 	<EditText
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		/>
+		android:id="@+id/emailField"
+		style="@style/CustomTextField"
+		android:hint="@string/email"
+		android:inputType="textEmailAddress"/>
 
 </LinearLayout>
