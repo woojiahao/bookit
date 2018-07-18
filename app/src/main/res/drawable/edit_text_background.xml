@@ -6,4 +6,7 @@
 	<stroke
 		android:width="1sp"
 		android:color="@color/secondaryTextColor"/>
+
+	<corners
+		android:radius="4sp" />
 </shape>
