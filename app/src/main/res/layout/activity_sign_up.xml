@@ -32,4 +32,8 @@
 		android:hint="@string/password"
 		android:inputType="textPassword"/>
 
+	<Button
+		style="@style/CustomRedButton"
+		android:text="@string/sign_up"/>
+
 </LinearLayout>
