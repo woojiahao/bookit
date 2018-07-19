@@ -2,6 +2,7 @@
 <resources>
 	<dimen name="smallest_padding">8sp</dimen>
 	<dimen name="small_padding">16sp</dimen>
+	<dimen name="medium_padding">24sp</dimen>
 	<dimen name="large_padding">32sp</dimen>
 	<dimen name="largest_padding">64sp</dimen>
 </resources>
