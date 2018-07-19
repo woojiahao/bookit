@@ -2,11 +2,20 @@ package team.android.projects.com.booktit;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class SignUpGenreSelection extends AppCompatActivity {
 	
-	private ImageView mBackButton;
+	private ImageView mBackBtn;
+	private Button mMakeSelectionBtn;
+	private EditText mGenreSearchField;
+	private GridView mGenreSelectionArea;
 	
 	@Override
 	protected void onCreate (Bundle savedInstanceState) {
@@ -18,12 +27,33 @@ public class SignUpGenreSelection extends AppCompatActivity {
 	}
 	
 	private void init () {
-		mBackButton = findViewById(R.id.signUpGenreSelectionBackBtn);
+		mBackBtn = findViewById(R.id.signUpGenreSelectionBackBtn);
+		mMakeSelectionBtn = findViewById(R.id.makeSelectionBtn);
+		mGenreSearchField = findViewById(R.id.genreSearchField);
+		mGenreSelectionArea = findViewById(R.id.genreSelectionArea);
 	}
 	
 	private void connectListeners () {
-		mBackButton.setOnClickListener(ev -> {
+		mBackBtn.setOnClickListener(ev -> {
 			finish();
+		});
+		
+		mMakeSelectionBtn.setOnClickListener(ev -> {
+			Toast.makeText(this, "Making selection", Toast.LENGTH_SHORT).show();
+		});
+		
+		mGenreSearchField.addTextChangedListener(new TextWatcher() {
+			@Override public void afterTextChanged (Editable s) {
+				Toast.makeText(
+						SignUpGenreSelection.this,
+						"Typing: " + s.toString(),
+						Toast.LENGTH_SHORT)
+						.show();
+			}
+
+			@Override
+			public void beforeTextChanged (CharSequence s, int start, int count, int after) { }
+			@Override public void onTextChanged (CharSequence s, int start, int before, int count) { }
 		});
 	}
 }
