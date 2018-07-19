@@ -3,10 +3,10 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:orientation="vertical"
-	android:padding="16sp"
+	android:focusable="true"
 	android:focusableInTouchMode="true"
-	android:focusable="true">
+	android:orientation="vertical"
+	android:padding="16sp">
 
 	<ImageView
 		android:id="@+id/signUpGenreSelectionBackBtn"
@@ -37,17 +37,22 @@
 		android:hint="@string/genre"
 		android:inputType="text"/>
 
-	<team.android.projects.com.booktit.SquareGridView
-		android:id="@+id/genreSelectionArea"
+	<LinearLayout
 		android:layout_width="match_parent"
 		android:layout_height="0sp"
-		android:layout_weight="1"
-		android:layout_marginBottom="@dimen/small_padding"
-		android:layout_marginTop="@dimen/small_padding"
-		android:numColumns="2"
-		android:stretchMode="columnWidth"
-		android:verticalSpacing="@dimen/smallest_padding"
-		android:horizontalSpacing="@dimen/smallest_padding"/>
+		android:layout_weight="1">
+
+		<GridView
+			android:id="@+id/genreSelectionArea"
+			android:layout_width="match_parent"
+			android:layout_height="fill_parent"
+			android:layout_marginBottom="@dimen/small_padding"
+			android:layout_marginTop="@dimen/small_padding"
+			android:horizontalSpacing="@dimen/smallest_padding"
+			android:numColumns="2"
+			android:stretchMode="columnWidth"
+			android:verticalSpacing="@dimen/smallest_padding"/>
+	</LinearLayout>
 
 	<Button
 		android:id="@+id/makeSelectionBtn"

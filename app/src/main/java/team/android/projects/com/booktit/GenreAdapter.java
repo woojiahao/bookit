@@ -1,6 +1,8 @@
 package team.android.projects.com.booktit;
 
 import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+// TODO: Check the length of the genre title, if it is too long, then you will have to drop add a blank line
 public class GenreAdapter extends BaseAdapter {
 	private List<Genre> genresList;
 	
@@ -41,10 +44,20 @@ public class GenreAdapter extends BaseAdapter {
 		final ImageView genreImage = convertView.findViewById(R.id.genreImage);
 		final ImageView genreIcon = convertView.findViewById(R.id.genreIcon);
 		
+		Log.d("Genre Adapter", "Generating: colorScheme - " + genre.getScheme().name() + " title - " + genre.getGenreTitle());
+		
 		genreTitle.setText(genre.getGenreTitle());
 		genreImage.setImageResource(genre.getGenreImage());
 		genreIcon.setImageResource(genre.getGenreIcon());
-		genreIcon.setColorFilter(Color.parseColor("#FFFFFF"));
+		
+		if (genre.getScheme() == Genre.ColorScheme.BLACK) {
+			genreIcon.setColorFilter(Color.parseColor("#FFFFFF"));
+			genreTitle.setTextColor(Color.parseColor("#FFFFFF"));
+		} else {
+			genreImage.setImageResource(R.drawable.image_romance);
+			genreTitle.setTextColor(Color.parseColor("#212121"));
+			genreIcon.setColorFilter(Color.parseColor("#212121"));
+		}
 		
 		return convertView;
 	}
