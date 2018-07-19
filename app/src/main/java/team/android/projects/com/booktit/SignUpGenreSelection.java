@@ -7,8 +7,10 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class SignUpGenreSelection extends AppCompatActivity {
 	
@@ -16,6 +18,22 @@ public class SignUpGenreSelection extends AppCompatActivity {
 	private RecyclerView mGenreArea;
 	private Button mSelectBtn;
 	private ImageView mBackBtn;
+	
+	private final List<Genre> mGenres = Arrays.asList(
+			new Genre("Horror"),
+			new Genre("Mystery"),
+			new Genre("Fantasy"),
+			new Genre("Fantasy"),
+			new Genre("Fantasy"),
+			new Genre("Fantasy"),
+			new Genre("Fantasy"),
+			new Genre("Fantasy"),
+			new Genre("Fantasy"),
+			new Genre("Fantasy"),
+			new Genre("Action"),
+			new Genre("Self-Help"),
+			new Genre("Romance")
+	);
 	
 	@Override
 	protected void onCreate (Bundle savedInstanceState) {
@@ -32,14 +50,7 @@ public class SignUpGenreSelection extends AppCompatActivity {
 		mSelectBtn = findViewById(R.id.selectBtn);
 		mBackBtn = findViewById(R.id.backBtn);
 		
-		GenreAdapter adapter = new GenreAdapter(Arrays.asList(
-			new Genre("Horror"),
-			new Genre("Mystery"),
-			new Genre("Fantasy"),
-			new Genre("Action"),
-			new Genre("Self-Help"),
-			new Genre("Romance")
-		));
+		GenreAdapter adapter = new GenreAdapter(mGenres);
 		mGenreArea.setAdapter(adapter);
 		mGenreArea.setLayoutManager(new LinearLayoutManager(
 				this,

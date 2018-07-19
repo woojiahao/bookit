@@ -8,18 +8,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
 public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder> {
 	private List<Genre> mGenres;
 	
-	public static class ViewHolder extends RecyclerView.ViewHolder {
+	static class ViewHolder extends RecyclerView.ViewHolder {
 		private View mView;
 		private TextView mGenreTitle;
 		private ImageView mSelected;
 		
-		public ViewHolder (View itemView) {
+		ViewHolder (View itemView) {
 			super(itemView);
 			
 			mView = itemView;
@@ -28,11 +29,11 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder> 
 			mSelected = mView.findViewById(R.id.genreSelected);
 		}
 		
-		public void setTitle (String title) {
+		private void setTitle (String title) {
 			mGenreTitle.setText(title);
 		}
 		
-		public void setSelected (boolean isSelected) {
+		private void setSelected (boolean isSelected) {
 			if (isSelected) {
 				mSelected.setImageResource(R.drawable.ic_clear_black_24dp);
 				mSelected.setBackgroundColor(Color.parseColor("#F44336"));
@@ -43,7 +44,7 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder> 
 		}
 	}
 	
-	public GenreAdapter (List<Genre> genres) {
+	GenreAdapter (List<Genre> genres) {
 		mGenres = genres;
 	}
 	
@@ -58,6 +59,12 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder> 
 		Genre g = mGenres.get(position);
 		holder.setTitle(g.getGenreTitle());
 		holder.setSelected(g.getIsSelected());
+		
+		holder.mView.setOnClickListener(v -> {
+			g.setIsSelected(!g.getIsSelected());
+			Toast.makeText(v.getContext(), "Pressed", Toast.LENGTH_SHORT).show();
+			holder.setSelected(g.getIsSelected());
+		});
 	}
 	
 	@Override public int getItemCount () {
