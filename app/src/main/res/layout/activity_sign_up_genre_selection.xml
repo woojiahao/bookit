@@ -44,7 +44,7 @@
 		android:layout_weight="1"
 		android:layout_marginBottom="@dimen/small_padding"
 		android:layout_marginTop="@dimen/small_padding"
-		android:numColumns="3"
+		android:numColumns="2"
 		android:stretchMode="columnWidth"
 		android:verticalSpacing="@dimen/smallest_padding"
 		android:horizontalSpacing="@dimen/smallest_padding"/>

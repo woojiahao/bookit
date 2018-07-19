@@ -41,7 +41,7 @@ public class SignUpGenreSelection extends AppCompatActivity {
 		final BaseAdapter adapter = new GenreAdapter(Arrays.asList(
 				new Genre("Horror", R.drawable.icon_horror, R.drawable.image_horror),
 				new Genre("Mystery", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
-				new Genre("Horror", R.drawable.icon_horror, R.drawable.image_horror),
+				new Genre("Literature", R.drawable.icon_horror, R.drawable.image_horror),
 				new Genre("Horror", R.drawable.icon_horror, R.drawable.image_horror),
 				new Genre("Horror", R.drawable.icon_horror, R.drawable.image_horror),
 				new Genre("Horror", R.drawable.icon_horror, R.drawable.image_horror),
