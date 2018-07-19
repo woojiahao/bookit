@@ -1,42 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<team.android.projects.com.booktit.SquareCardView
+<android.support.v7.widget.CardView
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="wrap_content"
+	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
-	app:cardCornerRadius="4sp"
-	app:cardElevation="6sp">
-
-	<ImageView
-		android:id="@+id/genreImage"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:contentDescription="@string/genre_image"
-		android:scaleType="centerCrop"
-		android:tint="#90757575"
-		tools:src="@drawable/image_horror"/>
+	app:cardCornerRadius="2sp"
+	app:cardElevation="1sp">
 
 	<LinearLayout
-		android:layout_width="wrap_content"
+		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:orientation="vertical"
-		android:layout_gravity="center">
-
-		<ImageView
-			android:id="@+id/genreIcon"
-			android:layout_width="24sp"
-			android:layout_height="24sp"
-			android:layout_gravity="center"
-			android:layout_marginBottom="@dimen/smallest_padding"
-			android:contentDescription="@string/genre_icon"
-			android:src="@drawable/icon_horror"/>
+		android:orientation="horizontal">
 
 		<TextView
 			android:id="@+id/genreTitle"
-			style="@style/GenreCardTitle"
-			android:layout_gravity="center"
-			tools:text="Horror"/>
+			style="@style/RegularText"
+			android:layout_width="0sp"
+			android:layout_weight="1"
+			android:fontFamily="@font/raleway_regular"
+			android:padding="@dimen/small_padding"
+			android:textSize="24sp"
+			tools:text="Temporary"/>
+
+		<ImageView
+			android:id="@+id/genreSelected"
+			android:layout_gravity="end"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:src="@drawable/ic_add_black_24dp"
+			android:padding="@dimen/small_padding"
+			android:background="@color/green"
+			android:contentDescription="@string/is_selected"/>
 	</LinearLayout>
 
-</team.android.projects.com.booktit.SquareCardView>
+</android.support.v7.widget.CardView>

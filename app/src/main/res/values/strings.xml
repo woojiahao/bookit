@@ -18,4 +18,7 @@
 	<string name="genre">Genre</string>
 	<string name="make_selection">Make Selection</string>
 	<string name="genre_image">Genre Image</string>
+	<string name="select_genres">Select genres</string>
+	<string name="search_genre">Search genre</string>
+	<string name="is_selected">Is Selected</string>
 </resources>

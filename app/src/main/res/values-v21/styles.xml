@@ -9,6 +9,6 @@
 		<item name="android:textSize">24sp</item>
 		<item name="android:drawablePadding">@dimen/smallest_padding</item>
 		<item name="android:background">@drawable/edit_text_background</item>
-		<item name="android:elevation">3sp</item>
+		<item name="android:elevation">1sp</item>
 	</style>
 </resources>
