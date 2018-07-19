@@ -4,7 +4,9 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:orientation="vertical"
-	android:padding="16sp">
+	android:padding="16sp"
+	android:focusableInTouchMode="true"
+	android:focusable="true">
 
 	<ImageView
 		android:id="@+id/signUpGenreSelectionBackBtn"
@@ -41,7 +43,11 @@
 		android:layout_height="0sp"
 		android:layout_weight="1"
 		android:layout_marginBottom="@dimen/small_padding"
-		android:layout_marginTop="@dimen/small_padding" />
+		android:layout_marginTop="@dimen/small_padding"
+		android:numColumns="3"
+		android:stretchMode="columnWidth"
+		android:verticalSpacing="@dimen/smallest_padding"
+		android:horizontalSpacing="@dimen/smallest_padding"/>
 
 	<Button
 		android:id="@+id/makeSelectionBtn"

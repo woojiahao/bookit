@@ -4,11 +4,15 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.widget.Adapter;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import java.util.Arrays;
 
 public class SignUpGenreSelection extends AppCompatActivity {
 	
@@ -32,6 +36,14 @@ public class SignUpGenreSelection extends AppCompatActivity {
 		mGenreSearchField = findViewById(R.id.genreSearchField);
 		
 		mGenreSelectionArea = findViewById(R.id.genreSelectionArea);
+		final BaseAdapter adapter = new GenreAdapter(Arrays.asList(
+				new Genre("Horror", R.drawable.icon_horror, R.drawable.image_horror),
+				new Genre("Horror", R.drawable.icon_horror, R.drawable.image_horror),
+				new Genre("Horror", R.drawable.icon_horror, R.drawable.image_horror),
+				new Genre("Horror", R.drawable.icon_horror, R.drawable.image_horror),
+				new Genre("Horror", R.drawable.icon_horror, R.drawable.image_horror)
+		));
+		mGenreSelectionArea.setAdapter(adapter);
 	}
 	
 	private void connectListeners () {

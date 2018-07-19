@@ -9,9 +9,12 @@
 	app:cardElevation="4sp">
 
 	<ImageView
+		android:id="@+id/genreImage"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
+		android:adjustViewBounds="true"
 		android:contentDescription="@string/genre_image"
+		android:scaleType="fitCenter"
 		android:tint="#90757575"
 		tools:src="@drawable/image_horror"/>
 

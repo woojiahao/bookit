@@ -37,8 +37,11 @@ public class GenreAdapter extends BaseAdapter {
 		Genre genre = genresList.get(position);
 		
 		final TextView genreTitle = convertView.findViewById(R.id.genreTitle);
-		final ImageView genreIcon = convertView.findViewById(R.id.genreIcon);
-		final ImageView genreImage = convertView.findViewById(R.id.genre)
+		final ImageView genreImage = convertView.findViewById(R.id.genreImage);
+		
+		genreTitle.setText(genre.getGenreTitle());
+		genreImage.setImageResource(genre.getGenreImage());
+		genreTitle.setCompoundDrawablesWithIntrinsicBounds(0, genre.getGenreIcon(), 0, 0);
 		
 		return convertView;
 	}
