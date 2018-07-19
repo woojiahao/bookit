@@ -37,7 +37,7 @@
 		android:hint="@string/genre"
 		android:inputType="text"/>
 
-	<GridView
+	<team.android.projects.com.booktit.SquareGridView
 		android:id="@+id/genreSelectionArea"
 		android:layout_width="match_parent"
 		android:layout_height="0sp"
