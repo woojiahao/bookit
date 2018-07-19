@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	android:paddingBottom="@dimen/large_padding"
+	android:paddingEnd="@dimen/small_padding"
+	android:paddingLeft="@dimen/small_padding"
+	android:paddingRight="@dimen/small_padding"
+	android:paddingStart="@dimen/small_padding"
+	android:paddingTop="@dimen/large_padding">
+
+	<ImageView
+		android:id="@+id/signUpGenreSelectionBackBtn"
+		android:layout_width="36sp"
+		android:layout_height="36sp"
+		android:contentDescription="@string/back_button"
+		android:src="@drawable/ic_baseline_arrow_back_24px"/>
+
+	<TextView
+		style="@style/LargeText"
+		android:text="@string/discover_new_title"
+		android:textColor="@color/primaryTextColor"/>
+
+	<TextView
+		style="@style/RegularText"
+		android:fontFamily="@font/karla_regular"
+		android:text="@string/select_the_genres_you_love"
+		android:textColor="@color/secondaryTextColor"
+		android:layout_marginBottom="@dimen/small_padding"/>
+
+	<EditText
+		style="@style/CustomTextField"
+		android:hint="@string/genre"
+		android:inputType="text"/>
+
+</LinearLayout>

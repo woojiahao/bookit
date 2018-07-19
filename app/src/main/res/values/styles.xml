@@ -56,4 +56,19 @@
 		<item name="android:fontFamily">@font/karla_bold</item>
 	</style>
 
+	<style name="LargeText" parent="RegularText">
+		<item name="android:textSize">24sp</item>
+	</style>
+
+	<style name="GenreCardTitle" parent="RegularText">
+		<item name="android:textSize">24sp</item>
+		<item name="android:textColor">@android:color/white</item>
+	</style>
+
+	<style name="GenreCardIcon">
+		<item name="android:layout_width">24sp</item>
+		<item name="android:layout_height">24sp</item>
+		<item name="android:color">@android:color/white</item>
+	</style>
+
 </resources>

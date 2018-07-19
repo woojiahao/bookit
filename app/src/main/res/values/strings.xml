@@ -11,4 +11,9 @@
 	<string name="sign_in_full_width">Don\'t have an account? Sign up!</string>
 	<string name="forgot_password_get_help">Forgot password? Get Help!</string>
 	<string name="send_email">Send Email</string>
+	<string name="genre_icon">Genre Icon</string>
+	<string name="back_button">Back Button</string>
+	<string name="discover_new_title">Discover new title!</string>
+	<string name="select_the_genres_you_love">Select the genres you love</string>
+	<string name="genre">Genre</string>
 </resources>

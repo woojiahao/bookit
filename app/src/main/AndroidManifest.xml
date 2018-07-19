@@ -33,6 +33,11 @@
 			android:screenOrientation="portrait"
 			android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
 		</activity>
+		<activity
+			android:name=".SignUpGenreSelection"
+			android:screenOrientation="portrait"
+			android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+		</activity>
 	</application>
 
 </manifest>
