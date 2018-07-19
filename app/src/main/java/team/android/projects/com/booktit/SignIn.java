@@ -8,6 +8,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
+import team.android.projects.com.booktit.database.DbOperationError;
+import team.android.projects.com.booktit.database.DbOperations;
+import team.android.projects.com.booktit.database.IDbOperations;
+
 import static team.android.projects.com.booktit.utils.UIUtils.clearInputs;
 
 public class SignIn extends AppCompatActivity {
@@ -16,6 +24,8 @@ public class SignIn extends AppCompatActivity {
 	private TextView mForgotPassword;
 	private EditText mUsernameEmailField;
 	private EditText mPasswordField;
+	
+	private IDbOperations dbOperations;
 	
 	@Override
 	protected void onCreate (Bundle savedInstanceState) {
@@ -34,6 +44,8 @@ public class SignIn extends AppCompatActivity {
 		
 		mUsernameEmailField = findViewById(R.id.loginUsernameField);
 		mPasswordField = findViewById(R.id.loginPasswordField);
+		
+		dbOperations = new DbOperations();
 	}
 	
 	private void connectListeners () {
