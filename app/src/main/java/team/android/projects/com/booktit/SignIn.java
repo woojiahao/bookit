@@ -1,18 +1,13 @@
 package team.android.projects.com.booktit;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-
-import team.android.projects.com.booktit.database.DbOperationError;
 import team.android.projects.com.booktit.database.DbOperations;
 import team.android.projects.com.booktit.database.IDbOperations;
 
@@ -49,8 +44,10 @@ public class SignIn extends AppCompatActivity {
 	}
 	
 	private void connectListeners () {
-		mForgotPassword.setOnClickListener(ev ->
-				Toast.makeText(this, "Forgot password pressed", Toast.LENGTH_SHORT).show());
+		mForgotPassword.setOnClickListener(ev -> {
+			clearInputs(mUsernameEmailField, mPasswordField);
+			startActivity(new Intent(this, ForgotPassword.class));
+		});
 		
 		mSignInBtn.setOnClickListener(ev -> {
 			String enteredUsernameEmail = mUsernameEmailField.getText().toString();

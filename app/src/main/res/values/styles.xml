@@ -40,7 +40,7 @@
 
 	<style name="FullWidthButton">
 		<item name="android:layout_width">match_parent</item>
-		<item name="android:layout_height">wrap_content</item>
+		<item name="android:layout_height">56sp</item>
 		<item name="android:background">@color/colorPrimaryLight</item>
 		<item name="android:fontFamily">@font/karla_regular</item>
 		<item name="android:textSize">18sp</item>
