@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<style name="CustomTextField">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:fontFamily">@font/raleway_bold</item>
+		<item name="android:padding">12sp</item>
+		<item name="android:textSize">24sp</item>
+		<item name="android:drawablePadding">@dimen/smallest_padding</item>
+		<item name="android:background">@drawable/edit_text_background</item>
+		<item name="android:elevation">3sp</item>
+	</style>
+</resources>

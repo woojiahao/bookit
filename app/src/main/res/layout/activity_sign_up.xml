@@ -11,12 +11,7 @@
 		android:layout_height="0sp"
 		android:layout_weight="1"
 		android:orientation="vertical"
-		android:paddingBottom="@dimen/large_padding"
-		android:paddingEnd="@dimen/small_padding"
-		android:paddingLeft="@dimen/small_padding"
-		android:paddingRight="@dimen/small_padding"
-		android:paddingStart="@dimen/small_padding"
-		android:paddingTop="@dimen/large_padding">
+		android:padding="@dimen/small_padding">
 
 		<TextView
 			style="@style/Logo"
@@ -27,6 +22,8 @@
 			style="@style/CustomTextField"
 			android:layout_marginBottom="@dimen/small_padding"
 			android:hint="@string/email"
+			android:drawableLeft="@drawable/ic_mail_black_24dp"
+			android:drawableStart="@drawable/ic_mail_black_24dp"
 			android:inputType="textEmailAddress"/>
 
 		<EditText
@@ -34,6 +31,8 @@
 			style="@style/CustomTextField"
 			android:layout_marginBottom="@dimen/small_padding"
 			android:hint="@string/username"
+			android:drawableLeft="@drawable/ic_person_black_24dp"
+			android:drawableStart="@drawable/ic_person_black_24dp"
 			android:inputType="text"/>
 
 		<EditText
@@ -41,6 +40,8 @@
 			style="@style/CustomTextField"
 			android:layout_marginBottom="@dimen/large_padding"
 			android:hint="@string/password"
+			android:drawableLeft="@drawable/ic_lock_black_24dp"
+			android:drawableStart="@drawable/ic_lock_black_24dp"
 			android:inputType="textPassword"/>
 
 		<Button

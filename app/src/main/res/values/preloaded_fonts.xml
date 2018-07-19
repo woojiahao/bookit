@@ -4,5 +4,7 @@
 		<item>@font/josefin_sans_bold</item>
 		<item>@font/karla_bold</item>
 		<item>@font/karla_regular</item>
+		<item>@font/raleway_bold</item>
+		<item>@font/raleway_regular</item>
 	</array>
 </resources>

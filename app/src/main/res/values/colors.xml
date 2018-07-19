@@ -7,4 +7,5 @@
 
 	<color name="primaryTextColor">#212121</color>
 	<color name="secondaryTextColor">#757575</color>
+	<color name="background">#FAFAFA</color>
 </resources>

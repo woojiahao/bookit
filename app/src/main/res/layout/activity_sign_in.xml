@@ -3,6 +3,7 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
+	android:background="@color/background"
 	android:orientation="vertical">
 
 	<LinearLayout
@@ -11,12 +12,7 @@
 		android:layout_weight="1"
 		android:gravity="center"
 		android:orientation="vertical"
-		android:paddingBottom="@dimen/large_padding"
-		android:paddingEnd="@dimen/small_padding"
-		android:paddingLeft="@dimen/small_padding"
-		android:paddingRight="@dimen/small_padding"
-		android:paddingStart="@dimen/small_padding"
-		android:paddingTop="@dimen/large_padding">
+		android:padding="@dimen/small_padding">
 
 		<TextView
 			style="@style/Logo"
@@ -26,6 +22,8 @@
 			android:id="@+id/loginUsernameField"
 			style="@style/CustomTextField"
 			android:layout_marginBottom="@dimen/small_padding"
+			android:drawableLeft="@drawable/ic_person_black_24dp"
+			android:drawableStart="@drawable/ic_person_black_24dp"
 			android:hint="@string/username_email"
 			android:inputType="text"/>
 
@@ -33,6 +31,8 @@
 			android:id="@+id/loginPasswordField"
 			style="@style/CustomTextField"
 			android:layout_marginBottom="@dimen/large_padding"
+			android:drawableLeft="@drawable/ic_lock_black_24dp"
+			android:drawableStart="@drawable/ic_lock_black_24dp"
 			android:hint="@string/password"
 			android:inputType="textPassword"/>
 
@@ -41,7 +41,6 @@
 			style="@style/CustomRedButton"
 			android:layout_marginBottom="@dimen/small_padding"
 			android:text="@string/sign_in"/>
-
 
 		<TextView
 			android:id="@+id/forgotPasswordTxt"
