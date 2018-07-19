@@ -17,4 +17,5 @@
 	<string name="select_the_genres_you_love">Select the genres you love</string>
 	<string name="genre">Genre</string>
 	<string name="make_selection">Make Selection</string>
+	<string name="genre_image">Genre Image</string>
 </resources>

@@ -30,6 +30,7 @@ public class SignUpGenreSelection extends AppCompatActivity {
 		mBackBtn = findViewById(R.id.signUpGenreSelectionBackBtn);
 		mMakeSelectionBtn = findViewById(R.id.makeSelectionBtn);
 		mGenreSearchField = findViewById(R.id.genreSearchField);
+		
 		mGenreSelectionArea = findViewById(R.id.genreSelectionArea);
 	}
 	
