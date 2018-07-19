@@ -4,7 +4,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,6 +40,15 @@ public class SignUpGenreSelection extends AppCompatActivity {
 		mGenreSelectionArea = findViewById(R.id.genreSelectionArea);
 		final BaseAdapter adapter = new GenreAdapter(Arrays.asList(
 				new Genre("Horror", R.drawable.icon_horror, R.drawable.image_horror),
+				new Genre("Mystery", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
+				new Genre("Horror", R.drawable.icon_horror, R.drawable.image_horror),
+				new Genre("Horror", R.drawable.icon_horror, R.drawable.image_horror),
+				new Genre("Horror", R.drawable.icon_horror, R.drawable.image_horror),
+				new Genre("Horror", R.drawable.icon_horror, R.drawable.image_horror),
+				new Genre("Horror", R.drawable.icon_horror, R.drawable.image_horror),
+				new Genre("Horror", R.drawable.icon_horror, R.drawable.image_horror),
+				new Genre("Horror", R.drawable.icon_horror, R.drawable.image_horror),
+				new Genre("Horror", R.drawable.icon_horror, R.drawable.image_horror),
 				new Genre("Horror", R.drawable.icon_horror, R.drawable.image_horror),
 				new Genre("Horror", R.drawable.icon_horror, R.drawable.image_horror),
 				new Genre("Horror", R.drawable.icon_horror, R.drawable.image_horror),
@@ -67,6 +78,10 @@ public class SignUpGenreSelection extends AppCompatActivity {
 			@Override
 			public void beforeTextChanged (CharSequence s, int start, int count, int after) { }
 			@Override public void onTextChanged (CharSequence s, int start, int before, int count) { }
+		});
+		
+		mGenreSelectionArea.setOnItemClickListener((parent, view, pos, id) -> {
+		
 		});
 	}
 }

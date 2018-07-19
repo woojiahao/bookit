@@ -6,7 +6,7 @@
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
 	app:cardCornerRadius="4sp"
-	app:cardElevation="4sp">
+	app:cardElevation="6sp">
 
 	<ImageView
 		android:id="@+id/genreImage"
@@ -14,15 +14,29 @@
 		android:layout_height="wrap_content"
 		android:contentDescription="@string/genre_image"
 		android:scaleType="centerCrop"
-		android:tint="#70212121"
+		android:tint="#90757575"
 		tools:src="@drawable/image_horror"/>
 
-	<TextView
-		android:id="@+id/genreTitle"
-		style="@style/GenreCardTitle"
-		android:layout_gravity="center"
-		android:drawablePadding="@dimen/smallest_padding"
-		android:drawableTop="@drawable/icon_horror"
-		tools:text="Horror"/>
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:layout_gravity="center">
+
+		<ImageView
+			android:id="@+id/genreIcon"
+			android:layout_width="24sp"
+			android:layout_height="24sp"
+			android:layout_gravity="center"
+			android:layout_marginBottom="@dimen/smallest_padding"
+			android:contentDescription="@string/genre_icon"
+			android:src="@drawable/icon_horror"/>
+
+		<TextView
+			android:id="@+id/genreTitle"
+			style="@style/GenreCardTitle"
+			android:layout_gravity="center"
+			tools:text="Horror"/>
+	</LinearLayout>
 
 </team.android.projects.com.booktit.SquareCardView>

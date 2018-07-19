@@ -1,5 +1,10 @@
 package team.android.projects.com.booktit;
 
+import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,10 +43,12 @@ public class GenreAdapter extends BaseAdapter {
 		
 		final TextView genreTitle = convertView.findViewById(R.id.genreTitle);
 		final ImageView genreImage = convertView.findViewById(R.id.genreImage);
+		final ImageView genreIcon = convertView.findViewById(R.id.genreIcon);
 		
 		genreTitle.setText(genre.getGenreTitle());
 		genreImage.setImageResource(genre.getGenreImage());
-		genreTitle.setCompoundDrawablesWithIntrinsicBounds(0, genre.getGenreIcon(), 0, 0);
+		genreIcon.setImageResource(genre.getGenreIcon());
+		genreIcon.setColorFilter(Color.parseColor("#FFFFFF"));
 		
 		return convertView;
 	}
