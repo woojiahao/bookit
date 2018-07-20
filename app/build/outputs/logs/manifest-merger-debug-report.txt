@@ -1,0 +1,162 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:2:1-48:12
+MERGED from [com.android.support:design:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\23ab7895dbc060d19520c1ab6f55582d\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\75fecfae9a79853d2d8bcab3c2933365\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.1.2] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.2.aar\14d56f5c2d1357db7cd92e7faa088d9a\AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:cardview-v7:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.1.1.aar\1b51192db19f854f759f8ef1c686b91a\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:gridlayout-v7:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\gridlayout-v7-27.1.1.aar\382b72c43d2ef6717c4b875e8ed53d62\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\38f20faf4c7840e60b7fee0206390466\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-v4:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\eff9238f0b2c068515709549af80a417\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\1d39ceece7ad64ef7505872f90342cbc\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\ad7df7c2105c3f8b42efc5021b915676\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\7c6e85a4e0c74ff9ceae023ae2ae5ab0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\366670ecd458a728b93a422cd09e35d0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\5114704b8bf9bb54ab88015c4c052f84\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:transition:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\4bf0ca4be527b818d68bb3dcf70d298d\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\bce7e26f5899babba19c777ec58131d1\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\f4641096a12de79b89efacfe93f4c530\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\f28b5b74a418a1b3b9bc4f38e8df7424\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\c012a06f55059ff26173b89e2dfb6af1\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\cba4b7ee241d7b326431c289024f2855\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\91940e4e515ae9e52dec0bafbf9736cb\AndroidManifest.xml:17:1-22:12
+INJECTED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:2:1-48:12
+	package
+		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:3:5-48
+		INJECTED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:2:1-48:12
+		INJECTED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:2:1-48:12
+		INJECTED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:2:11-69
+application
+ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:5:2-46:16
+MERGED from [com.android.support.constraint:constraint-layout:1.1.2] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.2.aar\14d56f5c2d1357db7cd92e7faa088d9a\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.2] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.2.aar\14d56f5c2d1357db7cd92e7faa088d9a\AndroidManifest.xml:9:5-20
+	android:supportsRtl
+		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:10:3-29
+	android:label
+		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:8:3-35
+	android:roundIcon
+		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:9:3-48
+	android:icon
+		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:7:3-37
+	android:allowBackup
+		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:6:3-29
+	android:theme
+		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:11:3-56
+meta-data#preloaded_fonts
+ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:12:3-14:47
+	android:resource
+		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:14:4-45
+	android:name
+		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:13:4-34
+activity#team.android.projects.com.booktit.SignUp
+ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:16:3-24:14
+	android:screenOrientation
+		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:18:4-40
+	android:name
+		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:17:4-26
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:19:4-23:20
+action#android.intent.action.MAIN
+ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:20:5-56
+	android:name
+		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:20:13-54
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:22:5-64
+	android:name
+		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:22:15-62
+activity#team.android.projects.com.booktit.SignIn
+ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:25:3-28:14
+	android:screenOrientation
+		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:27:4-40
+	android:name
+		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:26:4-26
+activity#team.android.projects.com.booktit.ForgotPassword
+ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:29:3-32:14
+	android:screenOrientation
+		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:31:4-40
+	android:name
+		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:30:4-34
+activity#team.android.projects.com.booktit.SignUpGenreSelection
+ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:33:3-36:14
+	android:screenOrientation
+		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:35:4-40
+	android:name
+		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:34:4-40
+activity#team.android.projects.com.booktit.Search
+ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:37:3-41:14
+	android:screenOrientation
+		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:39:4-40
+	android:name
+		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:38:4-26
+activity#team.android.projects.com.booktit.Discover
+ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:42:3-45:14
+	android:screenOrientation
+		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:44:4-40
+	android:name
+		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:43:4-28
+uses-sdk
+INJECTED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml
+MERGED from [com.android.support:design:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\23ab7895dbc060d19520c1ab6f55582d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\23ab7895dbc060d19520c1ab6f55582d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\75fecfae9a79853d2d8bcab3c2933365\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\75fecfae9a79853d2d8bcab3c2933365\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.1.2] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.2.aar\14d56f5c2d1357db7cd92e7faa088d9a\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.2] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.2.aar\14d56f5c2d1357db7cd92e7faa088d9a\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:cardview-v7:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.1.1.aar\1b51192db19f854f759f8ef1c686b91a\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.1.1.aar\1b51192db19f854f759f8ef1c686b91a\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:gridlayout-v7:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\gridlayout-v7-27.1.1.aar\382b72c43d2ef6717c4b875e8ed53d62\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:gridlayout-v7:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\gridlayout-v7-27.1.1.aar\382b72c43d2ef6717c4b875e8ed53d62\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\38f20faf4c7840e60b7fee0206390466\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\38f20faf4c7840e60b7fee0206390466\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\eff9238f0b2c068515709549af80a417\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\eff9238f0b2c068515709549af80a417\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\1d39ceece7ad64ef7505872f90342cbc\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\1d39ceece7ad64ef7505872f90342cbc\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\ad7df7c2105c3f8b42efc5021b915676\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\ad7df7c2105c3f8b42efc5021b915676\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\7c6e85a4e0c74ff9ceae023ae2ae5ab0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\7c6e85a4e0c74ff9ceae023ae2ae5ab0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\366670ecd458a728b93a422cd09e35d0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\366670ecd458a728b93a422cd09e35d0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\5114704b8bf9bb54ab88015c4c052f84\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\5114704b8bf9bb54ab88015c4c052f84\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\4bf0ca4be527b818d68bb3dcf70d298d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\4bf0ca4be527b818d68bb3dcf70d298d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\bce7e26f5899babba19c777ec58131d1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\bce7e26f5899babba19c777ec58131d1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\f4641096a12de79b89efacfe93f4c530\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\f4641096a12de79b89efacfe93f4c530\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\f28b5b74a418a1b3b9bc4f38e8df7424\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\f28b5b74a418a1b3b9bc4f38e8df7424\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\c012a06f55059ff26173b89e2dfb6af1\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\c012a06f55059ff26173b89e2dfb6af1\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\cba4b7ee241d7b326431c289024f2855\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\cba4b7ee241d7b326431c289024f2855\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\91940e4e515ae9e52dec0bafbf9736cb\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\91940e4e515ae9e52dec0bafbf9736cb\AndroidManifest.xml:20:5-44
+INJECTED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml

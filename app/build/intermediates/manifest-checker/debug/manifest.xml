@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="team.android.projects.com.booktit"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="27" />
+
+    <application
+        android:allowBackup="true"
+        android:debuggable="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:testOnly="true"
+        android:theme="@style/Theme.Design.Light.NoActionBar" >
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <activity
+            android:name="team.android.projects.com.booktit.SignUp"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="team.android.projects.com.booktit.SignIn"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="team.android.projects.com.booktit.ForgotPassword"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="team.android.projects.com.booktit.SignUpGenreSelection"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="team.android.projects.com.booktit.Search"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="team.android.projects.com.booktit.Discover"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <provider
+            android:name="com.android.tools.ir.server.InstantRunContentProvider"
+            android:authorities="team.android.projects.com.booktit.com.android.tools.ir.server.InstantRunContentProvider"
+            android:multiprocess="true" />
+    </application>
+
+</manifest>
