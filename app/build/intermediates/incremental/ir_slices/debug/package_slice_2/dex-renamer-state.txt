@@ -1,4 +1,4 @@
-#Fri Jul 20 20:47:57 SGT 2018
+#Fri Jul 20 21:24:04 SGT 2018
 base.0=C\:\\Users\\LimZh\\AndroidStudioProjects\\Bookit\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\2
 path.0=classes.dex
 renamed.0=classes.dex

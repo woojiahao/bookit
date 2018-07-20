@@ -1955,72 +1955,72 @@
             MIIEQzCCAyugAwIBAgIJAMLgh0ZkSjCNMA0GCSqGSIb3DQEBBAUAMHQxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtHb29nbGUgSW5jLjEQMA4GA1UECxMHQW5kcm9pZDEQMA4GA1UEAxMHQW5kcm9pZDAeFw0wODA4MjEyMzEzMzRaFw0zNjAxMDcyMzEzMzRaMHQxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtHb29nbGUgSW5jLjEQMA4GA1UECxMHQW5kcm9pZDEQMA4GA1UEAxMHQW5kcm9pZDCCASAwDQYJKoZIhvcNAQEBBQADggENADCCAQgCggEBAKtWLgDYO6IIrgqWbxJOKdoR8qtW0I9Y4sypEwPpt1TTcvZApxsdyxMJZ2JORland2qSGT2y5b+3JKkedxiLDmpHpDsz2WCbdxgxRczfey5YZnTJ4VZbH0xqWVW/8lGmPav5xVwnIiJS6HXk+BVKZF+JcWjAsb/GEuq/eFdpuzSqeYTcfi6idkyugwfYwXFU1+5fZKUaRKYCwkkFQVfcAs1fXA5V+++FGfvjJ/CxURaSxaBvGdGDhfXE28LWuT9ozCl5xw4Yq5OGazvV24mZVSoOO0yZ31j7kYvtwYK6NeADwbSxDdJEqO4k//0zOHKrUiGYXtqw/A0LFFtqoZKFjnkCAQOjgdkwgdYwHQYDVR0OBBYEFMd9jMIhF1Ylmn/Tgt9r45jk14alMIGmBgNVHSMEgZ4wgZuAFMd9jMIhF1Ylmn/Tgt9r45jk14aloXikdjB0MQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEUMBIGA1UEChMLR29vZ2xlIEluYy4xEDAOBgNVBAsTB0FuZHJvaWQxEDAOBgNVBAMTB0FuZHJvaWSCCQDC4IdGZEowjTAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBBAUAA4IBAQBt0lLO74UwLDYKqs6Tm8/yzKkEu116FmH4rkaymUIE0P9KaMftGlMexFlaYjzmB2OxZyl6euNXEsQH8gjwyxCUKRJNexBiGcCEyj6z+a1fuHHvkiaai+KL8W1EyNmgjmyy8AW7P+LLlkR+ho5zEHatRbM/YAnqGcFh5iZBqpknHf1SKMXFh4dd239FJ1jWYfbMDMy3NS5CTMQ2XFI1MvcyUTdZPErjQfTbQe3aDQsQcafEQPD+nqActifKZ0Np0IS9L9kR/wbNvyz6ENwPiTrjV2KRkEjH78ZMcUQXg0L3BYHJ3lc69Vs5Ddf9uUGGMYldX3WfMBEmh/9iFBDAaTCK
         </item>
     </string-array></file><file path="C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\res\values\preloaded_fonts.xml" qualifiers=""><array name="preloaded_fonts" translatable="false">
-		<item>@font/josefin_sans_bold</item>
-		<item>@font/karla_bold</item>
-		<item>@font/karla_regular</item>
-		<item>@font/raleway_bold</item>
-		<item>@font/raleway_regular</item>
-	</array></file><file path="C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\res\values\strings.xml" qualifiers=""><string name="app_name">BooktIt</string><string name="logo">BookIt!</string><string name="email">Email</string><string name="username">Username</string><string name="password">Password</string><string name="sign_up">Sign Up</string><string name="sign_up_full_width">Already have an account? Sign in!</string><string name="username_email">Username/Email</string><string name="sign_in">Sign In</string><string name="sign_in_full_width">Don\'t have an account? Sign up!</string><string name="forgot_password_get_help">Forgot password? Get Help!</string><string name="send_email">Send Email</string><string name="genre_icon">Genre Icon</string><string name="back_button">Back Button</string><string name="discover_new_title">Discover new title!</string><string name="select_the_genres_you_love">Select the genres you love</string><string name="genre">Genre</string><string name="make_selection">Make Selection</string><string name="genre_image">Genre Image</string><string name="select_genres">Select genres</string><string name="search_genre">Search genre</string><string name="is_selected">Is Selected</string><string name="title_author_isbn">Title/Author/ISBN</string><string name="genres">Genres</string><string name="discover">Discover</string><string name="search">Search</string><string name="scanner">Scanner</string><string name="favourites">Favourites</string><string name="settings">Settings</string></file><file path="C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\res\values\styles.xml" qualifiers=""><style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-		<item name="colorPrimary">@color/colorPrimary</item>
-		<item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-		<item name="colorAccent">@color/colorAccent</item>
-	</style><style name="Logo">
-		<item name="android:layout_width">wrap_content</item>
-		<item name="android:layout_height">wrap_content</item>
-		<item name="android:textSize">48sp</item>
-		<item name="android:fontFamily">@font/raleway_bold</item>
-		<item name="android:text">@string/logo</item>
-		<item name="android:textColor">@color/primaryTextColor</item>
-		<item name="android:layout_gravity">center</item>
-	</style><style name="CustomTextField">
-		<item name="android:layout_width">match_parent</item>
-		<item name="android:layout_height">wrap_content</item>
-		<item name="android:fontFamily">@font/raleway_bold</item>
-		<item name="android:padding">12sp</item>
-		<item name="android:textSize">18sp</item>
-		<item name="android:drawablePadding">@dimen/smallest_padding</item>
-		<item name="android:background">@drawable/edit_text_background</item>
-	</style><style name="CustomRedButton">
-		<item name="android:layout_width">match_parent</item>
-		<item name="android:layout_height">wrap_content</item>
-		<item name="android:fontFamily">@font/raleway_bold</item>
-		<item name="android:textAllCaps">false</item>
-		<item name="android:textSize">18sp</item>
-		<item name="android:background">@drawable/red_button_background</item>
-		<item name="android:textColor">@android:color/white</item>
-	</style><style name="FullWidthButton">
-		<item name="android:layout_width">match_parent</item>
-		<item name="android:layout_height">56sp</item>
-		<item name="android:background">@color/colorPrimaryLight</item>
-		<item name="android:fontFamily">@font/raleway_regular</item>
-		<item name="android:textSize">18sp</item>
-		<item name="android:textAllCaps">false</item>
-		<item name="android:paddingTop">@dimen/small_padding</item>
-		<item name="android:paddingBottom">@dimen/small_padding</item>
-	</style><style name="RegularText">
-		<item name="android:layout_width">wrap_content</item>
-		<item name="android:layout_height">wrap_content</item>
-		<item name="android:textSize">16sp</item>
-		<item name="android:fontFamily">@font/raleway_bold</item>
-	</style><style name="LargeText" parent="RegularText">
-		<item name="android:textSize">24sp</item>
-	</style><style name="GenreCardTitle" parent="RegularText">
-		<item name="android:textSize">24sp</item>
-		<item name="android:textColor">@android:color/white</item>
-	</style><style name="GenreCardIcon">
-		<item name="android:layout_width">24sp</item>
-		<item name="android:layout_height">24sp</item>
-		<item name="android:color">@android:color/white</item>
-	</style></file><file path="C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\res\values-v21\styles.xml" qualifiers="v21"><style name="CustomTextField">
-		<item name="android:layout_width">match_parent</item>
-		<item name="android:layout_height">wrap_content</item>
-		<item name="android:fontFamily">@font/raleway_bold</item>
-		<item name="android:padding">12sp</item>
-		<item name="android:textSize">18sp</item>
-		<item name="android:drawablePadding">@dimen/smallest_padding</item>
-		<item name="android:background">@drawable/edit_text_background</item>
-		<item name="android:elevation">1sp</item>
-	</style></file></source><source path="C:\Users\LimZh\AndroidStudioProjects\Bookit\app\build\generated\res\rs\debug"/><source path="C:\Users\LimZh\AndroidStudioProjects\Bookit\app\build\generated\res\resValues\debug"/></dataSet><dataSet config="debug$Generated" generated="true"><source path="C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\debug\res"/></dataSet><dataSet config="debug" generated-set="debug$Generated"><source path="C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\debug\res"/></dataSet><mergedItems><configuration qualifiers=""><declare-styleable name="AlertDialog"><attr name="android:layout"/><attr format="reference" name="buttonPanelSideLayout"/><attr format="reference" name="listLayout"/><attr format="reference" name="multiChoiceItemLayout"/><attr format="reference" name="singleChoiceItemLayout"/><attr format="reference" name="listItemLayout"/><attr format="boolean" name="showTitle"/><attr format="dimension" name="buttonIconDimen"/></declare-styleable><declare-styleable name="AppCompatSeekBar"><attr name="android:thumb"/><attr format="reference" name="tickMark"/><attr format="color" name="tickMarkTint"/><attr name="tickMarkTintMode">
+        <item>@font/josefin_sans_bold</item>
+        <item>@font/karla_bold</item>
+        <item>@font/karla_regular</item>
+        <item>@font/raleway_bold</item>
+        <item>@font/raleway_regular</item>
+    </array></file><file path="C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\res\values\strings.xml" qualifiers=""><string name="app_name">BooktIt</string><string name="logo">BookIt!</string><string name="email">Email</string><string name="username">Username</string><string name="password">Password</string><string name="sign_up">Sign Up</string><string name="sign_up_full_width">Already have an account? Sign in!</string><string name="username_email">Username/Email</string><string name="sign_in">Sign In</string><string name="sign_in_full_width">Don\'t have an account? Sign up!</string><string name="forgot_password_get_help">Forgot password? Get Help!</string><string name="send_email">Send Email</string><string name="genre_icon">Genre Icon</string><string name="back_button">Back Button</string><string name="discover_new_title">Discover new title!</string><string name="select_the_genres_you_love">Select the genres you love</string><string name="genre">Genre</string><string name="make_selection">Make Selection</string><string name="genre_image">Genre Image</string><string name="select_genres">Select genres</string><string name="search_genre">Search genre</string><string name="is_selected">Is Selected</string><string name="title_author_isbn">Title/Author/ISBN</string><string name="genres">Genres</string><string name="discover">Discover</string><string name="search">Search</string><string name="scanner">Scanner</string><string name="favourites">Favourites</string><string name="settings">Settings</string></file><file path="C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\res\values\styles.xml" qualifiers=""><style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style><style name="Logo">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">48sp</item>
+        <item name="android:fontFamily">@font/raleway_bold</item>
+        <item name="android:text">@string/logo</item>
+        <item name="android:textColor">@color/primaryTextColor</item>
+        <item name="android:layout_gravity">center</item>
+    </style><style name="CustomTextField">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/raleway_bold</item>
+        <item name="android:padding">12sp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:drawablePadding">@dimen/smallest_padding</item>
+        <item name="android:background">@drawable/edit_text_background</item>
+    </style><style name="CustomRedButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/raleway_bold</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:background">@drawable/red_button_background</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style><style name="FullWidthButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">56sp</item>
+        <item name="android:background">@color/colorPrimaryLight</item>
+        <item name="android:fontFamily">@font/raleway_regular</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:paddingTop">@dimen/small_padding</item>
+        <item name="android:paddingBottom">@dimen/small_padding</item>
+    </style><style name="RegularText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/raleway_bold</item>
+    </style><style name="LargeText" parent="RegularText">
+        <item name="android:textSize">24sp</item>
+    </style><style name="GenreCardTitle" parent="RegularText">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style><style name="GenreCardIcon">
+        <item name="android:layout_width">24sp</item>
+        <item name="android:layout_height">24sp</item>
+        <item name="android:color">@android:color/white</item>
+    </style></file><file path="C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\res\values-v21\styles.xml" qualifiers="v21"><style name="CustomTextField">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/raleway_bold</item>
+        <item name="android:padding">12sp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:drawablePadding">@dimen/smallest_padding</item>
+        <item name="android:background">@drawable/edit_text_background</item>
+        <item name="android:elevation">1sp</item>
+    </style></file></source><source path="C:\Users\LimZh\AndroidStudioProjects\Bookit\app\build\generated\res\rs\debug"/><source path="C:\Users\LimZh\AndroidStudioProjects\Bookit\app\build\generated\res\resValues\debug"/></dataSet><dataSet config="debug$Generated" generated="true"><source path="C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\debug\res"/></dataSet><dataSet config="debug" generated-set="debug$Generated"><source path="C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\debug\res"/></dataSet><mergedItems><configuration qualifiers=""><declare-styleable name="AlertDialog"><attr name="android:layout"/><attr format="reference" name="buttonPanelSideLayout"/><attr format="reference" name="listLayout"/><attr format="reference" name="multiChoiceItemLayout"/><attr format="reference" name="singleChoiceItemLayout"/><attr format="reference" name="listItemLayout"/><attr format="boolean" name="showTitle"/><attr format="dimension" name="buttonIconDimen"/></declare-styleable><declare-styleable name="AppCompatSeekBar"><attr name="android:thumb"/><attr format="reference" name="tickMark"/><attr format="color" name="tickMarkTint"/><attr name="tickMarkTintMode">
             
             <enum name="src_over" value="3"/>
             

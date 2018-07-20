@@ -24,6 +24,11 @@
         <activity
             android:name="team.android.projects.com.booktit.SignUp"
             android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name="team.android.projects.com.booktit.SignIn"
@@ -44,11 +49,6 @@
         <activity
             android:name="team.android.projects.com.booktit.Discover"
             android:screenOrientation="portrait" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <provider

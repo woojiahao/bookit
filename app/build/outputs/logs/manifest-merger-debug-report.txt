@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:2:1-49:12
-INJECTED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:2:1-49:12
-INJECTED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:2:1-49:12
-INJECTED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:2:1-49:12
+ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:2:1-48:12
 MERGED from [com.android.support:design:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\23ab7895dbc060d19520c1ab6f55582d\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\75fecfae9a79853d2d8bcab3c2933365\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support.constraint:constraint-layout:1.1.2] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.2.aar\14d56f5c2d1357db7cd92e7faa088d9a\AndroidManifest.xml:2:1-11:12
@@ -23,25 +23,25 @@ MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\LimZh\.gradle\
 MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\c012a06f55059ff26173b89e2dfb6af1\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\cba4b7ee241d7b326431c289024f2855\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.core:runtime:1.1.0] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\91940e4e515ae9e52dec0bafbf9736cb\AndroidManifest.xml:17:1-22:12
-INJECTED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:2:1-49:12
-INJECTED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:2:1-49:12
-INJECTED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:2:1-49:12
+INJECTED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:2:1-48:12
 	package
 		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:3:5-48
 		INJECTED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:2:1-49:12
+		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:2:1-48:12
 		INJECTED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:2:1-49:12
+		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:2:1-48:12
 		INJECTED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:2:11-69
 application
-ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:5:2-47:16
+ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:5:2-46:16
 MERGED from [com.android.support.constraint:constraint-layout:1.1.2] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.2.aar\14d56f5c2d1357db7cd92e7faa088d9a\AndroidManifest.xml:9:5-20
 MERGED from [com.android.support.constraint:constraint-layout:1.1.2] C:\Users\LimZh\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.2.aar\14d56f5c2d1357db7cd92e7faa088d9a\AndroidManifest.xml:9:5-20
 	android:supportsRtl
@@ -63,51 +63,51 @@ ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManif
 	android:name
 		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:13:4-34
 activity#team.android.projects.com.booktit.SignUp
-ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:16:3-20:14
+ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:16:3-24:14
 	android:screenOrientation
 		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:18:4-40
 	android:name
 		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:17:4-26
-activity#team.android.projects.com.booktit.SignIn
-ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:21:3-24:14
-	android:screenOrientation
-		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:23:4-40
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:19:4-23:20
+action#android.intent.action.MAIN
+ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:20:5-56
 	android:name
-		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:22:4-26
-activity#team.android.projects.com.booktit.ForgotPassword
+		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:20:13-54
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:22:5-64
+	android:name
+		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:22:15-62
+activity#team.android.projects.com.booktit.SignIn
 ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:25:3-28:14
 	android:screenOrientation
 		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:27:4-40
 	android:name
-		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:26:4-34
-activity#team.android.projects.com.booktit.SignUpGenreSelection
+		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:26:4-26
+activity#team.android.projects.com.booktit.ForgotPassword
 ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:29:3-32:14
 	android:screenOrientation
 		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:31:4-40
 	android:name
-		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:30:4-40
-activity#team.android.projects.com.booktit.Search
-ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:33:3-37:14
+		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:30:4-34
+activity#team.android.projects.com.booktit.SignUpGenreSelection
+ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:33:3-36:14
 	android:screenOrientation
 		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:35:4-40
 	android:name
-		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:34:4-26
-activity#team.android.projects.com.booktit.Discover
-ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:38:3-46:14
+		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:34:4-40
+activity#team.android.projects.com.booktit.Search
+ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:37:3-41:14
 	android:screenOrientation
-		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:40:4-40
+		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:39:4-40
 	android:name
-		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:39:4-28
-intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:41:4-45:20
-action#android.intent.action.MAIN
-ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:42:5-56
+		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:38:4-26
+activity#team.android.projects.com.booktit.Discover
+ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:42:3-45:14
+	android:screenOrientation
+		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:44:4-40
 	android:name
-		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:42:13-54
-category#android.intent.category.LAUNCHER
-ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:44:5-64
-	android:name
-		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:44:15-62
+		ADDED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml:43:4-28
 uses-sdk
 INJECTED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\LimZh\AndroidStudioProjects\Bookit\app\src\main\AndroidManifest.xml

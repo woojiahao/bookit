@@ -1,6 +1,7 @@
 package team.android.projects.com.booktit;
 
 import android.support.constraint.ConstraintLayout;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -9,16 +10,14 @@ import android.widget.TextView;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.Currency;
-import java.util.Locale;
 
 public class DiscoverRowAdapter extends RecyclerView.Adapter<DiscoverRowAdapter.ViewHolder>{
     private ArrayList<Book> books;
     public static class ViewHolder extends RecyclerView.ViewHolder{
-        public ConstraintLayout mConstraintLayout;
-        public ViewHolder(ConstraintLayout v){
+        public CardView mCardView;
+        public ViewHolder(CardView v){
             super(v);
-            mConstraintLayout = v;
+            mCardView = v;
         }
     }
 
@@ -28,14 +27,14 @@ public class DiscoverRowAdapter extends RecyclerView.Adapter<DiscoverRowAdapter.
 
     @Override
     public DiscoverRowAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
-        ConstraintLayout v = (ConstraintLayout) LayoutInflater.from(parent.getContext())
+        CardView v = (CardView) LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.discover_tile,parent,false);
         ViewHolder vh = new ViewHolder(v);
         return vh;
     }
 
     public void onBindViewHolder(ViewHolder holder, int position) {
-        ConstraintLayout layout = holder.mConstraintLayout;
+        CardView layout = holder.mCardView;
         ImageView thumbnail = (ImageView) layout.findViewById(R.id.discoverTileImage);
         TextView title = (TextView) layout.findViewById(R.id.discoverTileTitle);
         TextView genre = (TextView) layout.findViewById(R.id.discoverTileGenre);
