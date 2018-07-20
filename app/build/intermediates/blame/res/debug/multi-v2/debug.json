@@ -1,38 +1,6 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\LimZh\\AndroidStudioProjects\\Bookit\\app\\build\\intermediates\\res\\merged\\debug\\values-ko_values-ko.arsc.flat",
-            "map": [
-                {
-                    "source": "C:\\Users\\LimZh\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\f4641096a12de79b89efacfe93f4c530\\res\\values-ko\\values-ko.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "20",
-                        "startColumns": "4",
-                        "startOffsets": "1824",
-                        "endColumns": "100",
-                        "endOffsets": "1920"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\LimZh\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\75fecfae9a79853d2d8bcab3c2933365\\res\\values-ko\\values-ko.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,200,294,396,478,576,682,761,837,917,1015,1110,1205,1305,1401,1500,1652,1746",
-                        "endColumns": "94,93,101,81,97,105,78,75,79,97,94,94,99,95,98,151,93,77",
-                        "endOffsets": "195,289,391,473,571,677,756,832,912,1010,1105,1200,1300,1396,1495,1647,1741,1819"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "C:\\Users\\LimZh\\AndroidStudioProjects\\Bookit\\app\\build\\intermediates\\res\\merged\\debug\\values-mk_values-mk.arsc.flat",
             "map": [
                 {
@@ -60,6 +28,38 @@
                         "startOffsets": "105,213,317,425,511,616,735,818,900,987,1093,1200,1301,1408,1519,1623,1779,1877",
                         "endColumns": "107,103,107,85,104,118,82,81,86,105,106,100,106,110,103,155,97,83",
                         "endOffsets": "208,312,420,506,611,730,813,895,982,1088,1195,1296,1403,1514,1618,1774,1872,1956"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "C:\\Users\\LimZh\\AndroidStudioProjects\\Bookit\\app\\build\\intermediates\\res\\merged\\debug\\values-ko_values-ko.arsc.flat",
+            "map": [
+                {
+                    "source": "C:\\Users\\LimZh\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\f4641096a12de79b89efacfe93f4c530\\res\\values-ko\\values-ko.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "20",
+                        "startColumns": "4",
+                        "startOffsets": "1824",
+                        "endColumns": "100",
+                        "endOffsets": "1920"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\LimZh\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\75fecfae9a79853d2d8bcab3c2933365\\res\\values-ko\\values-ko.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,200,294,396,478,576,682,761,837,917,1015,1110,1205,1305,1401,1500,1652,1746",
+                        "endColumns": "94,93,101,81,97,105,78,75,79,97,94,94,99,95,98,151,93,77",
+                        "endOffsets": "195,289,391,473,571,677,756,832,912,1010,1105,1200,1300,1396,1495,1647,1741,1819"
                     }
                 }
             ]
@@ -664,38 +664,6 @@
             ]
         },
         {
-            "outputFile": "C:\\Users\\LimZh\\AndroidStudioProjects\\Bookit\\app\\build\\intermediates\\res\\merged\\debug\\values-de_values-de.arsc.flat",
-            "map": [
-                {
-                    "source": "C:\\Users\\LimZh\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\75fecfae9a79853d2d8bcab3c2933365\\res\\values-de\\values-de.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,210,308,420,506,611,726,803,879,961,1072,1175,1274,1385,1487,1594,1750,1852",
-                        "endColumns": "104,97,111,85,104,114,76,75,81,110,102,98,110,101,106,155,101,81",
-                        "endOffsets": "205,303,415,501,606,721,798,874,956,1067,1170,1269,1380,1482,1589,1745,1847,1929"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\LimZh\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\f4641096a12de79b89efacfe93f4c530\\res\\values-de\\values-de.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "20",
-                        "startColumns": "4",
-                        "startOffsets": "1934",
-                        "endColumns": "100",
-                        "endOffsets": "2030"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "C:\\Users\\LimZh\\AndroidStudioProjects\\Bookit\\app\\build\\intermediates\\res\\merged\\debug\\values-fa_values-fa.arsc.flat",
             "map": [
                 {
@@ -723,6 +691,38 @@
                         "startOffsets": "105,215,318,429,513,616,731,810,888,969,1081,1184,1282,1392,1496,1605,1766,1867",
                         "endColumns": "109,102,110,83,102,114,78,77,80,111,102,97,109,103,108,160,100,80",
                         "endOffsets": "210,313,424,508,611,726,805,883,964,1076,1179,1277,1387,1491,1600,1761,1862,1943"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "C:\\Users\\LimZh\\AndroidStudioProjects\\Bookit\\app\\build\\intermediates\\res\\merged\\debug\\values-de_values-de.arsc.flat",
+            "map": [
+                {
+                    "source": "C:\\Users\\LimZh\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\75fecfae9a79853d2d8bcab3c2933365\\res\\values-de\\values-de.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,210,308,420,506,611,726,803,879,961,1072,1175,1274,1385,1487,1594,1750,1852",
+                        "endColumns": "104,97,111,85,104,114,76,75,81,110,102,98,110,101,106,155,101,81",
+                        "endOffsets": "205,303,415,501,606,721,798,874,956,1067,1170,1269,1380,1482,1589,1745,1847,1929"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\LimZh\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\f4641096a12de79b89efacfe93f4c530\\res\\values-de\\values-de.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "20",
+                        "startColumns": "4",
+                        "startOffsets": "1934",
+                        "endColumns": "100",
+                        "endOffsets": "2030"
                     }
                 }
             ]

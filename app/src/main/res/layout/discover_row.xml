@@ -7,7 +7,7 @@
     tools:context=".Discover">
 
     <TextView
-        android:id="@+id/textViewCatTitle"
+        android:id="@+id/discoverCategoryTitle"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_marginStart="8dp"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/discoverRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -29,6 +29,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewCatTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/discoverCategoryTitle" />
 
 </android.support.constraint.ConstraintLayout>

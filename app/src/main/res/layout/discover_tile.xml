@@ -24,14 +24,14 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/discoverTileImage"
                 android:layout_width="97dp"
                 android:layout_height="147dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/before_we_were_yours" />
 
             <TextView
-                android:id="@+id/textViewGenre"
+                android:id="@+id/discoverTileGenre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
@@ -41,11 +41,11 @@
                 android:maxWidth="90dp"
                 android:text="Literature"
                 android:textSize="10dp"
-                app:layout_constraintStart_toStartOf="@+id/imageView"
-                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                app:layout_constraintStart_toStartOf="@+id/discoverTileImage"
+                app:layout_constraintTop_toBottomOf="@+id/discoverTileImage" />
 
             <TextView
-                android:id="@+id/textViewBookTitle"
+                android:id="@+id/discoverTileTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
@@ -57,11 +57,11 @@
                 android:textColor="#000000"
                 android:textSize="10dp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/imageView"
-                app:layout_constraintTop_toBottomOf="@+id/textViewGenre" />
+                app:layout_constraintStart_toStartOf="@+id/discoverTileImage"
+                app:layout_constraintTop_toBottomOf="@+id/discoverTileGenre" />
 
             <TextView
-                android:id="@+id/textViewRating"
+                android:id="@+id/discoverTileRating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
@@ -71,11 +71,11 @@
                 android:textColor="#000000"
                 android:textSize="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/imageView"
-                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                app:layout_constraintStart_toStartOf="@+id/discoverTileImage"
+                app:layout_constraintTop_toBottomOf="@+id/discoverTileImage" />
 
             <TextView
-                android:id="@+id/textViewPrice"
+                android:id="@+id/discoverTilePrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
@@ -86,8 +86,8 @@
                 android:textSize="10dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                app:layout_constraintEnd_toEndOf="@+id/discoverTileImage"
+                app:layout_constraintTop_toBottomOf="@+id/discoverTileImage" />
 
         </android.support.constraint.ConstraintLayout>
 

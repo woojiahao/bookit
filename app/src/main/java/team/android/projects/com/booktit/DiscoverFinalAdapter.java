@@ -26,13 +26,13 @@ public class DiscoverFinalAdapter extends ArrayAdapter<BookCategory>{
         BookCategory cat = getItem(position);
         if(convertView == null){
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.discover_row,parent,false);
-            mRecyclerView = (RecyclerView) convertView.findViewById(R.id.recyclerView);
+            mRecyclerView = (RecyclerView) convertView.findViewById(R.id.discoverRecyclerView);
             mLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
             mRecyclerView.setLayoutManager(mLayoutManager);
             mAdapter = new DiscoverRowAdapter(cat.getBooks());
             mRecyclerView.setAdapter(mAdapter);
         }
-        TextView catTitle = (TextView) convertView.findViewById(R.id.textViewCatTitle);
+        TextView catTitle = (TextView) convertView.findViewById(R.id.discoverCategoryTitle);
         catTitle.setText(cat.getTitle());
 
         return convertView;

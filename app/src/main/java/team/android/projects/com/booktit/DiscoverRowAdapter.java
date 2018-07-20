@@ -36,11 +36,11 @@ public class DiscoverRowAdapter extends RecyclerView.Adapter<DiscoverRowAdapter.
 
     public void onBindViewHolder(ViewHolder holder, int position) {
         ConstraintLayout layout = holder.mConstraintLayout;
-        ImageView thumbnail = (ImageView) layout.findViewById(R.id.imageView);
-        TextView title = (TextView) layout.findViewById(R.id.textViewBookTitle);
-        TextView genre = (TextView) layout.findViewById(R.id.textViewGenre);
-        TextView price = (TextView) layout.findViewById(R.id.textViewPrice);
-        TextView rating = (TextView) layout.findViewById(R.id.textViewRating);
+        ImageView thumbnail = (ImageView) layout.findViewById(R.id.discoverTileImage);
+        TextView title = (TextView) layout.findViewById(R.id.discoverTileTitle);
+        TextView genre = (TextView) layout.findViewById(R.id.discoverTileGenre);
+        TextView price = (TextView) layout.findViewById(R.id.discoverTilePrice);
+        TextView rating = (TextView) layout.findViewById(R.id.discoverTileRating);
 
         Book book = books.get(position);
 
