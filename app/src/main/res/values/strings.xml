@@ -21,4 +21,11 @@
 	<string name="select_genres">Select genres</string>
 	<string name="search_genre">Search genre</string>
 	<string name="is_selected">Is Selected</string>
+	<string name="title_author_isbn">Title/Author/ISBN</string>
+	<string name="genres">Genres</string>
+	<string name="discover">Discover</string>
+	<string name="search">Search</string>
+	<string name="scanner">Scanner</string>
+	<string name="favourites">Favourites</string>
+	<string name="settings">Settings</string>
 </resources>

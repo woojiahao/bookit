@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:focusable="true"
+	android:focusableInTouchMode="true"
+	android:orientation="vertical">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="0sp"
+		android:layout_weight="1"
+		android:orientation="vertical"
+		android:paddingBottom="4sp"
+		android:paddingEnd="@dimen/small_padding"
+		android:paddingLeft="@dimen/small_padding"
+		android:paddingRight="@dimen/small_padding"
+		android:paddingStart="@dimen/small_padding"
+		android:paddingTop="@dimen/small_padding">
+
+		<EditText
+			android:id="@+id/searchField"
+			style="@style/CustomTextField"
+			android:layout_marginBottom="@dimen/small_padding"
+			android:drawableLeft="@drawable/ic_search_grey_24dp"
+			android:drawableStart="@drawable/ic_search_grey_24dp"
+			android:hint="@string/title_author_isbn"
+			android:inputType="text"/>
+
+		<TextView
+			style="@style/LargeText"
+			android:layout_marginBottom="@dimen/small_padding"
+			android:text="@string/genres"
+			android:textColor="@color/primaryTextColor"/>
+
+		<android.support.v7.widget.RecyclerView
+			android:id="@+id/genresArea"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"/>
+	</LinearLayout>
+
+	<View
+		android:layout_width="match_parent"
+		android:layout_height="2sp"
+		android:background="@drawable/shadow"/>
+
+	<android.support.design.widget.BottomNavigationView
+		android:id="@+id/navigationDrawer"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginEnd="0sp"
+		android:layout_marginLeft="0sp"
+		android:layout_marginRight="0sp"
+		android:layout_marginStart="0sp"
+		app:itemBackground="@android:color/white"
+		app:itemIconTint="@drawable/navigation_background"
+		app:itemTextColor="@drawable/navigation_background"
+		app:menu="@menu/navigation">
+
+	</android.support.design.widget.BottomNavigationView>
+
+</LinearLayout>
