@@ -41,12 +41,12 @@ public class SignUp extends AppCompatActivity {
 			String enteredEmail = mEmailField.getText().toString();
 			String enteredUsername = mUsernameField.getText().toString();
 			String enteredPassword = mPasswordField.getText().toString();
-			
+
 			Toast.makeText(this, String.format("Email: %s, Username: %s, Password: %s", enteredEmail, enteredUsername, enteredPassword), Toast.LENGTH_SHORT).show();
-			
+
 			startActivity(new Intent(this, SignUpGenreSelection.class));
 		});
-		
+
 		mSignInBtn.setOnClickListener(ev -> {
 			clearInputs(mEmailField, mUsernameField, mPasswordField);
 			startActivity(new Intent(this, SignIn.class));
