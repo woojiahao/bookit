@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<array name="preloaded_fonts" translatable="false">
-		<item>@font/josefin_sans_bold</item>
-		<item>@font/karla_bold</item>
-		<item>@font/karla_regular</item>
-		<item>@font/raleway_bold</item>
-		<item>@font/raleway_regular</item>
-	</array>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/josefin_sans_bold</item>
+        <item>@font/karla_bold</item>
+        <item>@font/karla_regular</item>
+        <item>@font/raleway_bold</item>
+        <item>@font/raleway_regular</item>
+    </array>
 </resources>

@@ -11,33 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="0sp"
         android:layout_weight="1"
-        android:orientation="vertical"
-        android:paddingBottom="4sp"
-        android:paddingEnd="@dimen/small_padding"
-        android:paddingLeft="@dimen/small_padding"
-        android:paddingRight="@dimen/small_padding"
-        android:paddingStart="@dimen/small_padding"
-        android:paddingTop="@dimen/small_padding">
+        android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/searchField"
-            style="@style/CustomTextField"
-            android:layout_marginBottom="@dimen/small_padding"
-            android:drawableLeft="@drawable/ic_search_grey_24dp"
-            android:drawableStart="@drawable/ic_search_grey_24dp"
-            android:hint="@string/title_author_isbn"
-            android:inputType="text" />
-
-        <TextView
-            style="@style/LargeText"
-            android:layout_marginBottom="@dimen/small_padding"
-            android:text="@string/genres"
-            android:textColor="@color/primaryTextColor" />
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/genresArea"
+        <ListView
+            android:id="@+id/discoverArea"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+
     </LinearLayout>
 
     <View
