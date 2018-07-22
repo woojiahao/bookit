@@ -20,7 +20,6 @@ public class Search extends AppCompatActivity {
 	
 	private EditText mSearchField;
 	private RecyclerView mGenreArea;
-	private BottomNavigationView mNavigationView;
 	
 	private final List<Genre> mGenres = Arrays.asList(
 			new Genre("Horror"),
@@ -55,9 +54,6 @@ public class Search extends AppCompatActivity {
 		mGenreArea.setAdapter(adapter);
 		mGenreArea.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 		mGenreArea.addItemDecoration(new VerticalSpaceItemDecoration(32));
-		
-		mNavigationView = findViewById(R.id.navigationDrawer);
-		BottomNavigationHelper.removeShiftMode(mNavigationView);
 	}
 	
 	private void connectListeners () {
