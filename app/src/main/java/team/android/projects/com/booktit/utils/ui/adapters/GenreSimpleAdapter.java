@@ -1,4 +1,4 @@
-package team.android.projects.com.booktit;
+package team.android.projects.com.booktit.utils.ui.adapters;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import team.android.projects.com.booktit.R;
 import team.android.projects.com.booktit.dataclasses.Genre;
 
 public class GenreSimpleAdapter extends RecyclerView.Adapter<GenreSimpleAdapter.ViewHolder> {

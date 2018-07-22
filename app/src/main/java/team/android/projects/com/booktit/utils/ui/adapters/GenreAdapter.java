@@ -1,4 +1,4 @@
-package team.android.projects.com.booktit;
+package team.android.projects.com.booktit.utils.ui.adapters;
 
 import android.graphics.Color;
 import android.support.annotation.NonNull;
@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import team.android.projects.com.booktit.R;
 import team.android.projects.com.booktit.dataclasses.Genre;
 
 public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder> {

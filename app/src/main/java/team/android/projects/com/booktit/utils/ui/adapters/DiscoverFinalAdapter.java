@@ -1,4 +1,4 @@
-package team.android.projects.com.booktit;
+package team.android.projects.com.booktit.utils.ui.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import team.android.projects.com.booktit.R;
 import team.android.projects.com.booktit.dataclasses.BookCategory;
 
 public class DiscoverFinalAdapter extends ArrayAdapter<BookCategory>{

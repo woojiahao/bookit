@@ -16,6 +16,7 @@ import java.util.List;
 import team.android.projects.com.booktit.dataclasses.Book;
 import team.android.projects.com.booktit.dataclasses.BookCategory;
 import team.android.projects.com.booktit.dataclasses.Genre;
+import team.android.projects.com.booktit.utils.ui.adapters.DiscoverFinalAdapter;
 
 public class DiscoverFragment extends Fragment {
 	

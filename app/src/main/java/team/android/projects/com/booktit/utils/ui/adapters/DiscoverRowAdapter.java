@@ -1,4 +1,4 @@
-package team.android.projects.com.booktit;
+package team.android.projects.com.booktit.utils.ui.adapters;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
@@ -11,6 +11,7 @@ import android.widget.TextView;
 import java.text.NumberFormat;
 import java.util.List;
 
+import team.android.projects.com.booktit.R;
 import team.android.projects.com.booktit.dataclasses.Book;
 
 public class DiscoverRowAdapter extends RecyclerView.Adapter<DiscoverRowAdapter.ViewHolder> {
