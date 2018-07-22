@@ -5,9 +5,15 @@
 	android:layout_height="match_parent"
 	android:focusable="true"
 	android:focusableInTouchMode="true"
-	android:orientation="vertical">
+	android:orientation="vertical"
+	android:paddingEnd="@dimen/small_padding"
+	android:paddingLeft="@dimen/small_padding"
+	android:paddingRight="@dimen/small_padding"
+	android:paddingStart="@dimen/small_padding"
+	android:layout_marginBottom="@dimen/tiny_padding"
+	android:paddingTop="@dimen/small_padding">
 
-	<ListView
+	<android.support.v7.widget.RecyclerView
 		android:id="@+id/discoverArea"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"/>

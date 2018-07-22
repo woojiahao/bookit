@@ -1,9 +1,9 @@
 package team.android.projects.com.booktit.utils.ui.adapters;
 
 import android.support.annotation.NonNull;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,48 +15,77 @@ import team.android.projects.com.booktit.R;
 import team.android.projects.com.booktit.dataclasses.Book;
 
 public class DiscoverRowAdapter extends RecyclerView.Adapter<DiscoverRowAdapter.ViewHolder> {
-	private List<Book> books;
+	private List<Book> mBooks;
 	
 	static class ViewHolder extends RecyclerView.ViewHolder {
-		CardView mCardView;
+		private View mView;
+		private ImageView mThumbnail;
+		private TextView mTitle;
+		private TextView mGenre;
+		private TextView mPrice;
+		private TextView mRating;
 		
-		ViewHolder (CardView v) {
+		private NumberFormat mCurrencyFormatter;
+		
+		
+		ViewHolder(View v) {
 			super(v);
-			mCardView = v;
+			mView = v;
+			
+			mThumbnail = mView.findViewById(R.id.bookThumbnail);
+			mTitle = mView.findViewById(R.id.bookTitle);
+			mGenre = mView.findViewById(R.id.bookGenre);
+			mPrice = mView.findViewById(R.id.bookPrice);
+			mRating = mView.findViewById(R.id.bookRating);
+			
+			mCurrencyFormatter = NumberFormat.getCurrencyInstance();
+		}
+		
+		void setThumbnail(int thumbnailId) {
+			mThumbnail.setImageResource(thumbnailId);
+		}
+		
+		void setTitle(String title) {
+			mTitle.setText(title);
+		}
+		
+		void setGenre(String genre) {
+			mGenre.setText(genre);
+		}
+		
+		void setPrice(float price) {
+			mPrice.setText(mCurrencyFormatter.format(price));
+		}
+		
+		void setRating(float rating) {
+			mRating.setText(String.valueOf(rating));
 		}
 	}
 	
-	DiscoverRowAdapter (List<Book> books) {
-		this.books = books;
+	DiscoverRowAdapter(List<Book> books) {
+		mBooks = books;
 	}
 	
 	@Override
 	@NonNull
-	public DiscoverRowAdapter.ViewHolder onCreateViewHolder (@NonNull ViewGroup parent, int viewType) {
-		CardView v = (CardView) LayoutInflater.from(parent.getContext())
+	public DiscoverRowAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+		View v = LayoutInflater
+				.from(parent.getContext())
 				.inflate(R.layout.discover_tile, parent, false);
 		return new ViewHolder(v);
 	}
 	
-	public void onBindViewHolder (ViewHolder holder, int position) {
-		CardView layout = holder.mCardView;
-		ImageView thumbnail = (ImageView) layout.findViewById(R.id.discoverTileImage);
-		TextView title = (TextView) layout.findViewById(R.id.discoverTileTitle);
-		TextView genre = (TextView) layout.findViewById(R.id.discoverTileGenre);
-		TextView price = (TextView) layout.findViewById(R.id.discoverTilePrice);
-		TextView rating = (TextView) layout.findViewById(R.id.discoverTileRating);
+	public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+		Book book = mBooks.get(position);
 		
-		Book book = books.get(position);
-		
-		NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance();
-		thumbnail.setImageResource(book.getResID());
-		title.setText(book.getName());
-		genre.setText(book.getGenre().getGenreTitle());
-		price.setText(currencyFormatter.format(book.getPrice()));
-		rating.setText(((Double) book.getRating()).toString() + " \u2605");
+		holder.setTitle(book.getTitle());
+		holder.setGenre(book.getGenre());
+		holder.setPrice(book.getPrice());
+		holder.setThumbnail(book.getThumbnail());
+		holder.setRating(book.getRating());
 	}
 	
-	public int getItemCount () {
-		return books.size();
+	public int getItemCount() {
+		return mBooks.size();
 	}
 }

@@ -60,7 +60,7 @@ public class SignUpGenreSelection extends AppCompatActivity {
 				this,
 				LinearLayoutManager.VERTICAL,
 				false));
-		mGenreArea.addItemDecoration(new VerticalSpaceItemDecoration(32));
+		mGenreArea.addItemDecoration(new VerticalSpaceItemDecoration(32, true));
 	}
 	
 	private void connectListeners () {
