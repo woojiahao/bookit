@@ -1,18 +1,21 @@
 package team.android.projects.com.booktit;
 
+
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import team.android.projects.com.booktit.utils.UIUtils;
-
-// todo: refactor the discover page code!
-public class Discover extends AppCompatActivity {
+public class DiscoverFragment extends Fragment {
+	
+	private View mView;
 	
 	private ArrayList<BookCategory> mBookCategories;
 	private Genre mGenre = new Genre("Action");
@@ -26,12 +29,16 @@ public class Discover extends AppCompatActivity {
 			new Book("Talking As Fast As I Can", 3.9, 16.50, mGenre, R.drawable.talking_as_fast_as_i_can)
 	);
 	
+	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_discover);
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+							 Bundle savedInstanceState) {
+		mView = inflater.inflate(R.layout.fragment_discover, container, false);
 		
 		init();
+		connectListeners();
+		
+		return mView;
 	}
 	
 	private void init() {
@@ -40,10 +47,14 @@ public class Discover extends AppCompatActivity {
 		mBookCategories.add(new BookCategory("Best-sellers", mBooks));
 		mBookCategories.add(new BookCategory("New Releases", mBooks));
 		
-		DiscoverFinalAdapter adapter = new DiscoverFinalAdapter(this, mBookCategories);
-		ListView listView = findViewById(R.id.discoverArea);
+		DiscoverFinalAdapter adapter = new DiscoverFinalAdapter(getActivity(), mBookCategories);
+		ListView listView = mView.findViewById(R.id.discoverArea);
 		listView.setDivider(null);
 		listView.setDividerHeight(0);
 		listView.setAdapter(adapter);
+	}
+	
+	private void connectListeners() {
+	
 	}
 }

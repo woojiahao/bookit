@@ -1,6 +1,5 @@
 package team.android.projects.com.booktit;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -10,7 +9,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
-public class Container extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+// todo: fix the backstack issue
+public class Container
+		extends AppCompatActivity
+		implements BottomNavigationView.OnNavigationItemSelectedListener {
 	private FrameLayout mContentArea;
 	private BottomNavigationView mBottomBar;
 	
@@ -26,6 +28,9 @@ public class Container extends AppCompatActivity implements BottomNavigationView
 	private void init() {
 		mContentArea = findViewById(R.id.contentArea);
 		mBottomBar = findViewById(R.id.navigationDrawer);
+		
+		mBottomBar = findViewById(R.id.navigationDrawer);
+		BottomNavigationHelper.removeShiftMode(mBottomBar);
 	}
 	
 	private void connectListeners() {
@@ -40,6 +45,7 @@ public class Container extends AppCompatActivity implements BottomNavigationView
 		
 		switch (itemSelected) {
 			case R.id.navigationDiscover:
+				toInflate = new DiscoverFragment();
 				break;
 			case R.id.navigationSearch:
 				toInflate = new SearchFragment();
@@ -53,7 +59,10 @@ public class Container extends AppCompatActivity implements BottomNavigationView
 		}
 		
 		if (toInflate != null) {
-			manager.beginTransaction().add(R.id.contentArea, toInflate, "Fragment").commit();
+			manager.beginTransaction()
+					.addToBackStack("Fragment")
+					.replace(R.id.contentArea, toInflate, "Fragment")
+					.commit();
 		}
 		
 		return true;
