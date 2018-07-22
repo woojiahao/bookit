@@ -16,6 +16,7 @@ import android.widget.Toast;
 import java.util.Arrays;
 import java.util.List;
 
+import team.android.projects.com.booktit.dataclasses.Genre;
 import team.android.projects.com.booktit.utils.ui.helper.VerticalSpaceItemDecoration;
 
 public class SearchFragment extends Fragment {

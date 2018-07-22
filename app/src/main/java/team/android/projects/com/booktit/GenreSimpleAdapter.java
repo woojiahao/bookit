@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import team.android.projects.com.booktit.dataclasses.Genre;
+
 public class GenreSimpleAdapter extends RecyclerView.Adapter<GenreSimpleAdapter.ViewHolder> {
 	private List<Genre> mGenres;
 	

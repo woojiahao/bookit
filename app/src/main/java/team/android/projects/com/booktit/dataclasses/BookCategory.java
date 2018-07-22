@@ -1,6 +1,5 @@
-package team.android.projects.com.booktit;
+package team.android.projects.com.booktit.dataclasses;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class BookCategory {

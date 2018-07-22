@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import team.android.projects.com.booktit.dataclasses.BookCategory;
+
 public class DiscoverFinalAdapter extends ArrayAdapter<BookCategory>{
     private Context context;
 

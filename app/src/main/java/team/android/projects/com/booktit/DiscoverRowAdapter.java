@@ -11,6 +11,8 @@ import android.widget.TextView;
 import java.text.NumberFormat;
 import java.util.List;
 
+import team.android.projects.com.booktit.dataclasses.Book;
+
 public class DiscoverRowAdapter extends RecyclerView.Adapter<DiscoverRowAdapter.ViewHolder> {
 	private List<Book> books;
 	

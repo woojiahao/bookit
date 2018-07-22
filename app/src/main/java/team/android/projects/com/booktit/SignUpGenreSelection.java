@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import java.util.Arrays;
 import java.util.List;
 
+import team.android.projects.com.booktit.dataclasses.Genre;
 import team.android.projects.com.booktit.utils.ui.helper.VerticalSpaceItemDecoration;
 
 public class SignUpGenreSelection extends AppCompatActivity {

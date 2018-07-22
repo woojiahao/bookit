@@ -1,4 +1,4 @@
-package team.android.projects.com.booktit;
+package team.android.projects.com.booktit.dataclasses;
 
 public class Book {
     private Genre genre;

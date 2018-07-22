@@ -13,6 +13,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import team.android.projects.com.booktit.dataclasses.Book;
+import team.android.projects.com.booktit.dataclasses.BookCategory;
+import team.android.projects.com.booktit.dataclasses.Genre;
+
 public class DiscoverFragment extends Fragment {
 	
 	private View mView;
