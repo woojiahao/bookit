@@ -20,6 +20,12 @@ It's good training for SEP and Git is one of the most widely used Version Contro
 4. Every time there is a an update made to this repository, fetch and pull from the remote to this repository
 5. When you wish to make a change, add the change to your local copy, commit it and then make a Pull Request to this repository, I will take a look before accepting the changes
 
+**Important note!**
+ 
+When adding files, if you wish to add all the files at once, please use `git add .`, not `git add *`.
+
+The first one takes into consideration the `.gitignore` file whilst the second doesn't. If you accidentally make a pull request with the wrong type of add, I will decline the request.
+
 ### Set up commands:
 ```bash
 git clone https://github.com/<github username>/bookit.git
