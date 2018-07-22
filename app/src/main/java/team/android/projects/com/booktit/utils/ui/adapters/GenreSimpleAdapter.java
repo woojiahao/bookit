@@ -32,7 +32,7 @@ public class GenreSimpleAdapter extends RecyclerView.Adapter<GenreSimpleAdapter.
 		}
 	}
 	
-	GenreSimpleAdapter (List<Genre> genres) {
+	public GenreSimpleAdapter (List<Genre> genres) {
 		mGenres = genres;
 	}
 	

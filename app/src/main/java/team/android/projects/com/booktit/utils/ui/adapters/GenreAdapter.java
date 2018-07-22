@@ -47,7 +47,7 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder> 
 		}
 	}
 	
-	GenreAdapter (List<Genre> genres) {
+	public GenreAdapter (List<Genre> genres) {
 		mGenres = genres;
 	}
 	
