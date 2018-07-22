@@ -34,7 +34,9 @@
 			android:name=".SignUpGenreSelection"
 			android:screenOrientation="portrait">
 		</activity>
-		<activity android:name=".Container">
+		<activity
+			android:name=".Container"
+			android:screenOrientation="portrait">
 		</activity>
 	</application>
 
