@@ -14,6 +14,11 @@
 
 	</FrameLayout>
 
+	<View
+		android:layout_width="match_parent"
+		android:layout_height="1sp"
+		android:background="@drawable/shadow"/>
+
 	<android.support.design.widget.BottomNavigationView
 		android:id="@+id/navigationDrawer"
 		android:layout_width="match_parent"
