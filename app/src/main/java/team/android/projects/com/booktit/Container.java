@@ -7,13 +7,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
 
 // todo: fix the backstack issue
 public class Container
 		extends AppCompatActivity
 		implements BottomNavigationView.OnNavigationItemSelectedListener {
-	private FrameLayout mContentArea;
 	private BottomNavigationView mBottomBar;
 	
 	@Override
@@ -26,11 +24,17 @@ public class Container
 	}
 	
 	private void init() {
-		mContentArea = findViewById(R.id.contentArea);
-		mBottomBar = findViewById(R.id.navigationDrawer);
-		
 		mBottomBar = findViewById(R.id.navigationDrawer);
 		BottomNavigationHelper.removeShiftMode(mBottomBar);
+		mBottomBar.setSelectedItemId(R.id.navigationDiscover);
+		loadInitialFragment();
+	}
+	
+	private void loadInitialFragment() {
+		getSupportFragmentManager()
+				.beginTransaction()
+				.add(R.id.contentArea, new DiscoverFragment(), "Fragment")
+				.commit();
 	}
 	
 	private void connectListeners() {

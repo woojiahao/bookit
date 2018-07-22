@@ -13,11 +13,4 @@ public class UIUtils {
 			e.setText("");
 		}
 	}
-	
-	public static void setBottomBarSelection (AppCompatActivity parentActivity, int selectedItem) {
-		BottomNavigationView v = parentActivity
-				.findViewById(R.id.navigationBar)
-				.findViewById(R.id.navigationDrawer);
-		v.setSelectedItemId(selectedItem);
-	}
 }
