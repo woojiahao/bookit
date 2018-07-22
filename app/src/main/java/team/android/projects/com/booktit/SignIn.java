@@ -8,9 +8,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import team.android.projects.com.booktit.database.DbOperations;
-import team.android.projects.com.booktit.database.IDbOperations;
-
 import static team.android.projects.com.booktit.utils.UIUtils.clearInputs;
 
 public class SignIn extends AppCompatActivity {
@@ -37,8 +34,6 @@ public class SignIn extends AppCompatActivity {
 		
 		mUsernameEmailField = findViewById(R.id.loginUsernameField);
 		mPasswordField = findViewById(R.id.loginPasswordField);
-		
-		dbOperations = new DbOperations();
 	}
 	
 	private void connectListeners () {
