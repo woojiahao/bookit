@@ -1,5 +1,6 @@
 package team.android.projects.com.booktit;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -61,5 +62,8 @@ public class SignUpGenreSelection extends AppCompatActivity {
 	
 	private void connectListeners () {
 		mBackBtn.setOnClickListener(ev -> finish());
+		mSelectBtn.setOnClickListener(v -> {
+			startActivity(new Intent(this, SignIn.class));
+		});
 	}
 }

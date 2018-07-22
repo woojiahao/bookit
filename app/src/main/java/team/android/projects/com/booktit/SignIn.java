@@ -54,6 +54,8 @@ public class SignIn extends AppCompatActivity {
 			String enteredPassword = mPasswordField.getText().toString();
 			
 			Toast.makeText(this, String.format("Username/Email: %s, Password: %s", enteredUsernameEmail, enteredPassword), Toast.LENGTH_SHORT).show();
+			
+			startActivity(new Intent(this, Container.class));
 		});
 		
 		mSignUpBtn.setOnClickListener(ev -> {
