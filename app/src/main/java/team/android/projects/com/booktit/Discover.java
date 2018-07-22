@@ -11,6 +11,7 @@ import java.util.List;
 
 import team.android.projects.com.booktit.utils.UIUtils;
 
+// todo: refactor the discover page code!
 public class Discover extends AppCompatActivity{
 
     private ArrayList<BookCategory> mBookCategories;
