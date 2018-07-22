@@ -23,7 +23,7 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder> 
 		private TextView mGenreTitle;
 		private ImageView mSelected;
 		
-		ViewHolder (View itemView) {
+		ViewHolder(View itemView) {
 			super(itemView);
 			
 			mView = itemView;
@@ -32,11 +32,11 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder> 
 			mSelected = mView.findViewById(R.id.genreSelected);
 		}
 		
-		private void setTitle (String title) {
+		private void setTitle(String title) {
 			mGenreTitle.setText(title);
 		}
 		
-		private void setSelected (boolean isSelected) {
+		private void setSelected(boolean isSelected) {
 			if (isSelected) {
 				mSelected.setImageResource(R.drawable.ic_clear_black_24dp);
 				mSelected.setBackgroundColor(Color.parseColor("#F44336"));
@@ -47,18 +47,18 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder> 
 		}
 	}
 	
-	public GenreAdapter (List<Genre> genres) {
+	public GenreAdapter(List<Genre> genres) {
 		mGenres = genres;
 	}
 	
 	@NonNull @Override
-	public ViewHolder onCreateViewHolder (@NonNull ViewGroup parent, int viewType) {
+	public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 		LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 		
 		return new ViewHolder(inflater.inflate(R.layout.genre_card, parent, false));
 	}
 	
-	@Override public void onBindViewHolder (@NonNull ViewHolder holder, int position) {
+	@Override public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 		Genre g = mGenres.get(position);
 		holder.setTitle(g.getGenreTitle());
 		holder.setSelected(g.getIsSelected());
@@ -70,7 +70,7 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder> 
 		});
 	}
 	
-	@Override public int getItemCount () {
+	@Override public int getItemCount() {
 		return mGenres.size();
 	}
 }
