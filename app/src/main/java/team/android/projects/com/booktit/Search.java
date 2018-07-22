@@ -1,17 +1,15 @@
 package team.android.projects.com.booktit;
 
+import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
+import team.android.projects.com.booktit.utils.UIUtils;
 
 import java.util.Arrays;
 import java.util.List;
@@ -41,7 +39,7 @@ public class Search extends AppCompatActivity {
 	protected void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search);
-
+		
 		init();
 		connectListeners();
 	}
@@ -54,6 +52,8 @@ public class Search extends AppCompatActivity {
 		mGenreArea.setAdapter(adapter);
 		mGenreArea.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 		mGenreArea.addItemDecoration(new VerticalSpaceItemDecoration(32));
+		
+		UIUtils.setBottomBarSelection(this, R.id.navigationSearch);
 	}
 	
 	private void connectListeners () {
@@ -61,7 +61,6 @@ public class Search extends AppCompatActivity {
 			@Override
 			public void beforeTextChanged (CharSequence s, int start, int count, int after) { }
 			@Override public void afterTextChanged (Editable s) { }
-			
 			@Override public void onTextChanged (CharSequence s, int start, int before, int count) {
 				Toast.makeText(Search.this, "Typing: " + s.toString(), Toast.LENGTH_SHORT).show();
 			}

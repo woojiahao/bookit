@@ -32,16 +32,15 @@
 		<activity
 			android:name=".Search"
 			android:screenOrientation="portrait">
+		</activity>
+		<activity
+			android:name=".Discover"
+			android:screenOrientation="portrait">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN"/>
 
 				<category android:name="android.intent.category.LAUNCHER"/>
 			</intent-filter>
-
-		</activity>
-		<activity
-			android:name=".Discover"
-			android:screenOrientation="portrait">
 		</activity>
 	</application>
 

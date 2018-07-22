@@ -1,43 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:focusable="true"
-    android:focusableInTouchMode="true"
-    android:orientation="vertical">
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:focusable="true"
+	android:focusableInTouchMode="true"
+	android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0sp"
-        android:layout_weight="1"
-        android:orientation="vertical">
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="0sp"
+		android:layout_weight="1"
+		android:orientation="vertical">
 
-        <ListView
-            android:id="@+id/discoverArea"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+		<ListView
+			android:id="@+id/discoverArea"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"/>
 
-    </LinearLayout>
+	</LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2sp"
-        android:background="@drawable/shadow" />
-
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/navigationDrawer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="0sp"
-        android:layout_marginLeft="0sp"
-        android:layout_marginRight="0sp"
-        android:layout_marginStart="0sp"
-        app:itemBackground="@android:color/white"
-        app:itemIconTint="@drawable/navigation_background"
-        app:itemTextColor="@drawable/navigation_background"
-        app:menu="@menu/navigation">
-
-    </android.support.design.widget.BottomNavigationView>
-
+	<fragment
+		android:id="@+id/navigationBar"
+		android:name="team.android.projects.com.booktit.BottomBarFragment"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		tools:layout="@layout/fragment_bottom_bar"/>
 </LinearLayout>
