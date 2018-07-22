@@ -41,7 +41,7 @@ public class Discover extends AppCompatActivity{
         mBookCategories.add(new BookCategory("New Releases", mBooks));
 
 	
-        UIUtils.setBottomBarSelection(this, R.id.navigationDiscover);
+//        UIUtils.setBottomBarSelection(this, R.id.navigationDiscover);
         
         DiscoverFinalAdapter adapter = new DiscoverFinalAdapter(this, mBookCategories);
         ListView listView = findViewById(R.id.discoverArea);
