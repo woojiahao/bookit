@@ -20,8 +20,6 @@ public class SignIn extends AppCompatActivity {
 	private EditText mUsernameEmailField;
 	private EditText mPasswordField;
 	
-	private IDbOperations dbOperations;
-	
 	@Override
 	protected void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

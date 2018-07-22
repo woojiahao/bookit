@@ -42,6 +42,8 @@
 			android:name=".Discover"
 			android:screenOrientation="portrait">
 		</activity>
+		<activity android:name=".Container">
+		</activity>
 	</application>
 
 </manifest>
