@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import team.android.projects.com.booktit.utils.UIUtils;
+import team.android.projects.com.booktit.utils.ui.UIUtils;
 
 public class ForgotPassword extends AppCompatActivity {
 	

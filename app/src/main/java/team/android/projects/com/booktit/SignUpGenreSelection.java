@@ -8,10 +8,11 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import java.util.Arrays;
 import java.util.List;
+
+import team.android.projects.com.booktit.utils.ui.helper.VerticalSpaceItemDecoration;
 
 public class SignUpGenreSelection extends AppCompatActivity {
 	

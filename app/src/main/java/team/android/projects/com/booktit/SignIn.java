@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import static team.android.projects.com.booktit.utils.UIUtils.clearInputs;
+import static team.android.projects.com.booktit.utils.ui.UIUtils.clearInputs;
 
 public class SignIn extends AppCompatActivity {
 	private Button mSignInBtn;

@@ -1,4 +1,4 @@
-package team.android.projects.com.booktit.utils;
+package team.android.projects.com.booktit.utils.ui;
 
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;

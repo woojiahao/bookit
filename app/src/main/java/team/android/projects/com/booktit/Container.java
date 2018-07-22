@@ -8,6 +8,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
+import team.android.projects.com.booktit.utils.ui.helper.BottomNavigationHelper;
+
 // todo: fix the backstack issue
 public class Container
 		extends AppCompatActivity

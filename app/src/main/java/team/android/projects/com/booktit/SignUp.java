@@ -7,9 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import team.android.projects.com.booktit.utils.UIUtils;
-
-import static team.android.projects.com.booktit.utils.UIUtils.clearInputs;
+import static team.android.projects.com.booktit.utils.ui.UIUtils.clearInputs;
 
 public class SignUp extends AppCompatActivity {
 	private Button mSignUpBtn;

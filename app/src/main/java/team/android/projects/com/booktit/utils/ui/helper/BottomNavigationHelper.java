@@ -1,4 +1,4 @@
-package team.android.projects.com.booktit;
+package team.android.projects.com.booktit.utils.ui.helper;
 
 import android.support.design.internal.BottomNavigationItemView;
 import android.support.design.internal.BottomNavigationMenuView;
@@ -7,8 +7,8 @@ import android.util.Log;
 
 import java.lang.reflect.Field;
 
-class BottomNavigationHelper {
-	static void removeShiftMode (BottomNavigationView view) {
+public class BottomNavigationHelper {
+	public static void removeShiftMode (BottomNavigationView view) {
 		BottomNavigationMenuView menuView = (BottomNavigationMenuView) view.getChildAt(0);
 		try {
 			Field shiftingMode = menuView.getClass().getDeclaredField("mShiftingMode");
