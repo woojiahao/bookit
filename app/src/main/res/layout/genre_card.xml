@@ -8,29 +8,21 @@
 	app:cardCornerRadius="4sp"
 	app:cardElevation="2sp">
 
-	<FrameLayout
+	<ImageView
+		android:id="@+id/genreBackground"
 		android:layout_width="wrap_content"
-		android:layout_height="wrap_content">
-		<ImageView
-			android:id="@+id/genreBackground"
-			android:adjustViewBounds="true"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			tools:src="@drawable/image_horror"
-			android:contentDescription="@string/genre_background"/>
-
-		<View
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:background="#80212121" />
-	</FrameLayout>
+		android:layout_height="wrap_content"
+		android:adjustViewBounds="true"
+		android:contentDescription="@string/genre_background"
+		android:foreground="#80212121"
+		tools:src="@drawable/image_horror"/>
 
 	<TextView
 		style="@style/LargeText"
-		android:layout_gravity="center"
-		tools:text="Horror"
-		android:textColor="@android:color/white"
 		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"/>
+		android:layout_height="wrap_content"
+		android:layout_gravity="center"
+		android:textColor="@android:color/white"
+		tools:text="Horror"/>
 
 </android.support.v7.widget.CardView>
