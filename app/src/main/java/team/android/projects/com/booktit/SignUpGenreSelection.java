@@ -1,8 +1,8 @@
 package team.android.projects.com.booktit;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Button;
@@ -17,7 +17,6 @@ import team.android.projects.com.booktit.utils.ui.adapters.GenreAdapter;
 import team.android.projects.com.booktit.utils.ui.helper.VerticalSpaceItemDecoration;
 
 public class SignUpGenreSelection extends AppCompatActivity {
-	
 	private EditText mSearch;
 	private RecyclerView mGenreArea;
 	private Button mSelectBtn;
@@ -40,7 +39,7 @@ public class SignUpGenreSelection extends AppCompatActivity {
 	);
 	
 	@Override
-	protected void onCreate (Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sign_up_genre_selection);
 		
@@ -48,7 +47,7 @@ public class SignUpGenreSelection extends AppCompatActivity {
 		connectListeners();
 	}
 	
-	private void init () {
+	private void init() {
 		mSearch = findViewById(R.id.searchGenreField);
 		mGenreArea = findViewById(R.id.genresArea);
 		mSelectBtn = findViewById(R.id.selectBtn);
@@ -63,7 +62,7 @@ public class SignUpGenreSelection extends AppCompatActivity {
 		mGenreArea.addItemDecoration(new VerticalSpaceItemDecoration(32, true));
 	}
 	
-	private void connectListeners () {
+	private void connectListeners() {
 		mBackBtn.setOnClickListener(ev -> finish());
 		mSelectBtn.setOnClickListener(v -> {
 			startActivity(new Intent(this, SignIn.class));
