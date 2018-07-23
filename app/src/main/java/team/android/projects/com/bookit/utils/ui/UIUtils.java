@@ -1,11 +1,9 @@
 package team.android.projects.com.bookit.utils.ui;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.EditText;
 
@@ -27,24 +25,15 @@ public class UIUtils {
 		return (T) parent.findViewById(targetID);
 	}
 	
-	public static void loadGenreSelection(FragmentManager manager, String title, int columnCount) {
+	public static void loadGenreSelection(FragmentManager manager, String title, int columnCount, boolean multiSelection) {
 		Bundle b = new Bundle();
 		b.putString("title", title);
 		b.putInt("columns", columnCount);
+		b.putBoolean("multiSelection", multiSelection);
 		Fragment f = new GenreSelectionFragment();
 		f.setArguments(b);
 		if (manager != null) {
 			manager.beginTransaction().add(R.id.genreSelection, f).commit();
 		}
 	}
-	
-	public static int dpToPx(Context c, int dp) {
-		DisplayMetrics displayMetrics = c.getResources().getDisplayMetrics();
-		return Math.round(dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
-	}
-	public static int pxToDp(Context c, int px) {
-		DisplayMetrics displayMetrics = c.getResources().getDisplayMetrics();
-		return Math.round(px / (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
-	}
-	
 }

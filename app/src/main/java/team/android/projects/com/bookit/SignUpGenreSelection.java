@@ -7,11 +7,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-import java.util.Arrays;
-import java.util.List;
-
-import team.android.projects.com.bookit.dataclasses.Genre;
-
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.loadGenreSelection;
 
@@ -34,7 +29,7 @@ public class SignUpGenreSelection extends AppCompatActivity {
 		mSelectBtn = find(this, R.id.selectBtn);
 		mBackBtn = find(this, R.id.backBtn);
 		
-		loadGenreSelection(getSupportFragmentManager(), "Select Genres", 2);
+		loadGenreSelection(getSupportFragmentManager(), "Select Genres", 2, true);
 	}
 
 	private void connectListeners() {

@@ -51,7 +51,7 @@ public class SearchFragment extends Fragment {
 
 	private void init() {
 		mSearchField = find(mView, R.id.searchField);
-		loadGenreSelection(getFragmentManager(), "Genre", 2);
+		loadGenreSelection(getFragmentManager(), "Genre", 2, false);
 	}
 
 	private void connectListeners() {

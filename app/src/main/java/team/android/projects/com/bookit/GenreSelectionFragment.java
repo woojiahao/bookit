@@ -27,6 +27,7 @@ public class GenreSelectionFragment extends Fragment {
 	
 	private String mTitle = "Blank Title";
 	private int mColumnCount = 2;
+	private boolean mMultiSelection = true;
 	
 	private final List<Genre> mGenresLst = Arrays.asList(
 			new Genre("Horror", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
@@ -48,6 +49,7 @@ public class GenreSelectionFragment extends Fragment {
 		if (getArguments() != null) {
 			mTitle = getArguments().getString("title");
 			mColumnCount = getArguments().getInt("columns");
+			mMultiSelection = getArguments().getBoolean("multiSelection");
 		}
 		
 		init();
