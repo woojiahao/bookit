@@ -35,7 +35,7 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder> 
 			mView = itemView;
 			
 			mGenreTitle = find(mView, R.id.genreTitle);
-//			mGenreBackground = find(mView, R.id.genreBackground);
+			mGenreBackground = find(mView, R.id.genreBackground);
 //			mSelected = mView.findViewById(R.id.genreSelected);
 		}
 		
@@ -77,7 +77,7 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder> 
 	@Override public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 		Genre g = mGenres.get(position);
 		holder.setTitle(g.getGenreTitle());
-//		holder.setGenreBackground(g.getGenreBackground());
+		holder.setGenreBackground(g.getGenreBackground());
 //		holder.setSelected(g.getIsSelected());
 
 //		holder.mView.setOnClickListener(v -> {

@@ -20,22 +20,6 @@ public class SignUpGenreSelection extends AppCompatActivity {
 	private Button mSelectBtn;
 	private ImageView mBackBtn;
 
-	private final List<Genre> mGenres = Arrays.asList(
-			new Genre("Horror", R.drawable.ic_search_black_24dp),
-			new Genre("Mystery", R.drawable.ic_search_black_24dp),
-			new Genre("Fantasy", R.drawable.ic_search_black_24dp),
-			new Genre("Fantasy", R.drawable.ic_search_black_24dp),
-			new Genre("Fantasy", R.drawable.ic_search_black_24dp),
-			new Genre("Fantasy", R.drawable.ic_search_black_24dp),
-			new Genre("Fantasy", R.drawable.ic_search_black_24dp),
-			new Genre("Fantasy", R.drawable.ic_search_black_24dp),
-			new Genre("Fantasy", R.drawable.ic_search_black_24dp),
-			new Genre("Fantasy", R.drawable.ic_search_black_24dp),
-			new Genre("Action", R.drawable.ic_search_black_24dp),
-			new Genre("Self-Help", R.drawable.ic_search_black_24dp),
-			new Genre("Romance", R.drawable.ic_search_black_24dp)
-	);
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

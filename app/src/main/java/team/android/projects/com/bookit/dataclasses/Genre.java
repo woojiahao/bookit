@@ -7,9 +7,10 @@ public class Genre {
 	
 	private boolean mIsSelected;
 	
-	public Genre(String genreTitle, int genreIcon) {
+	public Genre(String genreTitle, int genreIcon, int genreBackground) {
 		mGenreTitle = genreTitle;
 		mGenreIcon = genreIcon;
+		mGenreBackground = genreBackground;
 		
 		mIsSelected = false;
 	}

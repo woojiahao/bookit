@@ -13,7 +13,6 @@ import java.util.List;
 import team.android.projects.com.bookit.R;
 import team.android.projects.com.bookit.dataclasses.Book;
 import team.android.projects.com.bookit.dataclasses.BookGroup;
-import team.android.projects.com.bookit.utils.ui.helper.HorizontalSpaceItemDecoration;
 import team.android.projects.com.bookit.utils.ui.helper.SpacingDecoration;
 
 public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.ViewHolder> {
@@ -47,7 +46,7 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.ViewHo
 					false);
 			
 			mBooksRow.setLayoutManager(manager);
-			mBooksRow.addItemDecoration(new SpacingDecoration(32, 0, 0, 0, adapter.getItemCount()));
+			mBooksRow.addItemDecoration(new SpacingDecoration(32, 32, adapter.getItemCount()));
 			mBooksRow.setAdapter(adapter);
 		}
 	}

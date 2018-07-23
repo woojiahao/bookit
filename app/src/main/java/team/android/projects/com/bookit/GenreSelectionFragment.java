@@ -28,19 +28,15 @@ public class GenreSelectionFragment extends Fragment {
 	private int mColumnCount = 2;
 	
 	private final List<Genre> mGenresLst = Arrays.asList(
-			new Genre("Horror", R.drawable.ic_search_black_24dp),
-			new Genre("Mystery", R.drawable.ic_search_black_24dp),
-			new Genre("Fantasy", R.drawable.ic_search_black_24dp),
-			new Genre("Fantasy", R.drawable.ic_search_black_24dp),
-			new Genre("Fantasy", R.drawable.ic_search_black_24dp),
-			new Genre("Fantasy", R.drawable.ic_search_black_24dp),
-			new Genre("Fantasy", R.drawable.ic_search_black_24dp),
-			new Genre("Fantasy", R.drawable.ic_search_black_24dp),
-			new Genre("Fantasy", R.drawable.ic_search_black_24dp),
-			new Genre("Fantasy", R.drawable.ic_search_black_24dp),
-			new Genre("Action", R.drawable.ic_search_black_24dp),
-			new Genre("Self-Help", R.drawable.ic_search_black_24dp),
-			new Genre("Romance", R.drawable.ic_search_black_24dp)
+			new Genre("Horror", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
+			new Genre("Mystery", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
+			new Genre("Fantasy", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
+			new Genre("Fantasy", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
+			new Genre("Fantasy", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
+			new Genre("Fantasy", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
+			new Genre("Action", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
+			new Genre("Self-Help", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
+			new Genre("Romance", R.drawable.ic_search_black_24dp, R.drawable.image_horror)
 	);
 	
 	@Override
@@ -66,7 +62,7 @@ public class GenreSelectionFragment extends Fragment {
 		
 		GenreAdapter adapter = new GenreAdapter(mGenresLst, mColumnCount);
 		mGenres.setLayoutManager(new GridLayoutManager(getActivity(), mColumnCount));
-		mGenres.addItemDecoration(new SpacingDecoration(0, 32, 0, 32, 2));
+		mGenres.addItemDecoration(new SpacingDecoration(32, 32, 2));
 		mGenres.setAdapter(adapter);
 	}
 }

@@ -24,19 +24,19 @@ public class SearchFragment extends Fragment {
 	private View mView;
 
 	private final List<Genre> mGenres = Arrays.asList(
-			new Genre("Horror", R.drawable.ic_search_black_24dp),
-			new Genre("Mystery", R.drawable.ic_search_black_24dp),
-			new Genre("Fantasy", R.drawable.ic_search_black_24dp),
-			new Genre("Fantasy", R.drawable.ic_search_black_24dp),
-			new Genre("Fantasy", R.drawable.ic_search_black_24dp),
-			new Genre("Fantasy", R.drawable.ic_search_black_24dp),
-			new Genre("Fantasy", R.drawable.ic_search_black_24dp),
-			new Genre("Fantasy", R.drawable.ic_search_black_24dp),
-			new Genre("Fantasy", R.drawable.ic_search_black_24dp),
-			new Genre("Fantasy", R.drawable.ic_search_black_24dp),
-			new Genre("Action", R.drawable.ic_search_black_24dp),
-			new Genre("Self-Help", R.drawable.ic_search_black_24dp),
-			new Genre("Romance", R.drawable.ic_search_black_24dp)
+			new Genre("Horror", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
+			new Genre("Mystery", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
+			new Genre("Fantasy", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
+			new Genre("Fantasy", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
+			new Genre("Fantasy", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
+			new Genre("Fantasy", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
+			new Genre("Fantasy", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
+			new Genre("Fantasy", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
+			new Genre("Fantasy", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
+			new Genre("Fantasy", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
+			new Genre("Action", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
+			new Genre("Self-Help", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
+			new Genre("Romance", R.drawable.ic_search_black_24dp, R.drawable.image_horror)
 	);
 
 	@Override
