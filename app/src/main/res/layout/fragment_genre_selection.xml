@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
+
+	<TextView
+		style="@style/LargeText"
+		android:layout_marginBottom="@dimen/tiny_padding"
+		android:textColor="@color/primaryTextColor"
+		tools:text="Select Genre"/>
+
+	<android.support.v7.widget.RecyclerView
+		android:id="@+id/genreSelectionArea"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		/>
+
+</LinearLayout>
