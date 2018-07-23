@@ -1,11 +1,8 @@
 package team.android.projects.com.bookit.utils.ui.adapters;
 
-import android.app.Activity;
-import android.content.Context;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,9 +65,6 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder> 
 		LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 		View v = inflater.inflate(R.layout.genre_card, parent, false);
 		
-//		int cardWidth = getCardWidth(parent.getContext());
-//		v.setLayoutParams(new ViewGroup.LayoutParams(cardWidth, ViewGroup.LayoutParams.WRAP_CONTENT));
-		
 		return new ViewHolder(v);
 	}
 	
@@ -89,17 +83,5 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder> 
 	
 	@Override public int getItemCount() {
 		return mGenres.size();
-	}
-	
-	private int getCardWidth(Context parent) {
-		DisplayMetrics metrics = new DisplayMetrics();
-		((Activity) parent).getWindowManager()
-				.getDefaultDisplay()
-				.getMetrics(metrics);
-		int phoneWidth = metrics.widthPixels;
-		
-		int spacingWidth = 16 * (mColumnCount - 1);
-		
-		return (phoneWidth - spacingWidth - 32) / mColumnCount;
 	}
 }
