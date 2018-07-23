@@ -23,9 +23,15 @@ public class SpacingDecoration extends RecyclerView.ItemDecoration {
 	private int mVerticalSpacing;
 	private int mColumnCount;
 	
-	public SpacingDecoration(int horizontalSpacing, int verticalSpacing, int columnCount) {
+	public SpacingDecoration(int horizontalSpacing, int verticalSpacing, int columnCount)
+			throws SpacingDecorationError {
 		mHorizontalSpacing = horizontalSpacing;
 		mVerticalSpacing = verticalSpacing;
+		
+		if (columnCount <= 0) {
+			throw new SpacingDecorationError("Cannot have a column count of 0 or less");
+		}
+		
 		mColumnCount = columnCount;
 	}
 	
