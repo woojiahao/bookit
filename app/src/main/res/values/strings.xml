@@ -1,5 +1,5 @@
 <resources>
-	<string name="app_name">BooktIt</string>
+	<string name="app_name">BookIt</string>
 	<string name="logo">BookIt!</string>
 	<string name="email">Email</string>
 	<string name="username">Username</string>

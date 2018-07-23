@@ -6,18 +6,12 @@
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
 	app:cardCornerRadius="4sp"
-	app:cardElevation="2sp">
-
-	<ImageView
-		android:id="@+id/genreBackground"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:adjustViewBounds="true"
-		android:contentDescription="@string/genre_background"
-		android:foreground="#80212121"
-		tools:src="@drawable/image_horror"/>
+	app:cardElevation="2sp"
+	app:cardBackgroundColor="#80212121"
+	app:contentPadding="@dimen/small_padding">
 
 	<TextView
+		android:id="@+id/genreTitle"
 		style="@style/LargeText"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"

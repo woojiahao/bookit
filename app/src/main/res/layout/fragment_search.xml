@@ -21,14 +21,8 @@
 		android:hint="@string/title_author_isbn"
 		android:inputType="text"/>
 
-	<TextView
-		style="@style/LargeText"
-		android:layout_marginBottom="@dimen/small_padding"
-		android:text="@string/genres"
-		android:textColor="@color/primaryTextColor"/>
-
-	<android.support.v7.widget.RecyclerView
-		android:id="@+id/genresArea"
+	<FrameLayout
+		android:id="@+id/genreSelection"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"/>
+		android:layout_height="match_parent" />
 </LinearLayout>
