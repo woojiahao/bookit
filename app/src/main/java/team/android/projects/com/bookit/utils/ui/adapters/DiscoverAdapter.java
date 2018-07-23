@@ -13,7 +13,7 @@ import java.util.List;
 import team.android.projects.com.bookit.R;
 import team.android.projects.com.bookit.dataclasses.Book;
 import team.android.projects.com.bookit.dataclasses.BookGroup;
-import team.android.projects.com.bookit.utils.ui.helper.SpacingDecoration;
+import team.android.projects.com.bookit.utils.ui.helper.decorators.SpacingDecoration;
 
 public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.ViewHolder> {
 	private List<BookGroup> mBookGroups;
