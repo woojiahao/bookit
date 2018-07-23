@@ -1,7 +1,9 @@
 package team.android.projects.com.bookit.utils.ui.adapters;
 
 import android.graphics.Color;
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,7 +27,6 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder> 
 	static class ViewHolder extends RecyclerView.ViewHolder {
 		private View mView;
 		private TextView mGenreTitle;
-		private ImageView mSelected;
 		private ImageView mGenreBackground;
 		
 		ViewHolder(View itemView) {
@@ -35,7 +36,6 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder> 
 			
 			mGenreTitle = find(mView, R.id.genreTitle);
 			mGenreBackground = find(mView, R.id.genreBackground);
-//			mSelected = mView.findViewById(R.id.genreSelected);
 		}
 		
 		private void setTitle(String title) {
@@ -46,13 +46,10 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder> 
 			mGenreBackground.setImageResource(id);
 		}
 		
-		private void setSelected(boolean isSelected) {
+		@RequiresApi(api = Build.VERSION_CODES.M) private void setSelected(boolean isSelected) {
 			if (isSelected) {
-				mSelected.setImageResource(R.drawable.ic_clear_black_24dp);
-				mSelected.setBackgroundColor(Color.parseColor("#F44336"));
-			} else {
-				mSelected.setImageResource(R.drawable.ic_add_black_24dp);
-				mSelected.setBackgroundColor(Color.parseColor("#00E676"));
+				mGenreBackground.setForeground(mView.getContext().getResources().getDrawable(R.drawable.white_tint));
+				mGenreTitle.setTextColor(Color.parseColor("#212121"));
 			}
 		}
 	}
@@ -71,14 +68,23 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder> 
 		return new ViewHolder(v);
 	}
 	
+	@RequiresApi(api = Build.VERSION_CODES.M)
 	@Override public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 		Genre g = mGenres.get(position);
 		holder.setTitle(g.getGenreTitle());
 		holder.setGenreBackground(g.getGenreBackground());
-//		holder.setSelected(g.getIsSelected());
-
+		if (mMultiSelection) {
+			holder.setSelected(g.getIsSelected());
+		}
+		
 		holder.mView.setOnClickListener(v -> {
-			Toast.makeText(v.getContext(), "Pressed", Toast.LENGTH_SHORT).show();
+			if (mMultiSelection) {
+				Toast.makeText(v.getContext(), "Making selection", Toast.LENGTH_SHORT).show();
+				holder.setSelected(true);
+				g.setIsSelected(true);
+			} else {
+				Toast.makeText(v.getContext(), "Finishing Selection", Toast.LENGTH_SHORT).show();
+			}
 		});
 	}
 	

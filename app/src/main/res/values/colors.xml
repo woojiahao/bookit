@@ -9,4 +9,5 @@
     <color name="secondaryTextColor">#757575</color>
     <color name="background">#FAFAFA</color>
     <color name="green">#00E676</color>
+    <color name="whiteTint">#80FFFFFF</color>
 </resources>
