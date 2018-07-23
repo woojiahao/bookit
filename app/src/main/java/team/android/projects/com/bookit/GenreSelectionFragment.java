@@ -63,7 +63,7 @@ public class GenreSelectionFragment extends Fragment {
 		
 		mGenreSelectionTitle.setText(mTitle);
 		
-		GenreAdapter adapter = new GenreAdapter(mGenresLst, mColumnCount);
+		GenreAdapter adapter = new GenreAdapter(mGenresLst, mColumnCount, mMultiSelection);
 		mGenres.setLayoutManager(new GridLayoutManager(getActivity(), mColumnCount));
 		try {
 			mGenres.addItemDecoration(new SpacingDecoration(32, 32, 2));

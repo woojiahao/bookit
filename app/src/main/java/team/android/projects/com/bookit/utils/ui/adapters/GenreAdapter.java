@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -19,6 +20,7 @@ import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
 public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder> {
 	private List<Genre> mGenres;
 	private int mColumnCount;
+	private boolean mMultiSelection;
 	
 	static class ViewHolder extends RecyclerView.ViewHolder {
 		private View mView;
@@ -55,9 +57,10 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder> 
 		}
 	}
 	
-	public GenreAdapter(List<Genre> genres, int columnCount) {
+	public GenreAdapter(List<Genre> genres, int columnCount, boolean multiSelection) {
 		mGenres = genres;
 		mColumnCount = columnCount;
+		mMultiSelection = multiSelection;
 	}
 	
 	@NonNull @Override
@@ -74,11 +77,9 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder> 
 		holder.setGenreBackground(g.getGenreBackground());
 //		holder.setSelected(g.getIsSelected());
 
-//		holder.mView.setOnClickListener(v -> {
-//			g.setIsSelected(!g.getIsSelected());
-//			Toast.makeText(v.getContext(), "Pressed", Toast.LENGTH_SHORT).show();
-//			holder.setSelected(g.getIsSelected());
-//		});
+		holder.mView.setOnClickListener(v -> {
+			Toast.makeText(v.getContext(), "Pressed", Toast.LENGTH_SHORT).show();
+		});
 	}
 	
 	@Override public int getItemCount() {
