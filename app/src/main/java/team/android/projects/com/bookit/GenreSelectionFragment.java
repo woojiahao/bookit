@@ -16,6 +16,7 @@ import java.util.List;
 import team.android.projects.com.bookit.dataclasses.Genre;
 import team.android.projects.com.bookit.utils.ui.adapters.GenreAdapter;
 import team.android.projects.com.bookit.utils.ui.helper.decorators.SpacingDecoration;
+import team.android.projects.com.bookit.utils.ui.helper.decorators.SpacingDecorationError;
 
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
 
@@ -62,7 +63,11 @@ public class GenreSelectionFragment extends Fragment {
 		
 		GenreAdapter adapter = new GenreAdapter(mGenresLst, mColumnCount);
 		mGenres.setLayoutManager(new GridLayoutManager(getActivity(), mColumnCount));
-		mGenres.addItemDecoration(new SpacingDecoration(32, 32, 2));
+		try {
+			mGenres.addItemDecoration(new SpacingDecoration(32, 32, 2));
+		} catch (SpacingDecorationError e) {
+			e.printStackTrace();
+		}
 		mGenres.setAdapter(adapter);
 	}
 }

@@ -16,6 +16,7 @@ import team.android.projects.com.bookit.dataclasses.Book;
 import team.android.projects.com.bookit.dataclasses.BookGroup;
 import team.android.projects.com.bookit.utils.ui.adapters.DiscoverAdapter;
 import team.android.projects.com.bookit.utils.ui.helper.decorators.SpacingDecoration;
+import team.android.projects.com.bookit.utils.ui.helper.decorators.SpacingDecorationError;
 
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
 
@@ -52,7 +53,13 @@ public class DiscoverFragment extends Fragment {
 		DiscoverAdapter adapter = new DiscoverAdapter(mGroups);
 		mCategories = find(mView, R.id.discoverArea);
 		mCategories.setAdapter(adapter);
-		mCategories.addItemDecoration(new SpacingDecoration(0, 96, 1));
+		
+		try {
+			mCategories.addItemDecoration(new SpacingDecoration(0, 96, 1));
+		} catch (SpacingDecorationError e) {
+			e.printStackTrace();
+		}
+		
 		mCategories.setLayoutManager(new LinearLayoutManager(mView.getContext(), LinearLayoutManager.VERTICAL, false));
 	}
 	
