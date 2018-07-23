@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:cardCornerRadius="2sp"
-    app:cardElevation="1sp">
+<android.support.v7.widget.CardView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	app:cardCornerRadius="4sp"
+	app:cardElevation="2sp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+	<FrameLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content">
+		<ImageView
+			android:id="@+id/genreBackground"
+			android:adjustViewBounds="true"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			tools:src="@drawable/image_horror"
+			android:contentDescription="@string/genre_background"/>
 
-        <TextView
-            android:id="@+id/genreTitle"
-            style="@style/RegularText"
-            android:layout_width="0sp"
-            android:layout_weight="1"
-            android:fontFamily="@font/raleway_regular"
-            android:padding="@dimen/small_padding"
-            android:textSize="24sp"
-            tools:text="Temporary" />
+		<View
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:background="#80212121" />
+	</FrameLayout>
 
-        <ImageView
-            android:id="@+id/genreSelected"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:background="@color/green"
-            android:contentDescription="@string/is_selected"
-            android:padding="@dimen/small_padding"
-            android:src="@drawable/ic_add_black_24dp" />
-    </LinearLayout>
+	<TextView
+		style="@style/LargeText"
+		android:layout_gravity="center"
+		tools:text="Horror"
+		android:textColor="@android:color/white"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"/>
 
 </android.support.v7.widget.CardView>
