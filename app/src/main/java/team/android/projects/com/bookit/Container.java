@@ -1,8 +1,10 @@
 package team.android.projects.com.bookit;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
@@ -17,14 +19,16 @@ import android.widget.Toast;
 import team.android.projects.com.bookit.utils.ui.helper.BottomNavigationHelper;
 
 import static team.android.projects.com.bookit.FragmentID.Discover;
-import static team.android.projects.com.bookit.FragmentID.Scanner;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
 
 // todo: implement a proper backstack
+// todo: move the camera shit into it's own activity
+// todo: customize the camera
 public class Container
 		extends AppCompatActivity
 		implements BottomNavigationView.OnNavigationItemSelectedListener {
 	private final int CAMERA_PERM_REQUEST = 3033;
+	private final int REQUEST_IMAGE_CAPTURE = 2033;
 	
 	private BottomNavigationView mBottomBar;
 	
@@ -141,5 +145,9 @@ public class Container
 	
 	private void launchCamera() {
 		Toast.makeText(this, "Launching the camera now!", Toast.LENGTH_SHORT).show();
+		Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+		if (cameraIntent.resolveActivity(getPackageManager()) != null) {
+			startActivityForResult(cameraIntent, REQUEST_IMAGE_CAPTURE);
+		}
 	}
 }
