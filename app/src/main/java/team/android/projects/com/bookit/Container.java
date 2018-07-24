@@ -82,6 +82,7 @@ public class Container
 							.setMessage("Unable to use scanner feature")
 							.setCancelable(false)
 							.setPositiveButton("OK", (dialog, which) -> {
+								setBottomBarSelectedItem(Discover);
 							});
 					AlertDialog dialog = builder.create();
 					dialog.show();
