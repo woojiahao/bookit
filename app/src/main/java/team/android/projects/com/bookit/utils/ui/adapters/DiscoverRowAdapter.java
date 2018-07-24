@@ -71,7 +71,7 @@ public class DiscoverRowAdapter extends RecyclerView.Adapter<DiscoverRowAdapter.
 	public DiscoverRowAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 		View v = LayoutInflater
 				.from(parent.getContext())
-				.inflate(R.layout.discover_tile, parent, false);
+				.inflate(R.layout.discover_card, parent, false);
 		return new ViewHolder(v);
 	}
 	

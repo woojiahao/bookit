@@ -84,6 +84,10 @@ public class SpacingDecoration extends RecyclerView.ItemDecoration {
 			}
 		} else if (rowCount > 1 && columnCount > 1) {
 			int curRow = (int) Math.floor((double) viewPos / columnCount) + 1;
+			if (alongBottom) {
+				bottom = 4;
+			}
+			
 			if (curRow != rowCount && bottomRight) {
 				bottom = mVerticalSpacing;
 				top = td;
@@ -113,6 +117,7 @@ public class SpacingDecoration extends RecyclerView.ItemDecoration {
 						bottom = td;
 					} else if (alongBottom) {
 						top = td;
+						bottom = 4;
 					}
 				} else {
 					top = bottom = td;

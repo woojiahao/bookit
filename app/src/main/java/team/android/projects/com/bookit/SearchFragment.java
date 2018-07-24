@@ -24,19 +24,19 @@ public class SearchFragment extends Fragment {
 	private View mView;
 
 	private final List<Genre> mGenres = Arrays.asList(
-			new Genre("Horror", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
-			new Genre("Mystery", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
-			new Genre("Fantasy", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
-			new Genre("Fantasy", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
-			new Genre("Fantasy", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
-			new Genre("Fantasy", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
-			new Genre("Fantasy", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
-			new Genre("Fantasy", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
-			new Genre("Fantasy", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
-			new Genre("Fantasy", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
-			new Genre("Action", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
-			new Genre("Self-Help", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
-			new Genre("Romance", R.drawable.ic_search_black_24dp, R.drawable.image_horror)
+			new Genre("Horror"),
+			new Genre("Mystery"),
+			new Genre("Fantasy"),
+			new Genre("Fantasy"),
+			new Genre("Fantasy"),
+			new Genre("Fantasy"),
+			new Genre("Fantasy"),
+			new Genre("Fantasy"),
+			new Genre("Fantasy"),
+			new Genre("Fantasy"),
+			new Genre("Action"),
+			new Genre("Self-Help"),
+			new Genre("Romance")
 	);
 
 	@Override

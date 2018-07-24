@@ -2,15 +2,11 @@ package team.android.projects.com.bookit.dataclasses;
 
 public class Genre {
 	private String mGenreTitle;
-	private int mGenreBackground;
-	private int mGenreIcon;
 	
 	private boolean mIsSelected;
 	
-	public Genre(String genreTitle, int genreIcon, int genreBackground) {
+	public Genre(String genreTitle) {
 		mGenreTitle = genreTitle;
-		mGenreIcon = genreIcon;
-		mGenreBackground = genreBackground;
 		
 		mIsSelected = false;
 	}
@@ -21,22 +17,6 @@ public class Genre {
 	
 	public void setGenreTitle(String mGenreTitle) {
 		this.mGenreTitle = mGenreTitle;
-	}
-	
-	public int getGenreBackground() {
-		return mGenreBackground;
-	}
-	
-	public void setGenreBackground(int genreBackground) {
-		mGenreBackground = genreBackground;
-	}
-	
-	public int getGenreIcon() {
-		return mGenreIcon;
-	}
-	
-	public void setGenreIcon(int genreIcon) {
-		mGenreIcon = genreIcon;
 	}
 	
 	public boolean getIsSelected() {

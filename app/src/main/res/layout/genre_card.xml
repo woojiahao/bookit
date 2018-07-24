@@ -3,27 +3,24 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="wrap_content"
+	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	app:cardCornerRadius="4sp"
 	app:cardElevation="2sp">
 
-	<ImageView
-		android:id="@+id/genreBackground"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:adjustViewBounds="true"
-		android:scaleType="fitStart"
-		android:contentDescription="@string/genre_background"
-		tools:src="@drawable/image_horror"
-		android:foreground="#80212121"/>
-
 	<TextView
 		android:id="@+id/genreTitle"
 		style="@style/LargeText"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_gravity="center"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_gravity="start|top"
+		android:background="@drawable/black_tint"
+		android:paddingBottom="@dimen/large_padding"
+		android:paddingEnd="@dimen/small_padding"
+		android:paddingLeft="@dimen/small_padding"
+		android:paddingRight="@dimen/small_padding"
+		android:paddingStart="@dimen/small_padding"
+		android:paddingTop="@dimen/small_padding"
 		android:textColor="@android:color/white"
 		tools:text="Horror"/>
 

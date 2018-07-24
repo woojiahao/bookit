@@ -10,5 +10,5 @@
     <color name="background">#FAFAFA</color>
     <color name="green">#00E676</color>
     <color name="whiteTint">#90FFFFFF</color>
-    <color name="blackTint">#80212121</color>
+    <color name="blackTint">#90000000</color>
 </resources>
