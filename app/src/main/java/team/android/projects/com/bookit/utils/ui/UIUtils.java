@@ -27,15 +27,17 @@ public class UIUtils {
 		return (T) parent.findViewById(targetID);
 	}
 	
-	public static void loadGenreSelection(FragmentManager manager, String title, int columnCount, boolean multiSelection) {
+	public static GenreSelectionFragment loadGenreSelection(FragmentManager manager, String title,
+															int columnCount, boolean multiSelection) {
 		Bundle b = new Bundle();
 		b.putString("title", title);
 		b.putInt("columns", columnCount);
 		b.putBoolean("multiSelection", multiSelection);
-		Fragment f = new GenreSelectionFragment();
+		GenreSelectionFragment f = new GenreSelectionFragment();
 		f.setArguments(b);
 		if (manager != null) {
 			manager.beginTransaction().add(R.id.genreSelection, f).commit();
 		}
+		return f;
 	}
 }

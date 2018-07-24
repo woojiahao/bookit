@@ -1,5 +1,6 @@
 package team.android.projects.com.bookit;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -10,8 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import team.android.projects.com.bookit.dataclasses.Genre;
 import team.android.projects.com.bookit.utils.ui.adapters.GenreAdapter;
@@ -22,14 +26,12 @@ import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
 
 public class GenreSelectionFragment extends Fragment {
 	private View mView;
-	private TextView mGenreSelectionTitle;
-	private RecyclerView mGenres;
 	
 	private String mTitle = "Blank Title";
 	private int mColumnCount = 2;
 	private boolean mMultiSelection = true;
 	
-	private final List<Genre> mGenresLst = Arrays.asList(
+	private final List<Genre> mGenres = Arrays.asList(
 			new Genre("Horror"),
 			new Genre("Mystery"),
 			new Genre("Fantasy"),
@@ -63,19 +65,38 @@ public class GenreSelectionFragment extends Fragment {
 		return mView;
 	}
 	
+	public String[] getSelection() {
+		Object[] selection;
+		
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+			selection = mGenres.stream()
+					.filter(Genre::getIsSelected)
+					.map(Genre::getGenreTitle)
+					.toArray();
+		} else {
+			List<String> arr = new ArrayList<>();
+			for (Genre g : mGenres) {
+				if (g.getIsSelected()) {
+					arr.add(g.getGenreTitle());
+				}
+			}
+			selection = arr.toArray();
+		}
+		return Arrays.copyOf(selection, selection.length, String[].class);
+	}
+	
 	private void init() {
-		mGenreSelectionTitle = find(mView, R.id.genreSelectionTitle);
-		mGenres = find(mView, R.id.genreSelectionArea);
+		TextView genreTitle = find(mView, R.id.genreSelectionTitle);
+		genreTitle.setText(mTitle);
 		
-		mGenreSelectionTitle.setText(mTitle);
-		
-		GenreAdapter adapter = new GenreAdapter(mGenresLst, mColumnCount, mMultiSelection);
-		mGenres.setLayoutManager(new GridLayoutManager(getActivity(), mColumnCount));
+		RecyclerView genresArea = find(mView, R.id.genreSelectionArea);
+		GenreAdapter adapter = new GenreAdapter(mGenres, mColumnCount, mMultiSelection);
+		genresArea.setLayoutManager(new GridLayoutManager(getActivity(), mColumnCount));
 		try {
-			mGenres.addItemDecoration(new SpacingDecoration(32, 32, 2));
+			genresArea.addItemDecoration(new SpacingDecoration(32, 32, 2));
 		} catch (SpacingDecorationError e) {
 			e.printStackTrace();
 		}
-		mGenres.setAdapter(adapter);
+		genresArea.setAdapter(adapter);
 	}
 }
