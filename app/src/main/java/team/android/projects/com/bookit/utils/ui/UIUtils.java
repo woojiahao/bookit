@@ -1,11 +1,9 @@
 package team.android.projects.com.bookit.utils.ui;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 
 import team.android.projects.com.bookit.ClearableEditText;
@@ -36,7 +34,8 @@ public class UIUtils {
 	}
 	
 	public static GenreSelectionFragment loadGenreSelection(FragmentManager manager, String title,
-															int columnCount, boolean multiSelection) {
+															String tag, int columnCount,
+															boolean multiSelection) {
 		Bundle b = new Bundle();
 		b.putString("title", title);
 		b.putInt("columns", columnCount);
@@ -44,7 +43,7 @@ public class UIUtils {
 		GenreSelectionFragment f = new GenreSelectionFragment();
 		f.setArguments(b);
 		if (manager != null) {
-			manager.beginTransaction().add(R.id.genreSelection, f).commit();
+			manager.beginTransaction().add(R.id.genreSelection, f, tag).commit();
 		}
 		return f;
 	}

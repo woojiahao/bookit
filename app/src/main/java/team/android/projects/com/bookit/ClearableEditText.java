@@ -3,13 +3,17 @@ package team.android.projects.com.bookit;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.text.Editable;
 import android.text.InputType;
+import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+
+import team.android.projects.com.bookit.utils.ui.IEditTextChanging;
 
 import static team.android.projects.com.bookit.utils.ui.UIUtils.clearInputs;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
@@ -91,5 +95,21 @@ public class ClearableEditText extends RelativeLayout {
 	
 	public String getText() {
 		return mEditText.getText().toString();
+	}
+	
+	public void setOnTypingListener(IEditTextChanging listener) {
+		mEditText.addTextChangedListener(new TextWatcher() {
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+			
+			}
+			@Override public void afterTextChanged(Editable s) {
+			
+			}
+			
+			@Override public void onTextChanged(CharSequence s, int start, int before, int count) {
+				listener.textChanging(s, start, before, count);
+			}
+		});
 	}
 }
