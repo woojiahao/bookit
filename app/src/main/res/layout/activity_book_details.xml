@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -14,7 +13,7 @@
 
     <ImageView
         android:id="@+id/detailsThumbnail"
-        android:layout_width="130dp"
+        android:layout_width="135dp"
         android:layout_height="200dp"
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
@@ -46,10 +45,10 @@
         android:maxLines="3"
         android:maxWidth="180dp"
         android:text="Artemis TEST TEST TEST TEST TEST TEST TESTTEST TEST TEST TEST TEST"
+        android:textAllCaps="true"
         android:textColor="@color/primaryTextColor"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:textAllCaps="true"
         app:layout_constraintStart_toStartOf="@+id/detailsDivider1"
         app:layout_constraintTop_toBottomOf="@+id/detailsDivider1" />
 
@@ -58,10 +57,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:ellipsize="end"
         android:maxLines="1"
         android:maxWidth="180dp"
         android:text="By: Andy Weir and this fellow friends and family if it wasnt for them this book wouldn't have been made"
-        android:ellipsize="end"
         android:textSize="10sp"
         app:layout_constraintStart_toStartOf="@+id/detailsDivider1"
         app:layout_constraintTop_toBottomOf="@+id/detailsTitle" />
@@ -144,5 +143,87 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/detailsDivider3"
         app:layout_constraintEnd_toEndOf="@+id/detailsDivider3" />
+
+    <TextView
+        android:id="@+id/detailsStatic1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Found at:"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/detailsThumbnail"
+        app:layout_constraintTop_toBottomOf="@+id/detailsThumbnail" />
+
+    <View
+        android:id="@+id/detailsDivider4"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/shadow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailsStatic1" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/detailsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="118dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailsDivider4" />
+
+    <View
+        android:id="@+id/detailsDivider5"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/shadow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailsRecyclerView" />
+
+    <TextView
+        android:id="@+id/detailsStatic2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Summary:"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/detailsThumbnail"
+        app:layout_constraintTop_toBottomOf="@+id/detailsDivider5" />
+
+    <TextView
+        android:id="@+id/detailsSummary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/primaryTextColor"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailsStatic2" />
+
 
 </android.support.constraint.ConstraintLayout>
