@@ -3,7 +3,6 @@ package team.android.projects.com.bookit.utils.ui.adapters;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +18,7 @@ import team.android.projects.com.bookit.dataclasses.Genre;
 
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
 
+// todo: make this backward compatible
 public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder> {
 	private List<Genre> mGenres;
 	private int mColumnCount;
@@ -46,10 +46,27 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder> 
 			mGenreBackground.setImageResource(id);
 		}
 		
-		@RequiresApi(api = Build.VERSION_CODES.M) private void setSelected(boolean isSelected) {
+		private void setSelected(boolean isSelected) {
 			if (isSelected) {
-				mGenreBackground.setForeground(mView.getContext().getResources().getDrawable(R.drawable.white_tint));
-				mGenreTitle.setTextColor(Color.parseColor("#212121"));
+				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+					mGenreBackground.setForeground(mView.getContext().getDrawable(R.drawable.white_tint));
+					mGenreTitle.setTextColor(Color.parseColor("#212121"));
+				} else {
+					Toast.makeText(
+							mView.getContext(),
+							String.format("%s has been selected!", mGenreTitle.getText().toString()),
+							Toast.LENGTH_SHORT).show();
+				}
+			} else {
+				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+					mGenreBackground.setForeground(mView.getContext().getDrawable(R.drawable.black_tint));
+					mGenreTitle.setTextColor(Color.parseColor("#FFFFFF"));
+				} else {
+					Toast.makeText(
+							mView.getContext(),
+							String.format("%s has been deselected!", mGenreTitle.getText().toString()),
+							Toast.LENGTH_SHORT).show();
+				}
 			}
 		}
 	}
@@ -68,7 +85,6 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder> 
 		return new ViewHolder(v);
 	}
 	
-	@RequiresApi(api = Build.VERSION_CODES.M)
 	@Override public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 		Genre g = mGenres.get(position);
 		holder.setTitle(g.getGenreTitle());
@@ -79,9 +95,8 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder> 
 		
 		holder.mView.setOnClickListener(v -> {
 			if (mMultiSelection) {
-				Toast.makeText(v.getContext(), "Making selection", Toast.LENGTH_SHORT).show();
-				holder.setSelected(true);
-				g.setIsSelected(true);
+				g.setIsSelected(!g.getIsSelected());
+				holder.setSelected(g.getIsSelected());
 			} else {
 				Toast.makeText(v.getContext(), "Finishing Selection", Toast.LENGTH_SHORT).show();
 			}
