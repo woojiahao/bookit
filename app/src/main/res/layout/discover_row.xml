@@ -4,8 +4,9 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
-	android:orientation="vertical"
-	android:background="@android:color/transparent">
+	android:background="@android:color/transparent"
+	android:clipToPadding="false"
+	android:orientation="vertical">
 
 	<TextView
 		android:id="@+id/discoverCategoryTitle"
@@ -18,6 +19,8 @@
 	<android.support.v7.widget.RecyclerView
 		android:id="@+id/discoverRecyclerView"
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"/>
+		android:layout_height="wrap_content"
+		android:padding="2sp"
+		android:clipToPadding="false"/>
 
 </LinearLayout>

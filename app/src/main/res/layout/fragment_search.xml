@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:clipToPadding="false"
 	android:focusable="true"
 	android:focusableInTouchMode="true"
 	android:orientation="vertical"
@@ -18,12 +19,12 @@
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_marginBottom="@dimen/small_padding"
-		app:sideIcon="@drawable/ic_search_grey_24dp"
 		app:hint="@string/title_author_isbn"
-		app:inputType="text"/>
+		app:inputType="text"
+		app:sideIcon="@drawable/ic_search_grey_24dp"/>
 
 	<FrameLayout
 		android:id="@+id/genreSelection"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent" />
+		android:layout_height="match_parent"/>
 </LinearLayout>
