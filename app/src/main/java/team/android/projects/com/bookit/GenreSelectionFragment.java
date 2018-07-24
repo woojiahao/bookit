@@ -36,6 +36,12 @@ public class GenreSelectionFragment extends Fragment {
 			new Genre("Fantasy", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
 			new Genre("Fantasy", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
 			new Genre("Fantasy", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
+			new Genre("Fantasy", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
+			new Genre("Fantasy", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
+			new Genre("Fantasy", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
+			new Genre("Fantasy", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
+			new Genre("Fantasy", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
+			new Genre("Fantasy", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
 			new Genre("Action", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
 			new Genre("Self-Help", R.drawable.ic_search_black_24dp, R.drawable.image_horror),
 			new Genre("Romance", R.drawable.ic_search_black_24dp, R.drawable.image_horror)
