@@ -1,4 +1,4 @@
-package team.android.projects.com.bookit.utils.ui.helper.decorators;
+package team.android.projects.com.bookit.utils.ui.decorators;
 
 public class SpacingDecorationError extends Exception {
 	public SpacingDecorationError(String err) {

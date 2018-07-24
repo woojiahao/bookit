@@ -1,4 +1,4 @@
-package team.android.projects.com.bookit;
+package team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -12,9 +12,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
 
-import team.android.projects.com.bookit.utils.ui.IEditTextChanging;
+import team.android.projects.com.bookit.R;
+import team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text.IEditTextChanging;
 
 import static team.android.projects.com.bookit.utils.ui.UIUtils.clearInputs;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;

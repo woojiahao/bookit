@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text.ClearableEditText;
+
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.loadGenreSelection;
 

@@ -1,4 +1,4 @@
-package team.android.projects.com.bookit.database;
+package team.android.projects.com.bookit.utils.database;
 
 import java.util.Map;
 

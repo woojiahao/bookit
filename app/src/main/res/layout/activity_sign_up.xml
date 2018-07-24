@@ -17,7 +17,7 @@
 			style="@style/Logo"
 			android:layout_marginBottom="@dimen/large_padding"/>
 
-		<team.android.projects.com.bookit.ClearableEditText
+		<team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text.ClearableEditText
 			android:id="@+id/signupEmailField"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
@@ -26,7 +26,7 @@
 			app:inputType="email"
 			app:sideIcon="@drawable/ic_mail_black_24dp"/>
 
-		<team.android.projects.com.bookit.ClearableEditText
+		<team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text.ClearableEditText
 			android:id="@+id/signupUsernameField"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
 			app:inputType="text"
 			app:sideIcon="@drawable/ic_person_black_24dp"/>
 
-		<team.android.projects.com.bookit.ClearableEditText
+		<team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text.ClearableEditText
 			android:id="@+id/signupPasswordField"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"

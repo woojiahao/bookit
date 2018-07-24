@@ -15,8 +15,8 @@ import java.util.List;
 import team.android.projects.com.bookit.dataclasses.Book;
 import team.android.projects.com.bookit.dataclasses.BookGroup;
 import team.android.projects.com.bookit.utils.ui.adapters.DiscoverAdapter;
-import team.android.projects.com.bookit.utils.ui.helper.decorators.SpacingDecoration;
-import team.android.projects.com.bookit.utils.ui.helper.decorators.SpacingDecorationError;
+import team.android.projects.com.bookit.utils.ui.decorators.SpacingDecoration;
+import team.android.projects.com.bookit.utils.ui.decorators.SpacingDecorationError;
 
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
 
