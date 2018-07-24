@@ -95,7 +95,7 @@ public class ClearableEditText extends CardView {
 	}
 	
 	public String getText() {
-		return mEditText.getText().toString();
+		return mEditText.getText().toString().trim();
 	}
 	
 	public void setOnTypingListener(IEditTextChanging listener) {
