@@ -1,18 +1,11 @@
-package team.android.projects.com.bookit.database;
+package team.android.projects.com.bookit.utils.database;
 
-import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.text.TextUtils;
 import android.util.Log;
-import android.widget.Toast;
-
-import com.mysql.jdbc.StringUtils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
 
 public class DbOperations implements IDbOperations {

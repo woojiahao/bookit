@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<declare-styleable name="ClearableEditText">
+		<attr name="sideIcon" format="reference"/>
+		<attr name="hint" format="string"/>
+		<attr name="isClearable" format="boolean"/>
+		<attr name="inputType" format="enum">
+			<enum name="text" value="0"/>
+			<enum name="email" value="1"/>
+			<enum name="password" value="2"/>
+		</attr>
+	</declare-styleable>
+</resources>

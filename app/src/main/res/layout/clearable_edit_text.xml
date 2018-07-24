@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	app:cardCornerRadius="4sp"
+	app:cardElevation="2sp">
+
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+
+		<EditText
+			android:id="@+id/textField"
+			style="@style/CustomTextField"
+			android:inputType="text"
+			tools:drawableLeft="@drawable/ic_search_grey_24dp"
+			tools:drawableStart="@drawable/ic_search_grey_24dp"
+			tools:hint="@string/search_genre"/>
+
+		<Button
+			android:id="@+id/clearBtn"
+			android:layout_width="32sp"
+			android:layout_height="32sp"
+			android:layout_alignParentEnd="true"
+			android:layout_alignParentRight="true"
+			android:layout_centerVertical="true"
+			android:layout_marginEnd="12sp"
+			android:layout_marginRight="12sp"
+			android:background="@drawable/ic_clear_black_24dp"/>
+
+	</RelativeLayout>
+
+</android.support.v7.widget.CardView>

@@ -1,60 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0sp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="@dimen/small_padding">
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="0sp"
+		android:layout_weight="1"
+		android:clipToPadding="false"
+		android:gravity="center"
+		android:orientation="vertical"
+		android:padding="@dimen/small_padding">
 
-        <TextView
-            style="@style/Logo"
-            android:layout_marginBottom="@dimen/large_padding" />
+		<TextView
+			style="@style/Logo"
+			android:layout_marginBottom="@dimen/large_padding"/>
 
-        <EditText
-            android:id="@+id/signupEmailField"
-            style="@style/CustomTextField"
-            android:layout_marginBottom="@dimen/small_padding"
-            android:drawableLeft="@drawable/ic_mail_black_24dp"
-            android:drawableStart="@drawable/ic_mail_black_24dp"
-            android:hint="@string/email"
-            android:inputType="textEmailAddress" />
+		<team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text.ClearableEditText
+			android:id="@+id/signupEmailField"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="@dimen/small_padding"
+			app:hint="@string/email"
+			app:inputType="email"
+			app:sideIcon="@drawable/ic_mail_black_24dp"/>
 
-        <EditText
-            android:id="@+id/signupUsernameField"
-            style="@style/CustomTextField"
-            android:layout_marginBottom="@dimen/small_padding"
-            android:drawableLeft="@drawable/ic_person_black_24dp"
-            android:drawableStart="@drawable/ic_person_black_24dp"
-            android:hint="@string/username"
-            android:inputType="text" />
+		<team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text.ClearableEditText
+			android:id="@+id/signupUsernameField"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="@dimen/small_padding"
+			app:hint="@string/username"
+			app:inputType="text"
+			app:sideIcon="@drawable/ic_person_black_24dp"/>
 
-        <EditText
-            android:id="@+id/signupPasswordField"
-            style="@style/CustomTextField"
-            android:layout_marginBottom="@dimen/large_padding"
-            android:drawableLeft="@drawable/ic_lock_black_24dp"
-            android:drawableStart="@drawable/ic_lock_black_24dp"
-            android:hint="@string/password"
-            android:inputType="textPassword" />
+		<team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text.ClearableEditText
+			android:id="@+id/signupPasswordField"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="@dimen/large_padding"
+			app:hint="@string/password"
+			app:inputType="password"
+			app:sideIcon="@drawable/ic_lock_black_24dp"/>
 
-        <Button
-            android:id="@+id/signUpBtn"
-            style="@style/CustomRedButton"
-            android:text="@string/sign_up" />
+		<Button
+			android:id="@+id/signUpBtn"
+			style="@style/CustomRedButton"
+			android:text="@string/sign_up"/>
 
-    </LinearLayout>
+	</LinearLayout>
 
-    <Button
-        android:id="@+id/switchSignInBtn"
-        style="@style/FullWidthButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/sign_up_full_width" />
+	<Button
+		android:id="@+id/switchSignInBtn"
+		style="@style/FullWidthButton"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/sign_up_full_width"/>
 
 </LinearLayout>

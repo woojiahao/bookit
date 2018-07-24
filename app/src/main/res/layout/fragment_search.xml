@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
+	android:clipToPadding="false"
 	android:focusable="true"
 	android:focusableInTouchMode="true"
 	android:orientation="vertical"
@@ -12,17 +14,17 @@
 	android:paddingStart="@dimen/small_padding"
 	android:paddingTop="@dimen/small_padding">
 
-	<EditText
+	<team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text.ClearableEditText
 		android:id="@+id/searchField"
-		style="@style/CustomTextField"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
 		android:layout_marginBottom="@dimen/small_padding"
-		android:drawableLeft="@drawable/ic_search_grey_24dp"
-		android:drawableStart="@drawable/ic_search_grey_24dp"
-		android:hint="@string/title_author_isbn"
-		android:inputType="text"/>
+		app:hint="@string/title_author_isbn"
+		app:inputType="text"
+		app:sideIcon="@drawable/ic_search_grey_24dp"/>
 
 	<FrameLayout
 		android:id="@+id/genreSelection"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent" />
+		android:layout_height="match_parent"/>
 </LinearLayout>

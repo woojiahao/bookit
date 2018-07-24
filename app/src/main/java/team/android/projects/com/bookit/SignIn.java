@@ -4,9 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text.ClearableEditText;
 
 import static team.android.projects.com.bookit.utils.ui.UIUtils.clearInputs;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
@@ -15,8 +16,8 @@ public class SignIn extends AppCompatActivity {
 	private Button mSignInBtn;
 	private Button mSignUpBtn;
 	private TextView mForgotPassword;
-	private EditText mUsernameEmailField;
-	private EditText mPasswordField;
+	private ClearableEditText mUsernameEmailField;
+	private ClearableEditText mPasswordField;
 	
 	@Override
 	protected void onCreate (Bundle savedInstanceState) {
@@ -44,8 +45,8 @@ public class SignIn extends AppCompatActivity {
 		});
 		
 		mSignInBtn.setOnClickListener(ev -> {
-			String enteredUsernameEmail = mUsernameEmailField.getText().toString();
-			String enteredPassword = mPasswordField.getText().toString();
+			String enteredUsernameEmail = mUsernameEmailField.getText();
+			String enteredPassword = mPasswordField.getText();
 			
 			Toast.makeText(this, String.format("Username/Email: %s, Password: %s", enteredUsernameEmail, enteredPassword), Toast.LENGTH_SHORT).show();
 			
