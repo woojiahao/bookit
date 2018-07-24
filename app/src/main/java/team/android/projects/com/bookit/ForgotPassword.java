@@ -15,8 +15,8 @@ public class ForgotPassword extends AppCompatActivity {
 	private Button mSignInBtn;
 	private Button mSendEmailBtn;
 	
-	private EditText mEmailField;
-	private EditText mUsernameField;
+	private ClearableEditText mEmailField;
+	private ClearableEditText mUsernameField;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

@@ -15,7 +15,7 @@ import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.loadGenreSelection;
 
 public class SignUpGenreSelection extends AppCompatActivity {
-	private EditText mSearch;
+	private ClearableEditText mSearch;
 	private Button mSelectBtn;
 	private ImageView mBackBtn;
 	private GenreSelectionFragment mGenreSelectionFragment;
@@ -30,7 +30,7 @@ public class SignUpGenreSelection extends AppCompatActivity {
 	}
 
 	private void init() {
-//		mSearch = find(this, R.id.searchGenreField);
+		mSearch = find(this, R.id.searchGenreField);
 		mSelectBtn = find(this, R.id.selectBtn);
 		mBackBtn = find(this, R.id.backBtn);
 		

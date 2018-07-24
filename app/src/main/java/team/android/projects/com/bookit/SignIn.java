@@ -15,8 +15,8 @@ public class SignIn extends AppCompatActivity {
 	private Button mSignInBtn;
 	private Button mSignUpBtn;
 	private TextView mForgotPassword;
-	private EditText mUsernameEmailField;
-	private EditText mPasswordField;
+	private ClearableEditText mUsernameEmailField;
+	private ClearableEditText mPasswordField;
 	
 	@Override
 	protected void onCreate (Bundle savedInstanceState) {
@@ -44,8 +44,8 @@ public class SignIn extends AppCompatActivity {
 		});
 		
 		mSignInBtn.setOnClickListener(ev -> {
-			String enteredUsernameEmail = mUsernameEmailField.getText().toString();
-			String enteredPassword = mPasswordField.getText().toString();
+			String enteredUsernameEmail = mUsernameEmailField.getText();
+			String enteredPassword = mPasswordField.getText();
 			
 			Toast.makeText(this, String.format("Username/Email: %s, Password: %s", enteredUsernameEmail, enteredPassword), Toast.LENGTH_SHORT).show();
 			

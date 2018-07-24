@@ -3,6 +3,7 @@ package team.android.projects.com.bookit;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.text.InputType;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,12 +14,14 @@ import android.widget.RelativeLayout;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.clearInputs;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
 
+// todo: add checks if the attribute does not exist
 public class ClearableEditText extends RelativeLayout {
 	private EditText mEditText;
 	private Button mClearBtn;
 	
-	private boolean isClearable;
+	private boolean mIsClearable;
 	private String mHint;
+	private int mInputType;
 	private Drawable mIcon;
 	
 	public ClearableEditText(Context context) {
@@ -42,6 +45,9 @@ public class ClearableEditText extends RelativeLayout {
 			
 			mHint = arr.getString(R.styleable.ClearableEditText_hint);
 			mIcon = arr.getDrawable(R.styleable.ClearableEditText_sideIcon);
+			mIsClearable = arr.getBoolean(R.styleable.ClearableEditText_isClearable, true);
+			mInputType = arr.getInt(R.styleable.ClearableEditText_inputType, 0);
+			Log.d("Clearable", "Input type: " + String.valueOf(mInputType));
 			
 			arr.recycle();
 		}
@@ -56,10 +62,34 @@ public class ClearableEditText extends RelativeLayout {
 		mEditText = find(this, R.id.textField);
 		mEditText.setCompoundDrawablesWithIntrinsicBounds(mIcon, null, null, null);
 		mEditText.setHint(mHint);
+		switch (mInputType) {
+			case 0:
+				mEditText.setInputType(InputType.TYPE_CLASS_TEXT);
+				break;
+			case 1:
+				mEditText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+				break;
+			case 2:
+				mEditText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+				break;
+		}
+		
 		mClearBtn = find(this, R.id.clearBtn);
+		
+		if (!mIsClearable) {
+			mClearBtn.setVisibility(GONE);
+		}
 	}
 	
 	private void connectListeners() {
 		mClearBtn.setOnClickListener(view -> clearInputs(mEditText));
+	}
+	
+	public void clearInput() {
+		mEditText.setText("");
+	}
+	
+	public String getText() {
+		return mEditText.getText().toString();
 	}
 }

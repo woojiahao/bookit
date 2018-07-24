@@ -23,6 +23,7 @@
 		android:layout_height="wrap_content"
 		android:layout_marginBottom="@dimen/small_padding"
 		app:hint="@string/search_genre"
+		app:inputType="text"
 		app:sideIcon="@drawable/ic_search_grey_24dp"/>
 
 	<FrameLayout

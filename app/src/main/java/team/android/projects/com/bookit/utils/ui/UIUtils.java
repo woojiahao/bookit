@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import team.android.projects.com.bookit.ClearableEditText;
 import team.android.projects.com.bookit.GenreSelectionFragment;
 import team.android.projects.com.bookit.R;
 
@@ -15,6 +16,12 @@ public class UIUtils {
 	public static void clearInputs(EditText... editTexts) {
 		for (EditText e : editTexts) {
 			e.setText("");
+		}
+	}
+	
+	public static void clearInputs(ClearableEditText... clearableEditTexts) {
+		for (ClearableEditText e : clearableEditTexts) {
+			e.clearInput();
 		}
 	}
 	

@@ -20,7 +20,7 @@ import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.loadGenreSelection;
 
 public class SearchFragment extends Fragment {
-	private EditText mSearchField;
+	private ClearableEditText mSearchField;
 	private View mView;
 
 	private final List<Genre> mGenres = Arrays.asList(
@@ -55,17 +55,17 @@ public class SearchFragment extends Fragment {
 	}
 
 	private void connectListeners() {
-		mSearchField.addTextChangedListener(new TextWatcher() {
-			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-			}
-
-			@Override public void afterTextChanged(Editable s) {
-			}
-
-			@Override public void onTextChanged(CharSequence s, int start, int before, int count) {
-				Toast.makeText(getActivity(), "Typing: " + s.toString(), Toast.LENGTH_SHORT).show();
-			}
-		});
+//		mSearchField.addTextChangedListener(new TextWatcher() {
+//			@Override
+//			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//			}
+//
+//			@Override public void afterTextChanged(Editable s) {
+//			}
+//
+//			@Override public void onTextChanged(CharSequence s, int start, int before, int count) {
+//				Toast.makeText(getActivity(), "Typing: " + s.toString(), Toast.LENGTH_SHORT).show();
+//			}
+//		});
 	}
 }

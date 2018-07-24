@@ -3,6 +3,7 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:focusable="true"
 	android:focusableInTouchMode="true"
 	android:orientation="vertical"
@@ -12,14 +13,14 @@
 	android:paddingStart="@dimen/small_padding"
 	android:paddingTop="@dimen/small_padding">
 
-	<EditText
+	<team.android.projects.com.bookit.ClearableEditText
 		android:id="@+id/searchField"
-		style="@style/CustomTextField"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
 		android:layout_marginBottom="@dimen/small_padding"
-		android:drawableLeft="@drawable/ic_search_grey_24dp"
-		android:drawableStart="@drawable/ic_search_grey_24dp"
-		android:hint="@string/title_author_isbn"
-		android:inputType="text"/>
+		app:sideIcon="@drawable/ic_search_grey_24dp"
+		app:hint="@string/title_author_isbn"
+		app:inputType="text"/>
 
 	<FrameLayout
 		android:id="@+id/genreSelection"
