@@ -17,10 +17,12 @@ public class UIUtils {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	public static <T extends View> T find(View parent, int targetID) {
 		return (T) parent.findViewById(targetID);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public static <T extends View> T find(AppCompatActivity parent, int targetID) {
 		return (T) parent.findViewById(targetID);
 	}
