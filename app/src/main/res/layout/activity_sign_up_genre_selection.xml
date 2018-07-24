@@ -5,7 +5,7 @@
 			  android:focusable="true"
 			  android:focusableInTouchMode="true"
 			  android:orientation="vertical"
-			  android:padding="@dimen/small_padding">
+			  android:layout_margin="@dimen/small_padding">
 
 	<ImageView
 		android:id="@+id/backBtn"
