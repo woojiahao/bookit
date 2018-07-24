@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 		  package="team.android.projects.com.bookit">
 
+	<uses-feature
+		android:name="android.permission.CAMERA"
+		android:required="false"/>
+
+	<uses-permission android:name="android.permission.CAMERA"/>
+
 	<application
 		android:allowBackup="true"
 		android:icon="@mipmap/ic_launcher"
@@ -41,6 +47,7 @@
 		<activity
 			android:name=".Details"
 			android:screenOrientation="portrait">
+		<activity android:name=".ScannerLauncher">
 		</activity>
 	</application>
 
