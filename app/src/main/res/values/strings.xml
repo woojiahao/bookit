@@ -34,4 +34,5 @@
 	<string name="book_thumbnail">Book Thumbnail</string>
 	<string name="rating_star">Rating Star</string>
 	<string name="genre_background">Genre Background</string>
+	<string name="image_preview">Image Preview</string>
 </resources>
