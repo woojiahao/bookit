@@ -3,6 +3,7 @@ package team.android.projects.com.bookit;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.support.v7.widget.CardView;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -19,7 +20,7 @@ import static team.android.projects.com.bookit.utils.ui.UIUtils.clearInputs;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
 
 // todo: add checks if the attribute does not exist
-public class ClearableEditText extends RelativeLayout {
+public class ClearableEditText extends CardView {
 	private EditText mEditText;
 	private Button mClearBtn;
 	

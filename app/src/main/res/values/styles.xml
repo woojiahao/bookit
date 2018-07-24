@@ -34,6 +34,7 @@
         <item name="android:textSize">18sp</item>
         <item name="android:background">@drawable/red_button_background</item>
         <item name="android:textColor">@android:color/white</item>
+		<item name="android:radius">4sp</item>
     </style>
 
     <style name="FullWidthButton">
