@@ -31,7 +31,8 @@
             android:layout_height="80dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/amazon_icon" />
+            android:contentDescription="Book Store Logo"
+            android:src="@drawable/goodreads_icon" />
     </android.support.v7.widget.CardView>
 
     <TextView
