@@ -5,6 +5,7 @@
 	<uses-feature
 		android:name="android.permission.CAMERA"
 		android:required="false"/>
+
 	<uses-permission android:name="android.permission.CAMERA"/>
 
 	<application
@@ -42,6 +43,8 @@
 		<activity
 			android:name=".Container"
 			android:screenOrientation="portrait">
+		</activity>
+		<activity android:name=".ScannerLauncher">
 		</activity>
 	</application>
 

@@ -24,6 +24,7 @@ import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
 // todo: implement a proper backstack
 // todo: move the camera shit into it's own activity
 // todo: customize the camera
+// todo: put back the fragment addToBackStack method
 public class Container
 		extends AppCompatActivity
 		implements BottomNavigationView.OnNavigationItemSelectedListener {
@@ -31,6 +32,9 @@ public class Container
 	private final int REQUEST_IMAGE_CAPTURE = 2033;
 	
 	private BottomNavigationView mBottomBar;
+	private Bundle mCameraImageBundle;
+	
+	private boolean mCameraActivity;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +46,7 @@ public class Container
 	}
 	
 	@Override public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+		mCameraActivity = false;
 		FragmentManager manager = getSupportFragmentManager();
 		Fragment toInflate = null;
 		FragmentID fragmentID = null;
@@ -66,7 +71,6 @@ public class Container
 		
 		if (toInflate != null) {
 			manager.beginTransaction()
-					.addToBackStack("Fragment")
 					.replace(R.id.contentArea, toInflate, fragmentID.name())
 					.commit();
 		}
@@ -94,11 +98,39 @@ public class Container
 		}
 	}
 	
+	@Override protected void onResume() {
+		super.onResume();
+		Toast.makeText(this, "Resumed", Toast.LENGTH_SHORT).show();
+		if (mCameraActivity) {
+			Fragment scanner = new ScannerFragment();
+			Bundle b = new Bundle();
+			b.putBundle("image", mCameraImageBundle);
+			scanner.setArguments(b);
+			getSupportFragmentManager()
+					.beginTransaction()
+					.replace(R.id.contentArea, scanner, FragmentID.Scanner.name())
+					.commit();
+		}
+	}
+	
+	@Override protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+			Bundle extras = data.getExtras();
+			if (extras != null) {
+				mCameraImageBundle = extras;
+			} else {
+				Toast.makeText(this, "Unable to load a preview of the image!", Toast.LENGTH_SHORT).show();
+			}
+		}
+	}
+	
 	private void init() {
 		mBottomBar = find(this, R.id.navigationDrawer);
 		BottomNavigationHelper.removeShiftMode(mBottomBar);
 		mBottomBar.setSelectedItemId(R.id.navigationDiscover);
 		loadInitialFragment();
+		
+		mCameraActivity = false;
 	}
 	
 	private void loadInitialFragment() {
@@ -145,6 +177,7 @@ public class Container
 	
 	private void launchCamera() {
 		Toast.makeText(this, "Launching the camera now!", Toast.LENGTH_SHORT).show();
+		mCameraActivity = true;
 		Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 		if (cameraIntent.resolveActivity(getPackageManager()) != null) {
 			startActivityForResult(cameraIntent, REQUEST_IMAGE_CAPTURE);
