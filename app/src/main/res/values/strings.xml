@@ -29,6 +29,8 @@
 	<string name="favourites">Favourites</string>
 	<string name="settings">Settings</string>
 
+	<string name="details_action_favorite">Favorites Button</string>
+
 	<!-- TODO: Remove or change this placeholder text -->
 	<string name="hello_blank_fragment">Hello blank fragment</string>
 	<string name="book_thumbnail">Book Thumbnail</string>
