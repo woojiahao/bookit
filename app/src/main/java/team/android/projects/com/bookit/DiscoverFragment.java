@@ -31,13 +31,13 @@ public class DiscoverFragment extends Fragment {
 			new Book("Little Fires Everywhere", "Comedy", 4.7, 12.10, R.drawable.little_fires_everywhere),
 			new Book("Talking As Fast As I Can", "Literature", 3.9, 16.50, R.drawable.talking_as_fast_as_i_can)
 	);
-	
+
 	private final List<BookGroup> mGroups = Arrays.asList(
 			new BookGroup("Recommended for you", mBooks),
 			new BookGroup("Best-sellers", mBooks),
 			new BookGroup("New releases", mBooks)
 	);
-	
+
 	@Override
 	public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
