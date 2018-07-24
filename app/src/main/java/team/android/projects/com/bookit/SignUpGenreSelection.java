@@ -30,7 +30,7 @@ public class SignUpGenreSelection extends AppCompatActivity {
 	}
 
 	private void init() {
-		mSearch = find(this, R.id.searchGenreField);
+//		mSearch = find(this, R.id.searchGenreField);
 		mSelectBtn = find(this, R.id.selectBtn);
 		mBackBtn = find(this, R.id.backBtn);
 		
