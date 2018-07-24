@@ -29,11 +29,9 @@ public class Container
 		extends AppCompatActivity
 		implements BottomNavigationView.OnNavigationItemSelectedListener {
 	private final int CAMERA_PERM_REQUEST = 3033;
-	private final int REQUEST_IMAGE_CAPTURE = 2033;
+	private final int LAUNCH_CAMERA = 2034;
 	
 	private BottomNavigationView mBottomBar;
-	private Bundle mCameraImageBundle;
-	
 	private boolean mCameraActivity;
 	
 	@Override
@@ -98,30 +96,27 @@ public class Container
 		}
 	}
 	
-	@Override protected void onResume() {
-		super.onResume();
-		Toast.makeText(this, "Resumed", Toast.LENGTH_SHORT).show();
-		if (mCameraActivity) {
-			Fragment scanner = new ScannerFragment();
-			Bundle b = new Bundle();
-			b.putBundle("image", mCameraImageBundle);
-			scanner.setArguments(b);
-			getSupportFragmentManager()
-					.beginTransaction()
-					.replace(R.id.contentArea, scanner, FragmentID.Scanner.name())
-					.commit();
+	@Override protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// when the launcher finished processing the information
+		// it will return a boolean that indicates if the book could be found or not
+		if (requestCode == LAUNCH_CAMERA && resultCode == RESULT_OK) {
+			// when the scanner launcher returns
 		}
 	}
 	
-	@Override protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-			Bundle extras = data.getExtras();
-			if (extras != null) {
-				mCameraImageBundle = extras;
-			} else {
-				Toast.makeText(this, "Unable to load a preview of the image!", Toast.LENGTH_SHORT).show();
-			}
-		}
+	@Override protected void onResume() {
+		super.onResume();
+//		Toast.makeText(this, "Resumed", Toast.LENGTH_SHORT).show();
+//		if (mCameraActivity) {
+//			Fragment scanner = new ScannerFragment();
+//			Bundle b = new Bundle();
+//			b.putBundle("image", mCameraImageBundle);
+//			scanner.setArguments(b);
+//			getSupportFragmentManager()
+//					.beginTransaction()
+//					.replace(R.id.contentArea, scanner, FragmentID.Scanner.name())
+//					.commit();
+//		}
 	}
 	
 	private void init() {
@@ -178,9 +173,6 @@ public class Container
 	private void launchCamera() {
 		Toast.makeText(this, "Launching the camera now!", Toast.LENGTH_SHORT).show();
 		mCameraActivity = true;
-		Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-		if (cameraIntent.resolveActivity(getPackageManager()) != null) {
-			startActivityForResult(cameraIntent, REQUEST_IMAGE_CAPTURE);
-		}
+		startActivityForResult(new Intent(this, ScannerLauncher.class), LAUNCH_CAMERA);
 	}
 }
