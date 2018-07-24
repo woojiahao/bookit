@@ -6,6 +6,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 
 import team.android.projects.com.bookit.utils.ui.helper.BottomNavigationHelper;
@@ -48,15 +49,18 @@ public class Container
 	@Override public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 		FragmentManager manager = getSupportFragmentManager();
 		Fragment toInflate = null;
+		FragmentID fragmentID = null;
 		
 		int itemSelected = item.getItemId();
 		
 		switch (itemSelected) {
 			case R.id.navigationDiscover:
 				toInflate = new DiscoverFragment();
+				fragmentID = FragmentID.Discover;
 				break;
 			case R.id.navigationSearch:
 				toInflate = new SearchFragment();
+				fragmentID = FragmentID.Search;
 				break;
 			case R.id.navigationScanner:
 				break;
@@ -66,10 +70,11 @@ public class Container
 				break;
 		}
 		
-		if (toInflate != null) {
+		if (toInflate != null && fragmentID != null) {
+			Log.d("Container", fragmentID.name());
 			manager.beginTransaction()
 					.addToBackStack("Fragment")
-					.replace(R.id.contentArea, toInflate, "Fragment")
+					.replace(R.id.contentArea, toInflate, fragmentID.name())
 					.commit();
 		}
 		
