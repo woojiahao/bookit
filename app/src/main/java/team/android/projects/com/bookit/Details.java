@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 public class Details extends AppCompatActivity {
 
@@ -15,7 +14,7 @@ public class Details extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_details);
-        android.support.v7.widget.Toolbar mToolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
+        android.support.v7.widget.Toolbar mToolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.detailsToolbar);
         setSupportActionBar(mToolbar);
 
         ActionBar ab = getSupportActionBar();

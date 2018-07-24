@@ -7,117 +7,121 @@
     android:layout_height="match_parent">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/detailsToolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="134dp"
-        android:layout_height="202dp"
+        android:id="@+id/detailsThumbnail"
+        android:layout_width="130dp"
+        android:layout_height="200dp"
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintTop_toBottomOf="@+id/detailsToolbar"
         app:srcCompat="@drawable/artemis" />
 
-    <view
-        android:id="@+id/view1"
-        android:layout_width="200dp"
+    <View
+        android:id="@+id/detailsDivider1"
+        android:layout_width="180dp"
         android:layout_height="1dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:background="@android:color/background_dark"
+        android:background="@drawable/shadow"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintStart_toEndOf="@+id/detailsThumbnail"
+        app:layout_constraintTop_toBottomOf="@+id/detailsToolbar" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/detailsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:ellipsize="end"
         android:maxLines="3"
-        android:maxWidth="200dp"
+        android:maxWidth="180dp"
         android:text="Artemis TEST TEST TEST TEST TEST TEST TESTTEST TEST TEST TEST TEST"
         android:textColor="@color/primaryTextColor"
         android:textSize="18sp"
         android:textStyle="bold"
         android:textAllCaps="true"
-        app:layout_constraintStart_toStartOf="@+id/view1"
-        app:layout_constraintTop_toBottomOf="@+id/view1" />
+        app:layout_constraintStart_toStartOf="@+id/detailsDivider1"
+        app:layout_constraintTop_toBottomOf="@+id/detailsDivider1" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/detailsAuthor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:maxLines="1"
-        android:maxWidth="200dp"
+        android:maxWidth="180dp"
         android:text="By: Andy Weir and this fellow friends and family if it wasnt for them this book wouldn't have been made"
         android:ellipsize="end"
         android:textSize="10sp"
-        app:layout_constraintStart_toStartOf="@+id/view1"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintStart_toStartOf="@+id/detailsDivider1"
+        app:layout_constraintTop_toBottomOf="@+id/detailsTitle" />
 
-    <view
-        android:id="@+id/view2"
-        android:layout_width="200dp"
+    <View
+        android:id="@+id/detailsDivider2"
+        android:layout_width="180dp"
         android:layout_height="1dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="110dp"
-        android:background="@android:color/background_dark"
+        android:background="@drawable/shadow"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/view1" />
+        app:layout_constraintStart_toEndOf="@+id/detailsThumbnail"
+        app:layout_constraintTop_toBottomOf="@+id/detailsDivider1" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/detailsISBN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:ellipsize="end"
         android:maxLines="1"
-        android:maxWidth="200dp"
+        android:maxWidth="180dp"
         android:text="ISBN No.: 987-0-55215971-5 696969696"
         android:textColor="@color/primaryTextColor"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/view2"
-        app:layout_constraintTop_toBottomOf="@+id/view2" />
+        app:layout_constraintStart_toStartOf="@+id/detailsDivider2"
+        app:layout_constraintTop_toBottomOf="@+id/detailsDivider2" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/detailsGenre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="1"
-        android:maxWidth="200dp"
+        android:maxWidth="180dp"
         android:text="Genres: Mystery, Thriller, Action, Dirty"
         android:textColor="@color/primaryTextColor"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/view2"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintStart_toStartOf="@+id/detailsDivider2"
+        app:layout_constraintTop_toBottomOf="@+id/detailsISBN" />
 
-    <view
-        android:id="@+id/view3"
-        android:layout_width="200dp"
+    <View
+        android:id="@+id/detailsDivider3"
+        android:layout_width="180dp"
         android:layout_height="1dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:background="@android:color/background_dark"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintStart_toEndOf="@+id/imageView" />
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/shadow"
+        app:layout_constraintBottom_toBottomOf="@+id/detailsThumbnail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/detailsThumbnail" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/detailsRating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
@@ -126,11 +130,11 @@
         android:text="5.1"
         android:textColor="@color/primaryTextColor"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/view3"
-        app:layout_constraintStart_toStartOf="@+id/view3" />
+        app:layout_constraintBottom_toTopOf="@+id/detailsDivider3"
+        app:layout_constraintStart_toStartOf="@+id/detailsDivider3" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/detailsPrice"
         style="@style/RegularText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -138,7 +142,7 @@
         android:text="$24.65"
         android:textColor="@color/colorPrimary"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/view3"
-        app:layout_constraintEnd_toEndOf="@+id/view3" />
+        app:layout_constraintBottom_toTopOf="@+id/detailsDivider3"
+        app:layout_constraintEnd_toEndOf="@+id/detailsDivider3" />
 
 </android.support.constraint.ConstraintLayout>
