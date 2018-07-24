@@ -50,7 +50,8 @@ public class SignIn extends AppCompatActivity {
 			
 			Toast.makeText(this, String.format("Username/Email: %s, Password: %s", enteredUsernameEmail, enteredPassword), Toast.LENGTH_SHORT).show();
 			
-			startActivity(new Intent(this, Container.class));
+			//startActivity(new Intent(this, Container.class));
+			startActivity(new Intent(this, Details.class));
 		});
 		
 		mSignUpBtn.setOnClickListener(ev -> {
