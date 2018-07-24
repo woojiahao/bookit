@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-			  xmlns:app="http://schemas.android.com/apk/res-auto"
-			  android:layout_width="match_parent"
-			  android:layout_height="match_parent"
-			  android:background="@color/background"
-			  android:orientation="vertical">
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/background"
+	android:orientation="vertical">
 
 	<LinearLayout
 		android:layout_width="match_parent"
@@ -12,13 +13,14 @@
 		android:layout_weight="1"
 		android:gravity="center"
 		android:orientation="vertical"
+		android:clipToPadding="false"
 		android:padding="@dimen/small_padding">
 
 		<TextView
 			style="@style/Logo"
 			android:layout_marginBottom="@dimen/large_padding"/>
 
-		<team.android.projects.com.bookit.ClearableEditText
+		<team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text.ClearableEditText
 			android:id="@+id/loginUsernameField"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
@@ -27,7 +29,7 @@
 			app:inputType="text"
 			app:sideIcon="@drawable/ic_person_black_24dp"/>
 
-		<team.android.projects.com.bookit.ClearableEditText
+		<team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text.ClearableEditText
 			android:id="@+id/loginPasswordField"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"

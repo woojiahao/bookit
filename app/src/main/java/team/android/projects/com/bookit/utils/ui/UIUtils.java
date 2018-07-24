@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 
-import team.android.projects.com.bookit.ClearableEditText;
+import team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text.ClearableEditText;
 import team.android.projects.com.bookit.GenreSelectionFragment;
 import team.android.projects.com.bookit.R;
 

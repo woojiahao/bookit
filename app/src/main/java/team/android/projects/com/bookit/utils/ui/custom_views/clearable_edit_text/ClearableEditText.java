@@ -1,8 +1,9 @@
-package team.android.projects.com.bookit;
+package team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text;
 
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.support.v7.widget.CardView;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -11,15 +12,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
 
-import team.android.projects.com.bookit.utils.ui.IEditTextChanging;
+import team.android.projects.com.bookit.R;
+import team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text.IEditTextChanging;
 
 import static team.android.projects.com.bookit.utils.ui.UIUtils.clearInputs;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
 
 // todo: add checks if the attribute does not exist
-public class ClearableEditText extends RelativeLayout {
+public class ClearableEditText extends CardView {
 	private EditText mEditText;
 	private Button mClearBtn;
 	
@@ -94,7 +95,7 @@ public class ClearableEditText extends RelativeLayout {
 	}
 	
 	public String getText() {
-		return mEditText.getText().toString();
+		return mEditText.getText().toString().trim();
 	}
 	
 	public void setOnTypingListener(IEditTextChanging listener) {

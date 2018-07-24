@@ -1,4 +1,4 @@
-package team.android.projects.com.bookit.utils.ui.helper.decorators;
+package team.android.projects.com.bookit.utils.ui.decorators;
 
 import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;
@@ -7,10 +7,10 @@ import android.view.View;
 import java.util.HashMap;
 import java.util.Map;
 
-import static team.android.projects.com.bookit.utils.ui.helper.decorators.Direction.Bottom;
-import static team.android.projects.com.bookit.utils.ui.helper.decorators.Direction.Left;
-import static team.android.projects.com.bookit.utils.ui.helper.decorators.Direction.Right;
-import static team.android.projects.com.bookit.utils.ui.helper.decorators.Direction.Top;
+import static team.android.projects.com.bookit.utils.ui.decorators.Direction.Bottom;
+import static team.android.projects.com.bookit.utils.ui.decorators.Direction.Left;
+import static team.android.projects.com.bookit.utils.ui.decorators.Direction.Right;
+import static team.android.projects.com.bookit.utils.ui.decorators.Direction.Top;
 
 /**
  * Auto determines the spacing needed for elements inside of a RecyclerView
