@@ -101,6 +101,13 @@ public class Container
 		// it will return a boolean that indicates if the book could be found or not
 		if (requestCode == LAUNCH_CAMERA && resultCode == RESULT_OK) {
 			// when the scanner launcher returns
+			Bundle extras = data.getExtras();
+			if (extras != null) {
+				boolean processingStatus = extras.getBoolean("hasMatch");
+				String extractedText = extras.getString("extractedText");
+				
+				Toast.makeText(this, String.format("hasMatch: %s\nextractedText: %s", processingStatus, extractedText), Toast.LENGTH_SHORT).show();
+			}
 		}
 	}
 	
