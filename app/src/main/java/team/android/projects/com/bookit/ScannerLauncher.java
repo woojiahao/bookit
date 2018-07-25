@@ -3,9 +3,9 @@ package team.android.projects.com.bookit;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.widget.Toast;
 
 // todo: replace the processing method with an actual processing method
@@ -23,17 +23,21 @@ public class ScannerLauncher extends AppCompatActivity {
 	}
 	
 	@Override protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		// getting the image from the camera
-		if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-			Bundle extras = data.getExtras();
-			if (extras != null) {
-				mCameraImageBundle = extras;
-				processImage((Bitmap) extras.get("data"));
-			} else {
-				Toast.makeText(this, "Unable to load a preview of the image!", Toast.LENGTH_SHORT).show();
+		if (requestCode == REQUEST_IMAGE_CAPTURE) {
+			switch (resultCode) {
+				case RESULT_OK:
+					Bundle extras = data.getExtras();
+					if (extras != null) {
+						mCameraImageBundle = extras;
+						processImage((Bitmap) extras.get("data"));
+					} else {
+						Toast.makeText(this, "Unable to load a preview of the image!", Toast.LENGTH_SHORT).show();
+					}
+					break;
+				case RESULT_CANCELED:
+					finish();
+					break;
 			}
-		} else if (resultCode == RESULT_CANCELED) {
-			finish();
 		}
 	}
 	
@@ -46,6 +50,7 @@ public class ScannerLauncher extends AppCompatActivity {
 	
 	/**
 	 * Process the image and returns an appropriate result back to the calling activity
+	 *
 	 * @param target Bitmap to check
 	 */
 	private void processImage(Bitmap target) {
