@@ -1,11 +1,11 @@
-package team.android.projects.com.bookit;
+package team.android.projects.com.bookit.utils.backstack;
 
 import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static team.android.projects.com.bookit.FragmentID.Discover;
+import static team.android.projects.com.bookit.utils.backstack.FragmentID.Discover;
 
 // todo: document this class
 public class BackStack {

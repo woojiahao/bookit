@@ -14,10 +14,11 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
+import team.android.projects.com.bookit.utils.backstack.FragmentID;
 import team.android.projects.com.bookit.utils.ui.camera.CameraStates;
 import team.android.projects.com.bookit.utils.ui.helper.BottomNavigationHelper;
 
-import static team.android.projects.com.bookit.FragmentID.Discover;
+import static team.android.projects.com.bookit.utils.backstack.FragmentID.Discover;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
 import static team.android.projects.com.bookit.utils.ui.camera.CameraStates.Cancelled;
 import static team.android.projects.com.bookit.utils.ui.camera.CameraStates.Taken;
