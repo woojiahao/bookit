@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-			 xmlns:tools="http://schemas.android.com/tools"
-			 android:layout_width="match_parent"
-			 android:layout_height="match_parent"
-			 tools:context=".SettingsFragment">
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:layout_marginBottom="@dimen/tiny_padding"
+	android:clipToPadding="false"
+	android:focusable="true"
+	android:focusableInTouchMode="true"
+	android:orientation="vertical"
+	android:paddingEnd="@dimen/small_padding"
+	android:paddingLeft="@dimen/small_padding"
+	android:paddingRight="@dimen/small_padding"
+	android:paddingStart="@dimen/small_padding"
+	android:paddingTop="@dimen/small_padding">
 
-	<!-- TODO: Update blank fragment layout -->
-	<TextView
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:text="@string/hello_blank_fragment"/>
 
-</FrameLayout>
+
+</LinearLayout>
