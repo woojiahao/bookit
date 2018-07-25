@@ -19,6 +19,8 @@ import team.android.projects.com.bookit.utils.ui.camera.CameraStates;
 import team.android.projects.com.bookit.utils.ui.helper.BottomNavigationHelper;
 
 import static team.android.projects.com.bookit.utils.backstack.FragmentID.Discover;
+import static team.android.projects.com.bookit.utils.backstack.FragmentID.Search;
+import static team.android.projects.com.bookit.utils.backstack.FragmentID.Setting;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
 import static team.android.projects.com.bookit.utils.ui.camera.CameraStates.Cancelled;
 import static team.android.projects.com.bookit.utils.ui.camera.CameraStates.Taken;
@@ -61,7 +63,7 @@ public class Container
 				break;
 			case R.id.navigationSearch:
 				toInflate = new SearchFragment();
-				fragmentID = FragmentID.Search;
+				fragmentID = Search;
 				break;
 			case R.id.navigationScanner:
 				startScanner();
@@ -69,6 +71,8 @@ public class Container
 			case R.id.navigationFavourites:
 				break;
 			case R.id.navigationSettings:
+				toInflate = new SettingsFragment();
+				fragmentID = Setting;
 				break;
 		}
 		
@@ -130,8 +134,8 @@ public class Container
 					
 					if (hasMatch) {
 						// if there is a successful scan, just print out the book details
-//						f = new ScannerFragment();
-//						b.putBundle("cameraActivity", mCameraActivityBundle);
+						// f = new ScannerFragment();
+						// b.putBundle("cameraActivity", mCameraActivityBundle);
 					} else {
 						f = new StatusFragment();
 						b.putBoolean("status", false);
