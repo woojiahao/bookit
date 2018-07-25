@@ -13,12 +13,15 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.widget.Toast;
 
+import team.android.projects.com.bookit.utils.ui.camera.CameraStates;
 import team.android.projects.com.bookit.utils.ui.helper.BottomNavigationHelper;
 
 import static team.android.projects.com.bookit.FragmentID.Discover;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
+import static team.android.projects.com.bookit.utils.ui.camera.CameraStates.Cancelled;
+import static team.android.projects.com.bookit.utils.ui.camera.CameraStates.Taken;
+import static team.android.projects.com.bookit.utils.ui.camera.CameraStates.Taking;
 
 // todo: implement a proper backstack
 // todo: move the camera shit into it's own activity
@@ -34,8 +37,7 @@ public class Container
 	private BottomNavigationView mBottomBar;
 	private Bundle mCameraActivityBundle;
 	
-	private boolean mCameraActivity;
-	private boolean mRevertToPastScreen;
+	private CameraStates mCameraState;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +49,6 @@ public class Container
 	}
 	
 	@Override public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-		mCameraActivity = false;
 		FragmentManager manager = getSupportFragmentManager();
 		Fragment toInflate = null;
 		FragmentID fragmentID = null;
@@ -105,12 +106,12 @@ public class Container
 				case RESULT_OK:
 					Bundle extras = data.getExtras();
 					if (extras != null) {
-						mCameraActivity = true;
+						mCameraState = Taken;
 						mCameraActivityBundle = extras;
 					}
 					break;
 				case RESULT_CANCELED:
-					mRevertToPastScreen = true;
+					mCameraState = Cancelled;
 					break;
 			}
 		}
@@ -118,27 +119,33 @@ public class Container
 	
 	@Override protected void onResume() {
 		super.onResume();
-		if (mRevertToPastScreen) {
-			setBottomBarSelectedItem(Discover);
-		} else if (mCameraActivity) {
-			Fragment f;
-			Bundle b = new Bundle();
-			boolean hasMatch = mCameraActivityBundle.getBoolean("hasMatch");
-			String extractedText = mCameraActivityBundle.getString("extractedText");
-			
-			if (hasMatch) {
-				// if there is a successful scan, just print out the book details
-//				f = new ScannerFragment();
-//				b.putBundle("cameraActivity", mCameraActivityBundle);
-			} else {
-				f = new StatusFragment();
-				b.putBoolean("status", false);
-				b.putString("message", "Cannot find " + extractedText + ".");
-				f.setArguments(b);
-				getSupportFragmentManager()
-						.beginTransaction()
-						.replace(R.id.contentArea, f, FragmentID.Scanner.name())
-						.commit();
+		if (mCameraState != null) {
+			switch (mCameraState) {
+				case Taken:
+					Fragment f;
+					Bundle b = new Bundle();
+					boolean hasMatch = mCameraActivityBundle.getBoolean("hasMatch");
+					String extractedText = mCameraActivityBundle.getString("extractedText");
+					
+					if (hasMatch) {
+						// if there is a successful scan, just print out the book details
+//						f = new ScannerFragment();
+//						b.putBundle("cameraActivity", mCameraActivityBundle);
+					} else {
+						f = new StatusFragment();
+						b.putBoolean("status", false);
+						b.putString("message", "Cannot find " + extractedText + ".");
+						f.setArguments(b);
+						getSupportFragmentManager()
+								.beginTransaction()
+								.replace(R.id.contentArea, f, FragmentID.Scanner.name())
+								.commit();
+					}
+					break;
+				case Cancelled:
+					setBottomBarSelectedItem(Discover);
+					mCameraState = null;
+					break;
 			}
 		}
 	}
@@ -148,9 +155,6 @@ public class Container
 		BottomNavigationHelper.removeShiftMode(mBottomBar);
 		mBottomBar.setSelectedItemId(R.id.navigationDiscover);
 		loadInitialFragment();
-		
-		mCameraActivity = false;
-		mRevertToPastScreen = false;
 	}
 	
 	private void loadInitialFragment() {
@@ -196,6 +200,7 @@ public class Container
 	}
 	
 	private void launchCamera() {
+		mCameraState = Taking;
 		startActivityForResult(new Intent(this, ScannerLauncher.class), LAUNCH_CAMERA);
 	}
 }
