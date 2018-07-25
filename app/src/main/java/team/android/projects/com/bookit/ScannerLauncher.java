@@ -32,11 +32,12 @@ public class ScannerLauncher extends AppCompatActivity {
 			} else {
 				Toast.makeText(this, "Unable to load a preview of the image!", Toast.LENGTH_SHORT).show();
 			}
+		} else if (resultCode == RESULT_CANCELED) {
+			finish();
 		}
 	}
 	
 	private void init() {
-		Toast.makeText(this, "Launching camera", Toast.LENGTH_SHORT).show();
 		Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 		if (cameraIntent.resolveActivity(getPackageManager()) != null) {
 			startActivityForResult(cameraIntent, REQUEST_IMAGE_CAPTURE);

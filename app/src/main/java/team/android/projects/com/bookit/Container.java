@@ -13,6 +13,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import team.android.projects.com.bookit.utils.ui.helper.BottomNavigationHelper;
 
@@ -97,11 +98,18 @@ public class Container
 	}
 	
 	@Override protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if (requestCode == LAUNCH_CAMERA && resultCode == RESULT_OK) {
-			Bundle extras = data.getExtras();
-			if (extras != null) {
-				mCameraActivity = true;
-				mCameraActivityBundle = extras;
+		if (requestCode == LAUNCH_CAMERA) {
+			switch (resultCode) {
+				case RESULT_OK:
+					Bundle extras = data.getExtras();
+					if (extras != null) {
+						mCameraActivity = true;
+						mCameraActivityBundle = extras;
+					}
+					break;
+				case RESULT_CANCELED:
+					setBottomBarSelectedItem(Discover);
+					break;
 			}
 		}
 	}
