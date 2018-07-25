@@ -4,7 +4,6 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
@@ -14,7 +13,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import team.android.projects.com.bookit.utils.ui.helper.BottomNavigationHelper;
 
@@ -111,14 +109,25 @@ public class Container
 	@Override protected void onResume() {
 		super.onResume();
 		if (mCameraActivity) {
-			Fragment scanner = new ScannerFragment();
+			Fragment f;
 			Bundle b = new Bundle();
-			b.putBundle("image", mCameraActivityBundle);
-			scanner.setArguments(b);
-			getSupportFragmentManager()
-					.beginTransaction()
-					.replace(R.id.contentArea, scanner, FragmentID.Scanner.name())
-					.commit();
+			boolean hasMatch = mCameraActivityBundle.getBoolean("hasMatch");
+			String extractedText = mCameraActivityBundle.getString("extractedText");
+			
+			if (hasMatch) {
+				// if there is a successful scan, just print out the book details
+//				f = new ScannerFragment();
+//				b.putBundle("cameraActivity", mCameraActivityBundle);
+			} else {
+				f = new StatusFragment();
+				b.putBoolean("status", false);
+				b.putString("message", "Cannot find " + extractedText + ".");
+				f.setArguments(b);
+				getSupportFragmentManager()
+						.beginTransaction()
+						.replace(R.id.contentArea, f, FragmentID.Scanner.name())
+						.commit();
+			}
 		}
 	}
 	

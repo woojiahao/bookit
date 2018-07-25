@@ -49,7 +49,7 @@ public class ScannerLauncher extends AppCompatActivity {
 	 */
 	private void processImage(Bitmap target) {
 		Intent i = new Intent();
-		i.putExtra("hasMatch", true); // placeholder of true
+		i.putExtra("hasMatch", false); // placeholder of true
 		i.putExtra("extractedText", "Hello world"); // placeholder of Hello world
 		setResult(Activity.RESULT_OK, i);
 		finish();
