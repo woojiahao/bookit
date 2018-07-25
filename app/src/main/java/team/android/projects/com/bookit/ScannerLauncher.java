@@ -9,10 +9,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 // todo: replace the processing method with an actual processing method
+// todo: make the book object parcelable so as to be able to pass it into the bundle as a key-value pair
 public class ScannerLauncher extends AppCompatActivity {
-	// launched when perms go through
 	private final int REQUEST_IMAGE_CAPTURE = 2033;
-	private Bundle mCameraImageBundle;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +27,6 @@ public class ScannerLauncher extends AppCompatActivity {
 				case RESULT_OK:
 					Bundle extras = data.getExtras();
 					if (extras != null) {
-						mCameraImageBundle = extras;
 						processImage((Bitmap) extras.get("data"));
 					} else {
 						Toast.makeText(this, "Unable to load a preview of the image!", Toast.LENGTH_SHORT).show();
