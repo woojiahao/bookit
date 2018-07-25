@@ -24,6 +24,7 @@ import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
 // todo: move the camera shit into it's own activity
 // todo: customize the camera
 // todo: put back the fragment addToBackStack method
+// todo: change the camera operations into an enum
 public class Container
 		extends AppCompatActivity
 		implements BottomNavigationView.OnNavigationItemSelectedListener {
@@ -31,9 +32,10 @@ public class Container
 	private final int LAUNCH_CAMERA = 2034;
 	
 	private BottomNavigationView mBottomBar;
-	private boolean mCameraActivity;
 	private Bundle mCameraActivityBundle;
 	
+	private boolean mCameraActivity;
+	private boolean mRevertToPastScreen;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -108,7 +110,7 @@ public class Container
 					}
 					break;
 				case RESULT_CANCELED:
-					setBottomBarSelectedItem(Discover);
+					mRevertToPastScreen = true;
 					break;
 			}
 		}
@@ -116,7 +118,9 @@ public class Container
 	
 	@Override protected void onResume() {
 		super.onResume();
-		if (mCameraActivity) {
+		if (mRevertToPastScreen) {
+			setBottomBarSelectedItem(Discover);
+		} else if (mCameraActivity) {
 			Fragment f;
 			Bundle b = new Bundle();
 			boolean hasMatch = mCameraActivityBundle.getBoolean("hasMatch");
@@ -146,6 +150,7 @@ public class Container
 		loadInitialFragment();
 		
 		mCameraActivity = false;
+		mRevertToPastScreen = false;
 	}
 	
 	private void loadInitialFragment() {
