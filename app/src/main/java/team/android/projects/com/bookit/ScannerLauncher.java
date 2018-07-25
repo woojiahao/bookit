@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 // todo: replace the processing method with an actual processing method
 // todo: make the book object parcelable so as to be able to pass it into the bundle as a key-value pair
+// todo: pass the book object in the bundle instead of just the title
 public class ScannerLauncher extends AppCompatActivity {
 	private final int REQUEST_IMAGE_CAPTURE = 2033;
 	

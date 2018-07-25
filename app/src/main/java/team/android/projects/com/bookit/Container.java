@@ -31,6 +31,7 @@ import static team.android.projects.com.bookit.utils.ui.camera.CameraStates.Taki
 // todo: customize the camera
 // todo: put back the fragment addToBackStack method
 // todo: change the camera operations into an enum
+// todo: launch the book details for the book when successful
 public class Container
 		extends AppCompatActivity
 		implements BottomNavigationView.OnNavigationItemSelectedListener {
@@ -134,8 +135,7 @@ public class Container
 					
 					if (hasMatch) {
 						// if there is a successful scan, just print out the book details
-						// f = new ScannerFragment();
-						// b.putBundle("cameraActivity", mCameraActivityBundle);
+						
 					} else {
 						f = new StatusFragment();
 						b.putBoolean("status", false);
