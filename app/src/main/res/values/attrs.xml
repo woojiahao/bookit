@@ -15,5 +15,6 @@
 		<attr name="title" format="string"/>
 		<attr name="description" format="string"/>
 		<attr name="titleColor" format="reference"/>
+		<attr name="hasDescription" format="boolean"/>
 	</declare-styleable>
 </resources>

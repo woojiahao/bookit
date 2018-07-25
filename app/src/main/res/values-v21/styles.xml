@@ -21,4 +21,13 @@
 		<item name="android:background">@drawable/red_button_background</item>
 		<item name="android:textColor">@android:color/white</item>
 	</style>
+
+	<style name="SettingsRow">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:layout_marginStart">-16sp</item>
+		<item name="android:layout_marginEnd">-16sp</item>
+		<item name="android:layout_marginLeft">-16sp</item>
+		<item name="android:layout_marginRight">-16sp</item>
+	</style>
 </resources>

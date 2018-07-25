@@ -70,4 +70,19 @@
         <item name="android:color">@android:color/white</item>
     </style>
 
+    <style name="SettingsGroupTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/raleway_bold</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:layout_marginBottom">@dimen/smallest_padding</item>
+    </style>
+
+    <style name="SettingsRow">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">-16sp</item>
+        <item name="android:layout_marginRight">-16sp</item>
+    </style>
 </resources>
