@@ -33,6 +33,8 @@ public class Container
 	
 	private BottomNavigationView mBottomBar;
 	private boolean mCameraActivity;
+	private Bundle mCameraActivityBundle;
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -97,33 +99,27 @@ public class Container
 	}
 	
 	@Override protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		// when the launcher finished processing the information
-		// it will return a boolean that indicates if the book could be found or not
 		if (requestCode == LAUNCH_CAMERA && resultCode == RESULT_OK) {
-			// when the scanner launcher returns
 			Bundle extras = data.getExtras();
 			if (extras != null) {
-				boolean processingStatus = extras.getBoolean("hasMatch");
-				String extractedText = extras.getString("extractedText");
-				
-				Toast.makeText(this, String.format("hasMatch: %s\nextractedText: %s", processingStatus, extractedText), Toast.LENGTH_SHORT).show();
+				mCameraActivity = true;
+				mCameraActivityBundle = extras;
 			}
 		}
 	}
 	
 	@Override protected void onResume() {
 		super.onResume();
-//		Toast.makeText(this, "Resumed", Toast.LENGTH_SHORT).show();
-//		if (mCameraActivity) {
-//			Fragment scanner = new ScannerFragment();
-//			Bundle b = new Bundle();
-//			b.putBundle("image", mCameraImageBundle);
-//			scanner.setArguments(b);
-//			getSupportFragmentManager()
-//					.beginTransaction()
-//					.replace(R.id.contentArea, scanner, FragmentID.Scanner.name())
-//					.commit();
-//		}
+		if (mCameraActivity) {
+			Fragment scanner = new ScannerFragment();
+			Bundle b = new Bundle();
+			b.putBundle("image", mCameraActivityBundle);
+			scanner.setArguments(b);
+			getSupportFragmentManager()
+					.beginTransaction()
+					.replace(R.id.contentArea, scanner, FragmentID.Scanner.name())
+					.commit();
+		}
 	}
 	
 	private void init() {
@@ -178,8 +174,6 @@ public class Container
 	}
 	
 	private void launchCamera() {
-		Toast.makeText(this, "Launching the camera now!", Toast.LENGTH_SHORT).show();
-		mCameraActivity = true;
 		startActivityForResult(new Intent(this, ScannerLauncher.class), LAUNCH_CAMERA);
 	}
 }
