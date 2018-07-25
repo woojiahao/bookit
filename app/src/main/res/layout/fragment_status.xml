@@ -19,7 +19,7 @@
 			android:layout_gravity="center"
 			android:layout_marginBottom="@dimen/small_padding"
 			android:contentDescription="@string/status_icon"
-			android:src="@drawable/success_check"/>
+			android:src="@drawable/success_outline"/>
 
 		<TextView
 			android:id="@+id/statusMessage"
