@@ -19,6 +19,7 @@ import team.android.projects.com.bookit.utils.ui.camera.CameraStates;
 import team.android.projects.com.bookit.utils.ui.helper.BottomNavigationHelper;
 
 import static team.android.projects.com.bookit.utils.backstack.FragmentID.Discover;
+import static team.android.projects.com.bookit.utils.backstack.FragmentID.Favourites;
 import static team.android.projects.com.bookit.utils.backstack.FragmentID.Search;
 import static team.android.projects.com.bookit.utils.backstack.FragmentID.Setting;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
@@ -27,10 +28,8 @@ import static team.android.projects.com.bookit.utils.ui.camera.CameraStates.Take
 import static team.android.projects.com.bookit.utils.ui.camera.CameraStates.Taking;
 
 // todo: implement a proper backstack
-// todo: move the camera shit into it's own activity
 // todo: customize the camera
 // todo: put back the fragment addToBackStack method
-// todo: change the camera operations into an enum
 // todo: launch the book details for the book when successful
 public class Container
 		extends AppCompatActivity
@@ -70,6 +69,8 @@ public class Container
 				startScanner();
 				break;
 			case R.id.navigationFavourites:
+				toInflate = new FavouritesFragment();
+				fragmentID = Favourites;
 				break;
 			case R.id.navigationSettings:
 				toInflate = new SettingsFragment();
