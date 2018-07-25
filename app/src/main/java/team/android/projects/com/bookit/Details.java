@@ -12,10 +12,10 @@ import android.widget.Toast;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.SortedMap;
 
 import team.android.projects.com.bookit.dataclasses.Store;
 import team.android.projects.com.bookit.dataclasses.StorePrice;
+import team.android.projects.com.bookit.utils.ui.adapters.DetailsAdapter;
 
 public class Details extends AppCompatActivity {
     private RecyclerView mRecyclerView;

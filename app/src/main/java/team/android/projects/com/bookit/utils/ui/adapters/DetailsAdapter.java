@@ -1,4 +1,4 @@
-package team.android.projects.com.bookit;
+package team.android.projects.com.bookit.utils.ui.adapters;
 
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 import java.text.NumberFormat;
 import java.util.List;
 
+import team.android.projects.com.bookit.R;
 import team.android.projects.com.bookit.dataclasses.StorePrice;
 
 public class DetailsAdapter extends RecyclerView.Adapter<DetailsAdapter.ViewHolder> {
