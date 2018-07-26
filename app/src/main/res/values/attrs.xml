@@ -10,4 +10,11 @@
 			<enum name="password" value="2"/>
 		</attr>
 	</declare-styleable>
+
+	<declare-styleable name="SettingsRow">
+		<attr name="title" format="string"/>
+		<attr name="description" format="string"/>
+		<attr name="titleColor" format="reference"/>
+		<attr name="hasDescription" format="boolean"/>
+	</declare-styleable>
 </resources>

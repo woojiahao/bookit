@@ -18,6 +18,8 @@
         android:layout_marginStart="16dp"
         android:paddingLeft="12sp"
         android:text="Sign out"
+        android:background="@drawable/my_border"
+
         android:textColor="@android:color/holo_red_light"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -110,6 +112,7 @@
         android:layout_marginStart="16dp"
         android:paddingLeft="12sp"
         android:text="Clear History"
+        android:background="@drawable/my_border"
         android:textColor="@android:color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -127,6 +130,8 @@
         android:layout_marginStart="16dp"
         android:paddingLeft="12sp"
         android:text="Edit Genres"
+        android:background="@drawable/my_border"
+
         android:textColor="@android:color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"

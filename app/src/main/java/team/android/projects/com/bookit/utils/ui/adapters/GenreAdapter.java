@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +26,7 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder> 
 	static class ViewHolder extends RecyclerView.ViewHolder {
 		private View mView;
 		private TextView mGenreTitle;
+		private ImageView mGenreCheck;
 		
 		ViewHolder(View itemView) {
 			super(itemView);
@@ -32,6 +34,7 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder> 
 			mView = itemView;
 			
 			mGenreTitle = find(mView, R.id.genreTitle);
+			mGenreCheck = find(mView, R.id.genreCheck);
 		}
 		
 		private void setTitle(String title) {
@@ -42,9 +45,11 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder> 
 			if (isSelected) {
 				mGenreTitle.setBackground(mView.getContext().getResources().getDrawable(R.drawable.white_tint));
 				mGenreTitle.setTextColor(Color.parseColor("#212121"));
+				mGenreCheck.setVisibility(View.VISIBLE);
 			} else {
 				mGenreTitle.setBackground(mView.getContext().getResources().getDrawable(R.drawable.black_tint));
 				mGenreTitle.setTextColor(Color.parseColor("#FFFFFF"));
+				mGenreCheck.setVisibility(View.GONE);
 			}
 		}
 		

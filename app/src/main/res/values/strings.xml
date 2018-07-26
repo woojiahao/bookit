@@ -29,9 +29,21 @@
     <string name="favourites">Favourites</string>
     <string name="settings">Settings</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="book_thumbnail">Book Thumbnail</string>
-    <string name="rating_star">Rating Star</string>
-    <string name="genre_background">Genre Background</string>
+
+	<string name="details_action_favorite">Favorites Button</string>
+
+	<!-- TODO: Remove or change this placeholder text -->
+	<string name="hello_blank_fragment">Hello blank fragment</string>
+	<string name="book_thumbnail">Book Thumbnail</string>
+	<string name="rating_star">Rating Star</string>
+	<string name="genre_background">Genre Background</string>
+	<string name="image_preview">Image Preview</string>
+	<string name="status_icon">Status Icon</string>
+	<string name="john_doe">John Doe</string>
+	<string name="johndoe12_gmail_com">johndoe12@gmail.com</string>
+	<string name="options">Options</string>
+	<string name="account">Account</string>
+	<string name="genre_checkmark">Genre Checkmark</string>
+	<string name="search_favourites">Search Favourites</string>
+	<string name="popup_menu">Popup Menu</string>
 </resources>

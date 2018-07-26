@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<android.support.v7.widget.Toolbar
+		android:id="@+id/detailsToolbar"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:layout_constraintTop_toTopOf="parent"/>
+
+	<ImageView
+		android:id="@+id/detailsThumbnail"
+		android:layout_width="135dp"
+		android:layout_height="200dp"
+		android:layout_marginLeft="16dp"
+		android:layout_marginStart="16dp"
+		android:layout_marginTop="16dp"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/detailsToolbar"
+		app:srcCompat="@drawable/artemis"/>
+
+	<View
+		android:id="@+id/detailsDivider1"
+		android:layout_width="180dp"
+		android:layout_height="1dp"
+		android:layout_marginEnd="8dp"
+		android:layout_marginLeft="8dp"
+		android:layout_marginRight="8dp"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="16dp"
+		android:background="@drawable/shadow"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toEndOf="@+id/detailsThumbnail"
+		app:layout_constraintTop_toBottomOf="@+id/detailsToolbar"/>
+
+	<TextView
+		android:id="@+id/detailsTitle"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="8dp"
+		android:ellipsize="end"
+		android:maxLines="3"
+		android:maxWidth="180dp"
+		android:text="Artemis TEST TEST TEST TEST TEST TEST TESTTEST TEST TEST TEST TEST"
+		android:textAllCaps="true"
+		android:textColor="@color/primaryTextColor"
+		android:textSize="18sp"
+		android:textStyle="bold"
+		app:layout_constraintStart_toStartOf="@+id/detailsDivider1"
+		app:layout_constraintTop_toBottomOf="@+id/detailsDivider1"/>
+
+	<TextView
+		android:id="@+id/detailsAuthor"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="8dp"
+		android:ellipsize="end"
+		android:maxLines="1"
+		android:maxWidth="180dp"
+		android:text="By: Andy Weir and this fellow friends and family if it wasnt for them this book wouldn't have been made"
+		android:textSize="10sp"
+		app:layout_constraintStart_toStartOf="@+id/detailsDivider1"
+		app:layout_constraintTop_toBottomOf="@+id/detailsTitle"/>
+
+	<View
+		android:id="@+id/detailsDivider2"
+		android:layout_width="180dp"
+		android:layout_height="1dp"
+		android:layout_marginEnd="8dp"
+		android:layout_marginLeft="8dp"
+		android:layout_marginRight="8dp"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="110dp"
+		android:background="@drawable/shadow"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toEndOf="@+id/detailsThumbnail"
+		app:layout_constraintTop_toBottomOf="@+id/detailsDivider1"/>
+
+	<TextView
+		android:id="@+id/detailsISBN"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="8dp"
+		android:ellipsize="end"
+		android:maxLines="1"
+		android:maxWidth="180dp"
+		android:text="ISBN No.: 987-0-55215971-5 696969696"
+		android:textColor="@color/primaryTextColor"
+		android:textSize="14sp"
+		app:layout_constraintStart_toStartOf="@+id/detailsDivider2"
+		app:layout_constraintTop_toBottomOf="@+id/detailsDivider2"/>
+
+	<TextView
+		android:id="@+id/detailsGenre"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:ellipsize="end"
+		android:maxLines="1"
+		android:maxWidth="180dp"
+		android:text="Genres: Mystery, Thriller, Action, Dirty"
+		android:textColor="@color/primaryTextColor"
+		android:textSize="14sp"
+		app:layout_constraintStart_toStartOf="@+id/detailsDivider2"
+		app:layout_constraintTop_toBottomOf="@+id/detailsISBN"/>
+
+	<View
+		android:id="@+id/detailsDivider3"
+		android:layout_width="180dp"
+		android:layout_height="1dp"
+		android:layout_marginEnd="8dp"
+		android:layout_marginLeft="8dp"
+		android:layout_marginRight="8dp"
+		android:layout_marginStart="8dp"
+		android:background="@drawable/shadow"
+		app:layout_constraintBottom_toBottomOf="@+id/detailsThumbnail"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toEndOf="@+id/detailsThumbnail"/>
+
+	<TextView
+		android:id="@+id/detailsRating"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="4dp"
+		android:drawableEnd="@drawable/rating_star"
+		android:drawableRight="@drawable/rating_star"
+		android:text="5.1"
+		android:textColor="@color/primaryTextColor"
+		android:textSize="16sp"
+		app:layout_constraintBottom_toTopOf="@+id/detailsDivider3"
+		app:layout_constraintStart_toStartOf="@+id/detailsDivider3"/>
+
+	<TextView
+		android:id="@+id/detailsPrice"
+		style="@style/RegularText"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="4dp"
+		android:text="$24.65"
+		android:textColor="@color/colorPrimary"
+		android:textSize="16sp"
+		app:layout_constraintBottom_toTopOf="@+id/detailsDivider3"
+		app:layout_constraintEnd_toEndOf="@+id/detailsDivider3"/>
+
+	<TextView
+		android:id="@+id/detailsStatic1"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="24dp"
+		android:text="Found at:"
+		android:textColor="@color/primaryTextColor"
+		android:textSize="14sp"
+		android:textStyle="bold"
+		app:layout_constraintStart_toStartOf="@+id/detailsThumbnail"
+		app:layout_constraintTop_toBottomOf="@+id/detailsThumbnail"/>
+
+	<View
+		android:id="@+id/detailsDivider4"
+		android:layout_width="match_parent"
+		android:layout_height="1dp"
+		android:layout_marginEnd="16dp"
+		android:layout_marginLeft="16dp"
+		android:layout_marginRight="16dp"
+		android:layout_marginStart="16dp"
+		android:layout_marginTop="8dp"
+		android:background="@drawable/shadow"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.0"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/detailsStatic1"/>
+
+	<android.support.v7.widget.RecyclerView
+		android:id="@+id/detailsRecyclerView"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginEnd="16dp"
+		android:layout_marginLeft="16dp"
+		android:layout_marginRight="16dp"
+		android:layout_marginStart="16dp"
+		android:layout_marginTop="8dp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/detailsDivider4"/>
+
+	<View
+		android:id="@+id/detailsDivider5"
+		android:layout_width="match_parent"
+		android:layout_height="1dp"
+		android:layout_marginEnd="16dp"
+		android:layout_marginLeft="16dp"
+		android:layout_marginRight="16dp"
+		android:layout_marginStart="16dp"
+		android:layout_marginTop="8dp"
+		android:background="@drawable/shadow"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/detailsRecyclerView"/>
+
+	<TextView
+		android:id="@+id/detailsStatic2"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="24dp"
+		android:text="Summary:"
+		android:textColor="@color/primaryTextColor"
+		android:textSize="14sp"
+		android:textStyle="bold"
+		app:layout_constraintStart_toStartOf="@+id/detailsThumbnail"
+		app:layout_constraintTop_toBottomOf="@+id/detailsDivider5"/>
+
+	<TextView
+		android:id="@+id/detailsSummary"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginEnd="16dp"
+		android:layout_marginLeft="16dp"
+		android:layout_marginRight="16dp"
+		android:layout_marginStart="16dp"
+		android:layout_marginTop="8dp"
+		android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+		android:textColor="@color/primaryTextColor"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/detailsStatic2"/>
+
+
+</android.support.constraint.ConstraintLayout>

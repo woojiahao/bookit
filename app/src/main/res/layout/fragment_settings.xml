@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:layout_marginBottom="@dimen/tiny_padding"
+	android:clipToPadding="false"
+	android:focusable="true"
+	android:focusableInTouchMode="true"
+	android:orientation="vertical"
+	android:paddingEnd="@dimen/small_padding"
+	android:paddingLeft="@dimen/small_padding"
+	android:paddingRight="@dimen/small_padding"
+	android:paddingStart="@dimen/small_padding"
+	android:paddingTop="@dimen/small_padding">
+
+	<TextView
+		android:id="@+id/settingsUsername"
+		style="@style/LargeText"
+		android:text="@string/john_doe"
+		android:textColor="@color/primaryTextColor"
+		android:textSize="32sp"/>
+
+	<TextView
+		android:id="@+id/settingsEmail"
+		style="@style/RegularText"
+		android:layout_marginBottom="@dimen/small_padding"
+		android:text="@string/johndoe12_gmail_com"
+		android:textColor="@color/secondaryTextColor"/>
+
+	<TextView
+		style="@style/SettingsGroupTitle"
+		android:text="@string/options"/>
+
+	<team.android.projects.com.bookit.utils.ui.custom_views.settings_row.SettingsRow
+		android:id="@+id/settingsChangeLanguage"
+		style="@style/SettingsRow"
+		android:layout_marginBottom="@dimen/small_padding"
+		app:description="Edit the application's language"
+		app:title="Change Language"/>
+
+	<TextView
+		style="@style/SettingsGroupTitle"
+		android:text="@string/account"/>
+
+	<team.android.projects.com.bookit.utils.ui.custom_views.settings_row.SettingsRow
+		android:id="@+id/settingsClearHistory"
+		style="@style/SettingsRow"
+		app:description="Clear search history"
+		app:title="Clear History"/>
+
+	<team.android.projects.com.bookit.utils.ui.custom_views.settings_row.SettingsRow
+		android:id="@+id/settingsEditGenres"
+		style="@style/SettingsRow"
+		app:description="Change your recommendations"
+		app:title="Edit Genres"/>
+
+	<team.android.projects.com.bookit.utils.ui.custom_views.settings_row.SettingsRow
+		android:id="@+id/settingsSignOut"
+		style="@style/SettingsRow"
+		app:hasDescription="false"
+		app:title="Sign Out"
+		app:titleColor="@color/colorPrimaryDark"/>
+
+</LinearLayout>

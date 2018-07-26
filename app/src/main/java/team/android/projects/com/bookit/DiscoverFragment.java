@@ -25,19 +25,19 @@ public class DiscoverFragment extends Fragment {
 	private RecyclerView mCategories;
 	
 	private final List<Book> mBooks = Arrays.asList(
-			new Book("Artemis", "Action", 5.0, 13.99, R.drawable.artemis),
-			new Book("Before We Were Yours", "Horror", 4.0, 25.99, R.drawable.before_we_were_yours),
-			new Book("Into The Water", "Mystery", 4.3, 13.00F, R.drawable.into_the_water),
-			new Book("Little Fires Everywhere", "Comedy", 4.7, 12.10, R.drawable.little_fires_everywhere),
-			new Book("Talking As Fast As I Can", "Literature", 3.9, 16.50, R.drawable.talking_as_fast_as_i_can)
+			new Book("Artemis", "Action", "John Doe", "Amazon", 5.0, 13.99, R.drawable.artemis),
+			new Book("Before We Were Yours", "Horror", "John Doe", "Amazon", 4.0, 25.99, R.drawable.before_we_were_yours),
+			new Book("Into The Water", "Mystery", "John Doe", "Amazon", 4.3, 13.00F, R.drawable.into_the_water),
+			new Book("Little Fires Everywhere", "Comedy", "John Doe", "Amazon", 4.7, 12.10, R.drawable.little_fires_everywhere),
+			new Book("Talking As Fast As I Can", "Literature", "John Doe", "Amazon", 3.9, 16.50, R.drawable.talking_as_fast_as_i_can)
 	);
-	
+
 	private final List<BookGroup> mGroups = Arrays.asList(
 			new BookGroup("Recommended for you", mBooks),
 			new BookGroup("Best-sellers", mBooks),
 			new BookGroup("New releases", mBooks)
 	);
-	
+
 	@Override
 	public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {

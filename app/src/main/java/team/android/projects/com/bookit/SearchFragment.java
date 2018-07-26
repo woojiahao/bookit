@@ -3,11 +3,9 @@ package team.android.projects.com.bookit;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text.ClearableEditText;
 
@@ -35,15 +33,13 @@ public class SearchFragment extends Fragment {
 	
 	private void connectListeners() {
 		mSearchField.setOnTypingListener((s, start, before, count) -> {
-			Toast.makeText(getContext(), "Typing: " + s, Toast.LENGTH_SHORT).show();
 			if (getFragmentManager() != null) {
-				if (getFragmentManager().findFragmentByTag("Genre") != null) {
-					Log.d("Search", "Removing genre selection");
-					getFragmentManager().beginTransaction().remove(getFragmentManager().findFragmentByTag("Genre")).commit();
+				Fragment genreSelection = getFragmentManager().findFragmentByTag("Genre");
+				if (mSearchField.getText().equals("")) {
+					loadGenreSelection(getFragmentManager(), "Genre", "Genre", 2, false);
 				} else {
-					if (s.toString().trim().equals("")) {
-						Log.d("Search", "Loading back genre selection");
-						loadGenreSelection(getFragmentManager(), "Genre", "Genre", 2, false);
+					if (genreSelection != null) {
+						getFragmentManager().beginTransaction().remove(genreSelection).commit();
 					}
 				}
 			}
