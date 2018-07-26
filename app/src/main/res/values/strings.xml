@@ -44,4 +44,5 @@
 	<string name="account">Account</string>
 	<string name="genre_checkmark">Genre Checkmark</string>
 	<string name="search_favourites">Search Favourites</string>
+	<string name="popup_menu">Popup Menu</string>
 </resources>

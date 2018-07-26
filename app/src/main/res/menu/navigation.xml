@@ -2,26 +2,26 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/navigationDiscover"
-        android:icon="@drawable/ic_lightbulb_outline_black_24dp"
+        android:icon="@drawable/discover"
         android:title="@string/discover" />
 
     <item
         android:id="@+id/navigationSearch"
-        android:icon="@drawable/ic_search_black_24dp"
+        android:icon="@drawable/search"
         android:title="@string/search" />
 
     <item
         android:id="@+id/navigationScanner"
-        android:icon="@drawable/ic_photo_camera_black_24dp"
+        android:icon="@drawable/scanner"
         android:title="@string/scanner" />
 
     <item
         android:id="@+id/navigationFavourites"
-        android:icon="@drawable/ic_favorite_black_24dp"
+        android:icon="@drawable/favourites"
         android:title="@string/favourites" />
 
     <item
         android:id="@+id/navigationSettings"
-        android:icon="@drawable/ic_settings_black_24dp"
+        android:icon="@drawable/settings"
         android:title="@string/settings" />
 </menu>

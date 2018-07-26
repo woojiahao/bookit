@@ -12,6 +12,7 @@ import team.android.projects.com.bookit.utils.ui.custom_views.settings_row.Setti
 
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
 
+// todo: convert the settings row into a recyclerview and use the dividers item decoration instead to show the dividers
 public class SettingsFragment extends Fragment {
 	private View mView;
 	private SettingsRow mChangeLanguage;

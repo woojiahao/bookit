@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:background="#FFFFFF"
+	android:orientation="horizontal">
+
+	<ImageView
+		android:id="@+id/bookThumbnail"
+		android:layout_width="100sp"
+		android:layout_height="wrap_content"
+		android:adjustViewBounds="true"
+		android:contentDescription="@string/book_thumbnail"
+		android:paddingBottom="@dimen/smallest_padding"
+		android:paddingEnd="@dimen/small_padding"
+		android:paddingLeft="@dimen/small_padding"
+		android:paddingRight="@dimen/small_padding"
+		android:paddingStart="@dimen/small_padding"
+		android:paddingTop="@dimen/smallest_padding"
+		tools:src="@drawable/before_we_were_yours"/>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		android:paddingEnd="@dimen/small_padding"
+		android:paddingRight="@dimen/small_padding"
+		android:paddingTop="@dimen/smallest_padding">
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="0sp"
+			android:layout_weight="1"
+			android:orientation="vertical">
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal">
+
+				<TextView
+					android:id="@+id/bookTitle"
+					style="@style/LargeText"
+					android:layout_width="0sp"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"
+					android:ellipsize="end"
+					android:maxLines="1"
+					android:textSize="18sp"
+					tools:text="Before We Were Yours"/>
+
+				<ImageView
+					android:id="@+id/bookPopupMenu"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:background="@drawable/popup_menu"
+					android:contentDescription="@string/popup_menu"/>
+
+			</LinearLayout>
+
+			<TextView
+				android:id="@+id/bookAuthor"
+				style="@style/RegularText"
+				android:textColor="@color/secondaryTextColor"
+				android:textSize="14sp"
+				tools:text="Lisa Wrangler"/>
+
+			<TextView
+				style="@style/RegularText"
+				android:layout_gravity="center_vertical"
+				tools:text="Found: Amazon"/>
+		</LinearLayout>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_gravity="bottom"
+			android:orientation="horizontal"
+			android:paddingBottom="@dimen/smallest_padding">
+
+			<TextView
+				android:id="@+id/bookRating"
+				style="@style/RegularText"
+				android:layout_marginEnd="@dimen/tiny_padding"
+				android:layout_marginRight="@dimen/tiny_padding"
+				android:drawableEnd="@drawable/rating_star"
+				android:drawableRight="@drawable/rating_star"
+				android:textColor="@color/primaryTextColor"
+				android:textSize="14sp"
+				tools:text="4.7"/>
+
+			<TextView
+				android:id="@+id/bookPrice"
+				style="@style/RegularText"
+				android:layout_width="0sp"
+				android:layout_gravity="end"
+				android:layout_weight="1"
+				android:textAlignment="textEnd"
+				android:textColor="@color/colorPrimary"
+				android:textSize="14sp"
+				tools:text="$15.89"/>
+		</LinearLayout>
+
+	</LinearLayout>
+
+</LinearLayout>
