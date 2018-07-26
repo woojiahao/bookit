@@ -40,9 +40,9 @@ public class SettingsRow extends LinearLayout {
 		if (attrs != null) {
 			TypedArray arr = getContext().obtainStyledAttributes(attrs, R.styleable.SettingsRow, 0, 0);
 			mHasDescription = arr.getBoolean(R.styleable.SettingsRow_hasDescription, true);
-			mSettingsDescriptionText = arr.getString(R.styleable.SettingsRow_description);
-			mSettingsTitleText = arr.getString(R.styleable.SettingsRow_title);
 			mSettingsTitleColor = arr.getColor(R.styleable.SettingsRow_titleColor, getContext().getResources().getColor(R.color.primaryTextColor));
+			mSettingsDescriptionText = arr.hasValue(R.styleable.SettingsRow_description) ? arr.getString(R.styleable.SettingsRow_description) : "Placeholder";
+			mSettingsTitleText = arr.hasValue(R.styleable.SettingsRow_title) ? arr.getString(R.styleable.SettingsRow_title) : "Placeholder";
 			
 			arr.recycle();
 		}
