@@ -37,6 +37,7 @@
 				android:ellipsize="end"
 				android:maxLines="1"
 				android:maxWidth="90sp"
+				android:textColor="@color/secondaryTextColor"
 				android:textSize="14sp"
 				tools:text="Literature"/>
 
