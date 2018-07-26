@@ -35,15 +35,11 @@ public class SearchFragment extends Fragment {
 		mSearchField.setOnTypingListener((s, start, before, count) -> {
 			if (getFragmentManager() != null) {
 				Fragment genreSelection = getFragmentManager().findFragmentByTag("Genre");
-				if (genreSelection != null) {
-					if (start == 0) {
-						if (!mSearchField.getText().equals("")) {
-							getFragmentManager().beginTransaction().remove(genreSelection).commit();
-						}
-					}
+				if (mSearchField.getText().equals("")) {
+					loadGenreSelection(getFragmentManager(), "Genre", "Genre", 2, false);
 				} else {
-					if (s.toString().trim().equals("")) {
-						loadGenreSelection(getFragmentManager(), "Genre", "Genre", 2, false);
+					if (genreSelection != null) {
+						getFragmentManager().beginTransaction().remove(genreSelection).commit();
 					}
 				}
 			}
