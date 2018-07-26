@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="#fff8d3">
+
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_centerInParent="true"
+		android:orientation="vertical">
+
+		<ImageView
+			android:layout_width="156dp"
+			android:layout_height="156sp"
+			android:adjustViewBounds="true"
+			android:contentDescription="@string/logo"
+			android:src="@drawable/ic_open_book"/>
+
+		<TextView
+			style="@style/LargeText"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/app_name"
+			android:textSize="36sp"
+			android:layout_gravity="center"/>
+	</LinearLayout>
+
+</RelativeLayout>
