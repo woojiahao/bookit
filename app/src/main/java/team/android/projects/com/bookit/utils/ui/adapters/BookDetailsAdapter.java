@@ -13,17 +13,17 @@ import java.util.List;
 import team.android.projects.com.bookit.R;
 import team.android.projects.com.bookit.dataclasses.StorePrice;
 
-public class DetailsAdapter extends RecyclerView.Adapter<DetailsAdapter.ViewHolder> {
+public class BookDetailsAdapter extends RecyclerView.Adapter<BookDetailsAdapter.ViewHolder> {
     private List<StorePrice> mPrice;
 
-    public DetailsAdapter(List<StorePrice> myPrice) {
+    public BookDetailsAdapter(List<StorePrice> myPrice) {
         mPrice = myPrice;
     }
 
     @Override
-    public DetailsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public BookDetailsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         ConstraintLayout v = (ConstraintLayout) LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.details_bookstore_card, parent, false);
+                .inflate(R.layout.book_details_bookstore, parent, false);
         ViewHolder vh = new ViewHolder(v);
         return vh;
     }

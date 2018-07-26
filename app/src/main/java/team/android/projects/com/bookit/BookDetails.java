@@ -15,9 +15,9 @@ import java.util.List;
 
 import team.android.projects.com.bookit.dataclasses.Store;
 import team.android.projects.com.bookit.dataclasses.StorePrice;
-import team.android.projects.com.bookit.utils.ui.adapters.DetailsAdapter;
+import team.android.projects.com.bookit.utils.ui.adapters.BookDetailsAdapter;
 
-public class Details extends AppCompatActivity {
+public class BookDetails extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -44,7 +44,7 @@ public class Details extends AppCompatActivity {
 
         mRecyclerView = (RecyclerView) findViewById(R.id.detailsRecyclerView);
         mLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
-        mAdapter = new DetailsAdapter(mPrices);
+        mAdapter = new BookDetailsAdapter(mPrices);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
 
