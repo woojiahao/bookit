@@ -40,7 +40,7 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.ViewHo
 		void setBooksRow(List<Book> books) {
 			mBooksRow = mView.findViewById(R.id.discoverRecyclerView);
 			
-			DiscoverRowAdapter adapter = new DiscoverRowAdapter(books);
+			BookCardAdapter adapter = new BookCardAdapter(books);
 			LinearLayoutManager manager = new LinearLayoutManager(
 					mView.getContext(),
 					LinearLayoutManager.HORIZONTAL,

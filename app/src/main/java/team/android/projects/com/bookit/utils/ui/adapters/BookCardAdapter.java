@@ -14,7 +14,7 @@ import java.util.List;
 import team.android.projects.com.bookit.R;
 import team.android.projects.com.bookit.dataclasses.Book;
 
-public class DiscoverRowAdapter extends RecyclerView.Adapter<DiscoverRowAdapter.ViewHolder> {
+public class BookCardAdapter extends RecyclerView.Adapter<BookCardAdapter.ViewHolder> {
 	private List<Book> mBooks;
 	
 	static class ViewHolder extends RecyclerView.ViewHolder {
@@ -62,13 +62,13 @@ public class DiscoverRowAdapter extends RecyclerView.Adapter<DiscoverRowAdapter.
 		}
 	}
 	
-	DiscoverRowAdapter(List<Book> books) {
+	BookCardAdapter(List<Book> books) {
 		mBooks = books;
 	}
 	
 	@Override
 	@NonNull
-	public DiscoverRowAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+	public BookCardAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 		View v = LayoutInflater
 				.from(parent.getContext())
 				.inflate(R.layout.book_card, parent, false);

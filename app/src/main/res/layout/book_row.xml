@@ -68,6 +68,7 @@
 				tools:text="Lisa Wrangler"/>
 
 			<TextView
+				android:id="@+id/bookLocation"
 				style="@style/RegularText"
 				android:layout_gravity="center_vertical"
 				tools:text="Found: Amazon"/>
