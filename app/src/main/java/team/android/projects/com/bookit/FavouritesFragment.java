@@ -3,6 +3,7 @@ package team.android.projects.com.bookit;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -49,6 +50,8 @@ public class FavouritesFragment extends Fragment {
 		mFavouritesList = find(mView, R.id.favouritesList);
 		BookRowAdapter adapter = new BookRowAdapter(mBooks);
 		mFavouritesList.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+		DividerItemDecoration divider = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
+		mFavouritesList.addItemDecoration(divider);
 		mFavouritesList.setAdapter(adapter);
 	}
 	

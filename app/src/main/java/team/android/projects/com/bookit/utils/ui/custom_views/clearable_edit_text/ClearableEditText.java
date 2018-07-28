@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import team.android.projects.com.bookit.R;
-import team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text.IEditTextChanging;
 
 import static team.android.projects.com.bookit.utils.ui.UIUtils.clearInputs;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
@@ -48,8 +47,11 @@ public class ClearableEditText extends CardView {
 		if (attrs != null) {
 			TypedArray arr = getContext().obtainStyledAttributes(attrs, R.styleable.ClearableEditText, 0, 0);
 			
-			mHint = arr.getString(R.styleable.ClearableEditText_hint);
-			mIcon = arr.getDrawable(R.styleable.ClearableEditText_sideIcon);
+			if (arr.hasValue(R.styleable.ClearableEditText_hint)) {
+				mHint = arr.getString(R.styleable.ClearableEditText_hint);
+			}
+			mHint = arr.hasValue(R.styleable.ClearableEditText_hint) ? arr.getString(R.styleable.ClearableEditText_hint) : "Placeholder";
+			mIcon = arr.hasValue(R.styleable.ClearableEditText_sideIcon) ? arr.getDrawable(R.styleable.ClearableEditText_sideIcon) : getResources().getDrawable(R.drawable.ic_search_grey_24dp);
 			mIsClearable = arr.getBoolean(R.styleable.ClearableEditText_isClearable, true);
 			mInputType = arr.getInt(R.styleable.ClearableEditText_inputType, 0);
 			Log.d("Clearable", "Input type: " + String.valueOf(mInputType));
@@ -104,6 +106,7 @@ public class ClearableEditText extends CardView {
 			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 			
 			}
+			
 			@Override public void afterTextChanged(Editable s) {
 			
 			}

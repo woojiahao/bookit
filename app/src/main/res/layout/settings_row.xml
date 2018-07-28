@@ -16,6 +16,7 @@
 	<TextView
 		android:id="@+id/settingsTitle"
 		style="@style/LargeText"
+		android:textSize="18sp"
 		android:textColor="@color/primaryTextColor"
 		tools:text="Clear history"
 		android:layout_marginBottom="@dimen/tiny_padding"/>
@@ -23,6 +24,7 @@
 	<TextView
 		android:id="@+id/settingsDescription"
 		style="@style/RegularText"
+		android:textSize="14sp"
 		tools:text="Clears your search history"
 		android:textColor="@color/secondaryTextColor" />
 
