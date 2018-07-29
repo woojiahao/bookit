@@ -1,7 +1,5 @@
 package team.android.projects.com.bookit;
 
-import android.content.DialogInterface;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -22,8 +20,8 @@ public class SettingsFragment extends Fragment {
 	private SettingsRow mClearHistory;
 	private SettingsRow mEditGenres;
 	private SettingsRow mSignOut;
-	AlertDialog alertDialog1;
-	CharSequence[] values = { " English ", " Chinese ", " Malay " };
+	
+	private final String[] values = { "English", "Chinese", "Malay" };
 	
 	@Override
 	public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -42,87 +40,49 @@ public class SettingsFragment extends Fragment {
 	}
 	
 	private void connectListeners() {
-		mChangeLanguage.setOnClickListener(v -> CreateAlertDialogWithRadioButtonGroup());
-		mClearHistory.setOnClickListener(v -> {
-			AlertDialog.Builder builder;
-			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-				builder = new AlertDialog.Builder(getActivity());
-			} else {
-				builder = new AlertDialog.Builder(getActivity());
-			}
-			builder.setTitle("Clear History?")
-					.setMessage("This will affect the recommendations that you will received from now on")
-					.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-						public void onClick(DialogInterface dialog, int which) {
-							// continue with delete
+		if (getContext() != null) {
+			mChangeLanguage.setOnClickListener(v -> new AlertDialog.Builder(getContext())
+					.setTitle("Select Language")
+					.setSingleChoiceItems(values, -1, (dialog, item) -> {
+						switch (item) {
+							case 0:
+								Toast.makeText(getContext(), "English", Toast.LENGTH_LONG).show();
+								break;
+							case 1:
+								Toast.makeText(getContext(), "Chinese", Toast.LENGTH_LONG).show();
+								break;
+							case 3:
+								Toast.makeText(getContext(), "Malay", Toast.LENGTH_LONG).show();
+								break;
 						}
-					})
-					.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-						public void onClick(DialogInterface dialog, int which) {
-							// do nothing
-						}
-					})
-					.show();
-		});
-		mEditGenres.setOnClickListener(v -> Toast.makeText(getContext(), "Editing Genres", Toast.LENGTH_SHORT).show());
-		mSignOut.setOnClickListener(v -> {
-			AlertDialog.Builder builder;
-			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-				builder = new AlertDialog.Builder(getActivity());
-			} else {
-				builder = new AlertDialog.Builder(getActivity());
-			}
-			builder.setTitle("Sign out")
-					.setMessage("Are you sure?")
-					.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-						public void onClick(DialogInterface dialog, int which) {
-							// continue with delete
-							if (getActivity() != null) {
-								getActivity().finish();
-							}
-						}
-					})
-					.setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-						public void onClick(DialogInterface dialog, int which) {
-							// do nothing
-						}
-					})
-					.show();
-		});
+						dialog.dismiss();
+					}).show());
+			mClearHistory.setOnClickListener(v ->
+					new AlertDialog.Builder(getContext())
+							.setTitle("Clear History?")
+							.setMessage("This will affect the recommendations that you will received from now on")
+							.setPositiveButton(android.R.string.ok, (dialog, which) -> {
+								// continue with delete
+							})
+							.setNegativeButton(android.R.string.cancel, (dialog, which) -> {
+								// do nothing
+							})
+							.show());
+			mEditGenres.setOnClickListener(v -> Toast.makeText(getContext(), "Editing Genres", Toast.LENGTH_SHORT).show());
+			mSignOut.setOnClickListener(v ->
+					new AlertDialog.Builder(getContext())
+							.setTitle("Sign out")
+							.setMessage("Are you sure?")
+							.setPositiveButton(android.R.string.yes, (dialog, which) -> {
+								// continue with delete
+								if (getActivity() != null) {
+									getActivity().finish();
+								}
+							})
+							.setNegativeButton(android.R.string.no, (dialog, which) -> {
+								// do nothing
+							})
+							.show());
+		}
 	}
-	
-	public void CreateAlertDialogWithRadioButtonGroup() {
-		
-		
-		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-		
-		builder.setTitle("Select Language");
-		
-		builder.setSingleChoiceItems(values, -1, new DialogInterface.OnClickListener() {
-			
-			public void onClick(DialogInterface dialog, int item) {
-				
-				switch (item) {
-					case 0:
-						
-						Toast.makeText(getActivity(), "English", Toast.LENGTH_LONG).show();
-						break;
-					case 1:
-						
-						Toast.makeText(getActivity(), "Chinese", Toast.LENGTH_LONG).show();
-						break;
-					case 3:
-						
-						Toast.makeText(getActivity(), "Malay", Toast.LENGTH_LONG).show();
-						break;
-				}
-				alertDialog1.dismiss();
-			}
-		});
-		alertDialog1 = builder.create();
-		alertDialog1.show();
-		
-	}
-	
-	
 }
