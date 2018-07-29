@@ -7,10 +7,11 @@ import android.widget.Button;
 
 import team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text.ClearableEditText;
 
+import static team.android.projects.com.bookit.utils.logging.Logging.shortToast;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.checkFilledInput;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.clearInputs;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
-import static team.android.projects.com.bookit.utils.logging.Logging.shortToast;
+import static team.android.projects.com.bookit.utils.ui.UIUtils.isEmail;
 
 public class SignUp extends AppCompatActivity {
 	private Button mSignUpBtn;
@@ -42,11 +43,15 @@ public class SignUp extends AppCompatActivity {
 			if (!checkFilledInput(mEmailField, mUsernameField, mPasswordField)) {
 				shortToast(this, "Please fill in all of the fields before proceeding");
 			} else {
-				startActivity(
-						new Intent(this, SignUpGenreSelection.class)
-								.putExtra("email", mEmailField.getText())
-								.putExtra("username", mUsernameField.getText())
-								.putExtra("password", mPasswordField.getText()));
+				if (!isEmail(mEmailField.getText())) {
+					shortToast(this, "Please enter a valid email address");
+				} else {
+					startActivity(
+							new Intent(this, SignUpGenreSelection.class)
+									.putExtra("email", mEmailField.getText())
+									.putExtra("username", mUsernameField.getText())
+									.putExtra("password", mPasswordField.getText()));
+				}
 			}
 		});
 		

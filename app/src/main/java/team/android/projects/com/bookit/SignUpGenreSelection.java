@@ -47,7 +47,7 @@ public class SignUpGenreSelection extends AppCompatActivity {
 		mSelectBtn.setOnClickListener(v -> {
 			String[] selection = mGenreSelectionFragment.getSelection();
 			if (selection.length == 0) {
-				Toast.makeText(this, "Nothing is selected!", Toast.LENGTH_SHORT).show();
+				shortToast(this, "Please select something to proceed!");
 			} else {
 				startActivity(new Intent(this, SignIn.class));
 			}

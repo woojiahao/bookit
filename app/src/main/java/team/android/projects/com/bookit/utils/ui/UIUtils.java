@@ -31,6 +31,10 @@ public class UIUtils {
 		return allFilled;
 	}
 	
+	public static boolean isEmail(String email) {
+		return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+	}
+	
 	@SuppressWarnings("unchecked")
 	public static <T extends View> T find(View parent, int targetID) {
 		return (T) parent.findViewById(targetID);
