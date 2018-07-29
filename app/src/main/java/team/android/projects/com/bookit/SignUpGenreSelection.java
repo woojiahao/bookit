@@ -63,7 +63,7 @@ public class SignUpGenreSelection extends AppCompatActivity {
 	}
 	
 	private void registerUser() {
-		mFirebaseOperations.registerUser(mEmail, mPassword);
+		mFirebaseOperations.registerUser(mEmail, mPassword, mUsername, mGenreSelectionFragment.getSelection());
 	}
 	
 	private void getCredentials() {

@@ -18,7 +18,7 @@ import team.android.projects.com.bookit.R;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.clearInputs;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
 
-// todo: add checks if the attribute does not exist
+// todo: use normal inputType for passwords but replace each character with * each time they type it
 public class ClearableEditText extends CardView {
 	private EditText mEditText;
 	private Button mClearBtn;

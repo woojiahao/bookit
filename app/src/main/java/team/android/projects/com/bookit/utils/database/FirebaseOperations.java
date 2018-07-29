@@ -3,34 +3,44 @@ package team.android.projects.com.bookit.utils.database;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Arrays;
 
 import team.android.projects.com.bookit.SignIn;
 import team.android.projects.com.bookit.SignUp;
+import team.android.projects.com.bookit.dataclasses.User;
+import team.android.projects.com.bookit.utils.ApplicationCodes;
 
+import static team.android.projects.com.bookit.utils.ApplicationCodes.Success;
 import static team.android.projects.com.bookit.utils.logging.Logging.shortToast;
 
-// todo: add email verification for newly created account!
+// todo: add email verification for newly created account
 public class FirebaseOperations implements IFirebaseOperations {
 	private FirebaseAuth mFirebaseAuth;
+	private DatabaseReference mFirebaseDatabase;
 	private Context mContext;
 	
 	public FirebaseOperations(Context c) {
-		mFirebaseAuth = FirebaseAuth.getInstance();
 		mContext = c;
+		mFirebaseAuth = FirebaseAuth.getInstance();
+		mFirebaseDatabase = FirebaseDatabase.getInstance().getReference();
 	}
 	
 	@Override
-	public void registerUser(String email, String password) {
+	public void registerUser(String email, String password, String username, String[] genres) {
 		mFirebaseAuth
 				.createUserWithEmailAndPassword(email, password)
 				.addOnCompleteListener(task -> {
-					if (!task.isSuccessful()) {
-						shortToast(mContext, "Authentication failed");
-					} else {
+					if (task.isSuccessful()) {
+						configureUser(email, username, genres);
 						mContext.startActivity(new Intent(mContext, SignIn.class));
 						((Activity) mContext).finish();
 					}
@@ -45,5 +55,29 @@ public class FirebaseOperations implements IFirebaseOperations {
 					mContext.startActivity(new Intent(mContext, SignUp.class));
 					((Activity) mContext).finish();
 				});
+	}
+	
+	@Override public String getUsername() {
+		FirebaseUser currentUser = mFirebaseAuth.getCurrentUser();
+		return currentUser == null ? "" : currentUser.getDisplayName();
+	}
+	
+	private void configureUser(final String email, final String username, final String[] genres) {
+		User user = new User(email, username, Arrays.asList(genres));
+		String userId = mFirebaseDatabase.child("users").push().getKey();
+		if (userId == null) {
+			Log.e(ApplicationCodes.Error.name(), "Invalid user id generated");
+		} else {
+			DatabaseReference child = mFirebaseDatabase.child("users")
+					.child(userId);
+			child.setValue(user)
+					.addOnCompleteListener(task -> {
+						if (task.isSuccessful()) {
+							Log.d(Success.name(), "Added user: " + username);
+						} else {
+							Log.d(ApplicationCodes.Error.name(), "Unable to add user: " + username);
+						}
+					});
+		}
 	}
 }

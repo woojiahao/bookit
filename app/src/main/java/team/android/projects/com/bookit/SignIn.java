@@ -12,6 +12,7 @@ import team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_tex
 import static team.android.projects.com.bookit.utils.ui.UIUtils.clearInputs;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
 
+// todo: garbage collect the sign in to sign out intents to prevent backstack from growing too large
 public class SignIn extends AppCompatActivity {
 	private Button mSignInBtn;
 	private Button mSignUpBtn;
