@@ -14,6 +14,7 @@ import team.android.projects.com.bookit.utils.ui.custom_views.settings_row.Setti
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
 
 // todo: convert the settings row into a recyclerview and use the dividers item decoration instead to show the dividers
+// todo: add a sharedpreference for the current language selected and load then on run at the splashscreen
 public class SettingsFragment extends Fragment {
 	private View mView;
 	private SettingsRow mChangeLanguage;
