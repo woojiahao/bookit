@@ -1,13 +1,13 @@
 package team.android.projects.com.bookit;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
+import team.android.projects.com.bookit.utils.database.FirebaseOperations;
+import team.android.projects.com.bookit.utils.database.IFirebaseOperations;
 import team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text.ClearableEditText;
 
 import static team.android.projects.com.bookit.utils.ApplicationCodes.Error;
@@ -25,6 +25,8 @@ public class SignUpGenreSelection extends AppCompatActivity {
 	private String mUsername;
 	private String mPassword;
 	
+	private IFirebaseOperations mFirebaseOperations;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -39,28 +41,36 @@ public class SignUpGenreSelection extends AppCompatActivity {
 		mSelectBtn = find(this, R.id.selectBtn);
 		mBackBtn = find(this, R.id.backBtn);
 		
-		mGenreSelectionFragment = loadGenreSelection(getSupportFragmentManager(), "Select Genres", "Genre", 2, true);
+		mGenreSelectionFragment = loadGenreSelection(getSupportFragmentManager(), getString(R.string.select_genres), "Genre", 2, true);
+		
+		mFirebaseOperations = new FirebaseOperations(this);
 	}
 	
 	private void connectListeners() {
-		mBackBtn.setOnClickListener(ev -> finish());
-		mSelectBtn.setOnClickListener(v -> {
-			String[] selection = mGenreSelectionFragment.getSelection();
-			if (selection.length == 0) {
-				shortToast(this, "Please select something to proceed!");
-			} else {
-				startActivity(new Intent(this, SignIn.class));
-			}
-		});
-		
 		getCredentials();
+		
+		mBackBtn.setOnClickListener(ev -> finish());
+		mSelectBtn.setOnClickListener(v -> beginRegistration());
+	}
+	
+	private void beginRegistration() {
+		String[] selection = mGenreSelectionFragment.getSelection();
+		if (selection.length == 0) {
+			shortToast(this, getString(R.string.empty_selection_warning));
+		} else {
+			registerUser();
+		}
+	}
+	
+	private void registerUser() {
+		mFirebaseOperations.registerUser(mEmail, mPassword);
 	}
 	
 	private void getCredentials() {
 		Bundle extras = getIntent().getExtras();
 		if (extras == null) {
 			Log.e(Error.name(), "No data passed from the calling intent");
-			shortToast(this, "Invalid credentials entered, try again!");
+			shortToast(this, getString(R.string.invalid_credentials_warning));
 		} else {
 			mEmail = getData("email");
 			mUsername = getData("username");

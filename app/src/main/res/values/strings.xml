@@ -55,4 +55,6 @@
 	<string name="sign_out">Sign out</string>
 	<string name="sign_out_warning">Are you sure?</string>
 	<string name="select_language">Select Language</string>
+	<string name="empty_selection_warning">Please select something to proceed!</string>
+	<string name="invalid_credentials_warning">Invalid credentials entered, try again!</string>
 </resources>
