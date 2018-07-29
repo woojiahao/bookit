@@ -40,7 +40,8 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:27.1.1'
     implementation 'com.android.support:design:27.1.1'
     implementation 'com.google.firebase:firebase-core:16.0.1'
-
+    implementation "com.google.firebase:firebase-auth:16.0.2"
+    implementation "com.google.firebase:firebase-database:16.0.1"
 
     implementation group: 'mysql', name: 'mysql-connector-java', version: '5.1.6'
 }

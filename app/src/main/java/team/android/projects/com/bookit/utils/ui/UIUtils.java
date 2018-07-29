@@ -6,21 +6,29 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 
-import team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text.ClearableEditText;
 import team.android.projects.com.bookit.GenreSelectionFragment;
 import team.android.projects.com.bookit.R;
+import team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text.ClearableEditText;
 
 public class UIUtils {
 	public static void clearInputs(EditText... editTexts) {
-		for (EditText e : editTexts) {
-			e.setText("");
-		}
+		for (EditText e : editTexts) e.setText("");
 	}
 	
 	public static void clearInputs(ClearableEditText... clearableEditTexts) {
-		for (ClearableEditText e : clearableEditTexts) {
-			e.clearInput();
-		}
+		for (ClearableEditText e : clearableEditTexts) e.clearInput();
+	}
+	
+	public static boolean checkFilledInput(EditText... editTexts) {
+		boolean allFilled = true;
+		for (EditText e : editTexts) allFilled &= !e.getText().toString().trim().equals("");
+		return allFilled;
+	}
+
+	public static boolean checkFilledInput(ClearableEditText... editTexts) {
+		boolean allFilled = true;
+		for (ClearableEditText e : editTexts) allFilled &= !e.getText().equals("");
+		return allFilled;
 	}
 	
 	@SuppressWarnings("unchecked")
