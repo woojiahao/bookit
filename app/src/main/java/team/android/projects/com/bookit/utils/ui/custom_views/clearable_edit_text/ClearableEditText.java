@@ -20,7 +20,6 @@ import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
 
 // todo: use normal inputType for passwords but replace each character with * each time they type it
 // todo: fix the overlapping clear text visual bug
-// todo: display the clear text icon only when there is text to clear
 public class ClearableEditText extends CardView {
 	private EditText mEditText;
 	private Button mClearBtn;
@@ -84,13 +83,13 @@ public class ClearableEditText extends CardView {
 		}
 		
 		mClearBtn = find(this, R.id.clearBtn);
-		
-		if (!mIsClearable) {
-			mClearBtn.setVisibility(GONE);
-		}
+		mClearBtn.setVisibility(GONE);
 	}
 	
 	private void connectListeners() {
+		setOnTypingListener(
+				(s, start, count, after) ->
+						mClearBtn.setVisibility(s.toString().equals("") ? GONE : mIsClearable ? VISIBLE: GONE));
 		mClearBtn.setOnClickListener(view -> clearInputs(mEditText));
 	}
 	
