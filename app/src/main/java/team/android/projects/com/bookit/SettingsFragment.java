@@ -41,26 +41,27 @@ public class SettingsFragment extends Fragment {
 	
 	private void connectListeners() {
 		if (getContext() != null) {
-			mChangeLanguage.setOnClickListener(v -> new AlertDialog.Builder(getContext())
-					.setTitle("Select Language")
-					.setSingleChoiceItems(values, -1, (dialog, item) -> {
-						switch (item) {
-							case 0:
-								Toast.makeText(getContext(), "English", Toast.LENGTH_LONG).show();
-								break;
-							case 1:
-								Toast.makeText(getContext(), "Chinese", Toast.LENGTH_LONG).show();
-								break;
-							case 3:
-								Toast.makeText(getContext(), "Malay", Toast.LENGTH_LONG).show();
-								break;
-						}
-						dialog.dismiss();
-					}).show());
+			mChangeLanguage.setOnClickListener(v ->
+					new AlertDialog.Builder(getContext())
+							.setTitle(R.string.select_language)
+							.setSingleChoiceItems(values, -1, (dialog, item) -> {
+								switch (item) {
+									case 0:
+										Toast.makeText(getContext(), "English", Toast.LENGTH_LONG).show();
+										break;
+									case 1:
+										Toast.makeText(getContext(), "Chinese", Toast.LENGTH_LONG).show();
+										break;
+									case 3:
+										Toast.makeText(getContext(), "Malay", Toast.LENGTH_LONG).show();
+										break;
+								}
+								dialog.dismiss();
+							}).show());
 			mClearHistory.setOnClickListener(v ->
 					new AlertDialog.Builder(getContext())
-							.setTitle("Clear History?")
-							.setMessage("This will affect the recommendations that you will received from now on")
+							.setTitle(R.string.clear_history)
+							.setMessage(R.string.clear_history_warning)
 							.setPositiveButton(android.R.string.ok, (dialog, which) -> {
 								// continue with delete
 							})
@@ -68,11 +69,10 @@ public class SettingsFragment extends Fragment {
 								// do nothing
 							})
 							.show());
-			mEditGenres.setOnClickListener(v -> Toast.makeText(getContext(), "Editing Genres", Toast.LENGTH_SHORT).show());
 			mSignOut.setOnClickListener(v ->
 					new AlertDialog.Builder(getContext())
-							.setTitle("Sign out")
-							.setMessage("Are you sure?")
+							.setTitle(R.string.sign_out)
+							.setMessage(R.string.sign_out_warning)
 							.setPositiveButton(android.R.string.yes, (dialog, which) -> {
 								// continue with delete
 								if (getActivity() != null) {
@@ -83,6 +83,8 @@ public class SettingsFragment extends Fragment {
 								// do nothing
 							})
 							.show());
+			mEditGenres.setOnClickListener(v ->
+					Toast.makeText(getContext(), "Editing Genres", Toast.LENGTH_SHORT).show());
 		}
 	}
 }
