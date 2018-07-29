@@ -23,7 +23,7 @@
         <item name="android:padding">12sp</item>
         <item name="android:textSize">18sp</item>
         <item name="android:drawablePadding">@dimen/smallest_padding</item>
-        <item name="android:background">@drawable/edit_text_background</item>
+        <item name="android:background">@android:color/white</item>
     </style>
 
     <style name="CustomRedButton">
