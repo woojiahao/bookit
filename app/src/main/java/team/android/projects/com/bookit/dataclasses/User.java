@@ -8,13 +8,16 @@ import java.util.List;
 public class User {
 	public String email;
 	public String username;
+	public String uid;
+	
 	public List<String> genres;
 	
 	public User() {
 	
 	}
 	
-	public User(String email, String username, List<String> genres) {
+	public User(String uid, String email, String username, List<String> genres) {
+		this.uid = uid;
 		this.email = email;
 		this.username = username;
 		this.genres = genres;

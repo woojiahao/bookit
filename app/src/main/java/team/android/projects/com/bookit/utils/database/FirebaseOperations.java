@@ -17,10 +17,11 @@ import java.util.Arrays;
 import team.android.projects.com.bookit.SignIn;
 import team.android.projects.com.bookit.SignUp;
 import team.android.projects.com.bookit.dataclasses.User;
-import team.android.projects.com.bookit.utils.ApplicationCodes;
 
+import static team.android.projects.com.bookit.utils.ApplicationCodes.Debug;
 import static team.android.projects.com.bookit.utils.ApplicationCodes.Success;
 import static team.android.projects.com.bookit.utils.logging.Logging.shortToast;
+import static team.android.projects.com.bookit.utils.ApplicationCodes.Error;
 
 // todo: add email verification for newly created account
 public class FirebaseOperations implements IFirebaseOperations {
@@ -36,6 +37,11 @@ public class FirebaseOperations implements IFirebaseOperations {
 	
 	@Override
 	public void registerUser(String email, String password, String username, String[] genres) {
+		if (mFirebaseAuth.getCurrentUser() != null) {
+			Log.d(Debug.name(), "Current user email: " + mFirebaseAuth.getCurrentUser().getEmail());
+			mFirebaseAuth.signOut();
+		}
+		
 		mFirebaseAuth
 				.createUserWithEmailAndPassword(email, password)
 				.addOnCompleteListener(task -> {
@@ -62,20 +68,28 @@ public class FirebaseOperations implements IFirebaseOperations {
 		return currentUser == null ? "" : currentUser.getDisplayName();
 	}
 	
+	@Override public void signOut() {
+		mFirebaseAuth.signOut();
+	}
+	
 	private void configureUser(final String email, final String username, final String[] genres) {
-		User user = new User(email, username, Arrays.asList(genres));
-		String userId = mFirebaseDatabase.child("users").push().getKey();
-		if (userId == null) {
-			Log.e(ApplicationCodes.Error.name(), "Invalid user id generated");
+		String uid = "";
+		if (mFirebaseAuth.getCurrentUser() != null) {
+			uid = mFirebaseAuth.getCurrentUser().getUid();
+		}
+		
+		User user = new User(uid, email, username, Arrays.asList(genres));
+		if (uid.equals("")) {
+			Log.e(Error.name(), "Invalid user id generated");
 		} else {
 			DatabaseReference child = mFirebaseDatabase.child("users")
-					.child(userId);
+					.child(uid);
 			child.setValue(user)
 					.addOnCompleteListener(task -> {
 						if (task.isSuccessful()) {
 							Log.d(Success.name(), "Added user: " + username);
 						} else {
-							Log.d(ApplicationCodes.Error.name(), "Unable to add user: " + username);
+							Log.d(Error.name(), "Unable to add user: " + username);
 						}
 					});
 		}
