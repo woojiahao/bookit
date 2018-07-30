@@ -18,10 +18,10 @@ import team.android.projects.com.bookit.SignIn;
 import team.android.projects.com.bookit.SignUp;
 import team.android.projects.com.bookit.dataclasses.User;
 
-import static team.android.projects.com.bookit.utils.ApplicationCodes.Debug;
-import static team.android.projects.com.bookit.utils.ApplicationCodes.Success;
+import static team.android.projects.com.bookit.utils.logging.ApplicationCodes.Debug;
+import static team.android.projects.com.bookit.utils.logging.ApplicationCodes.Success;
 import static team.android.projects.com.bookit.utils.logging.Logging.shortToast;
-import static team.android.projects.com.bookit.utils.ApplicationCodes.Error;
+import static team.android.projects.com.bookit.utils.logging.ApplicationCodes.Error;
 
 // todo: add email verification for newly created account
 public class FirebaseOperations implements IFirebaseOperations {

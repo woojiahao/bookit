@@ -10,7 +10,7 @@ import team.android.projects.com.bookit.utils.database.FirebaseOperations;
 import team.android.projects.com.bookit.utils.database.IFirebaseOperations;
 import team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text.ClearableEditText;
 
-import static team.android.projects.com.bookit.utils.ApplicationCodes.Error;
+import static team.android.projects.com.bookit.utils.logging.ApplicationCodes.Error;
 import static team.android.projects.com.bookit.utils.logging.Logging.shortToast;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.loadGenreSelection;

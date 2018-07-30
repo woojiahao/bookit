@@ -44,8 +44,8 @@ public class SignIn extends AppCompatActivity {
 	
 	private void connectListeners() {
 		mForgotPassword.setOnClickListener(ev -> {
-			clearInputs(mUsernameEmailField, mPasswordField);
 			startActivity(new Intent(this, ForgotPassword.class));
+			finish();
 		});
 		
 		mSignInBtn.setOnClickListener(ev -> {
