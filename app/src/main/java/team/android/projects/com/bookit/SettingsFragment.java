@@ -4,13 +4,17 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import team.android.projects.com.bookit.utils.database.FirebaseOperations;
+import team.android.projects.com.bookit.utils.database.IFirebaseOperations;
 import team.android.projects.com.bookit.utils.ui.custom_views.settings_row.SettingsRow;
 
+import static team.android.projects.com.bookit.utils.logging.ApplicationCodes.Debug;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
 
 // todo: convert the settings row into a recyclerview and use the dividers item decoration instead to show the dividers
@@ -21,6 +25,8 @@ public class SettingsFragment extends Fragment {
 	private SettingsRow mClearHistory;
 	private SettingsRow mEditGenres;
 	private SettingsRow mSignOut;
+	
+	private IFirebaseOperations mFirebaseOperations;
 	
 	private final String[] values = { "English", "Chinese", "Malay" };
 	
@@ -38,6 +44,8 @@ public class SettingsFragment extends Fragment {
 		mClearHistory = find(mView, R.id.settingsClearHistory);
 		mEditGenres = find(mView, R.id.settingsEditGenres);
 		mSignOut = find(mView, R.id.settingsSignOut);
+		
+		mFirebaseOperations = new FirebaseOperations(getContext());
 	}
 	
 	private void connectListeners() {
@@ -63,26 +71,23 @@ public class SettingsFragment extends Fragment {
 					new AlertDialog.Builder(getContext())
 							.setTitle(R.string.clear_history)
 							.setMessage(R.string.clear_history_warning)
-							.setPositiveButton(android.R.string.ok, (dialog, which) -> {
-								// continue with delete
-							})
-							.setNegativeButton(android.R.string.cancel, (dialog, which) -> {
-								// do nothing
-							})
+							.setPositiveButton(
+									android.R.string.ok,
+									(dialog, which) -> {
+									})
+							.setNegativeButton(android.R.string.cancel, null)
 							.show());
 			mSignOut.setOnClickListener(v ->
 					new AlertDialog.Builder(getContext())
 							.setTitle(R.string.sign_out)
 							.setMessage(R.string.sign_out_warning)
 							.setPositiveButton(android.R.string.yes, (dialog, which) -> {
-								// continue with delete
 								if (getActivity() != null) {
+									mFirebaseOperations.signOut();
 									getActivity().finish();
 								}
 							})
-							.setNegativeButton(android.R.string.no, (dialog, which) -> {
-								// do nothing
-							})
+							.setNegativeButton(android.R.string.no, null)
 							.show());
 			mEditGenres.setOnClickListener(v ->
 					Toast.makeText(getContext(), "Editing Genres", Toast.LENGTH_SHORT).show());

@@ -63,9 +63,8 @@ public class FirebaseOperations implements IFirebaseOperations {
 				});
 	}
 	
-	@Override public String getUsername() {
-		FirebaseUser currentUser = mFirebaseAuth.getCurrentUser();
-		return currentUser == null ? "" : currentUser.getDisplayName();
+	@Override public FirebaseUser getCurrentUser() {
+		return mFirebaseAuth.getCurrentUser();
 	}
 	
 	@Override public void signOut() {

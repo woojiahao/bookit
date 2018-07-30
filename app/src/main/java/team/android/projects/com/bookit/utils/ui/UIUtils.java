@@ -65,7 +65,7 @@ public class UIUtils {
 	
 	public static void displayExitConfirmDialog(Context c) {
 		new AlertDialog.Builder(c)
-				.setTitle("Are you sure you wish to exit?")
+				.setTitle(R.string.exit_warning)
 				.setPositiveButton(
 						"Yes",
 						(dialog, which) -> {
