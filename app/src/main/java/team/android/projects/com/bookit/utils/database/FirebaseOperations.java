@@ -14,6 +14,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Arrays;
 
+import team.android.projects.com.bookit.Container;
 import team.android.projects.com.bookit.SignIn;
 import team.android.projects.com.bookit.SignUp;
 import team.android.projects.com.bookit.dataclasses.User;
@@ -47,7 +48,7 @@ public class FirebaseOperations implements IFirebaseOperations {
 				.addOnCompleteListener(task -> {
 					if (task.isSuccessful()) {
 						configureUser(email, username, genres);
-						mContext.startActivity(new Intent(mContext, SignIn.class));
+						mContext.startActivity(new Intent(mContext, Container.class));
 						((Activity) mContext).finish();
 					}
 				})

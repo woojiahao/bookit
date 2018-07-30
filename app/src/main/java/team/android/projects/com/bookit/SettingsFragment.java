@@ -1,5 +1,6 @@
 package team.android.projects.com.bookit;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -84,6 +85,7 @@ public class SettingsFragment extends Fragment {
 							.setPositiveButton(android.R.string.yes, (dialog, which) -> {
 								if (getActivity() != null) {
 									mFirebaseOperations.signOut();
+									startActivity(new Intent(getContext(), SignIn.class));
 									getActivity().finish();
 								}
 							})
