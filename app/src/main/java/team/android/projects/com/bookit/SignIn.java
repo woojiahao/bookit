@@ -10,9 +10,9 @@ import android.widget.Toast;
 import team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text.ClearableEditText;
 
 import static team.android.projects.com.bookit.utils.ui.UIUtils.clearInputs;
+import static team.android.projects.com.bookit.utils.ui.UIUtils.displayExitConfirmDialog;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
 
-// todo: garbage collect the sign in to sign out intents to prevent backstack from growing too large
 public class SignIn extends AppCompatActivity {
 	private Button mSignInBtn;
 	private Button mSignUpBtn;
@@ -20,8 +20,7 @@ public class SignIn extends AppCompatActivity {
 	private ClearableEditText mUsernameEmailField;
 	private ClearableEditText mPasswordField;
 	
-	@Override
-	protected void onCreate (Bundle savedInstanceState) {
+	@Override protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sign_in);
 		
@@ -29,7 +28,11 @@ public class SignIn extends AppCompatActivity {
 		connectListeners();
 	}
 	
-	private void init () {
+	@Override public void onBackPressed() {
+		displayExitConfirmDialog(this);
+	}
+	
+	private void init() {
 		mSignInBtn = find(this, R.id.signInBtn);
 		mSignUpBtn = find(this, R.id.switchSignUpBtn);
 		
@@ -39,7 +42,7 @@ public class SignIn extends AppCompatActivity {
 		mPasswordField = find(this, R.id.loginPasswordField);
 	}
 	
-	private void connectListeners () {
+	private void connectListeners() {
 		mForgotPassword.setOnClickListener(ev -> {
 			clearInputs(mUsernameEmailField, mPasswordField);
 			startActivity(new Intent(this, ForgotPassword.class));
@@ -55,8 +58,8 @@ public class SignIn extends AppCompatActivity {
 		});
 		
 		mSignUpBtn.setOnClickListener(ev -> {
-			clearInputs(mUsernameEmailField, mPasswordField);
 			startActivity(new Intent(this, SignUp.class));
+			finish();
 		});
 	}
 }

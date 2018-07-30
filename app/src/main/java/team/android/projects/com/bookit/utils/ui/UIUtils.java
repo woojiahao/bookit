@@ -1,5 +1,8 @@
 package team.android.projects.com.bookit.utils.ui;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -24,7 +27,7 @@ public class UIUtils {
 		for (EditText e : editTexts) allFilled &= !e.getText().toString().trim().equals("");
 		return allFilled;
 	}
-
+	
 	public static boolean checkFilledInput(ClearableEditText... editTexts) {
 		boolean allFilled = true;
 		for (ClearableEditText e : editTexts) allFilled &= !e.getText().equals("");
@@ -58,5 +61,19 @@ public class UIUtils {
 			manager.beginTransaction().add(R.id.genreSelection, f, tag).commit();
 		}
 		return f;
+	}
+	
+	public static void displayExitConfirmDialog(Context c) {
+		new AlertDialog.Builder(c)
+				.setTitle("Are you sure you wish to exit?")
+				.setPositiveButton(
+						"Yes",
+						(dialog, which) -> {
+							((Activity) c).finish();
+						})
+				.setNegativeButton("No", null)
+				.setCancelable(false)
+				.show();
+		
 	}
 }

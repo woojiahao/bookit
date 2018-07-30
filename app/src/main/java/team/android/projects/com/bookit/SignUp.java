@@ -9,7 +9,7 @@ import team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_tex
 
 import static team.android.projects.com.bookit.utils.logging.Logging.shortToast;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.checkFilledInput;
-import static team.android.projects.com.bookit.utils.ui.UIUtils.clearInputs;
+import static team.android.projects.com.bookit.utils.ui.UIUtils.displayExitConfirmDialog;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.isEmail;
 
@@ -20,13 +20,16 @@ public class SignUp extends AppCompatActivity {
 	private ClearableEditText mUsernameField;
 	private ClearableEditText mPasswordField;
 	
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	@Override protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sign_up);
 		
 		init();
 		connectListeners();
+	}
+	
+	@Override public void onBackPressed() {
+		displayExitConfirmDialog(this);
 	}
 	
 	private void init() {
@@ -56,8 +59,8 @@ public class SignUp extends AppCompatActivity {
 		});
 		
 		mSignInBtn.setOnClickListener(ev -> {
-			clearInputs(mEmailField, mUsernameField, mPasswordField);
 			startActivity(new Intent(this, SignIn.class));
+			finish();
 		});
 	}
 }
