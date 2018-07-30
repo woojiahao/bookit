@@ -5,10 +5,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 
+import team.android.projects.com.bookit.utils.ui.UIUtils;
 import team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text.ClearableEditText;
 
 import static team.android.projects.com.bookit.utils.logging.Logging.shortToast;
-import static team.android.projects.com.bookit.utils.ui.UIUtils.checkFilledInput;
+import static team.android.projects.com.bookit.utils.ui.UIUtils.isFilled;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.displayExitConfirmDialog;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.isEmail;
@@ -43,11 +44,11 @@ public class SignUp extends AppCompatActivity {
 	
 	private void connectListeners() {
 		mSignUpBtn.setOnClickListener(ev -> {
-			if (!checkFilledInput(mEmailField, mUsernameField, mPasswordField)) {
-				shortToast(this, "Please fill in all of the fields before proceeding");
+			if (!isFilled(mEmailField, mUsernameField, mPasswordField)) {
+				shortToast(this, getString(R.string.empty_inputs_warning));
 			} else {
 				if (!isEmail(mEmailField.getText())) {
-					shortToast(this, "Please enter a valid email address");
+					shortToast(this, getString(R.string.invalid_email_warning));
 				} else {
 					startActivity(
 							new Intent(this, SignUpGenreSelection.class)

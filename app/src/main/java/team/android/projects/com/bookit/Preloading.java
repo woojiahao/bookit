@@ -2,6 +2,7 @@ package team.android.projects.com.bookit;
 
 import android.app.Application;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
@@ -17,6 +18,8 @@ import java.util.List;
 
 import team.android.projects.com.bookit.dataclasses.User;
 
+import static team.android.projects.com.bookit.utils.logging.ApplicationCodes.Debug;
+
 // todo: fix potential bug when loading user twice
 public class Preloading extends Application {
 	private static List<User> mUsers = new ArrayList<User>();
@@ -24,33 +27,37 @@ public class Preloading extends Application {
 	
 	@Override public void onCreate() {
 		super.onCreate();
-		FirebaseApp.initializeApp(this);
 		init();
 	}
 	
 	private void init() {
-		DatabaseReference usersReference = FirebaseDatabase.getInstance().getReference().child("users");
-		usersReference.addValueEventListener(new ValueEventListener() {
-			@Override public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-				for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-					User user = snapshot.getValue(User.class);
-					if (user != null) {
-						if (findUser(user.uid) == null) {
-							mUsers.add(user);
+		DatabaseReference dbReference = FirebaseDatabase
+				.getInstance()
+				.getReference()
+				.child("users");
+		
+		dbReference
+				.addValueEventListener(new ValueEventListener() {
+					@Override public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+						Log.d(Debug.name(), "Loading users");
+						for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+							User user = snapshot.getValue(User.class);
+							if (user != null) {
+								if (findUser(user.uid, "uid") == null) {
+									mUsers.add(user);
+								}
+							}
 						}
 					}
-				}
-			}
-			
-			@Override public void onCancelled(@NonNull DatabaseError databaseError) {
-			
-			}
-		});
-		
+					
+					@Override public void onCancelled(@NonNull DatabaseError databaseError) {
+					
+					}
+				});
 		FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 		if (user != null) {
 			// if the user is already logged in
-			mCurrentUser = findUser(user.getUid());
+			mCurrentUser = findUser(user.getUid(), "uid");
 		}
 	}
 	
@@ -58,9 +65,19 @@ public class Preloading extends Application {
 		return mUsers;
 	}
 	
-	public static User findUser(String uid) {
+	public static User findUser(String check, String checkType) {
 		for (User u : mUsers) {
-			if (u.uid.equals(uid)) return u;
+			switch (checkType.toLowerCase()) {
+				case "uid":
+					if (u.uid.equals(check)) return u;
+					break;
+				case "email":
+					if (u.email.equals(check)) return u;
+					break;
+				case "username":
+					if (u.username.equals(check)) return u;
+					break;
+			}
 		}
 		return null;
 	}

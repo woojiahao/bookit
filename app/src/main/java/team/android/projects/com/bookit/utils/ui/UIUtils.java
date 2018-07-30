@@ -22,13 +22,13 @@ public class UIUtils {
 		for (ClearableEditText e : clearableEditTexts) e.clearInput();
 	}
 	
-	public static boolean checkFilledInput(EditText... editTexts) {
+	public static boolean isFilled(EditText... editTexts) {
 		boolean allFilled = true;
 		for (EditText e : editTexts) allFilled &= !e.getText().toString().trim().equals("");
 		return allFilled;
 	}
 	
-	public static boolean checkFilledInput(ClearableEditText... editTexts) {
+	public static boolean isFilled(ClearableEditText... editTexts) {
 		boolean allFilled = true;
 		for (ClearableEditText e : editTexts) allFilled &= !e.getText().equals("");
 		return allFilled;

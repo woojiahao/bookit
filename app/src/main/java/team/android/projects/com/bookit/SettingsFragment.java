@@ -18,6 +18,7 @@ import team.android.projects.com.bookit.utils.database.IFirebaseOperations;
 import team.android.projects.com.bookit.utils.ui.custom_views.settings_row.SettingsRow;
 
 import static team.android.projects.com.bookit.utils.logging.ApplicationCodes.Debug;
+import static team.android.projects.com.bookit.utils.logging.Logging.shortToast;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
 
 // todo: convert the settings row into a recyclerview and use the dividers item decoration instead to show the dividers
@@ -70,13 +71,13 @@ public class SettingsFragment extends Fragment {
 							.setSingleChoiceItems(values, -1, (dialog, item) -> {
 								switch (item) {
 									case 0:
-										Toast.makeText(getContext(), "English", Toast.LENGTH_LONG).show();
+										shortToast(getContext(), "English");
 										break;
 									case 1:
-										Toast.makeText(getContext(), "Chinese", Toast.LENGTH_LONG).show();
+										shortToast(getContext(), "Chinese");
 										break;
 									case 3:
-										Toast.makeText(getContext(), "Malay", Toast.LENGTH_LONG).show();
+										shortToast(getContext(), "Malay");
 										break;
 								}
 								dialog.dismiss();

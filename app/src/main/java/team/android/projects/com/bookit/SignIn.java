@@ -5,13 +5,17 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import team.android.projects.com.bookit.dataclasses.User;
+import team.android.projects.com.bookit.utils.database.FirebaseOperations;
+import team.android.projects.com.bookit.utils.database.IFirebaseOperations;
 import team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text.ClearableEditText;
 
-import static team.android.projects.com.bookit.utils.ui.UIUtils.clearInputs;
+import static team.android.projects.com.bookit.utils.logging.Logging.shortToast;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.displayExitConfirmDialog;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
+import static team.android.projects.com.bookit.utils.ui.UIUtils.isEmail;
+import static team.android.projects.com.bookit.utils.ui.UIUtils.isFilled;
 
 public class SignIn extends AppCompatActivity {
 	private Button mSignInBtn;
@@ -19,6 +23,8 @@ public class SignIn extends AppCompatActivity {
 	private TextView mForgotPassword;
 	private ClearableEditText mUsernameEmailField;
 	private ClearableEditText mPasswordField;
+	
+	private IFirebaseOperations mFirebaseOperations;
 	
 	@Override protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -33,6 +39,8 @@ public class SignIn extends AppCompatActivity {
 	}
 	
 	private void init() {
+		mFirebaseOperations = new FirebaseOperations(this);
+		
 		mSignInBtn = find(this, R.id.signInBtn);
 		mSignUpBtn = find(this, R.id.switchSignUpBtn);
 		
@@ -49,12 +57,22 @@ public class SignIn extends AppCompatActivity {
 		});
 		
 		mSignInBtn.setOnClickListener(ev -> {
-			String enteredUsernameEmail = mUsernameEmailField.getText();
-			String enteredPassword = mPasswordField.getText();
+			String email = mUsernameEmailField.getText();
+			String password = mPasswordField.getText();
 			
-			Toast.makeText(this, String.format("Username/Email: %s, Password: %s", enteredUsernameEmail, enteredPassword), Toast.LENGTH_SHORT).show();
-			
-			startActivity(new Intent(this, Container.class));
+			if (!isFilled(mUsernameEmailField, mPasswordField)) {
+				shortToast(this, getString(R.string.empty_inputs_warning));
+			} else {
+				if (!isEmail(email)) {
+					User matchedUser = Preloading.findUser(email, "username");
+					if (matchedUser != null) {
+						email = matchedUser.email;
+						mFirebaseOperations.signIn(email, password);
+					} else {
+						shortToast(this, "User account does not exist");
+					}
+				}
+			}
 		});
 		
 		mSignUpBtn.setOnClickListener(ev -> {

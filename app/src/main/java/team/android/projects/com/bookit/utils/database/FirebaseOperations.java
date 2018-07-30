@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.util.Log;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
@@ -45,6 +47,11 @@ public class FirebaseOperations implements IFirebaseOperations {
 			mFirebaseAuth.signOut();
 		}
 		
+		if (Preloading.findUser(username, "username") != null) {
+			shortToast(mContext, String.format("Username: %s is used already, try again", username));
+			return;
+		}
+		
 		mFirebaseAuth
 				.createUserWithEmailAndPassword(email, password)
 				.addOnCompleteListener(task -> {
@@ -66,6 +73,29 @@ public class FirebaseOperations implements IFirebaseOperations {
 					
 					mContext.startActivity(new Intent(mContext, SignUp.class));
 					((Activity) mContext).finish();
+				});
+	}
+	
+	@Override public void signIn(String email, String password) {
+		if (mFirebaseAuth.getCurrentUser() != null) {
+			mFirebaseAuth.signOut();
+		}
+		
+		mFirebaseAuth
+				.signInWithEmailAndPassword(email, password)
+				.addOnCompleteListener(task -> {
+					if (task.isSuccessful()) {
+						Preloading.setCurrentUser(getCurrentUser().getUid());
+						mContext.startActivity(new Intent(mContext, Container.class));
+						((Activity) mContext).finish();
+					}
+				})
+				.addOnFailureListener(exception -> {
+					if (exception instanceof FirebaseAuthInvalidUserException) {
+						shortToast(mContext, "Email account does not exist");
+					} else if (exception instanceof FirebaseAuthInvalidCredentialsException) {
+						shortToast(mContext, "Invalid password");
+					}
 				});
 	}
 	

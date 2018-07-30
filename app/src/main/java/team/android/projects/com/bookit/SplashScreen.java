@@ -22,9 +22,6 @@ public class SplashScreen extends AppCompatActivity {
 		
 		mFirebaseOperations = new FirebaseOperations(this);
 		
-		boolean isLoggedIn = mFirebaseOperations.getCurrentUser() == null;
-		Log.d(ApplicationCodes.Debug.name(), "isLoggedIn: " + isLoggedIn);
-		
 		Handler h = new Handler();
 		h.postDelayed(() -> {
 			Class target;

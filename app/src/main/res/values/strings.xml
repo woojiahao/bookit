@@ -61,4 +61,6 @@
 	<string name="exit_application">Exit Application?</string>
 	<string name="cancel">Cancel</string>
 	<string name="select">Select</string>
+	<string name="empty_inputs_warning">Please fill in all of the fields before proceeding</string>
+	<string name="invalid_email_warning">Please enter a valid email address</string>
 </resources>

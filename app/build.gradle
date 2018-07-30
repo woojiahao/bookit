@@ -42,6 +42,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:16.0.1'
     implementation "com.google.firebase:firebase-auth:16.0.2"
     implementation "com.google.firebase:firebase-database:16.0.1"
+    implementation 'com.google.firebase:firebase-crash:16.0.1'
+
 
     implementation group: 'mysql', name: 'mysql-connector-java', version: '5.1.6'
 }
