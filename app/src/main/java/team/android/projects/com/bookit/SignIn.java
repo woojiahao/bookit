@@ -67,11 +67,12 @@ public class SignIn extends AppCompatActivity {
 					User matchedUser = Preloading.findUser(email, "username");
 					if (matchedUser != null) {
 						email = matchedUser.email;
-						mFirebaseOperations.signIn(email, password);
 					} else {
 						shortToast(this, "User account does not exist");
+						return;
 					}
 				}
+				mFirebaseOperations.signIn(email, password);
 			}
 		});
 		

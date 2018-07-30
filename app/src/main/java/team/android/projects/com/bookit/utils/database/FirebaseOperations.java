@@ -29,7 +29,6 @@ import static team.android.projects.com.bookit.utils.logging.ApplicationCodes.Su
 import static team.android.projects.com.bookit.utils.logging.Logging.shortToast;
 
 // todo: add email verification for newly created account
-// todo: complete the get user preferences feature
 public class FirebaseOperations implements IFirebaseOperations {
 	private FirebaseAuth mFirebaseAuth;
 	private DatabaseReference mFirebaseDatabase;
