@@ -2,6 +2,8 @@ package team.android.projects.com.bookit.utils.database;
 
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.List;
+
 import team.android.projects.com.bookit.dataclasses.User;
 
 public interface IFirebaseOperations {
@@ -9,5 +11,7 @@ public interface IFirebaseOperations {
 	FirebaseUser getCurrentUser();
 	void signOut();
 	
-	User getUserPreferences();
+	String getUsername();
+	String getEmail();
+	List<String> getGenres();
 }

@@ -12,9 +12,12 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import team.android.projects.com.bookit.Container;
+import team.android.projects.com.bookit.Preloading;
 import team.android.projects.com.bookit.SignUp;
 import team.android.projects.com.bookit.dataclasses.User;
 
@@ -29,7 +32,6 @@ public class FirebaseOperations implements IFirebaseOperations {
 	private FirebaseAuth mFirebaseAuth;
 	private DatabaseReference mFirebaseDatabase;
 	private Context mContext;
-	private DatabaseReference mCurrentUserPreferences;
 	
 	public FirebaseOperations(Context c) {
 		mContext = c;
@@ -40,7 +42,6 @@ public class FirebaseOperations implements IFirebaseOperations {
 	@Override
 	public void registerUser(String email, String password, String username, String[] genres) {
 		if (mFirebaseAuth.getCurrentUser() != null) {
-			Log.d(Debug.name(), "Current user email: " + mFirebaseAuth.getCurrentUser().getEmail());
 			mFirebaseAuth.signOut();
 		}
 		
@@ -49,6 +50,9 @@ public class FirebaseOperations implements IFirebaseOperations {
 				.addOnCompleteListener(task -> {
 					if (task.isSuccessful()) {
 						configureUser(email, username, genres);
+						if (getCurrentUser() != null) {
+							Preloading.setCurrentUser(getCurrentUser().getUid());
+						}
 						mContext.startActivity(new Intent(mContext, Container.class));
 						((Activity) mContext).finish();
 					}
@@ -71,10 +75,19 @@ public class FirebaseOperations implements IFirebaseOperations {
 	
 	@Override public void signOut() {
 		mFirebaseAuth.signOut();
+		Log.d(Debug.name(), String.format("isLoggedIn: %s", getCurrentUser() != null));
 	}
 	
-	@Override public User getUserPreferences() {
-		return null;
+	@Override public String getUsername() {
+		return Preloading.getCurrentUser().username;
+	}
+	
+	@Override public String getEmail() {
+		return Preloading.getCurrentUser().email;
+	}
+	
+	@Override public List<String> getGenres() {
+		return Preloading.getCurrentUser().genres;
 	}
 	
 	private void configureUser(final String email, final String username, final String[] genres) {
@@ -83,7 +96,10 @@ public class FirebaseOperations implements IFirebaseOperations {
 			uid = mFirebaseAuth.getCurrentUser().getUid();
 		}
 		
-		User user = new User(uid, email, username, Arrays.asList(genres));
+		User user = new User(uid, email, username,
+				Arrays.asList(genres),
+				new ArrayList<String>(),
+				new ArrayList<String>());
 		if (uid.equals("")) {
 			Log.e(Error.name(), "Invalid user id generated");
 		} else {
@@ -97,6 +113,7 @@ public class FirebaseOperations implements IFirebaseOperations {
 							Log.d(Error.name(), "Unable to add user: " + username);
 						}
 					});
+			Preloading.addUser(user);
 		}
 	}
 }

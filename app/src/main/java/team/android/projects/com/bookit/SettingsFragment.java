@@ -9,10 +9,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import team.android.projects.com.bookit.dataclasses.User;
 import team.android.projects.com.bookit.utils.database.FirebaseOperations;
 import team.android.projects.com.bookit.utils.database.IFirebaseOperations;
 import team.android.projects.com.bookit.utils.ui.custom_views.settings_row.SettingsRow;
@@ -30,6 +30,7 @@ public class SettingsFragment extends Fragment {
 	private SettingsRow mSignOut;
 	
 	private TextView mUsername;
+	private TextView mEmail;
 	
 	private IFirebaseOperations mFirebaseOperations;
 	
@@ -53,7 +54,12 @@ public class SettingsFragment extends Fragment {
 		mSignOut = find(mView, R.id.settingsSignOut);
 		
 		mUsername = find(mView, R.id.settingsUsername);
-//		mUsername.setText(mFirebaseOperations.getUsername());
+		mEmail = find(mView, R.id.settingsEmail);
+		
+		if (Preloading.getCurrentUser() != null) {
+			mUsername.setText(mFirebaseOperations.getUsername());
+			mEmail.setText(mFirebaseOperations.getEmail());
+		}
 	}
 	
 	private void connectListeners() {
@@ -92,6 +98,7 @@ public class SettingsFragment extends Fragment {
 							.setPositiveButton(android.R.string.yes, (dialog, which) -> {
 								if (getActivity() != null) {
 									mFirebaseOperations.signOut();
+									Preloading.setCurrentUser(null);
 									startActivity(new Intent(getContext(), SignIn.class));
 									getActivity().finish();
 								}

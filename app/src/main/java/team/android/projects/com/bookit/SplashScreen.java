@@ -4,9 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+
+import java.io.ObjectStreamField;
 
 import team.android.projects.com.bookit.utils.database.FirebaseOperations;
 import team.android.projects.com.bookit.utils.database.IFirebaseOperations;
+import team.android.projects.com.bookit.utils.logging.ApplicationCodes;
 
 public class SplashScreen extends AppCompatActivity {
 	private IFirebaseOperations mFirebaseOperations;
@@ -18,10 +22,19 @@ public class SplashScreen extends AppCompatActivity {
 		
 		mFirebaseOperations = new FirebaseOperations(this);
 		
+		boolean isLoggedIn = mFirebaseOperations.getCurrentUser() == null;
+		Log.d(ApplicationCodes.Debug.name(), "isLoggedIn: " + isLoggedIn);
+		
 		Handler h = new Handler();
 		h.postDelayed(() -> {
-			Class toggle = mFirebaseOperations.getCurrentUser() == null ? SignUp.class : Container.class;
-			startActivity(new Intent(this, toggle));
+			Class target;
+			if (mFirebaseOperations.getCurrentUser() != null) {
+				Preloading.setCurrentUser(mFirebaseOperations.getCurrentUser().getUid());
+				target = Container.class;
+			} else {
+				target = SignUp.class;
+			}
+			startActivity(new Intent(this, target));
 			finish();
 		}, 3000);
 	}
