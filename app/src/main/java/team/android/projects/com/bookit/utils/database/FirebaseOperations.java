@@ -15,20 +15,21 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.Arrays;
 
 import team.android.projects.com.bookit.Container;
-import team.android.projects.com.bookit.SignIn;
 import team.android.projects.com.bookit.SignUp;
 import team.android.projects.com.bookit.dataclasses.User;
 
 import static team.android.projects.com.bookit.utils.logging.ApplicationCodes.Debug;
+import static team.android.projects.com.bookit.utils.logging.ApplicationCodes.Error;
 import static team.android.projects.com.bookit.utils.logging.ApplicationCodes.Success;
 import static team.android.projects.com.bookit.utils.logging.Logging.shortToast;
-import static team.android.projects.com.bookit.utils.logging.ApplicationCodes.Error;
 
 // todo: add email verification for newly created account
+// todo: complete the get user preferences feature
 public class FirebaseOperations implements IFirebaseOperations {
 	private FirebaseAuth mFirebaseAuth;
 	private DatabaseReference mFirebaseDatabase;
 	private Context mContext;
+	private DatabaseReference mCurrentUserPreferences;
 	
 	public FirebaseOperations(Context c) {
 		mContext = c;
@@ -70,6 +71,10 @@ public class FirebaseOperations implements IFirebaseOperations {
 	
 	@Override public void signOut() {
 		mFirebaseAuth.signOut();
+	}
+	
+	@Override public User getUserPreferences() {
+		return null;
 	}
 	
 	private void configureUser(final String email, final String username, final String[] genres) {

@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import team.android.projects.com.bookit.utils.database.FirebaseOperations;
@@ -27,6 +29,8 @@ public class SettingsFragment extends Fragment {
 	private SettingsRow mEditGenres;
 	private SettingsRow mSignOut;
 	
+	private TextView mUsername;
+	
 	private IFirebaseOperations mFirebaseOperations;
 	
 	private final String[] values = { "English", "Chinese", "Malay" };
@@ -41,12 +45,15 @@ public class SettingsFragment extends Fragment {
 	}
 	
 	private void init() {
+		mFirebaseOperations = new FirebaseOperations(getContext());
+		
 		mChangeLanguage = find(mView, R.id.settingsChangeLanguage);
 		mClearHistory = find(mView, R.id.settingsClearHistory);
 		mEditGenres = find(mView, R.id.settingsEditGenres);
 		mSignOut = find(mView, R.id.settingsSignOut);
 		
-		mFirebaseOperations = new FirebaseOperations(getContext());
+		mUsername = find(mView, R.id.settingsUsername);
+//		mUsername.setText(mFirebaseOperations.getUsername());
 	}
 	
 	private void connectListeners() {
@@ -91,8 +98,7 @@ public class SettingsFragment extends Fragment {
 							})
 							.setNegativeButton(android.R.string.no, null)
 							.show());
-			mEditGenres.setOnClickListener(v ->
-					Toast.makeText(getContext(), "Editing Genres", Toast.LENGTH_SHORT).show());
+			mEditGenres.setOnClickListener(v -> startActivity(new Intent(getContext(), EditGenres.class)));
 		}
 	}
 }

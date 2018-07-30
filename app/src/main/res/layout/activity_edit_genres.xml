@@ -1,10 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	tools:context=".EditGenres">
+	android:clipToPadding="false"
+	android:focusable="true"
+	android:focusableInTouchMode="true"
+	android:orientation="vertical"
+	android:padding="@dimen/small_padding">
 
-</android.support.constraint.ConstraintLayout>
+	<ImageView
+		android:id="@+id/backBtn"
+		android:layout_width="32sp"
+		android:layout_height="32sp"
+		android:layout_marginBottom="@dimen/smallest_padding"
+		android:contentDescription="@string/back_button"
+		android:src="@drawable/ic_baseline_arrow_back_24px"/>
+
+	<team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text.ClearableEditText
+		android:id="@+id/searchGenreField"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="@dimen/small_padding"
+		app:hint="@string/search_genre"
+		app:inputType="text"
+		app:sideIcon="@drawable/ic_search_grey_24dp"/>
+
+	<FrameLayout
+		android:id="@+id/genreSelection"
+		android:layout_width="match_parent"
+		android:layout_height="0sp"
+		android:layout_marginBottom="@dimen/small_padding"
+		android:layout_weight="1"/>
+
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="end"
+		android:clipToPadding="false">
+
+		<TextView
+			style="@style/RegularText"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_vertical"
+			android:layout_marginEnd="@dimen/medium_padding"
+			android:layout_marginRight="@dimen/medium_padding"
+			android:text="@string/cancel"/>
+
+		<Button
+			android:id="@+id/selectBtn"
+			style="@style/CustomRedButton"
+			android:layout_width="wrap_content"
+			android:layout_gravity="end"
+			android:text="@string/select"/>
+	</LinearLayout>
+</LinearLayout>

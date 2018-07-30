@@ -59,4 +59,6 @@
 	<string name="invalid_credentials_warning">Invalid credentials entered, try again!</string>
 	<string name="exit_warning">Are you sure you wish to exit?</string>
 	<string name="exit_application">Exit Application?</string>
+	<string name="cancel">Cancel</string>
+	<string name="select">Select</string>
 </resources>
