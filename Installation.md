@@ -82,7 +82,7 @@ Detailed guides:
 * [Firebase Guide for Android](https://firebase.google.com/docs/android/setup)
 
 **Important Note:**
-In addition to the library you included in the `app` folder's `build.gradle` file, you will need these libraries:
+* In addition to the library you included in the `app` folder's `build.gradle` file, you will need these libraries:
 
 ```
 dependencies {
@@ -92,6 +92,18 @@ dependencies {
     implementation "com.google.firebase:firebase-database:16.0.1"
     implementation 'com.google.firebase:firebase-crash:16.0.1'
     // ...
+}
+```
+
+* When you are in the Firebase instance console for the project, navigate to `Database` and select `Real-time Database` and find the tab for `Rules`, after that, copy over the following code into the editing area:
+
+```json
+{
+  /* Visit https://firebase.google.com/docs/database/security to learn more about security rules. */
+  "rules": {
+    ".read": true,
+    ".write": true
+  }
 }
 ```
 
