@@ -88,7 +88,7 @@ public class ClearableEditText extends CardView {
 	private void connectListeners() {
 		setOnTypingListener(
 				(s, start, count, after) ->
-						mClearBtn.setVisibility(s.toString().equals("") ? GONE : mIsClearable ? VISIBLE: GONE));
+						mClearBtn.setVisibility(s.toString().equals("") ? GONE : mIsClearable ? VISIBLE : GONE));
 		mClearBtn.setOnClickListener(view -> clearInputs(mEditText));
 	}
 	

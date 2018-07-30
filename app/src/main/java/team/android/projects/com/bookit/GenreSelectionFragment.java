@@ -14,6 +14,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import team.android.projects.com.bookit.dataclasses.Genre;
 import team.android.projects.com.bookit.utils.ui.adapters.GenreAdapter;
@@ -24,39 +25,20 @@ import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
 
 public class GenreSelectionFragment extends Fragment {
 	private View mView;
+	private RecyclerView mGenreArea;
+	private GenreAdapter mGenreAdapter;
 	
 	private String mTitle = "Blank Title";
 	private int mColumnCount = 2;
 	private boolean mMultiSelection = true;
 	
-	private final List<Genre> mGenres = Arrays.asList(
-			new Genre("Horror"),
-			new Genre("Mystery"),
-			new Genre("Fantasy"),
-			new Genre("Fantasy"),
-			new Genre("Fantasy"),
-			new Genre("Fantasy"),
-			new Genre("Fantasy"),
-			new Genre("Fantasy"),
-			new Genre("Fantasy"),
-			new Genre("Fantasy"),
-			new Genre("Fantasy"),
-			new Genre("Fantasy"),
-			new Genre("Action"),
-			new Genre("Self-Help"),
-			new Genre("Romance")
-	);
+	private List<Genre> mDisplayedGenres;
+	private List<Genre> mGenres;
 	
 	@Override
 	public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
 		mView = inflater.inflate(R.layout.fragment_genre_selection, container, false);
-		
-		if (getArguments() != null) {
-			mTitle = getArguments().getString("title");
-			mColumnCount = getArguments().getInt("columns");
-			mMultiSelection = getArguments().getBoolean("multiSelection");
-		}
 		
 		init();
 		
@@ -83,18 +65,65 @@ public class GenreSelectionFragment extends Fragment {
 		return Arrays.copyOf(selection, selection.length, String[].class);
 	}
 	
+	public void searchFor(String s) {
+		List<Genre> temp = new ArrayList<>();
+		if (s.trim().equals("")) {
+			if (!mDisplayedGenres.containsAll(mGenres)) {
+				temp = mGenres;
+			}
+		} else {
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+				temp = mGenres.stream()
+						.filter(genre -> genre.getGenreTitle().toLowerCase().startsWith(s.toLowerCase()))
+						.collect(Collectors.toList());
+			} else {
+				for (Genre g : mGenres) {
+					if (g.getGenreTitle().toLowerCase().startsWith(s.toLowerCase())) temp.add(g);
+				}
+			}
+		}
+		mDisplayedGenres.clear();
+		mDisplayedGenres.addAll(temp);
+		mGenreAdapter.notifyDataSetChanged();
+	}
+	
 	private void init() {
+		if (getArguments() != null) {
+			mTitle = getArguments().getString("title");
+			mColumnCount = getArguments().getInt("columns");
+			mMultiSelection = getArguments().getBoolean("multiSelection");
+		}
+		
+		mGenres = new ArrayList<Genre>() {{
+			add(new Genre("Horror"));
+			add(new Genre("Mystery"));
+			add(new Genre("Fantasy"));
+			add(new Genre("Fantasy"));
+			add(new Genre("Fantasy"));
+			add(new Genre("Fantasy"));
+			add(new Genre("Fantasy"));
+			add(new Genre("Fantasy"));
+			add(new Genre("Fantasy"));
+			add(new Genre("Fantasy"));
+			add(new Genre("Fantasy"));
+			add(new Genre("Fantasy"));
+			add(new Genre("Action"));
+			add(new Genre("Self-Help"));
+			add(new Genre("Romance"));
+		}};
+		mDisplayedGenres = new ArrayList<>(mGenres);
+		
 		TextView genreTitle = find(mView, R.id.genreSelectionTitle);
 		genreTitle.setText(mTitle);
 		
-		RecyclerView genresArea = find(mView, R.id.genreSelectionArea);
-		GenreAdapter adapter = new GenreAdapter(mGenres, mColumnCount, mMultiSelection);
-		genresArea.setLayoutManager(new GridLayoutManager(getActivity(), mColumnCount));
+		mGenreArea = find(mView, R.id.genreSelectionArea);
+		mGenreAdapter = new GenreAdapter(mDisplayedGenres, mColumnCount, mMultiSelection);
+		mGenreArea.setLayoutManager(new GridLayoutManager(getActivity(), mColumnCount));
 		try {
-			genresArea.addItemDecoration(new SpacingDecoration(32, 32, 2));
+			mGenreArea.addItemDecoration(new SpacingDecoration(32, 32, 2));
 		} catch (SpacingDecorationError e) {
 			e.printStackTrace();
 		}
-		genresArea.setAdapter(adapter);
+		mGenreArea.setAdapter(mGenreAdapter);
 	}
 }

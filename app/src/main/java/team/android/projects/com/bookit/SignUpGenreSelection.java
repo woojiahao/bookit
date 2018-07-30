@@ -51,6 +51,9 @@ public class SignUpGenreSelection extends AppCompatActivity {
 		
 		mBackBtn.setOnClickListener(ev -> finish());
 		mSelectBtn.setOnClickListener(v -> beginRegistration());
+		mSearch.setOnTypingListener(
+				(s, start, count, after) ->
+					mGenreSelectionFragment.searchFor(s.toString()));
 	}
 	
 	private void beginRegistration() {
