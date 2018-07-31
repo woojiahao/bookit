@@ -17,4 +17,6 @@ public interface IFirebaseOperations {
 	String getUsername();
 	String getEmail();
 	List<String> getGenres();
+	
+	void editGenres(String[] newGenres);
 }

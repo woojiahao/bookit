@@ -6,7 +6,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.Arrays;
+
 import team.android.projects.com.bookit.dataclasses.User;
+import team.android.projects.com.bookit.utils.database.FirebaseOperations;
+import team.android.projects.com.bookit.utils.database.IFirebaseOperations;
 import team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text.ClearableEditText;
 
 import static team.android.projects.com.bookit.utils.logging.Logging.shortToast;
@@ -20,6 +24,8 @@ public class EditGenres extends AppCompatActivity {
 	private GenreSelectionFragment mGenreSelectionFragment;
 	private TextView mCancelEdit;
 	
+	private IFirebaseOperations mFirebaseOperations;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -30,6 +36,8 @@ public class EditGenres extends AppCompatActivity {
 	}
 	
 	private void init() {
+		mFirebaseOperations = new FirebaseOperations(this);
+		
 		mSearch = find(this, R.id.searchGenreField);
 		mSelectBtn = find(this, R.id.selectBtn);
 		mBackBtn = find(this, R.id.backBtn);
@@ -43,7 +51,20 @@ public class EditGenres extends AppCompatActivity {
 	private void connectListeners() {
 		mBackBtn.setOnClickListener(v -> finish());
 		mCancelEdit.setOnClickListener(v -> finish());
-		mSelectBtn.setOnClickListener(v -> shortToast(this, "Editing Genres"));
+		mSelectBtn.setOnClickListener(v -> {
+			String[] selection = mGenreSelectionFragment.getSelection();
+			if (selection.length == 0) {
+				shortToast(this, getString(R.string.empty_selection_warning));
+			} else {
+				User u = Preloading.getCurrentUser();
+				String[] previousGenres = u.genres.toArray(new String[u.genres.size()]);
+				if (Arrays.equals(selection, previousGenres)) {
+					finish();
+				} else {
+					mFirebaseOperations.editGenres(selection);
+				}
+			}
+		});
 		mSearch.setOnTypingListener(
 				(s, start, count, after) ->
 						mGenreSelectionFragment.searchFor(s.toString()));

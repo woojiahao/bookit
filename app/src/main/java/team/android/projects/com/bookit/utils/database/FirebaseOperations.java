@@ -23,7 +23,6 @@ import team.android.projects.com.bookit.Preloading;
 import team.android.projects.com.bookit.RecoveryEmailSentSuccess;
 import team.android.projects.com.bookit.SignUp;
 import team.android.projects.com.bookit.dataclasses.User;
-import team.android.projects.com.bookit.dataclasses.UserKeys;
 
 import static team.android.projects.com.bookit.dataclasses.UserKeys.Username;
 import static team.android.projects.com.bookit.utils.logging.ApplicationCodes.Debug;
@@ -120,13 +119,13 @@ public class FirebaseOperations implements IFirebaseOperations {
 				});
 	}
 	
-	@Override public FirebaseUser getCurrentUser() {
-		return mFirebaseAuth.getCurrentUser();
-	}
-	
 	@Override public void signOut() {
 		mFirebaseAuth.signOut();
 		Log.d(Debug.name(), String.format("isLoggedIn: %s", getCurrentUser() != null));
+	}
+	
+	@Override public FirebaseUser getCurrentUser() {
+		return mFirebaseAuth.getCurrentUser();
 	}
 	
 	@Override public String getUsername() {
@@ -139,6 +138,21 @@ public class FirebaseOperations implements IFirebaseOperations {
 	
 	@Override public List<String> getGenres() {
 		return Preloading.getCurrentUser().genres;
+	}
+	
+	@Override public void editGenres(String[] newGenres) {
+		DatabaseReference userRef = mFirebaseDatabase
+				.getRef()
+				.child("users")
+				.child(getCurrentUser().getUid())
+				.child("genres");
+		userRef
+				.setValue(Arrays.asList(newGenres))
+				.addOnCompleteListener(task -> {
+					if (task.isSuccessful()) {
+						((Activity) mContext).finish();
+					}
+				});
 	}
 	
 	private void configureUser(final String email, final String username, final String[] genres) {
