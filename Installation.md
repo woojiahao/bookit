@@ -95,4 +95,8 @@ You do not need to include any of the libraries in the gradle files since the ma
 }
 ```
 
-After this setting up firebase, you will be able to use the application on your own device and begin to work on the other components as well.
+After setting up Firebase, navigate to the console and do the following:
+1. Under the `Authentication` tab, enable email address as the sign-in method
+2. Under the `Database` tab, create a `Real-time Database` (you will have to scroll down a little), and run it in **test** mode
+
+To test that the application is working, run the app and try making an account, you will see that a user is added and the database gets a new entry.
