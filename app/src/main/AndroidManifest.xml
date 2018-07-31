@@ -55,6 +55,8 @@
 		</activity>
 		<activity android:name=".EditGenres">
 		</activity>
+		<activity android:name=".RecoveryEmailSentSuccess">
+		</activity>
 	</application>
 
 </manifest>

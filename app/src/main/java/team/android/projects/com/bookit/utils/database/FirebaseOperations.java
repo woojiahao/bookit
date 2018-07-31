@@ -20,6 +20,7 @@ import java.util.List;
 
 import team.android.projects.com.bookit.Container;
 import team.android.projects.com.bookit.Preloading;
+import team.android.projects.com.bookit.RecoveryEmailSentSuccess;
 import team.android.projects.com.bookit.SignUp;
 import team.android.projects.com.bookit.dataclasses.User;
 import team.android.projects.com.bookit.dataclasses.UserKeys;
@@ -96,6 +97,25 @@ public class FirebaseOperations implements IFirebaseOperations {
 						shortToast(mContext, "Email account does not exist");
 					} else if (exception instanceof FirebaseAuthInvalidCredentialsException) {
 						shortToast(mContext, "Invalid password");
+					}
+				});
+	}
+	
+	@Override public void sendRecoveryEmail(String email, boolean redirect) {
+		mFirebaseAuth
+				.sendPasswordResetEmail(email)
+				.addOnCompleteListener(task -> {
+					if (!task.isSuccessful()) {
+						shortToast(mContext, "Failed to send recovery email");
+					} else {
+						if (!redirect) {
+							shortToast(mContext, "Recovery email has been sent");
+						} else {
+							Intent i = new Intent(mContext, RecoveryEmailSentSuccess.class);
+							i.putExtra("email", email);
+							mContext.startActivity(i);
+							((Activity) mContext).finish();
+						}
 					}
 				});
 	}

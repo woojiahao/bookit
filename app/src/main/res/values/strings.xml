@@ -63,4 +63,7 @@
 	<string name="select">Select</string>
 	<string name="empty_inputs_warning">Please fill in all of the fields before proceeding</string>
 	<string name="invalid_email_warning">Please enter a valid email address</string>
+	<string name="invalid_user">User does not exist</string>
+	<string name="mismatch_forgot_password">Username and email do not match</string>
+	<string name="resend_email">Resend Email</string>
 </resources>
