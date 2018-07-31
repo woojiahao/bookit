@@ -82,18 +82,7 @@ Detailed guides:
 * [Firebase Guide for Android](https://firebase.google.com/docs/android/setup)
 
 **Important Note:**
-* In addition to the library you included in the `app` folder's `build.gradle` file, you will need these libraries:
-
-```
-dependencies {
-    // ...
-    implementation 'com.google.firebase:firebase-core:16.0.1'
-    implementation "com.google.firebase:firebase-auth:16.0.2"
-    implementation "com.google.firebase:firebase-database:16.0.1"
-    implementation 'com.google.firebase:firebase-crash:16.0.1'
-    // ...
-}
-```
+You do not need to include any of the libraries in the gradle files since the master repo that you will be pulling from will have the latest version of the libraries needed
 
 * When you are in the Firebase instance console for the project, navigate to `Database` and select `Real-time Database` and find the tab for `Rules`, after that, copy over the following code into the editing area:
 
