@@ -41,7 +41,7 @@ public class SignUpGenreSelection extends AppCompatActivity {
 		mSelectBtn = find(this, R.id.selectBtn);
 		mBackBtn = find(this, R.id.backBtn);
 		
-		mGenreSelectionFragment = loadGenreSelection(getSupportFragmentManager(), getString(R.string.select_genres), "Genre", 2, true);
+		mGenreSelectionFragment = loadGenreSelection(getSupportFragmentManager(), getString(R.string.select_genres), "Genre", 2, true, null);
 		
 		mFirebaseOperations = new FirebaseOperations(this);
 	}

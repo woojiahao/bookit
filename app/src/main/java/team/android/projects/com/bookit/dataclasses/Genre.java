@@ -11,6 +11,11 @@ public class Genre {
 		mIsSelected = false;
 	}
 	
+	public Genre(String mGenreTitle, boolean mIsSelected) {
+		this.mGenreTitle = mGenreTitle;
+		this.mIsSelected = mIsSelected;
+	}
+	
 	public String getGenreTitle() {
 		return mGenreTitle;
 	}

@@ -28,7 +28,7 @@ public class SearchFragment extends Fragment {
 	
 	private void init() {
 		mSearchField = find(mView, R.id.searchField);
-		loadGenreSelection(getFragmentManager(), "Genre", "Genre", 2, false);
+		loadGenreSelection(getFragmentManager(), "Genre", "Genre", 2, false, null);
 	}
 	
 	private void connectListeners() {
@@ -36,7 +36,7 @@ public class SearchFragment extends Fragment {
 			if (getFragmentManager() != null) {
 				Fragment genreSelection = getFragmentManager().findFragmentByTag("Genre");
 				if (mSearchField.getText().equals("")) {
-					loadGenreSelection(getFragmentManager(), "Genre", "Genre", 2, false);
+					loadGenreSelection(getFragmentManager(), "Genre", "Genre", 2, false, null);
 				} else {
 					if (genreSelection != null) {
 						getFragmentManager().beginTransaction().remove(genreSelection).commit();

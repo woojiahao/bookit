@@ -31,6 +31,7 @@ public class GenreSelectionFragment extends Fragment {
 	private String mTitle = "Blank Title";
 	private int mColumnCount = 2;
 	private boolean mMultiSelection = true;
+	private List<String> mPreviousSelection = null;
 	
 	private List<Genre> mDisplayedGenres;
 	private List<Genre> mGenres;
@@ -88,12 +89,34 @@ public class GenreSelectionFragment extends Fragment {
 	}
 	
 	private void init() {
-		if (getArguments() != null) {
-			mTitle = getArguments().getString("title");
-			mColumnCount = getArguments().getInt("columns");
-			mMultiSelection = getArguments().getBoolean("multiSelection");
+		Bundle args = getArguments();
+		if (args != null) {
+			mTitle = args.getString("title");
+			mColumnCount = args.getInt("columns");
+			mMultiSelection = args.getBoolean("multiSelection");
+			String[] prev = args.getStringArray("previousSelection");
+			if (prev != null) {
+				mPreviousSelection = Arrays.asList(prev);
+			}
 		}
 		
+		setupGenres();
+		
+		TextView genreTitle = find(mView, R.id.genreSelectionTitle);
+		genreTitle.setText(mTitle);
+		
+		mGenreArea = find(mView, R.id.genreSelectionArea);
+		mGenreAdapter = new GenreAdapter(mDisplayedGenres, mColumnCount, mMultiSelection);
+		mGenreArea.setLayoutManager(new GridLayoutManager(getActivity(), mColumnCount));
+		try {
+			mGenreArea.addItemDecoration(new SpacingDecoration(32, 32, 2));
+		} catch (SpacingDecorationError e) {
+			e.printStackTrace();
+		}
+		mGenreArea.setAdapter(mGenreAdapter);
+	}
+	
+	private void setupGenres() {
 		mGenres = new ArrayList<Genre>() {{
 			add(new Genre("Horror"));
 			add(new Genre("Mystery"));
@@ -113,17 +136,10 @@ public class GenreSelectionFragment extends Fragment {
 		}};
 		mDisplayedGenres = new ArrayList<>(mGenres);
 		
-		TextView genreTitle = find(mView, R.id.genreSelectionTitle);
-		genreTitle.setText(mTitle);
-		
-		mGenreArea = find(mView, R.id.genreSelectionArea);
-		mGenreAdapter = new GenreAdapter(mDisplayedGenres, mColumnCount, mMultiSelection);
-		mGenreArea.setLayoutManager(new GridLayoutManager(getActivity(), mColumnCount));
-		try {
-			mGenreArea.addItemDecoration(new SpacingDecoration(32, 32, 2));
-		} catch (SpacingDecorationError e) {
-			e.printStackTrace();
+		if (mPreviousSelection != null) {
+			for (Genre g : mGenres) {
+				g.setIsSelected(mPreviousSelection.contains(g.getGenreTitle()));
+			}
 		}
-		mGenreArea.setAdapter(mGenreAdapter);
 	}
 }

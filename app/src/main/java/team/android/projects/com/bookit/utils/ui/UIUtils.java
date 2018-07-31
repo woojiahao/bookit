@@ -50,11 +50,13 @@ public class UIUtils {
 	
 	public static GenreSelectionFragment loadGenreSelection(FragmentManager manager, String title,
 															String tag, int columnCount,
-															boolean multiSelection) {
+															boolean multiSelection,
+															String[] previousSelection) {
 		Bundle b = new Bundle();
 		b.putString("title", title);
 		b.putInt("columns", columnCount);
 		b.putBoolean("multiSelection", multiSelection);
+		b.putStringArray("previousSelection", previousSelection);
 		GenreSelectionFragment f = new GenreSelectionFragment();
 		f.setArguments(b);
 		if (manager != null) {

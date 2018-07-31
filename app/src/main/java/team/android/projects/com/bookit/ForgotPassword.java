@@ -4,10 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
-import android.widget.Toast;
 
 import team.android.projects.com.bookit.dataclasses.User;
-import team.android.projects.com.bookit.dataclasses.UserKeys;
 import team.android.projects.com.bookit.utils.database.FirebaseOperations;
 import team.android.projects.com.bookit.utils.database.IFirebaseOperations;
 import team.android.projects.com.bookit.utils.ui.UIUtils;
