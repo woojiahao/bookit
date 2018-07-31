@@ -4,7 +4,6 @@ import android.app.Application;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -22,7 +21,7 @@ import team.android.projects.com.bookit.dataclasses.UserKeys;
 import static team.android.projects.com.bookit.dataclasses.UserKeys.Uid;
 import static team.android.projects.com.bookit.utils.logging.ApplicationCodes.Debug;
 
-// todo: fix potential bug when loading user twice (check if the onDataChange method is called again when the user is registered
+// todo: fix reloading users after registration bug
 public class Preloading extends Application {
 	private static List<User> mUsers = new ArrayList<User>();
 	private static User mCurrentUser = null;
@@ -42,13 +41,10 @@ public class Preloading extends Application {
 				.addValueEventListener(new ValueEventListener() {
 					@Override public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 						Log.d(Debug.name(), "Loading users");
+						mUsers.clear();
 						for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
 							User user = snapshot.getValue(User.class);
-							if (user != null) {
-								if (findUser(user.uid, Uid) == null) {
-									mUsers.add(user);
-								}
-							}
+							if (user != null) mUsers.add(user);
 						}
 					}
 					
