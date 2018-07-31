@@ -17,10 +17,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import team.android.projects.com.bookit.dataclasses.User;
+import team.android.projects.com.bookit.dataclasses.UserKeys;
 
+import static team.android.projects.com.bookit.dataclasses.UserKeys.Uid;
 import static team.android.projects.com.bookit.utils.logging.ApplicationCodes.Debug;
 
-// todo: fix potential bug when loading user twice
+// todo: fix potential bug when loading user twice (check if the onDataChange method is called again when the user is registered
 public class Preloading extends Application {
 	private static List<User> mUsers = new ArrayList<User>();
 	private static User mCurrentUser = null;
@@ -43,7 +45,7 @@ public class Preloading extends Application {
 						for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
 							User user = snapshot.getValue(User.class);
 							if (user != null) {
-								if (findUser(user.uid, "uid") == null) {
+								if (findUser(user.uid, Uid) == null) {
 									mUsers.add(user);
 								}
 							}
@@ -56,8 +58,7 @@ public class Preloading extends Application {
 				});
 		FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 		if (user != null) {
-			// if the user is already logged in
-			mCurrentUser = findUser(user.getUid(), "uid");
+			mCurrentUser = findUser(user.getUid(), Uid);
 		}
 	}
 	
@@ -65,16 +66,16 @@ public class Preloading extends Application {
 		return mUsers;
 	}
 	
-	public static User findUser(String check, String checkType) {
+	public static User findUser(String check, UserKeys checkType) {
 		for (User u : mUsers) {
-			switch (checkType.toLowerCase()) {
-				case "uid":
+			switch (checkType) {
+				case Uid:
 					if (u.uid.equals(check)) return u;
 					break;
-				case "email":
+				case Email:
 					if (u.email.equals(check)) return u;
 					break;
-				case "username":
+				case Username:
 					if (u.username.equals(check)) return u;
 					break;
 			}

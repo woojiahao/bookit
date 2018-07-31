@@ -22,7 +22,9 @@ import team.android.projects.com.bookit.Container;
 import team.android.projects.com.bookit.Preloading;
 import team.android.projects.com.bookit.SignUp;
 import team.android.projects.com.bookit.dataclasses.User;
+import team.android.projects.com.bookit.dataclasses.UserKeys;
 
+import static team.android.projects.com.bookit.dataclasses.UserKeys.Username;
 import static team.android.projects.com.bookit.utils.logging.ApplicationCodes.Debug;
 import static team.android.projects.com.bookit.utils.logging.ApplicationCodes.Error;
 import static team.android.projects.com.bookit.utils.logging.ApplicationCodes.Success;
@@ -46,7 +48,7 @@ public class FirebaseOperations implements IFirebaseOperations {
 			mFirebaseAuth.signOut();
 		}
 		
-		if (Preloading.findUser(username, "username") != null) {
+		if (Preloading.findUser(username, Username) != null) {
 			shortToast(mContext, String.format("Username: %s is used already, try again", username));
 			return;
 		}

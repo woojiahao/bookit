@@ -7,10 +7,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import team.android.projects.com.bookit.dataclasses.User;
+import team.android.projects.com.bookit.dataclasses.UserKeys;
 import team.android.projects.com.bookit.utils.database.FirebaseOperations;
 import team.android.projects.com.bookit.utils.database.IFirebaseOperations;
 import team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text.ClearableEditText;
 
+import static team.android.projects.com.bookit.dataclasses.UserKeys.Username;
 import static team.android.projects.com.bookit.utils.logging.Logging.shortToast;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.displayExitConfirmDialog;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
@@ -64,7 +66,7 @@ public class SignIn extends AppCompatActivity {
 				shortToast(this, getString(R.string.empty_inputs_warning));
 			} else {
 				if (!isEmail(email)) {
-					User matchedUser = Preloading.findUser(email, "username");
+					User matchedUser = Preloading.findUser(email, Username);
 					if (matchedUser != null) {
 						email = matchedUser.email;
 					} else {
