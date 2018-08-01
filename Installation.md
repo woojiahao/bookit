@@ -51,7 +51,7 @@ Firebase is something known as a NoSQL database, which means that it does not us
 * [NoSQL Introduction](https://www.mongodb.com/nosql-explained)
 * [Firebase](https://firebase.google.com/)
 
-## How to setup Firebase
+### How to setup Firebase
 Firebase requires the use of a unique API key, however, it is not advisible to store your API keys on a public repository on GitHub as that can be hijacked by malicious users and used for unwanted reasons, therefore, you will need to create a unique set of credentials for your own copy of the application in order for this to work.
 
 Before beginning, ensure that you have the latest version of the code:
