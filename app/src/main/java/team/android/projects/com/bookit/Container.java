@@ -22,6 +22,7 @@ import static team.android.projects.com.bookit.utils.backstack.FragmentID.Discov
 import static team.android.projects.com.bookit.utils.backstack.FragmentID.Favourites;
 import static team.android.projects.com.bookit.utils.backstack.FragmentID.Search;
 import static team.android.projects.com.bookit.utils.backstack.FragmentID.Setting;
+import static team.android.projects.com.bookit.utils.ui.UIUtils.displayExitConfirmDialog;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
 import static team.android.projects.com.bookit.utils.ui.camera.CameraStates.Cancelled;
 import static team.android.projects.com.bookit.utils.ui.camera.CameraStates.Taken;
@@ -52,7 +53,11 @@ public class Container
 	}
 	
 	@Override public void onBackPressed() {
-		setBottomBarSelectedItem(Discover);
+		if (mBottomBar.getSelectedItemId() == R.id.navigationDiscover) {
+			displayExitConfirmDialog(this);
+		} else {
+			setBottomBarSelectedItem(Discover);
+		}
 	}
 	
 	@Override public boolean onNavigationItemSelected(@NonNull MenuItem item) {
