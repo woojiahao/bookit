@@ -22,11 +22,9 @@ import static team.android.projects.com.bookit.utils.logging.Logging.shortToast;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
 
 // todo: convert the settings row into a recyclerview and use the dividers item decoration instead to show the dividers
-// todo: add a sharedpreference for the current language selected and load then on run at the splashscreen
 public class SettingsFragment extends Fragment {
 	private View mView;
 	private SettingsRow mChangeLanguage;
-	private SettingsRow mClearHistory;
 	private SettingsRow mEditGenres;
 	private SettingsRow mSignOut;
 	
@@ -50,7 +48,6 @@ public class SettingsFragment extends Fragment {
 		mFirebaseOperations = new FirebaseOperations(getContext());
 		
 		mChangeLanguage = find(mView, R.id.settingsChangeLanguage);
-		mClearHistory = find(mView, R.id.settingsClearHistory);
 		mEditGenres = find(mView, R.id.settingsEditGenres);
 		mSignOut = find(mView, R.id.settingsSignOut);
 		
@@ -98,16 +95,6 @@ public class SettingsFragment extends Fragment {
 									dialog.dismiss();
 								}).show();
 			});
-			mClearHistory.setOnClickListener(v ->
-					new AlertDialog.Builder(getContext())
-							.setTitle(R.string.clear_history)
-							.setMessage(R.string.clear_history_warning)
-							.setPositiveButton(
-									android.R.string.ok,
-									(dialog, which) -> {
-									})
-							.setNegativeButton(android.R.string.cancel, null)
-							.show());
 			mSignOut.setOnClickListener(v ->
 					new AlertDialog.Builder(getContext())
 							.setTitle(R.string.sign_out)

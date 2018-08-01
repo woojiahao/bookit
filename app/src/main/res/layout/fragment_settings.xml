@@ -45,12 +45,6 @@
 		android:text="@string/account"/>
 
 	<team.android.projects.com.bookit.utils.ui.custom_views.settings_row.SettingsRow
-		android:id="@+id/settingsClearHistory"
-		style="@style/SettingsRow"
-		app:description="Clear search history"
-		app:title="Clear History"/>
-
-	<team.android.projects.com.bookit.utils.ui.custom_views.settings_row.SettingsRow
 		android:id="@+id/settingsEditGenres"
 		style="@style/SettingsRow"
 		app:description="Change your recommendations"
