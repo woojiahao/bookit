@@ -13,6 +13,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import team.android.projects.com.bookit.dataclasses.User;
@@ -22,6 +23,7 @@ import static team.android.projects.com.bookit.dataclasses.UserKeys.Uid;
 import static team.android.projects.com.bookit.utils.logging.ApplicationCodes.Debug;
 
 // todo: fix reloading users after registration bug
+// todo: set the preloading for the users to be asynchronous and force the app to load everything before starting
 public class Preloading extends Application {
 	private static List<User> mUsers = new ArrayList<User>();
 	private static User mCurrentUser = null;
@@ -52,6 +54,7 @@ public class Preloading extends Application {
 					
 					}
 				});
+
 		FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 		if (user != null) {
 			mCurrentUser = findUser(user.getUid(), Uid);
@@ -99,5 +102,9 @@ public class Preloading extends Application {
 	
 	public static User getCurrentUser() {
 		return mCurrentUser;
+	}
+	
+	public static void updateUserGenres(String[] selection) {
+		getCurrentUser().genres = Arrays.asList(selection);
 	}
 }

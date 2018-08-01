@@ -150,6 +150,7 @@ public class FirebaseOperations implements IFirebaseOperations {
 				.setValue(Arrays.asList(newGenres))
 				.addOnCompleteListener(task -> {
 					if (task.isSuccessful()) {
+						Preloading.updateUserGenres(newGenres);
 						((Activity) mContext).finish();
 					}
 				});

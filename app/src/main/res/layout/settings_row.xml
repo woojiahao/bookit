@@ -5,12 +5,7 @@
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	android:orientation="vertical"
-	android:paddingBottom="@dimen/smallest_padding"
-	android:paddingEnd="@dimen/small_padding"
-	android:paddingLeft="@dimen/small_padding"
-	android:paddingRight="@dimen/small_padding"
-	android:paddingStart="@dimen/small_padding"
-	android:paddingTop="@dimen/smallest_padding"
+	android:padding="@dimen/small_padding"
 	android:background="@drawable/settings_background">
 
 	<TextView
