@@ -1,23 +1,23 @@
 package team.android.projects.com.bookit;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import team.android.projects.com.bookit.dataclasses.User;
+import java.util.Arrays;
+
 import team.android.projects.com.bookit.utils.database.FirebaseOperations;
 import team.android.projects.com.bookit.utils.database.IFirebaseOperations;
 import team.android.projects.com.bookit.utils.ui.custom_views.settings_row.SettingsRow;
 
-import static team.android.projects.com.bookit.utils.logging.ApplicationCodes.Debug;
 import static team.android.projects.com.bookit.utils.logging.Logging.shortToast;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
 
@@ -35,7 +35,7 @@ public class SettingsFragment extends Fragment {
 	
 	private IFirebaseOperations mFirebaseOperations;
 	
-	private final String[] values = { "English", "Chinese", "Malay" };
+	private final String[] mLanguages = { "English", "Chinese", "Malay" };
 	
 	@Override
 	public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -65,23 +65,39 @@ public class SettingsFragment extends Fragment {
 	
 	private void connectListeners() {
 		if (getContext() != null) {
-			mChangeLanguage.setOnClickListener(v ->
-					new AlertDialog.Builder(getContext())
-							.setTitle(R.string.select_language)
-							.setSingleChoiceItems(values, -1, (dialog, item) -> {
-								switch (item) {
-									case 0:
-										shortToast(getContext(), "English");
-										break;
-									case 1:
-										shortToast(getContext(), "Chinese");
-										break;
-									case 3:
-										shortToast(getContext(), "Malay");
-										break;
-								}
-								dialog.dismiss();
-							}).show());
+			mChangeLanguage.setOnClickListener(v -> {
+				SharedPreferences sharedPreferences = getContext()
+						.getSharedPreferences(
+								getString(R.string.preference_key),
+								Context.MODE_PRIVATE);
+				String deviceLanguage = sharedPreferences.getString("default_lang", "English");
+				StringBuilder selection = new StringBuilder();
+				
+				new AlertDialog.Builder(getContext())
+						.setTitle(R.string.select_language)
+						.setSingleChoiceItems(
+								mLanguages,
+								Arrays.asList(mLanguages).indexOf(deviceLanguage),
+								(dialog, item) -> {
+									switch (item) {
+										case 0:
+											selection.append("English");
+											break;
+										case 1:
+											selection.append("Chinese");
+											break;
+										case 2:
+											selection.append("Malay");
+											break;
+									}
+									shortToast(getContext(), selection.toString());
+									sharedPreferences
+											.edit()
+											.remove("default_lang")
+											.putString("default_lang", selection.toString()).apply();
+									dialog.dismiss();
+								}).show();
+			});
 			mClearHistory.setOnClickListener(v ->
 					new AlertDialog.Builder(getContext())
 							.setTitle(R.string.clear_history)

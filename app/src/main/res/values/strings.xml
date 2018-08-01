@@ -66,4 +66,6 @@
 	<string name="invalid_user">User does not exist</string>
 	<string name="mismatch_forgot_password">Username and email do not match</string>
 	<string name="resend_email">Resend Email</string>
+
+	<string name="preference_key">BOOKIT_PREFERENCES</string>
 </resources>
