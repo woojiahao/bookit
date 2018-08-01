@@ -51,6 +51,10 @@ public class Container
 		connectListeners();
 	}
 	
+	@Override public void onBackPressed() {
+		setBottomBarSelectedItem(Discover);
+	}
+	
 	@Override public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 		FragmentManager manager = getSupportFragmentManager();
 		Fragment toInflate = null;
