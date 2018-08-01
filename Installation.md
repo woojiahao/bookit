@@ -84,17 +84,6 @@ Detailed guides:
 **Important Note:**
 You do not need to include any of the libraries in the gradle files since the master repo that you will be pulling from will have the latest version of the libraries needed
 
-* When you are in the Firebase instance console for the project, navigate to `Database` and select `Real-time Database` and find the tab for `Rules`, after that, copy over the following code into the editing area:
-
-```json
-{
-  "rules": {
-    ".read": true,
-    ".write": true
-  }
-}
-```
-
 After setting up Firebase, navigate to the console and do the following:
 1. Under the `Authentication` tab, enable email address as the sign-in method
 2. Under the `Database` tab, create a `Real-time Database` (you will have to scroll down a little), and run it in **test** mode
