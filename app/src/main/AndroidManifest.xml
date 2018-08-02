@@ -7,6 +7,9 @@
 		android:required="false"/>
 
 	<uses-permission android:name="android.permission.CAMERA"/>
+	<uses-permission
+		android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+		android:maxSdkVersion="18"/>
 
 	<application
 		android:allowBackup="true"
@@ -18,6 +21,16 @@
 		<meta-data
 			android:name="preloaded_fonts"
 			android:resource="@array/preloaded_fonts"/>
+
+		<provider
+			android:name="android.support.v4.content.FileProvider"
+			android:authorities="com.example.android.fileprovider"
+			android:exported="false"
+			android:grantUriPermissions="true">
+			<meta-data
+				android:name="android.support.FILE_PROVIDER_PATHS"
+				android:resource="@xml/file_paths"/>
+		</provider>
 
 		<activity
 			android:name=".SignUp"
@@ -43,18 +56,26 @@
 			android:name=".BookDetails"
 			android:screenOrientation="portrait">
 		</activity>
-		<activity android:name=".ScannerLauncher">
+		<activity
+			android:name=".ScannerLauncher"
+			android:screenOrientation="portrait">
 		</activity>
-		<activity android:name=".SplashScreen">
+		<activity
+			android:name=".SplashScreen"
+			android:screenOrientation="portrait">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN"/>
 
 				<category android:name="android.intent.category.LAUNCHER"/>
 			</intent-filter>
 		</activity>
-		<activity android:name=".EditGenres">
+		<activity
+			android:name=".EditGenres"
+			android:screenOrientation="portrait">
 		</activity>
-		<activity android:name=".RecoveryEmailSentSuccess">
+		<activity
+			android:name=".RecoveryEmailSentSuccess"
+			android:screenOrientation="portrait">
 		</activity>
 	</application>
 
