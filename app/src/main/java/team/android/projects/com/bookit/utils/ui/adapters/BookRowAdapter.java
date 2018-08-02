@@ -15,6 +15,7 @@ import java.util.List;
 import team.android.projects.com.bookit.R;
 import team.android.projects.com.bookit.dataclasses.Book;
 
+import static team.android.projects.com.bookit.utils.ui.UIUtils.displayPopupMenu;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
 
 public class BookRowAdapter extends RecyclerView.Adapter<BookRowAdapter.ViewHolder> {
@@ -55,7 +56,7 @@ public class BookRowAdapter extends RecyclerView.Adapter<BookRowAdapter.ViewHold
 		}
 		
 		private void connectListeners() {
-			mPopupMenu.setOnClickListener(v -> Toast.makeText(mView.getContext(), "popping up!", Toast.LENGTH_SHORT).show());
+			mPopupMenu.setOnClickListener(v -> displayPopupMenu(mView.getContext(), mPopupMenu));
 		}
 		
 		void setThumbnail(int thumbnail) {

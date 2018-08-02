@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -14,12 +15,18 @@ import java.util.List;
 import team.android.projects.com.bookit.R;
 import team.android.projects.com.bookit.dataclasses.Book;
 
+import static team.android.projects.com.bookit.utils.logging.Logging.shortToast;
+import static team.android.projects.com.bookit.utils.ui.UIUtils.displayPopupMenu;
+import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
+
 public class BookCardAdapter extends RecyclerView.Adapter<BookCardAdapter.ViewHolder> {
 	private List<Book> mBooks;
 	
 	static class ViewHolder extends RecyclerView.ViewHolder {
 		private View mView;
 		private ImageView mThumbnail;
+		private ImageView mPopupMenu;
+		
 		private TextView mTitle;
 		private TextView mGenre;
 		private TextView mPrice;
@@ -31,14 +38,24 @@ public class BookCardAdapter extends RecyclerView.Adapter<BookCardAdapter.ViewHo
 		ViewHolder(View v) {
 			super(v);
 			mView = v;
+			init();
+			connectListeners();
+		}
+		
+		private void init() {
+			mThumbnail = find(mView, R.id.bookThumbnail);
+			mPopupMenu = find(mView, R.id.bookPopupMenu);
 			
-			mThumbnail = mView.findViewById(R.id.bookThumbnail);
-			mTitle = mView.findViewById(R.id.bookTitle);
-			mGenre = mView.findViewById(R.id.bookGenre);
-			mPrice = mView.findViewById(R.id.bookPrice);
-			mRating = mView.findViewById(R.id.bookRating);
+			mTitle = find(mView, R.id.bookTitle);
+			mGenre = find(mView, R.id.bookGenre);
+			mPrice = find(mView, R.id.bookPrice);
+			mRating = find(mView, R.id.bookRating);
 			
 			mCurrencyFormatter = NumberFormat.getCurrencyInstance();
+		}
+		
+		private void connectListeners() {
+			mPopupMenu.setOnClickListener(v -> displayPopupMenu(mView.getContext(), mPopupMenu));
 		}
 		
 		void setThumbnail(int thumbnailId) {

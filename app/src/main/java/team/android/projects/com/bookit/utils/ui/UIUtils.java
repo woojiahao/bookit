@@ -10,10 +10,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.PopupMenu;
 
 import team.android.projects.com.bookit.GenreSelectionFragment;
 import team.android.projects.com.bookit.R;
 import team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text.ClearableEditText;
+
+import static team.android.projects.com.bookit.utils.logging.Logging.shortToast;
 
 public class UIUtils {
 	public static void clearInputs(EditText... editTexts) {
@@ -88,5 +91,23 @@ public class UIUtils {
 		} else {
 			b.setBackground(c.getResources().getDrawable(R.drawable.red_button_background_disabled));
 		}
+	}
+	
+	public static void displayPopupMenu(Context c, View toAttach) {
+		PopupMenu menu = new PopupMenu(c, toAttach);
+		menu.inflate(R.menu.popup_menu_book);
+		menu.setOnMenuItemClickListener(item -> {
+			switch (item.getItemId()) {
+				case R.id.popupAdd:
+					shortToast(c, "Adding");
+					return true;
+				case R.id.popupRemove:
+					shortToast(c, "Removing");
+					return true;
+			}
+			
+			return false;
+		});
+		menu.show();
 	}
 }
