@@ -1,7 +1,6 @@
 # BookIt!
-A book discovery and search application tailored just for you!
+An open-source project for a book searching application on Android.
 
-This application leverages off the many public APIs that book stores have so as to find the books at the cheapest prices and display those for you, reducing your hassle when finding books at their cheapest!
+BookIt! leverages off of public APIs provided by book services to find the cheapest prices for books as well as to allow users to store books that they like.
 
-## Project Guide:
-[Project Guide](https://github.com/woojiahao/bookit/blob/master/Installation.md)
+To begin contributing, read the [project guide.](https://github.com/woojiahao/bookit/blob/master/Project%20Guide.md)
