@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--todo: add popup menu for the book cards as well-->
 <android.support.v7.widget.CardView
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -31,15 +30,33 @@
 			android:orientation="vertical"
 			android:padding="@dimen/tiny_padding">
 
-			<TextView
-				android:id="@+id/bookGenre"
-				style="@style/RegularText"
-				android:ellipsize="end"
-				android:maxLines="1"
-				android:maxWidth="90sp"
-				android:textColor="@color/secondaryTextColor"
-				android:textSize="14sp"
-				tools:text="Literature"/>
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal">
+
+				<TextView
+					android:id="@+id/bookGenre"
+					style="@style/RegularText"
+					android:layout_width="0sp"
+					android:layout_gravity="center"
+					android:layout_weight="1"
+					android:ellipsize="end"
+					android:maxLines="1"
+					android:maxWidth="90sp"
+					android:textColor="@color/secondaryTextColor"
+					android:textSize="14sp"
+					tools:text="Literature"/>
+
+				<ImageView
+					android:id="@+id/bookPopupMenu"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="end"
+					android:contentDescription="@string/popup_menu"
+					android:src="@drawable/popup_menu"/>
+
+			</LinearLayout>
 
 			<TextView
 				android:id="@+id/bookTitle"
