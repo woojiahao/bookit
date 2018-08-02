@@ -1,82 +1,136 @@
 package team.android.projects.com.bookit.dataclasses;
 
+import java.util.Map;
+
+// todo: convert prices to a hashmap with key as location and value as price
+// todo: convert this to use the factory pattern
 public class Book {
-	private String mGenre;
-	private String mTitle;
-	private String mAuthor;
-	private String mLocation;
+	private double rating;
+	private int thumbnail;
 	
-	private float mRating;
-	private float mPrice;
-	private int mThumbnail;
+	private String ISBN;
+	private String summary;
+	private String title;
 	
-	public Book(String name, String genre, String author, String location, double rating, double price, int thumbnail) {
-		this(name, genre, author, location, (float) rating, (float) price, thumbnail);
+	private String[] authors;
+	private String[] genres;
+	
+	private Map<String, Double> prices;
+	
+	public static class Builder {
+		private double rating;
+		private int thumbnail;
+		
+		private String ISBN;
+		private String summary;
+		private String title;
+		
+		private String[] authors;
+		private String[] genres;
+		
+		private Map<String, Double> prices;
+		
+		public Builder() {
+			rating = 0.0;
+			thumbnail = -1;
+			
+			ISBN = null;
+			summary = null;
+			title = null;
+			
+			authors = null;
+			genres = null;
+			prices = null;
+		}
+		
+		public Builder setRating(double rating) {
+			this.rating = rating;
+			return this;
+		}
+		
+		public Builder setThumbnail(int thumnail) {
+			this.thumbnail = thumnail;
+			return this;
+		}
+		
+		public Builder setISBN(String ISBN) {
+			this.ISBN = ISBN;
+			return this;
+		}
+		
+		public Builder setSummary(String summary) {
+			this.summary = summary;
+			return this;
+		}
+		
+		public Builder setTitle(String title) {
+			this.title = title;
+			return this;
+		}
+		
+		public Builder setAuthors(String[] authors) {
+			this.authors = authors;
+			return this;
+		}
+		
+		public Builder setGenres(String[] genres) {
+			this.genres = genres;
+			return this;
+		}
+		
+		public Builder setPrices(Map<String, Double> prices) {
+			this.prices = prices;
+			return this;
+		}
+		
+		public Book build() {
+			return new Book(rating, thumbnail, ISBN, summary, title, authors, genres, prices);
+		}
 	}
 	
-	public Book(String name, String genre, String author, String location, float rating, float price, int thumbnail) {
-		mGenre = genre;
-		mTitle = name;
-		mRating = rating;
-		mPrice = price;
-		mThumbnail = thumbnail;
-		mAuthor = author;
-		mLocation = location;
+	private Book(double rating, int thumbnail,
+				 String ISBN, String summary, String title,
+				 String[] authors, String[] genres,
+				 Map<String, Double> prices) {
+		this.rating = rating;
+		this.thumbnail = thumbnail;
+		this.ISBN = ISBN;
+		this.summary = summary;
+		this.title = title;
+		this.authors = authors;
+		this.genres = genres;
+		this.prices = prices;
 	}
 	
-	public String getTitle() {
-		return mTitle;
-	}
-	
-	public void setTitle(String name) {
-		mTitle = name;
-	}
-	
-	public float getPrice() {
-		return mPrice;
-	}
-	
-	public void setPrice(float price) {
-		mPrice = price;
-	}
-	
-	public float getRating() {
-		return mRating;
-	}
-	
-	public void setRating(float rating) {
-		mRating = rating;
-	}
-	
-	public String getGenre() {
-		return mGenre;
-	}
-	
-	public void setGenre(String genre) {
-		mGenre = genre;
+	public double getRating() {
+		return rating;
 	}
 	
 	public int getThumbnail() {
-		return mThumbnail;
+		return thumbnail;
 	}
 	
-	public void setThumbnail(int thumbnail) {
-		mThumbnail = thumbnail;
+	public String getISBN() {
+		return ISBN;
 	}
 	
-	public String getAuthor() {
-		return mAuthor;
+	public String getSummary() {
+		return summary;
 	}
 	
-	public void setAuthor(String author) {
-		mAuthor = author;
+	public String getTitle() {
+		return title;
 	}
 	
-	public String getLocation() {
-		return mLocation;
+	public String[] getAuthors() {
+		return authors;
 	}
 	
-	public void setLocation(String location) {
-		mLocation = location;
+	public String[] getGenres() {
+		return genres;
+	}
+	
+	public Map<String, Double> getPrices() {
+		return prices;
 	}
 }
