@@ -2,6 +2,11 @@ package team.android.projects.com.bookit;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -10,6 +15,7 @@ import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -38,7 +44,7 @@ public class ScannerLauncher extends AppCompatActivity {
 		if (requestCode == REQUEST_IMAGE_CAPTURE && mImageFilePath != null) {
 			switch (resultCode) {
 				case RESULT_OK:
-					processImage(mPhotoURI);
+					processImage();
 					break;
 				case RESULT_CANCELED:
 					finish();
@@ -69,14 +75,6 @@ public class ScannerLauncher extends AppCompatActivity {
 		}
 	}
 	
-	private void processImage(Uri imageUri) {
-		Intent i = new Intent();
-		i.putExtra("hasMatch", false); // placeholder of true
-		i.putExtra("extractedText", "Hello world"); // placeholder of Hello world
-		setResult(Activity.RESULT_OK, i);
-		finish();
-	}
-	
 	private File createImageFile() throws IOException {
 		String timeStamp = new SimpleDateFormat(
 				"yyyyMMdd_HHmmss",
@@ -88,5 +86,9 @@ public class ScannerLauncher extends AppCompatActivity {
 		
 		mImageFilePath = image.getAbsolutePath();
 		return image;
+	}
+	
+	private void processImage() {
+	
 	}
 }
