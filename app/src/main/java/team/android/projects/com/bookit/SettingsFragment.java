@@ -67,7 +67,9 @@ public class SettingsFragment extends Fragment {
 						.getSharedPreferences(
 								getString(R.string.preference_key),
 								Context.MODE_PRIVATE);
-				String deviceLanguage = sharedPreferences.getString("default_lang", "English");
+				String deviceLanguage = sharedPreferences
+						.getString(getString(R.string.default_lang_key),
+								"English");
 				StringBuilder selection = new StringBuilder();
 				
 				new AlertDialog.Builder(getContext())
@@ -90,8 +92,9 @@ public class SettingsFragment extends Fragment {
 									shortToast(getContext(), selection.toString());
 									sharedPreferences
 											.edit()
-											.remove("default_lang")
-											.putString("default_lang", selection.toString()).apply();
+											.remove(getString(R.string.default_lang_key))
+											.putString(getString(R.string.default_lang_key),
+													selection.toString()).apply();
 									dialog.dismiss();
 								}).show();
 			});

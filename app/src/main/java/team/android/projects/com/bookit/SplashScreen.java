@@ -37,8 +37,8 @@ public class SplashScreen extends AppCompatActivity {
 		}
 		
 		SharedPreferences preferences = getSharedPreferences(getString(R.string.preference_key), Context.MODE_PRIVATE);
-		if (!preferences.contains("default_lang")) {
-			preferences.edit().putString("default_lang", deviceLanguage).apply();
+		if (!preferences.contains(getString(R.string.default_lang_key))) {
+			preferences.edit().putString(getString(R.string.default_lang_key), deviceLanguage).apply();
 		}
 	}
 	
