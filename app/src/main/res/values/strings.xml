@@ -73,4 +73,6 @@
 	<string name="username_used">Username: %s is used already, try again</string>
 	<string name="email_used_warning">%s is used by another user, try again</string>
 	<string name="invalid_user_account_warning">User account does not exist</string>
+	<string name="send_recovery_warning">Failed to send recovery email</string>
+	<string name="resend_confirmation">Recovery email has been sent</string>
 </resources>

@@ -100,10 +100,10 @@ public class FirebaseOperations implements IFirebaseOperations {
 				.sendPasswordResetEmail(email)
 				.addOnCompleteListener(task -> {
 					if (!task.isSuccessful()) {
-						shortToast(mContext, "Failed to send recovery email");
+						shortToast(mContext, mContext.getString(R.string.send_recovery_warning));
 					} else {
 						if (!redirect) {
-							shortToast(mContext, "Recovery email has been sent");
+							shortToast(mContext, mContext.getString(R.string.resend_confirmation));
 						} else {
 							Intent i = new Intent(mContext, RecoveryEmailSentSuccess.class);
 							i.putExtra("email", email);
@@ -116,7 +116,6 @@ public class FirebaseOperations implements IFirebaseOperations {
 	
 	@Override public void signOut() {
 		mFirebaseAuth.signOut();
-		Log.d(Debug.name(), String.format("isLoggedIn: %s", getCurrentUser() != null));
 	}
 	
 	@Override public FirebaseUser getCurrentUser() {
