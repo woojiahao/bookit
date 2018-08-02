@@ -93,8 +93,7 @@ public class BookRowAdapter extends RecyclerView.Adapter<BookRowAdapter.ViewHold
 		return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.book_row, parent, false));
 	}
 	
-	@Override
-	public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+	@Override public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 		Book b = mBooks.get(position);
 		
 		Map<String, Double> prices = b.getPrices();
@@ -118,5 +117,4 @@ public class BookRowAdapter extends RecyclerView.Adapter<BookRowAdapter.ViewHold
 	@Override public int getItemCount() {
 		return mBooks.size();
 	}
-	
 }

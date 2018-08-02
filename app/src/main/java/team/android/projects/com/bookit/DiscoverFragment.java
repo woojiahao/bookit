@@ -26,7 +26,7 @@ public class DiscoverFragment extends Fragment {
 	private View mView;
 	private RecyclerView mCategories;
 	
-	private final List<Book> mBooks = new ArrayList<Book>() {{
+	private List<Book> mBooks = new ArrayList<Book>() {{
 		add(new Book.Builder()
 				.setTitle("Artemis")
 				.setGenres(new String[] { "Action" })
