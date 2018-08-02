@@ -1,19 +1,16 @@
 # Project Guide
-Tutorial for contributing to this project
-
 ## Table of Contents:
-1. [Git](https://github.com/woojiahao/bookit/blob/master/Installation.md#what-is-git)
-2. [Firebase](https://github.com/woojiahao/bookit/blob/master/Installation.md#what-is-firebase)
+1. [Git](https://github.com/woojiahao/bookit/blob/master/Installation.md#git)
+2. [Firebase](https://github.com/woojiahao/bookit/blob/master/Installation.md#firebase)
+3. [Contributing](https://github.com/woojiahao/bookit/blob/master/Installation.md#contributing)
 
-## What is Git?
-Refer to these resources if you are in doubt about using Git:
+***
 
+## Git
+### Git Resources:
 * [Pro Git](https://git-scm.com/book/en/v2)
 * [Git Visualised](http://gitup.co/)
 * [Video Tutorial](https://www.youtube.com/watch?v=Gg4bLk8cGNo&t=551s)
-
-### Why are we using Git? 
-It's good training for SEP and Git is one of the most widely used Version Control Systems (VCS) used in the industry right now.
 
 ### How to contribute?
 1. Make a fork of this repository onto your own GitHub
@@ -43,11 +40,13 @@ git commit -m "Commit message blah blah"
 git push origin master
 ```
 
-## What is Firebase
-Firebase is a gay way to store data that gives me endles headaches, but regardless, it will be the method of database storage as well as user authentication that we will be using for the application.
+***
 
-Firebase is something known as a NoSQL database, which means that it does not use conventional SQL queries to store/retrieve data, instead, firebase uses JSON to store the data.
+## Firebase
+### What is Firebase?
+Firebase is known as a NoSQL database, which means that it does not use conventional SQL queries to store/retrieve data, instead, firebase uses JSON to store the data.
 
+### Firebase Resources:
 * [NoSQL Introduction](https://www.mongodb.com/nosql-explained)
 * [Firebase](https://firebase.google.com/)
 
@@ -89,3 +88,12 @@ After setting up Firebase, navigate to the console and do the following:
 2. Under the `Database` tab, create a `Real-time Database` (you will have to scroll down a little), and run it in **test** mode
 
 To test that the application is working, run the app and try making an account, you will see that a user is added and the database gets a new entry.
+
+***
+
+## Contributing
+1. Look through the issues and pick one that you can manage. If you are a beginner, you can filter the `good first issue` tag so as to view the issues that are much more manageable for a beginner.
+2. Find a feature/part of the code that you think can be improved or implemented an open an issue, I will take a look and if it is ideal, it will be approved and you can begin work on it.
+3. Documenting the code
+
+***
