@@ -1,12 +1,7 @@
 package team.android.projects.com.bookit;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.content.res.AssetManager;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
-import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -15,7 +10,6 @@ import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -23,6 +17,9 @@ import java.util.Date;
 import java.util.Locale;
 
 import team.android.projects.com.bookit.utils.logging.ApplicationCodes;
+import team.android.projects.com.bookit.utils.ocr.TessOCR;
+
+import static team.android.projects.com.bookit.utils.logging.Logging.shortToast;
 
 // todo: replace the processing method with an actual processing method
 // todo: make the book object parcelable so as to be able to pass it into the bundle as a key-value pair
@@ -89,6 +86,24 @@ public class ScannerLauncher extends AppCompatActivity {
 	}
 	
 	private void processImage() {
-	
+		String result = null;
+		try {
+			TessOCR ocr = new TessOCR.Builder().setManager(getAssets()).build();
+			if (ocr != null) {
+				result = ocr.scanImage(BitmapFactory.decodeFile(mImageFilePath));
+				shortToast(this, "Results: " + result);
+				ocr.close();
+			}
+		} catch (Exception e) {
+			Log.e(ApplicationCodes.Error.name(), e.getMessage());
+		}
+		
+		if (result != null) {
+			setResult(RESULT_OK,
+					new Intent()
+							.putExtra("false", true)
+							.putExtra("extractedText", result));
+			finish();
+		}
 	}
 }

@@ -14,6 +14,9 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import team.android.projects.com.bookit.utils.backstack.FragmentID;
 import team.android.projects.com.bookit.utils.ui.camera.CameraStates;
 import team.android.projects.com.bookit.utils.ui.helper.BottomNavigationHelper;
@@ -35,7 +38,7 @@ import static team.android.projects.com.bookit.utils.ui.camera.CameraStates.Taki
 public class Container
 		extends AppCompatActivity
 		implements BottomNavigationView.OnNavigationItemSelectedListener {
-	private final int CAMERA_PERM_REQUEST = 3033;
+	private final int PERM_REQUEST = 3033;
 	private final int LAUNCH_CAMERA = 2034;
 	
 	private BottomNavigationView mBottomBar;
@@ -99,9 +102,16 @@ public class Container
 	@Override
 	public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 		switch (requestCode) {
-			case CAMERA_PERM_REQUEST:
-				if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-					launchCamera();
+			case PERM_REQUEST:
+				boolean hasCameraPerms = ContextCompat
+						.checkSelfPermission(this,
+								Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED;
+				boolean hasExternalStoragePerms = ContextCompat
+						.checkSelfPermission(this,
+								Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
+				if (grantResults.length > 0
+						&& grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+					if (hasCameraPerms && hasExternalStoragePerms) launchCamera();
 				} else {
 					AlertDialog.Builder builder = new AlertDialog.Builder(this);
 					builder.setTitle("Lack of permissions")
@@ -207,11 +217,22 @@ public class Container
 	}
 	
 	private void startScanner() {
-		if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-			ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.CAMERA }, CAMERA_PERM_REQUEST);
-		} else {
+		boolean hasCameraPerms = ContextCompat
+				.checkSelfPermission(this,
+						Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED;
+		boolean hasExternalStoragePerms = ContextCompat
+				.checkSelfPermission(this,
+						Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
+		if (hasCameraPerms && hasExternalStoragePerms) {
 			launchCamera();
+			return;
 		}
+		
+		List<String> perms = new ArrayList<String>() {{
+			if (!hasCameraPerms) add(Manifest.permission.CAMERA);
+			if (!hasExternalStoragePerms) add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+		}};
+		ActivityCompat.requestPermissions(this, perms.toArray(new String[perms.size()]), PERM_REQUEST);
 	}
 	
 	private void launchCamera() {
