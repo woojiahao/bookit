@@ -14,6 +14,7 @@ import team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_tex
 
 import static team.android.projects.com.bookit.dataclasses.UserKeys.Email;
 import static team.android.projects.com.bookit.utils.logging.Logging.shortToast;
+import static team.android.projects.com.bookit.utils.ui.UIUtils.disableRedButton;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.displayExitConfirmDialog;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
 
@@ -50,28 +51,33 @@ public class ForgotPassword extends AppCompatActivity {
 	}
 	
 	private void connectListeners() {
-		mSignInBtn.setOnClickListener(ev -> {
+		mSignInBtn.setOnClickListener(v -> {
 			startActivity(new Intent(this, SignIn.class));
 			finish();
 		});
-		mSendEmailBtn.setOnClickListener(ev -> {
-			if (!UIUtils.isFilled(mEmailField, mUsernameField)) {
-				shortToast(this, getString(R.string.empty_inputs_warning));
+		mSendEmailBtn.setOnClickListener(v -> {
+			disableRedButton(this, mSendEmailBtn);
+			attemptReset();
+		});
+	}
+	
+	private void attemptReset() {
+		if (!UIUtils.isFilled(mEmailField, mUsernameField)) {
+			shortToast(this, getString(R.string.empty_inputs_warning));
+		} else {
+			String email = mEmailField.getText();
+			String username = mUsernameField.getText();
+			
+			User u = UsersList.findUser(email, Email);
+			if (u == null) {
+				shortToast(this, getString(R.string.invalid_user));
 			} else {
-				String email = mEmailField.getText();
-				String username = mUsernameField.getText();
-				
-				User u = UsersList.findUser(email, Email);
-				if (u == null) {
-					shortToast(this, getString(R.string.invalid_user));
+				if (!u.username.equals(username)) {
+					shortToast(this, getString(R.string.mismatch_forgot_password));
 				} else {
-					if (!u.username.equals(username)) {
-						shortToast(this, getString(R.string.mismatch_forgot_password));
-					} else {
-						mFirebaseOperations.sendRecoveryEmail(email, true);
-					}
+					mFirebaseOperations.sendRecoveryEmail(email, true);
 				}
 			}
-		});
+		}
 	}
 }

@@ -13,6 +13,7 @@ import team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_tex
 
 import static team.android.projects.com.bookit.utils.logging.ApplicationCodes.Error;
 import static team.android.projects.com.bookit.utils.logging.Logging.shortToast;
+import static team.android.projects.com.bookit.utils.ui.UIUtils.disableRedButton;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.loadGenreSelection;
 
@@ -67,12 +68,7 @@ public class SignUpGenreSelection extends AppCompatActivity {
 	}
 	
 	private void registerUser() {
-		mSelectBtn.setEnabled(false);
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-			mSelectBtn.setBackground(getDrawable(R.drawable.red_button_background_disabled));
-		} else {
-			mSelectBtn.setBackground(getResources().getDrawable(R.drawable.red_button_background_disabled));
-		}
+		disableRedButton(this, mSelectBtn);
 		mFirebaseOperations.registerUser(mEmail, mPassword, mUsername, mGenreSelectionFragment.getSelection());
 	}
 	

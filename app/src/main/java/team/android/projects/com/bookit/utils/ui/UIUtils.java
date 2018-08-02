@@ -3,10 +3,12 @@ package team.android.projects.com.bookit.utils.ui;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import team.android.projects.com.bookit.GenreSelectionFragment;
@@ -77,5 +79,14 @@ public class UIUtils {
 				.setCancelable(false)
 				.show();
 		
+	}
+	
+	public static void disableRedButton(Context c, Button b) {
+		b.setEnabled(false);
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+			b.setBackground(c.getDrawable(R.drawable.red_button_background_disabled));
+		} else {
+			b.setBackground(c.getResources().getDrawable(R.drawable.red_button_background_disabled));
+		}
 	}
 }

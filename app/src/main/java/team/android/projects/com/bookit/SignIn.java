@@ -1,6 +1,7 @@
 package team.android.projects.com.bookit;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
@@ -15,6 +16,7 @@ import team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_tex
 
 import static team.android.projects.com.bookit.dataclasses.UserKeys.Username;
 import static team.android.projects.com.bookit.utils.logging.Logging.shortToast;
+import static team.android.projects.com.bookit.utils.ui.UIUtils.disableRedButton;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.displayExitConfirmDialog;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.isEmail;
@@ -54,34 +56,39 @@ public class SignIn extends AppCompatActivity {
 	}
 	
 	private void connectListeners() {
-		mForgotPassword.setOnClickListener(ev -> {
+		mForgotPassword.setOnClickListener(v -> {
 			startActivity(new Intent(this, ForgotPassword.class));
 			finish();
 		});
 		
-		mSignInBtn.setOnClickListener(ev -> {
-			String email = mUsernameEmailField.getText();
-			String password = mPasswordField.getText();
-			
-			if (!isFilled(mUsernameEmailField, mPasswordField)) {
-				shortToast(this, getString(R.string.empty_inputs_warning));
-			} else {
-				if (!isEmail(email)) {
-					User matchedUser = UsersList.findUser(email, Username);
-					if (matchedUser != null) {
-						email = matchedUser.email;
-					} else {
-						shortToast(this, "User account does not exist");
-						return;
-					}
-				}
-				mFirebaseOperations.signIn(email, password);
-			}
+		mSignInBtn.setOnClickListener(v -> {
+			disableRedButton(this, mSignInBtn);
+			attemptSignIn();
 		});
 		
-		mSignUpBtn.setOnClickListener(ev -> {
+		mSignUpBtn.setOnClickListener(v -> {
 			startActivity(new Intent(this, SignUp.class));
 			finish();
 		});
+	}
+	
+	private void attemptSignIn() {
+		String email = mUsernameEmailField.getText();
+		String password = mPasswordField.getText();
+		
+		if (!isFilled(mUsernameEmailField, mPasswordField)) {
+			shortToast(this, getString(R.string.empty_inputs_warning));
+		} else {
+			if (!isEmail(email)) {
+				User matchedUser = UsersList.findUser(email, Username);
+				if (matchedUser != null) {
+					email = matchedUser.email;
+				} else {
+					shortToast(this, getString(R.string.invalid_user_account_warning));
+					return;
+				}
+			}
+			mFirebaseOperations.signIn(email, password);
+		}
 	}
 }
