@@ -54,12 +54,13 @@ public class SignUp extends AppCompatActivity {
 	}
 	
 	private void attemptSignUp() {
-		String username = mUsernameField.getText();
-		String email = mEmailField.getText();
-		String password = mPasswordField.getText();
 		if (!isFilled(mEmailField, mUsernameField, mPasswordField)) {
 			shortToast(this, getString(R.string.empty_inputs_warning));
 		} else {
+			String username = mUsernameField.getText();
+			String email = mEmailField.getText();
+			String password = mPasswordField.getText();
+			
 			if (!isEmail(email)) {
 				shortToast(this, getString(R.string.invalid_email_warning));
 			} else {

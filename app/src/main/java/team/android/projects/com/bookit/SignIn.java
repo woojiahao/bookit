@@ -1,14 +1,12 @@
 package team.android.projects.com.bookit;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.TextView;
 
 import team.android.projects.com.bookit.dataclasses.User;
-import team.android.projects.com.bookit.dataclasses.UserKeys;
 import team.android.projects.com.bookit.utils.database.FirebaseOperations;
 import team.android.projects.com.bookit.utils.database.IFirebaseOperations;
 import team.android.projects.com.bookit.utils.database.UsersList;
@@ -73,19 +71,19 @@ public class SignIn extends AppCompatActivity {
 	}
 	
 	private void attemptSignIn() {
-		String email = mUsernameEmailField.getText();
-		String password = mPasswordField.getText();
-		
 		if (!isFilled(mUsernameEmailField, mPasswordField)) {
 			shortToast(this, getString(R.string.empty_inputs_warning));
 		} else {
+			String email = mUsernameEmailField.getText();
+			String password = mPasswordField.getText();
+			
 			if (!isEmail(email)) {
 				User matchedUser = UsersList.findUser(email, Username);
-				if (matchedUser != null) {
-					email = matchedUser.email;
-				} else {
+				if (matchedUser == null) {
 					shortToast(this, getString(R.string.invalid_user_account_warning));
 					return;
+				} else {
+					email = matchedUser.email;
 				}
 			}
 			mFirebaseOperations.signIn(email, password);
