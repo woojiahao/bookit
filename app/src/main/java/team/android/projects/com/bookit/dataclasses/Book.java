@@ -1,9 +1,9 @@
 package team.android.projects.com.bookit.dataclasses;
 
+import android.text.TextUtils;
+
 import java.util.Map;
 
-// todo: convert prices to a hashmap with key as location and value as price
-// todo: convert this to use the factory pattern
 public class Book {
 	private double rating;
 	private int thumbnail;
@@ -122,12 +122,12 @@ public class Book {
 		return title;
 	}
 	
-	public String[] getAuthors() {
-		return authors;
+	public String getAuthors() {
+		return TextUtils.join(", ", authors);
 	}
 	
-	public String[] getGenres() {
-		return genres;
+	public String getGenres() {
+		return TextUtils.join(", ", genres);
 	}
 	
 	public Map<String, Double> getPrices() {

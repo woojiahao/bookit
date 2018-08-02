@@ -11,7 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import team.android.projects.com.bookit.dataclasses.Book;
@@ -25,13 +27,48 @@ public class FavouritesFragment extends Fragment {
 	private ClearableEditText mFavouritesSearch;
 	private RecyclerView mFavouritesList;
 	
-	private final List<Book> mBooks = Arrays.asList(
-			new Book("Artemis", "Action", "John Doe", "Amazon", 5.0, 13.99, R.drawable.artemis),
-			new Book("Before We Were Yours", "Horror", "John Doe", "Amazon", 4.0, 25.99, R.drawable.before_we_were_yours),
-			new Book("Into The Water", "Mystery", "John Doe", "Amazon", 4.3, 13.00F, R.drawable.into_the_water),
-			new Book("Little Fires Everywhere", "Comedy", "John Doe", "Amazon", 4.7, 12.10, R.drawable.little_fires_everywhere),
-			new Book("Talking As Fast As I Can", "Literature", "John Doe", "Amazon", 3.9, 16.50, R.drawable.talking_as_fast_as_i_can)
-	);
+	private final List<Book> mBooks = new ArrayList<Book>() {{
+		add(new Book.Builder()
+				.setTitle("Artemis")
+				.setGenres(new String[] { "Action" })
+				.setAuthors(new String[] { "John Doe" })
+				.setPrices(new HashMap<String, Double>() {{
+					put("Amazon", 13.99);
+				}})
+				.setRating(5)
+				.setThumbnail(R.drawable.artemis)
+				.build());
+		add(new Book.Builder()
+				.setTitle("Artemis")
+				.setGenres(new String[] { "Action" })
+				.setAuthors(new String[] { "John Doe" })
+				.setPrices(new HashMap<String, Double>() {{
+					put("Amazon", 13.99);
+				}})
+				.setRating(5)
+				.setThumbnail(R.drawable.artemis)
+				.build());
+		add(new Book.Builder()
+				.setTitle("Artemis")
+				.setGenres(new String[] { "Action" })
+				.setAuthors(new String[] { "John Doe" })
+				.setPrices(new HashMap<String, Double>() {{
+					put("Amazon", 13.99);
+				}})
+				.setRating(5)
+				.setThumbnail(R.drawable.artemis)
+				.build());
+		add(new Book.Builder()
+				.setTitle("Artemis")
+				.setGenres(new String[] { "Action" })
+				.setAuthors(new String[] { "John Doe" })
+				.setPrices(new HashMap<String, Double>() {{
+					put("Amazon", 13.99);
+				}})
+				.setRating(5)
+				.setThumbnail(R.drawable.artemis)
+				.build());
+	}};
 	
 	@Override
 	public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,

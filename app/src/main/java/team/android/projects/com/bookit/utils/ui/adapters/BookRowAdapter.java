@@ -7,10 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.text.NumberFormat;
 import java.util.List;
+import java.util.Map;
 
 import team.android.projects.com.bookit.R;
 import team.android.projects.com.bookit.dataclasses.Book;
@@ -75,11 +75,11 @@ public class BookRowAdapter extends RecyclerView.Adapter<BookRowAdapter.ViewHold
 			mBookLocation.setText(String.format("Found: %s", location));
 		}
 		
-		void setRating(float rating) {
+		void setRating(double rating) {
 			mBookRating.setText(String.valueOf(rating));
 		}
 		
-		void setPrice(float price) {
+		void setPrice(double price) {
 			mBookPrice.setText(mCurrencyFormatter.format(price));
 		}
 	}
@@ -96,10 +96,21 @@ public class BookRowAdapter extends RecyclerView.Adapter<BookRowAdapter.ViewHold
 	@Override
 	public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 		Book b = mBooks.get(position);
-		holder.setAuthor(b.getAuthor());
-		holder.setLocation(b.getLocation());
+		
+		Map<String, Double> prices = b.getPrices();
+		
+		String location = null;
+		double price = 0.0;
+		
+		for (Map.Entry<String, Double> entry : prices.entrySet()) {
+			location = entry.getKey();
+			price = entry.getValue();
+		}
+		
+		holder.setAuthor(b.getAuthors());
+		holder.setLocation(location);
 		holder.setTitle(b.getTitle());
-		holder.setPrice(b.getPrice());
+		holder.setPrice(price);
 		holder.setThumbnail(b.getThumbnail());
 		holder.setRating(b.getRating());
 	}

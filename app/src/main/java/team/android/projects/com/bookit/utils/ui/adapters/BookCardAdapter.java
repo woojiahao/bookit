@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import java.text.NumberFormat;
 import java.util.List;
+import java.util.Map;
 
 import team.android.projects.com.bookit.R;
 import team.android.projects.com.bookit.dataclasses.Book;
@@ -70,11 +71,11 @@ public class BookCardAdapter extends RecyclerView.Adapter<BookCardAdapter.ViewHo
 			mGenre.setText(genre);
 		}
 		
-		void setPrice(float price) {
+		void setPrice(double price) {
 			mPrice.setText(mCurrencyFormatter.format(price));
 		}
 		
-		void setRating(float rating) {
+		void setRating(double rating) {
 			mRating.setText(String.valueOf(rating));
 		}
 	}
@@ -95,9 +96,19 @@ public class BookCardAdapter extends RecyclerView.Adapter<BookCardAdapter.ViewHo
 	public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 		Book book = mBooks.get(position);
 		
+		Map<String, Double> prices = book.getPrices();
+		
+		String location = null;
+		double price = 0.0;
+		
+		for (Map.Entry<String, Double> entry : prices.entrySet()) {
+			location = entry.getKey();
+			price = entry.getValue();
+		}
+		
 		holder.setTitle(book.getTitle());
-		holder.setGenre(book.getGenre());
-		holder.setPrice(book.getPrice());
+		holder.setGenre(book.getGenres());
+		holder.setPrice(price);
 		holder.setThumbnail(book.getThumbnail());
 		holder.setRating(book.getRating());
 	}
