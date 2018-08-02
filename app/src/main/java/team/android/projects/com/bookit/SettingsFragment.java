@@ -14,8 +14,10 @@ import android.widget.TextView;
 
 import java.util.Arrays;
 
+import team.android.projects.com.bookit.dataclasses.User;
 import team.android.projects.com.bookit.utils.database.FirebaseOperations;
 import team.android.projects.com.bookit.utils.database.IFirebaseOperations;
+import team.android.projects.com.bookit.utils.database.UsersList;
 import team.android.projects.com.bookit.utils.ui.custom_views.settings_row.SettingsRow;
 
 import static team.android.projects.com.bookit.utils.logging.Logging.shortToast;
@@ -54,9 +56,10 @@ public class SettingsFragment extends Fragment {
 		mUsername = find(mView, R.id.settingsUsername);
 		mEmail = find(mView, R.id.settingsEmail);
 		
-		if (Preloading.getCurrentUser() != null) {
-			mUsername.setText(mFirebaseOperations.getUsername());
-			mEmail.setText(mFirebaseOperations.getEmail());
+		User u = UsersList.getCurrentUser();
+		if (u != null) {
+			mUsername.setText(u.username);
+			mEmail.setText(u.email);
 		}
 	}
 	
@@ -105,7 +108,7 @@ public class SettingsFragment extends Fragment {
 							.setPositiveButton(android.R.string.yes, (dialog, which) -> {
 								if (getActivity() != null) {
 									mFirebaseOperations.signOut();
-									Preloading.setCurrentUser(null);
+									UsersList.setCurrentUser(null);
 									startActivity(new Intent(getContext(), SignIn.class));
 									getActivity().finish();
 								}

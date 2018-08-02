@@ -10,6 +10,7 @@ import team.android.projects.com.bookit.dataclasses.User;
 import team.android.projects.com.bookit.dataclasses.UserKeys;
 import team.android.projects.com.bookit.utils.database.FirebaseOperations;
 import team.android.projects.com.bookit.utils.database.IFirebaseOperations;
+import team.android.projects.com.bookit.utils.database.UsersList;
 import team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text.ClearableEditText;
 
 import static team.android.projects.com.bookit.dataclasses.UserKeys.Username;
@@ -66,7 +67,7 @@ public class SignIn extends AppCompatActivity {
 				shortToast(this, getString(R.string.empty_inputs_warning));
 			} else {
 				if (!isEmail(email)) {
-					User matchedUser = Preloading.findUser(email, Username);
+					User matchedUser = UsersList.findUser(email, Username);
 					if (matchedUser != null) {
 						email = matchedUser.email;
 					} else {

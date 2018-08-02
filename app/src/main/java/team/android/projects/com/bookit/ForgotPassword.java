@@ -8,6 +8,7 @@ import android.widget.Button;
 import team.android.projects.com.bookit.dataclasses.User;
 import team.android.projects.com.bookit.utils.database.FirebaseOperations;
 import team.android.projects.com.bookit.utils.database.IFirebaseOperations;
+import team.android.projects.com.bookit.utils.database.UsersList;
 import team.android.projects.com.bookit.utils.ui.UIUtils;
 import team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text.ClearableEditText;
 
@@ -60,7 +61,7 @@ public class ForgotPassword extends AppCompatActivity {
 				String email = mEmailField.getText();
 				String username = mUsernameField.getText();
 				
-				User u = Preloading.findUser(email, Email);
+				User u = UsersList.findUser(email, Email);
 				if (u == null) {
 					shortToast(this, getString(R.string.invalid_user));
 				} else {

@@ -11,6 +11,7 @@ import java.util.Arrays;
 import team.android.projects.com.bookit.dataclasses.User;
 import team.android.projects.com.bookit.utils.database.FirebaseOperations;
 import team.android.projects.com.bookit.utils.database.IFirebaseOperations;
+import team.android.projects.com.bookit.utils.database.UsersList;
 import team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text.ClearableEditText;
 
 import static team.android.projects.com.bookit.utils.logging.Logging.shortToast;
@@ -43,7 +44,7 @@ public class EditGenres extends AppCompatActivity {
 		mBackBtn = find(this, R.id.backBtn);
 		mCancelEdit = find(this, R.id.cancelEdit);
 		
-		User u = Preloading.getCurrentUser();
+		User u = UsersList.getCurrentUser();
 		String[] previousGenres = u.genres.toArray(new String[u.genres.size()]);
 		mGenreSelectionFragment = loadGenreSelection(getSupportFragmentManager(), getString(R.string.select_genres), "Genre", 2, true, previousGenres);
 	}
@@ -56,7 +57,7 @@ public class EditGenres extends AppCompatActivity {
 			if (selection.length == 0) {
 				shortToast(this, getString(R.string.empty_selection_warning));
 			} else {
-				User u = Preloading.getCurrentUser();
+				User u = UsersList.getCurrentUser();
 				String[] previousGenres = u.genres.toArray(new String[u.genres.size()]);
 				if (Arrays.equals(selection, previousGenres)) {
 					finish();

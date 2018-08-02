@@ -5,16 +5,29 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 
+import team.android.projects.com.bookit.dataclasses.User;
+import team.android.projects.com.bookit.dataclasses.UserKeys;
 import team.android.projects.com.bookit.utils.database.FirebaseOperations;
 import team.android.projects.com.bookit.utils.database.IFirebaseOperations;
+import team.android.projects.com.bookit.utils.database.UsersList;
 
-import static team.android.projects.com.bookit.utils.logging.ApplicationCodes.Debug;
+import static team.android.projects.com.bookit.dataclasses.UserKeys.Uid;
 
 public class SplashScreen extends AppCompatActivity {
 	private IFirebaseOperations mFirebaseOperations;
@@ -47,17 +60,41 @@ public class SplashScreen extends AppCompatActivity {
 	}
 	
 	private void startApp() {
-		Handler h = new Handler();
-		h.postDelayed(() -> {
-			Class target;
-			if (mFirebaseOperations.getCurrentUser() != null) {
-				Preloading.setCurrentUser(mFirebaseOperations.getCurrentUser().getUid());
-				target = Container.class;
-			} else {
-				target = SignUp.class;
+		DatabaseReference users = FirebaseDatabase
+				.getInstance()
+				.getReference()
+				.child("users");
+		
+		users.addListenerForSingleValueEvent(new ValueEventListener() {
+			@Override public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+				List<User> users = new ArrayList<User>();
+				for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+					User user = snapshot.getValue(User.class);
+					if (user != null) users.add(user);
+				}
+				UsersList.setUsers(users);
+				
+				FirebaseAuth auth = FirebaseAuth.getInstance();
+				FirebaseUser user = auth.getCurrentUser();
+				if (user != null) {
+					User currentUser = UsersList.findUser(user.getUid(), Uid);
+					if (currentUser != null) {
+						UsersList.setCurrentUser(currentUser.uid);
+					}
+				}
+				
+				startActivity(
+						new Intent(
+								SplashScreen.this,
+								user != null ? Container.class : SignUp.class
+						)
+				 );
+				finish();
 			}
-			startActivity(new Intent(this, target));
-			finish();
-		}, 3000);
+			
+			@Override public void onCancelled(@NonNull DatabaseError databaseError) {
+			
+			}
+		});
 	}
 }

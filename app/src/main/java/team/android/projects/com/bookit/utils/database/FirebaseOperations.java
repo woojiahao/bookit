@@ -19,7 +19,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import team.android.projects.com.bookit.Container;
-import team.android.projects.com.bookit.Preloading;
 import team.android.projects.com.bookit.RecoveryEmailSentSuccess;
 import team.android.projects.com.bookit.SignUp;
 import team.android.projects.com.bookit.dataclasses.User;
@@ -48,7 +47,7 @@ public class FirebaseOperations implements IFirebaseOperations {
 			mFirebaseAuth.signOut();
 		}
 		
-		if (Preloading.findUser(username, Username) != null) {
+		if (UsersList.findUser(username, Username) != null) {
 			shortToast(mContext, String.format("Username: %s is used already, try again", username));
 			return;
 		}
@@ -59,7 +58,7 @@ public class FirebaseOperations implements IFirebaseOperations {
 					if (task.isSuccessful()) {
 						configureUser(email, username, genres);
 						if (getCurrentUser() != null) {
-							Preloading.setCurrentUser(getCurrentUser().getUid());
+							UsersList.setCurrentUser(getCurrentUser().getUid());
 						}
 						mContext.startActivity(new Intent(mContext, Container.class));
 						((Activity) mContext).finish();
@@ -86,7 +85,7 @@ public class FirebaseOperations implements IFirebaseOperations {
 				.signInWithEmailAndPassword(email, password)
 				.addOnCompleteListener(task -> {
 					if (task.isSuccessful()) {
-						Preloading.setCurrentUser(getCurrentUser().getUid());
+						UsersList.setCurrentUser(getCurrentUser().getUid());
 						mContext.startActivity(new Intent(mContext, Container.class));
 						((Activity) mContext).finish();
 					}
@@ -129,15 +128,15 @@ public class FirebaseOperations implements IFirebaseOperations {
 	}
 	
 	@Override public String getUsername() {
-		return Preloading.getCurrentUser().username;
+		return UsersList.getCurrentUser().username;
 	}
 	
 	@Override public String getEmail() {
-		return Preloading.getCurrentUser().email;
+		return UsersList.getCurrentUser().email;
 	}
 	
 	@Override public List<String> getGenres() {
-		return Preloading.getCurrentUser().genres;
+		return UsersList.getCurrentUser().genres;
 	}
 	
 	@Override public void editGenres(String[] newGenres) {
@@ -150,7 +149,7 @@ public class FirebaseOperations implements IFirebaseOperations {
 				.setValue(Arrays.asList(newGenres))
 				.addOnCompleteListener(task -> {
 					if (task.isSuccessful()) {
-						Preloading.updateUserGenres(newGenres);
+						UsersList.updateGenres(newGenres);
 						((Activity) mContext).finish();
 					}
 				});
@@ -179,7 +178,7 @@ public class FirebaseOperations implements IFirebaseOperations {
 							Log.d(Error.name(), "Unable to add user: " + username);
 						}
 					});
-			Preloading.addUser(user);
+			UsersList.addUser(user);
 		}
 	}
 }
