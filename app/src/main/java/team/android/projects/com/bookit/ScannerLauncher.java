@@ -19,8 +19,6 @@ import java.util.Locale;
 import team.android.projects.com.bookit.utils.logging.ApplicationCodes;
 import team.android.projects.com.bookit.utils.ocr.TessOCR;
 
-import static team.android.projects.com.bookit.utils.logging.Logging.shortToast;
-
 // todo: replace the processing method with an actual processing method
 // todo: make the book object parcelable so as to be able to pass it into the bundle as a key-value pair
 // todo: pass the book object in the bundle instead of just the title
@@ -87,13 +85,8 @@ public class ScannerLauncher extends AppCompatActivity {
 	
 	private void processImage() {
 		String result = null;
-		try {
-			TessOCR ocr = new TessOCR.Builder().setManager(getAssets()).build();
-			if (ocr != null) {
-				result = ocr.scanImage(BitmapFactory.decodeFile(mImageFilePath));
-				shortToast(this, "Results: " + result);
-				ocr.close();
-			}
+		try (TessOCR ocr = new TessOCR.Builder().setManager(getAssets()).build()) {
+			if (ocr != null) result = ocr.scanImage(BitmapFactory.decodeFile(mImageFilePath));
 		} catch (Exception e) {
 			Log.e(ApplicationCodes.Error.name(), e.getMessage());
 		}

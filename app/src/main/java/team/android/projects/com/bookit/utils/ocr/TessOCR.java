@@ -7,6 +7,7 @@ import android.util.Log;
 
 import com.googlecode.tesseract.android.TessBaseAPI;
 
+import java.io.Closeable;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -20,7 +21,7 @@ import static team.android.projects.com.bookit.utils.logging.ApplicationCodes.Su
 
 // todo: documentation
 // todo: create custom exceptions
-public class TessOCR {
+public class TessOCR implements Closeable {
 	private static final String DATA_PATH = Environment.getExternalStorageDirectory().getAbsolutePath() + "/AndroidOCR/";
 	
 	private TessBaseAPI mTess;
@@ -95,7 +96,7 @@ public class TessOCR {
 		return mTess.getUTF8Text();
 	}
 	
-	public void close() {
+	@Override public void close() {
 		if (mTess != null) {
 			mTess.end();
 		}
