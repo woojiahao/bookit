@@ -69,4 +69,7 @@
 
 	<string name="preference_key">BOOKIT_PREFERENCES</string>
 	<string name="default_lang_key">default_lang</string>
+	<string name="password_short_warning">Password is too short</string>
+	<string name="username_used">Username: %s is used already, try again</string>
+	<string name="email_used_warning">%s is used by another user, try again</string>
 </resources>

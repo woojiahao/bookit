@@ -1,5 +1,6 @@
 package team.android.projects.com.bookit;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -66,6 +67,12 @@ public class SignUpGenreSelection extends AppCompatActivity {
 	}
 	
 	private void registerUser() {
+		mSelectBtn.setEnabled(false);
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+			mSelectBtn.setBackground(getDrawable(R.drawable.red_button_background_disabled));
+		} else {
+			mSelectBtn.setBackground(getResources().getDrawable(R.drawable.red_button_background_disabled));
+		}
 		mFirebaseOperations.registerUser(mEmail, mPassword, mUsername, mGenreSelectionFragment.getSelection());
 	}
 	

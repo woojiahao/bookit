@@ -5,14 +5,16 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 
-import team.android.projects.com.bookit.utils.ui.UIUtils;
+import team.android.projects.com.bookit.utils.database.UsersList;
 import team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text.ClearableEditText;
 
+import static team.android.projects.com.bookit.dataclasses.UserKeys.Email;
+import static team.android.projects.com.bookit.dataclasses.UserKeys.Username;
 import static team.android.projects.com.bookit.utils.logging.Logging.shortToast;
-import static team.android.projects.com.bookit.utils.ui.UIUtils.isFilled;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.displayExitConfirmDialog;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.isEmail;
+import static team.android.projects.com.bookit.utils.ui.UIUtils.isFilled;
 
 public class SignUp extends AppCompatActivity {
 	private Button mSignUpBtn;
@@ -43,25 +45,43 @@ public class SignUp extends AppCompatActivity {
 	}
 	
 	private void connectListeners() {
-		mSignUpBtn.setOnClickListener(ev -> {
-			if (!isFilled(mEmailField, mUsernameField, mPasswordField)) {
-				shortToast(this, getString(R.string.empty_inputs_warning));
-			} else {
-				if (!isEmail(mEmailField.getText())) {
-					shortToast(this, getString(R.string.invalid_email_warning));
-				} else {
-					startActivity(
-							new Intent(this, SignUpGenreSelection.class)
-									.putExtra("email", mEmailField.getText())
-									.putExtra("username", mUsernameField.getText())
-									.putExtra("password", mPasswordField.getText()));
-				}
-			}
-		});
+		mSignUpBtn.setOnClickListener(v -> attemptSignUp());
 		
-		mSignInBtn.setOnClickListener(ev -> {
+		mSignInBtn.setOnClickListener(v -> {
 			startActivity(new Intent(this, SignIn.class));
 			finish();
 		});
+	}
+	
+	private void attemptSignUp() {
+		String username = mUsernameField.getText();
+		String email = mEmailField.getText();
+		String password = mPasswordField.getText();
+		if (!isFilled(mEmailField, mUsernameField, mPasswordField)) {
+			shortToast(this, getString(R.string.empty_inputs_warning));
+		} else {
+			if (!isEmail(email)) {
+				shortToast(this, getString(R.string.invalid_email_warning));
+			} else {
+				if (UsersList.findUser(email, Email) != null) {
+					shortToast(this, String.format(getString(R.string.email_used_warning), email));
+				} else {
+					if (password.length() < 6) {
+						shortToast(this, getString(R.string.password_short_warning));
+					} else {
+						if (UsersList.findUser(username, Username) != null) {
+							shortToast(this, String.format(getString(R.string.username_used), username));
+						} else {
+							startActivity(
+									new Intent(this, SignUpGenreSelection.class)
+											.putExtra("email", email)
+											.putExtra("username", username)
+											.putExtra("password", password));
+						}
+					}
+				}
+				
+			}
+		}
 	}
 }

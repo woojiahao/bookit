@@ -19,6 +19,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import team.android.projects.com.bookit.Container;
+import team.android.projects.com.bookit.R;
 import team.android.projects.com.bookit.RecoveryEmailSentSuccess;
 import team.android.projects.com.bookit.SignUp;
 import team.android.projects.com.bookit.dataclasses.User;
@@ -47,11 +48,6 @@ public class FirebaseOperations implements IFirebaseOperations {
 			mFirebaseAuth.signOut();
 		}
 		
-		if (UsersList.findUser(username, Username) != null) {
-			shortToast(mContext, String.format("Username: %s is used already, try again", username));
-			return;
-		}
-		
 		mFirebaseAuth
 				.createUserWithEmailAndPassword(email, password)
 				.addOnCompleteListener(task -> {
@@ -66,9 +62,9 @@ public class FirebaseOperations implements IFirebaseOperations {
 				})
 				.addOnFailureListener(exception -> {
 					if (exception instanceof FirebaseAuthUserCollisionException) {
-						shortToast(mContext, String.format("%s is used by another user, try again", email));
+						shortToast(mContext, String.format(mContext.getString(R.string.email_used_warning), email));
 					} else if (exception instanceof FirebaseAuthWeakPasswordException) {
-						shortToast(mContext, "Password is too weak");
+						shortToast(mContext, mContext.getString(R.string.password_short_warning));
 					}
 					
 					mContext.startActivity(new Intent(mContext, SignUp.class));
