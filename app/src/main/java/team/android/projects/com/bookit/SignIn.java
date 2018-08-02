@@ -14,11 +14,12 @@ import team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_tex
 
 import static team.android.projects.com.bookit.dataclasses.UserKeys.Username;
 import static team.android.projects.com.bookit.utils.logging.Logging.shortToast;
-import static team.android.projects.com.bookit.utils.ui.UIUtils.disableRedButton;
+import static team.android.projects.com.bookit.utils.ui.ButtonStates.Disabled;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.displayExitConfirmDialog;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.isEmail;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.isFilled;
+import static team.android.projects.com.bookit.utils.ui.UIUtils.modifyRedButton;
 
 public class SignIn extends AppCompatActivity {
 	private Button mSignInBtn;
@@ -60,7 +61,6 @@ public class SignIn extends AppCompatActivity {
 		});
 		
 		mSignInBtn.setOnClickListener(v -> {
-			disableRedButton(this, mSignInBtn);
 			attemptSignIn();
 		});
 		
@@ -86,6 +86,8 @@ public class SignIn extends AppCompatActivity {
 					email = matchedUser.email;
 				}
 			}
+			
+			modifyRedButton(this, mSignInBtn, Disabled);
 			mFirebaseOperations.signIn(email, password);
 		}
 	}

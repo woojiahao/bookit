@@ -1,6 +1,5 @@
 package team.android.projects.com.bookit;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -13,9 +12,10 @@ import team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_tex
 
 import static team.android.projects.com.bookit.utils.logging.ApplicationCodes.Error;
 import static team.android.projects.com.bookit.utils.logging.Logging.shortToast;
-import static team.android.projects.com.bookit.utils.ui.UIUtils.disableRedButton;
+import static team.android.projects.com.bookit.utils.ui.ButtonStates.Disabled;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.loadGenreSelection;
+import static team.android.projects.com.bookit.utils.ui.UIUtils.modifyRedButton;
 
 public class SignUpGenreSelection extends AppCompatActivity {
 	private ClearableEditText mSearch;
@@ -55,7 +55,7 @@ public class SignUpGenreSelection extends AppCompatActivity {
 		mSelectBtn.setOnClickListener(v -> beginRegistration());
 		mSearch.setOnTypingListener(
 				(s, start, count, after) ->
-					mGenreSelectionFragment.searchFor(s.toString()));
+						mGenreSelectionFragment.searchFor(s.toString()));
 	}
 	
 	private void beginRegistration() {
@@ -68,7 +68,7 @@ public class SignUpGenreSelection extends AppCompatActivity {
 	}
 	
 	private void registerUser() {
-		disableRedButton(this, mSelectBtn);
+		modifyRedButton(this, mSelectBtn, Disabled);
 		mFirebaseOperations.registerUser(mEmail, mPassword, mUsername, mGenreSelectionFragment.getSelection());
 	}
 	

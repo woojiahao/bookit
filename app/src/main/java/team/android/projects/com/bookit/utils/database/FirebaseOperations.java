@@ -3,7 +3,9 @@ package team.android.projects.com.bookit.utils.database;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
@@ -24,11 +26,12 @@ import team.android.projects.com.bookit.RecoveryEmailSentSuccess;
 import team.android.projects.com.bookit.SignUp;
 import team.android.projects.com.bookit.dataclasses.User;
 
-import static team.android.projects.com.bookit.dataclasses.UserKeys.Username;
-import static team.android.projects.com.bookit.utils.logging.ApplicationCodes.Debug;
 import static team.android.projects.com.bookit.utils.logging.ApplicationCodes.Error;
 import static team.android.projects.com.bookit.utils.logging.ApplicationCodes.Success;
 import static team.android.projects.com.bookit.utils.logging.Logging.shortToast;
+import static team.android.projects.com.bookit.utils.ui.ButtonStates.Enabled;
+import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
+import static team.android.projects.com.bookit.utils.ui.UIUtils.modifyRedButton;
 
 // todo: add email verification for newly created account
 public class FirebaseOperations implements IFirebaseOperations {
@@ -87,6 +90,8 @@ public class FirebaseOperations implements IFirebaseOperations {
 					}
 				})
 				.addOnFailureListener(exception -> {
+					Button signInButton = find((AppCompatActivity) mContext, R.id.signInBtn);
+					modifyRedButton(mContext, signInButton, Enabled);
 					if (exception instanceof FirebaseAuthInvalidUserException) {
 						shortToast(mContext, "Email account does not exist");
 					} else if (exception instanceof FirebaseAuthInvalidCredentialsException) {

@@ -84,6 +84,28 @@ public class UIUtils {
 		
 	}
 	
+	public static void modifyRedButton(Context c, Button b, ButtonStates state) {
+		boolean isEnabled = false;
+		int backgroundRes = 0;
+		switch (state) {
+			case Enabled:
+				isEnabled = true;
+				backgroundRes = R.drawable.red_button_background;
+				break;
+			case Disabled:
+				isEnabled = false;
+				backgroundRes = R.drawable.red_button_background_disabled;
+				break;
+		}
+		
+		b.setEnabled(isEnabled);
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+			b.setBackground(c.getDrawable(backgroundRes));
+		} else {
+			b.setBackground(c.getResources().getDrawable(backgroundRes));
+		}
+	}
+	
 	public static void disableRedButton(Context c, Button b) {
 		b.setEnabled(false);
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

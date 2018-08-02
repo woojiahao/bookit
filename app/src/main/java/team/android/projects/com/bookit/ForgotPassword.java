@@ -14,9 +14,10 @@ import team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_tex
 
 import static team.android.projects.com.bookit.dataclasses.UserKeys.Email;
 import static team.android.projects.com.bookit.utils.logging.Logging.shortToast;
-import static team.android.projects.com.bookit.utils.ui.UIUtils.disableRedButton;
+import static team.android.projects.com.bookit.utils.ui.ButtonStates.Disabled;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.displayExitConfirmDialog;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
+import static team.android.projects.com.bookit.utils.ui.UIUtils.modifyRedButton;
 
 public class ForgotPassword extends AppCompatActivity {
 	private Button mSignInBtn;
@@ -56,7 +57,6 @@ public class ForgotPassword extends AppCompatActivity {
 			finish();
 		});
 		mSendEmailBtn.setOnClickListener(v -> {
-			disableRedButton(this, mSendEmailBtn);
 			attemptReset();
 		});
 	}
@@ -75,6 +75,7 @@ public class ForgotPassword extends AppCompatActivity {
 				if (!u.username.equals(username)) {
 					shortToast(this, getString(R.string.mismatch_forgot_password));
 				} else {
+					modifyRedButton(this, mSendEmailBtn, Disabled);
 					mFirebaseOperations.sendRecoveryEmail(email, true);
 				}
 			}
