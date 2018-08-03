@@ -180,7 +180,7 @@ public class FirebaseOperations implements IFirebaseOperations {
 				.setValue(favourites)
 				.addOnCompleteListener(task -> {
 					if (!task.isSuccessful()) {
-						Log.e(Error.name(), "Unable to add favourites");
+						Log.e(Error.name(), "Unable to set favourites");
 					}
 				});
 	}

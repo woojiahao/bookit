@@ -26,6 +26,7 @@ import team.android.projects.com.bookit.database.IFirebaseOperations;
 import team.android.projects.com.bookit.database.UsersList;
 
 import static team.android.projects.com.bookit.dataclasses.UserKeys.Uid;
+import static team.android.projects.com.bookit.logging.Logging.shortToast;
 
 public class SplashScreen extends AppCompatActivity {
 	private IFirebaseOperations mFirebaseOperations;
@@ -79,6 +80,10 @@ public class SplashScreen extends AppCompatActivity {
 					if (currentUser != null) {
 						UsersList.setCurrentUser(currentUser.uid);
 					}
+				}
+				
+				if (App.searchEngine == null) {
+					shortToast(SplashScreen.this, "Book searching capabilities will not work");
 				}
 				
 				startActivity(
