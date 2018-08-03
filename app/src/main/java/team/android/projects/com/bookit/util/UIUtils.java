@@ -122,4 +122,33 @@ public class UIUtils {
 		});
 		menu.show();
 	}
+	
+	// todo: implement a more elegant way of updating the favourites UI from here
+	public static void displayPopupMenu(Context c, View toAttach,
+										String isbn,
+										IFirebaseOperations firebaseOperations,
+										IUpdate update) {
+		PopupMenu menu = new PopupMenu(c, toAttach);
+		menu.inflate(R.menu.popup_menu_book);
+		
+		if (UsersList.hasFavourite(isbn)) {
+			menu.getMenu().findItem(R.id.popupAdd).setVisible(false);
+			menu.getMenu().findItem(R.id.popupRemove).setVisible(true);
+		}
+		
+		menu.setOnMenuItemClickListener(item -> {
+			switch (item.getItemId()) {
+				case R.id.popupAdd:
+					firebaseOperations.addFavourite(isbn);
+					return true;
+				case R.id.popupRemove:
+					firebaseOperations.removeFavourite(isbn);
+					update.update();
+					return true;
+			}
+			
+			return false;
+		});
+		menu.show();
+	}
 }

@@ -1,6 +1,5 @@
 package team.android.projects.com.bookit;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -14,7 +13,6 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import team.android.projects.com.bookit.database.UsersList;
 import team.android.projects.com.bookit.dataclasses.Book;
@@ -64,19 +62,13 @@ public class FavouritesFragment extends Fragment {
 	
 	private void searchFor(String s) {
 		List<Book> temp = new ArrayList<>();
+		if (mDisplayedBooks == null || mBooks == null) return;
+		
 		if (s.trim().equals("")) {
-			if (!mDisplayedBooks.containsAll(mBooks)) {
-				temp = mBooks;
-			}
+			if (!mDisplayedBooks.containsAll(mBooks)) temp = mBooks;
 		} else {
-			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-				temp = mBooks.stream()
-						.filter(book -> book.getTitle().toLowerCase().startsWith(s.toLowerCase()))
-						.collect(Collectors.toList());
-			} else {
-				for (Book b : mBooks) {
-					if (b.getTitle().toLowerCase().startsWith(s.toLowerCase())) temp.add(b);
-				}
+			for (Book b : mBooks) {
+				if (b.getTitle().toLowerCase().startsWith(s.toLowerCase())) temp.add(b);
 			}
 		}
 		mDisplayedBooks.clear();

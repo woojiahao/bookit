@@ -14,9 +14,9 @@ import java.util.List;
 import java.util.Map;
 
 import team.android.projects.com.bookit.R;
-import team.android.projects.com.bookit.dataclasses.Book;
 import team.android.projects.com.bookit.database.FirebaseOperations;
 import team.android.projects.com.bookit.database.IFirebaseOperations;
+import team.android.projects.com.bookit.dataclasses.Book;
 
 import static team.android.projects.com.bookit.util.UIUtils.displayPopupMenu;
 import static team.android.projects.com.bookit.util.UIUtils.find;
@@ -115,11 +115,17 @@ public class BookRowAdapter extends RecyclerView.Adapter<BookRowAdapter.ViewHold
 		holder.setThumbnail(book.getThumbnail());
 		holder.setRating(book.getRating());
 		
-		holder.mPopupMenu.setOnClickListener(v ->
-				displayPopupMenu(
-						holder.mView.getContext(), holder.mPopupMenu,
-						book.getISBN(), mFirebaseOperations)
-		);
+		holder.mPopupMenu.setOnClickListener(v -> {
+			displayPopupMenu(
+					holder.mView.getContext(),
+					holder.mPopupMenu,
+					book.getISBN(),
+					mFirebaseOperations,
+					() -> {
+						mBooks.remove(book);
+						notifyDataSetChanged();
+					});
+		});
 	}
 	
 	@Override public int getItemCount() {
