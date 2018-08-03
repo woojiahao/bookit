@@ -16,8 +16,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import team.android.projects.com.bookit.dataclasses.Book;
 import team.android.projects.com.bookit.database.UsersList;
+import team.android.projects.com.bookit.dataclasses.Book;
 import team.android.projects.com.bookit.ui.adapters.BookRowAdapter;
 import team.android.projects.com.bookit.ui.custom.clearable_edit_text.ClearableEditText;
 

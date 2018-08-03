@@ -15,7 +15,6 @@ import android.widget.EditText;
 
 import team.android.projects.com.bookit.R;
 
-import static team.android.projects.com.bookit.util.UIUtils.clearInputs;
 import static team.android.projects.com.bookit.util.UIUtils.find;
 
 // todo: use normal inputType for passwords but replace each character with * each time they type it
@@ -89,7 +88,7 @@ public class ClearableEditText extends CardView {
 		setOnTypingListener(
 				(s, start, count, after) ->
 						mClearBtn.setVisibility(s.toString().equals("") ? GONE : mIsClearable ? VISIBLE : GONE));
-		mClearBtn.setOnClickListener(view -> clearInputs(mEditText));
+		mClearBtn.setOnClickListener(view -> mEditText.setText(""));
 	}
 	
 	public void clearInput() {

@@ -6,10 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.TextView;
 
-import team.android.projects.com.bookit.dataclasses.User;
 import team.android.projects.com.bookit.database.FirebaseOperations;
 import team.android.projects.com.bookit.database.IFirebaseOperations;
 import team.android.projects.com.bookit.database.UsersList;
+import team.android.projects.com.bookit.dataclasses.User;
 import team.android.projects.com.bookit.ui.custom.clearable_edit_text.ClearableEditText;
 
 import static team.android.projects.com.bookit.dataclasses.UserKeys.Username;

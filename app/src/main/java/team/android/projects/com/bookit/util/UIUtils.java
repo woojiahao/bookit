@@ -20,18 +20,8 @@ import team.android.projects.com.bookit.ui.ButtonStates;
 import team.android.projects.com.bookit.ui.custom.clearable_edit_text.ClearableEditText;
 
 public class UIUtils {
-	public static void clearInputs(EditText... editTexts) {
-		for (EditText e : editTexts) e.setText("");
-	}
-	
 	public static void clearInputs(ClearableEditText... clearableEditTexts) {
 		for (ClearableEditText e : clearableEditTexts) e.clearInput();
-	}
-	
-	public static boolean isFilled(EditText... editTexts) {
-		boolean allFilled = true;
-		for (EditText e : editTexts) allFilled &= !e.getText().toString().trim().equals("");
-		return allFilled;
 	}
 	
 	public static boolean isFilled(ClearableEditText... editTexts) {
@@ -107,16 +97,6 @@ public class UIUtils {
 		}
 	}
 	
-	public static void disableRedButton(Context c, Button b) {
-		b.setEnabled(false);
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-			b.setBackground(c.getDrawable(R.drawable.red_button_background_disabled));
-		} else {
-			b.setBackground(c.getResources().getDrawable(R.drawable.red_button_background_disabled));
-		}
-	}
-	
-	// todo: generify the displaying of the popup menus
 	public static void displayPopupMenu(Context c, View toAttach,
 										String isbn,
 										IFirebaseOperations firebaseOperations) {
