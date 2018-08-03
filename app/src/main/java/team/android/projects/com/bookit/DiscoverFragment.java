@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +14,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import team.android.projects.com.bookit.dataclasses.Book;
 import team.android.projects.com.bookit.dataclasses.BookGroup;
+import team.android.projects.com.bookit.logging.ApplicationCodes;
 import team.android.projects.com.bookit.ui.adapters.DiscoverAdapter;
 import team.android.projects.com.bookit.ui.decorators.SpacingDecoration;
 import team.android.projects.com.bookit.ui.decorators.SpacingDecorationError;
@@ -83,6 +86,16 @@ public class DiscoverFragment extends Fragment {
 	public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
 		mView = inflater.inflate(R.layout.fragment_discover, container, false);
+		
+		try {
+			List<String> titles = App.searchEngine.genreSearch("horror");
+			for (String s : titles) {
+				Log.i("SEARCHING", s);
+			}
+		} catch (ExecutionException | InterruptedException e) {
+			Log.e(ApplicationCodes.Error.name(), "Unable to retrieve books");
+			e.printStackTrace();
+		}
 		
 		init();
 		connectListeners();

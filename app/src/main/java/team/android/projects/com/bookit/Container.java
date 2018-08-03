@@ -52,8 +52,6 @@ public class Container
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_container);
 		
-		App.searchEngine.genreSearch("horror");
-		
 		init();
 		connectListeners();
 	}
