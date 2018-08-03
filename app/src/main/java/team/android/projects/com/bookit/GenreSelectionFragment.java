@@ -1,6 +1,5 @@
 package team.android.projects.com.bookit;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -14,7 +13,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import team.android.projects.com.bookit.dataclasses.Genre;
 import team.android.projects.com.bookit.ui.adapters.GenreAdapter;
@@ -49,38 +47,23 @@ public class GenreSelectionFragment extends Fragment {
 	public String[] getSelection() {
 		Object[] selection;
 		
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-			selection = mGenres.stream()
-					.filter(Genre::getIsSelected)
-					.map(Genre::getGenreTitle)
-					.toArray();
-		} else {
-			List<String> arr = new ArrayList<>();
-			for (Genre g : mGenres) {
-				if (g.getIsSelected()) {
-					arr.add(g.getGenreTitle());
-				}
+		List<String> arr = new ArrayList<>();
+		for (Genre g : mGenres) {
+			if (g.getIsSelected()) {
+				arr.add(g.getGenreTitle());
 			}
-			selection = arr.toArray();
 		}
+		selection = arr.toArray();
 		return Arrays.copyOf(selection, selection.length, String[].class);
 	}
 	
 	public void searchFor(String s) {
 		List<Genre> temp = new ArrayList<>();
 		if (s.trim().equals("")) {
-			if (!mDisplayedGenres.containsAll(mGenres)) {
-				temp = mGenres;
-			}
+			if (!mDisplayedGenres.containsAll(mGenres)) temp = mGenres;
 		} else {
-			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-				temp = mGenres.stream()
-						.filter(genre -> genre.getGenreTitle().toLowerCase().startsWith(s.toLowerCase()))
-						.collect(Collectors.toList());
-			} else {
-				for (Genre g : mGenres) {
-					if (g.getGenreTitle().toLowerCase().startsWith(s.toLowerCase())) temp.add(g);
-				}
+			for (Genre g : mGenres) {
+				if (g.getGenreTitle().toLowerCase().startsWith(s.toLowerCase())) temp.add(g);
 			}
 		}
 		mDisplayedGenres.clear();
