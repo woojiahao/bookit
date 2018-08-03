@@ -52,9 +52,11 @@
 					android:id="@+id/bookPopupMenu"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
+					android:layout_marginRight="-8sp"
 					android:layout_gravity="end"
 					android:contentDescription="@string/popup_menu"
-					android:src="@drawable/popup_menu"/>
+					android:src="@drawable/popup_menu"
+					android:layout_marginEnd="-8sp"/>
 
 			</LinearLayout>
 
