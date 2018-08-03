@@ -33,7 +33,7 @@
 		style="@style/SettingsGroupTitle"
 		android:text="@string/options"/>
 
-	<team.android.projects.com.bookit.utils.ui.custom_views.settings_row.SettingsRow
+	<team.android.projects.com.bookit.ui.custom.settings_row.SettingsRow
 		android:id="@+id/settingsChangeLanguage"
 		style="@style/SettingsRow"
 		android:layout_marginBottom="@dimen/small_padding"
@@ -44,13 +44,13 @@
 		style="@style/SettingsGroupTitle"
 		android:text="@string/account"/>
 
-	<team.android.projects.com.bookit.utils.ui.custom_views.settings_row.SettingsRow
+	<team.android.projects.com.bookit.ui.custom.settings_row.SettingsRow
 		android:id="@+id/settingsEditGenres"
 		style="@style/SettingsRow"
 		app:description="Change your recommendations"
 		app:title="Edit Genres"/>
 
-	<team.android.projects.com.bookit.utils.ui.custom_views.settings_row.SettingsRow
+	<team.android.projects.com.bookit.ui.custom.settings_row.SettingsRow
 		android:id="@+id/settingsSignOut"
 		style="@style/SettingsRow"
 		app:hasDescription="false"

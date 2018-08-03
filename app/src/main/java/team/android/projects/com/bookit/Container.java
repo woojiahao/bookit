@@ -17,19 +17,19 @@ import android.view.MenuItem;
 import java.util.ArrayList;
 import java.util.List;
 
-import team.android.projects.com.bookit.utils.backstack.FragmentID;
-import team.android.projects.com.bookit.utils.ui.camera.CameraStates;
-import team.android.projects.com.bookit.utils.ui.helper.BottomNavigationHelper;
+import team.android.projects.com.bookit.backstack.FragmentID;
+import team.android.projects.com.bookit.ocr.CameraStates;
+import team.android.projects.com.bookit.ui.helper.BottomNavigationHelper;
 
-import static team.android.projects.com.bookit.utils.backstack.FragmentID.Discover;
-import static team.android.projects.com.bookit.utils.backstack.FragmentID.Favourites;
-import static team.android.projects.com.bookit.utils.backstack.FragmentID.Search;
-import static team.android.projects.com.bookit.utils.backstack.FragmentID.Setting;
-import static team.android.projects.com.bookit.utils.ui.UIUtils.displayExitConfirmDialog;
-import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
-import static team.android.projects.com.bookit.utils.ui.camera.CameraStates.Cancelled;
-import static team.android.projects.com.bookit.utils.ui.camera.CameraStates.Taken;
-import static team.android.projects.com.bookit.utils.ui.camera.CameraStates.Taking;
+import static team.android.projects.com.bookit.backstack.FragmentID.Discover;
+import static team.android.projects.com.bookit.backstack.FragmentID.Favourites;
+import static team.android.projects.com.bookit.backstack.FragmentID.Search;
+import static team.android.projects.com.bookit.backstack.FragmentID.Setting;
+import static team.android.projects.com.bookit.util.UIUtils.displayExitConfirmDialog;
+import static team.android.projects.com.bookit.util.UIUtils.find;
+import static team.android.projects.com.bookit.ocr.CameraStates.Cancelled;
+import static team.android.projects.com.bookit.ocr.CameraStates.Taken;
+import static team.android.projects.com.bookit.ocr.CameraStates.Taking;
 
 // todo: implement a proper backstack
 // todo: customize the camera

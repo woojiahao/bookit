@@ -9,16 +9,16 @@ import android.widget.TextView;
 import java.util.Arrays;
 
 import team.android.projects.com.bookit.dataclasses.User;
-import team.android.projects.com.bookit.utils.database.FirebaseOperations;
-import team.android.projects.com.bookit.utils.database.IFirebaseOperations;
-import team.android.projects.com.bookit.utils.database.UsersList;
-import team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text.ClearableEditText;
+import team.android.projects.com.bookit.database.FirebaseOperations;
+import team.android.projects.com.bookit.database.IFirebaseOperations;
+import team.android.projects.com.bookit.database.UsersList;
+import team.android.projects.com.bookit.ui.custom.clearable_edit_text.ClearableEditText;
 
-import static team.android.projects.com.bookit.utils.logging.Logging.shortToast;
-import static team.android.projects.com.bookit.utils.ui.ButtonStates.Disabled;
-import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
-import static team.android.projects.com.bookit.utils.ui.UIUtils.loadGenreSelection;
-import static team.android.projects.com.bookit.utils.ui.UIUtils.modifyRedButton;
+import static team.android.projects.com.bookit.logging.Logging.shortToast;
+import static team.android.projects.com.bookit.ui.ButtonStates.Disabled;
+import static team.android.projects.com.bookit.util.UIUtils.find;
+import static team.android.projects.com.bookit.util.UIUtils.loadGenreSelection;
+import static team.android.projects.com.bookit.util.UIUtils.modifyRedButton;
 
 public class EditGenres extends AppCompatActivity {
 	private ClearableEditText mSearch;

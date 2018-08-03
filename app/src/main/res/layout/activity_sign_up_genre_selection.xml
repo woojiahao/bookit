@@ -18,7 +18,7 @@
 		android:contentDescription="@string/back_button"
 		android:src="@drawable/ic_baseline_arrow_back_24px"/>
 
-	<team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text.ClearableEditText
+	<team.android.projects.com.bookit.ui.custom.clearable_edit_text.ClearableEditText
 		android:id="@+id/searchGenreField"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"

@@ -15,13 +15,13 @@ import android.widget.TextView;
 import java.util.Arrays;
 
 import team.android.projects.com.bookit.dataclasses.User;
-import team.android.projects.com.bookit.utils.database.FirebaseOperations;
-import team.android.projects.com.bookit.utils.database.IFirebaseOperations;
-import team.android.projects.com.bookit.utils.database.UsersList;
-import team.android.projects.com.bookit.utils.ui.custom_views.settings_row.SettingsRow;
+import team.android.projects.com.bookit.database.FirebaseOperations;
+import team.android.projects.com.bookit.database.IFirebaseOperations;
+import team.android.projects.com.bookit.database.UsersList;
+import team.android.projects.com.bookit.ui.custom.settings_row.SettingsRow;
 
-import static team.android.projects.com.bookit.utils.logging.Logging.shortToast;
-import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
+import static team.android.projects.com.bookit.logging.Logging.shortToast;
+import static team.android.projects.com.bookit.util.UIUtils.find;
 
 // todo: convert the settings row into a recyclerview and use the dividers item decoration instead to show the dividers
 public class SettingsFragment extends Fragment {

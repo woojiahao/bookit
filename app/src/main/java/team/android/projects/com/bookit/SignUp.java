@@ -5,16 +5,16 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 
-import team.android.projects.com.bookit.utils.database.UsersList;
-import team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text.ClearableEditText;
+import team.android.projects.com.bookit.database.UsersList;
+import team.android.projects.com.bookit.ui.custom.clearable_edit_text.ClearableEditText;
 
 import static team.android.projects.com.bookit.dataclasses.UserKeys.Email;
 import static team.android.projects.com.bookit.dataclasses.UserKeys.Username;
-import static team.android.projects.com.bookit.utils.logging.Logging.shortToast;
-import static team.android.projects.com.bookit.utils.ui.UIUtils.displayExitConfirmDialog;
-import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
-import static team.android.projects.com.bookit.utils.ui.UIUtils.isEmail;
-import static team.android.projects.com.bookit.utils.ui.UIUtils.isFilled;
+import static team.android.projects.com.bookit.logging.Logging.shortToast;
+import static team.android.projects.com.bookit.util.UIUtils.displayExitConfirmDialog;
+import static team.android.projects.com.bookit.util.UIUtils.find;
+import static team.android.projects.com.bookit.util.UIUtils.isEmail;
+import static team.android.projects.com.bookit.util.UIUtils.isFilled;
 
 public class SignUp extends AppCompatActivity {
 	private Button mSignUpBtn;

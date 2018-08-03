@@ -12,18 +12,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import team.android.projects.com.bookit.dataclasses.Book;
-import team.android.projects.com.bookit.dataclasses.Genre;
-import team.android.projects.com.bookit.utils.database.UsersList;
-import team.android.projects.com.bookit.utils.ui.adapters.BookRowAdapter;
-import team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text.ClearableEditText;
+import team.android.projects.com.bookit.database.UsersList;
+import team.android.projects.com.bookit.ui.adapters.BookRowAdapter;
+import team.android.projects.com.bookit.ui.custom.clearable_edit_text.ClearableEditText;
 
-import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
+import static team.android.projects.com.bookit.util.UIUtils.find;
 
 // todo: generify the searchFor
 // todo: add dynamic loading of the favourites instead of hardcoding it

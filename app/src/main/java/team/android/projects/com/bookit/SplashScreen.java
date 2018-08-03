@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 
@@ -22,10 +21,9 @@ import java.util.List;
 import java.util.Locale;
 
 import team.android.projects.com.bookit.dataclasses.User;
-import team.android.projects.com.bookit.dataclasses.UserKeys;
-import team.android.projects.com.bookit.utils.database.FirebaseOperations;
-import team.android.projects.com.bookit.utils.database.IFirebaseOperations;
-import team.android.projects.com.bookit.utils.database.UsersList;
+import team.android.projects.com.bookit.database.FirebaseOperations;
+import team.android.projects.com.bookit.database.IFirebaseOperations;
+import team.android.projects.com.bookit.database.UsersList;
 
 import static team.android.projects.com.bookit.dataclasses.UserKeys.Uid;
 

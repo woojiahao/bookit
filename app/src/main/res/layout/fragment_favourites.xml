@@ -9,7 +9,7 @@
 	android:focusableInTouchMode="true"
 	android:orientation="vertical">
 
-	<team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text.ClearableEditText
+	<team.android.projects.com.bookit.ui.custom.clearable_edit_text.ClearableEditText
 		android:id="@+id/favouritesSearch"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"

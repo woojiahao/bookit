@@ -7,10 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text.ClearableEditText;
+import team.android.projects.com.bookit.ui.custom.clearable_edit_text.ClearableEditText;
 
-import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
-import static team.android.projects.com.bookit.utils.ui.UIUtils.loadGenreSelection;
+import static team.android.projects.com.bookit.util.UIUtils.find;
+import static team.android.projects.com.bookit.util.UIUtils.loadGenreSelection;
 
 public class SearchFragment extends Fragment {
 	private ClearableEditText mSearchField;

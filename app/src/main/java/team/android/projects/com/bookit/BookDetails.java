@@ -15,7 +15,7 @@ import java.util.List;
 
 import team.android.projects.com.bookit.dataclasses.Store;
 import team.android.projects.com.bookit.dataclasses.StorePrice;
-import team.android.projects.com.bookit.utils.ui.adapters.BookDetailsAdapter;
+import team.android.projects.com.bookit.ui.adapters.BookDetailsAdapter;
 
 public class BookDetails extends AppCompatActivity {
     private RecyclerView mRecyclerView;

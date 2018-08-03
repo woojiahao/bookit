@@ -7,11 +7,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import team.android.projects.com.bookit.utils.database.FirebaseOperations;
-import team.android.projects.com.bookit.utils.database.IFirebaseOperations;
+import team.android.projects.com.bookit.database.FirebaseOperations;
+import team.android.projects.com.bookit.database.IFirebaseOperations;
 
-import static team.android.projects.com.bookit.utils.ui.UIUtils.displayExitConfirmDialog;
-import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
+import static team.android.projects.com.bookit.util.UIUtils.displayExitConfirmDialog;
+import static team.android.projects.com.bookit.util.UIUtils.find;
 
 public class RecoveryEmailSentSuccess extends AppCompatActivity {
 	private TextView mStatusMessage;

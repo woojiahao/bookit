@@ -17,11 +17,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import team.android.projects.com.bookit.dataclasses.Genre;
-import team.android.projects.com.bookit.utils.ui.adapters.GenreAdapter;
-import team.android.projects.com.bookit.utils.ui.decorators.SpacingDecoration;
-import team.android.projects.com.bookit.utils.ui.decorators.SpacingDecorationError;
+import team.android.projects.com.bookit.ui.adapters.GenreAdapter;
+import team.android.projects.com.bookit.ui.decorators.SpacingDecoration;
+import team.android.projects.com.bookit.ui.decorators.SpacingDecorationError;
 
-import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
+import static team.android.projects.com.bookit.util.UIUtils.find;
 
 public class GenreSelectionFragment extends Fragment {
 	private View mView;

@@ -16,8 +16,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import team.android.projects.com.bookit.utils.logging.ApplicationCodes;
-import team.android.projects.com.bookit.utils.ocr.TessOCR;
+import team.android.projects.com.bookit.logging.ApplicationCodes;
+import team.android.projects.com.bookit.ocr.TessOCR;
 
 // todo: replace the processing method with an actual processing method
 // todo: make the book object parcelable so as to be able to pass it into the bundle as a key-value pair

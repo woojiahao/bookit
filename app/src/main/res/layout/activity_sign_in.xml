@@ -20,7 +20,7 @@
 			style="@style/Logo"
 			android:layout_marginBottom="@dimen/large_padding"/>
 
-		<team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text.ClearableEditText
+		<team.android.projects.com.bookit.ui.custom.clearable_edit_text.ClearableEditText
 			android:id="@+id/loginUsernameField"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
@@ -29,7 +29,7 @@
 			app:inputType="text"
 			app:sideIcon="@drawable/ic_person_black_24dp"/>
 
-		<team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text.ClearableEditText
+		<team.android.projects.com.bookit.ui.custom.clearable_edit_text.ClearableEditText
 			android:id="@+id/loginPasswordField"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
