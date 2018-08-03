@@ -29,81 +29,31 @@ public class DiscoverFragment extends Fragment {
 	private View mView;
 	private RecyclerView mCategories;
 	
-	private List<Book> mBooks = new ArrayList<Book>() {{
-		add(new Book.Builder()
-				.setTitle("Artemis")
-				.setISBN("12jdsfhsdfkj")
-				.setGenres(new String[] { "Action" })
-				.setAuthors(new String[] { "John Doe" })
-				.setPrices(new HashMap<String, Double>() {{
-					put("Amazon", 13.99);
-				}})
-				.setRating(5)
-				.setThumbnail(R.drawable.artemis)
-				.build());
-		add(new Book.Builder()
-				.setTitle("Artemis")
-				.setISBN("dfdsjghdsf")
-				.setGenres(new String[] { "Action" })
-				.setAuthors(new String[] { "John Doe", "Mary Anne" })
-				.setPrices(new HashMap<String, Double>() {{
-					put("Amazon", 13.99);
-				}})
-				.setRating(5)
-				.setThumbnail(R.drawable.artemis)
-				.build());
-		add(new Book.Builder()
-				.setTitle("Into the waters")
-				.setISBN("lfdskfhksdjfh")
-				.setGenres(new String[] { "Action", "Adventure" })
-				.setAuthors(new String[] { "John Doe" })
-				.setPrices(new HashMap<String, Double>() {{
-					put("Amazon", 13.99);
-				}})
-				.setRating(5)
-				.setThumbnail(R.drawable.into_the_water)
-				.build());
-		add(new Book.Builder()
-				.setTitle("Before we were yours")
-				.setISBN("skufsidhfsid")
-				.setGenres(new String[] { "Action" })
-				.setAuthors(new String[] { "John Doe" })
-				.setPrices(new HashMap<String, Double>() {{
-					put("Amazon", 13.99);
-				}})
-				.setRating(5)
-				.setThumbnail(R.drawable.before_we_were_yours)
-				.build());
-	}};
-
-	private final List<BookGroup> mGroups = Arrays.asList(
-			new BookGroup("Recommended for you", mBooks),
-			new BookGroup("Best-sellers", mBooks),
-			new BookGroup("New releases", mBooks)
-	);
-
+	private List<Book> mBooks;
+	
 	@Override
 	public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
 		mView = inflater.inflate(R.layout.fragment_discover, container, false);
 		
 		try {
-			List<String> titles = App.searchEngine.genreSearch("horror");
-			for (String s : titles) {
-				Log.i("SEARCHING", s);
-			}
+			mBooks = App.searchEngine.genreSearch("horror");
 		} catch (ExecutionException | InterruptedException e) {
 			Log.e(ApplicationCodes.Error.name(), "Unable to retrieve books");
 			e.printStackTrace();
 		}
 		
 		init();
-		connectListeners();
 		
 		return mView;
 	}
 	
 	private void init() {
+		List<BookGroup> mGroups = Arrays.asList(
+				new BookGroup("Recommended for you", mBooks),
+				new BookGroup("Best-sellers", mBooks),
+				new BookGroup("New releases", mBooks)
+		);
 		DiscoverAdapter adapter = new DiscoverAdapter(mGroups);
 		mCategories = find(mView, R.id.discoverArea);
 		mCategories.setAdapter(adapter);
@@ -115,8 +65,5 @@ public class DiscoverFragment extends Fragment {
 		}
 		
 		mCategories.setLayoutManager(new LinearLayoutManager(mView.getContext(), LinearLayoutManager.VERTICAL, false));
-	}
-	
-	private void connectListeners() {
 	}
 }

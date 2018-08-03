@@ -56,6 +56,8 @@ dependencies {
     implementation 'com.google.apis:google-api-services-books:v1-rev101-1.24.1'
     implementation 'com.google.gms:google-services:4.0.1'
     implementation 'com.google.api-client:google-api-client-android:1.23.0'
+
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }
 
 apply plugin: 'com.google.gms.google-services'

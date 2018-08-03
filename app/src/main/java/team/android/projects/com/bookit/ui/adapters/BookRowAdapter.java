@@ -112,7 +112,7 @@ public class BookRowAdapter extends RecyclerView.Adapter<BookRowAdapter.ViewHold
 		holder.setLocation(location);
 		holder.setTitle(book.getTitle());
 		holder.setPrice(price);
-		holder.setThumbnail(book.getThumbnail());
+//		holder.setThumbnail(book.getThumbnail());
 		holder.setRating(book.getRating());
 		
 		holder.mPopupMenu.setOnClickListener(v -> {

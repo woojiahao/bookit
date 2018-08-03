@@ -77,63 +77,63 @@ public class FavouritesFragment extends Fragment {
 	}
 	
 	private void loadBooks() {
-		List<Book> books = new ArrayList<Book>() {{
-			add(new Book.Builder()
-					.setTitle("Artemis")
-					.setISBN("12jdsfhsdfkj")
-					.setGenres(new String[] { "Action" })
-					.setAuthors(new String[] { "John Doe" })
-					.setPrices(new HashMap<String, Double>() {{
-						put("Amazon", 13.99);
-					}})
-					.setRating(5)
-					.setThumbnail(R.drawable.artemis)
-					.build());
-			add(new Book.Builder()
-					.setTitle("Artemis")
-					.setISBN("dfdsjghdsf")
-					.setGenres(new String[] { "Action" })
-					.setAuthors(new String[] { "John Doe", "Mary Anne" })
-					.setPrices(new HashMap<String, Double>() {{
-						put("Amazon", 13.99);
-					}})
-					.setRating(5)
-					.setThumbnail(R.drawable.artemis)
-					.build());
-			add(new Book.Builder()
-					.setTitle("Into the waters")
-					.setISBN("lfdskfhksdjfh")
-					.setGenres(new String[] { "Action", "Adventure" })
-					.setAuthors(new String[] { "John Doe" })
-					.setPrices(new HashMap<String, Double>() {{
-						put("Amazon", 13.99);
-					}})
-					.setRating(5)
-					.setThumbnail(R.drawable.into_the_water)
-					.build());
-			add(new Book.Builder()
-					.setTitle("Before we were yours")
-					.setISBN("skufsidhfsid")
-					.setGenres(new String[] { "Action" })
-					.setAuthors(new String[] { "John Doe" })
-					.setPrices(new HashMap<String, Double>() {{
-						put("Amazon", 13.99);
-					}})
-					.setRating(5)
-					.setThumbnail(R.drawable.before_we_were_yours)
-					.build());
-		}};
-		List<Book> temp = new ArrayList<Book>();
-		if (UsersList.getCurrentUser().favourites == null || UsersList.getCurrentUser().favourites.size() == 0) {
-			mDisplayedBooks = new ArrayList<Book>();
-			return;
-		}
-		for (Book b : books) {
-			if (UsersList.getCurrentUser().favourites.contains(b.getISBN())) {
-				temp.add(b);
-			}
-		}
-		mBooks = new ArrayList<Book>(temp);
-		mDisplayedBooks = new ArrayList<Book>(temp);
+//		List<Book> books = new ArrayList<Book>() {{
+//			add(new Book.Builder()
+//					.setTitle("Artemis")
+//					.setISBN("12jdsfhsdfkj")
+//					.setGenres(new String[] { "Action" })
+//					.setAuthors(new String[] { "John Doe" })
+//					.setPrices(new HashMap<String, Double>() {{
+//						put("Amazon", 13.99);
+//					}})
+//					.setRating(5)
+//					.setThumbnail(R.drawable.artemis)
+//					.build());
+//			add(new Book.Builder()
+//					.setTitle("Artemis")
+//					.setISBN("dfdsjghdsf")
+//					.setGenres(new String[] { "Action" })
+//					.setAuthors(new String[] { "John Doe", "Mary Anne" })
+//					.setPrices(new HashMap<String, Double>() {{
+//						put("Amazon", 13.99);
+//					}})
+//					.setRating(5)
+//					.setThumbnail(R.drawable.artemis)
+//					.build());
+//			add(new Book.Builder()
+//					.setTitle("Into the waters")
+//					.setISBN("lfdskfhksdjfh")
+//					.setGenres(new String[] { "Action", "Adventure" })
+//					.setAuthors(new String[] { "John Doe" })
+//					.setPrices(new HashMap<String, Double>() {{
+//						put("Amazon", 13.99);
+//					}})
+//					.setRating(5)
+//					.setThumbnail(R.drawable.into_the_water)
+//					.build());
+//			add(new Book.Builder()
+//					.setTitle("Before we were yours")
+//					.setISBN("skufsidhfsid")
+//					.setGenres(new String[] { "Action" })
+//					.setAuthors(new String[] { "John Doe" })
+//					.setPrices(new HashMap<String, Double>() {{
+//						put("Amazon", 13.99);
+//					}})
+//					.setRating(5)
+//					.setThumbnail(R.drawable.before_we_were_yours)
+//					.build());
+//		}};
+//		List<Book> temp = new ArrayList<Book>();
+//		if (UsersList.getCurrentUser().favourites == null || UsersList.getCurrentUser().favourites.size() == 0) {
+//			mDisplayedBooks = new ArrayList<Book>();
+//			return;
+//		}
+//		for (Book b : books) {
+//			if (UsersList.getCurrentUser().favourites.contains(b.getISBN())) {
+//				temp.add(b);
+//			}
+//		}
+//		mBooks = new ArrayList<Book>(temp);
+//		mDisplayedBooks = new ArrayList<Book>(temp);
 	}
 }

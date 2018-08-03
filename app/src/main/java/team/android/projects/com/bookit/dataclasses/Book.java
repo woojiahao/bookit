@@ -6,8 +6,8 @@ import java.util.Map;
 
 public class Book {
 	private double rating;
-	private int thumbnail;
 	
+	private String thumbnail;
 	private String ISBN;
 	private String summary;
 	private String title;
@@ -19,8 +19,8 @@ public class Book {
 	
 	public static class Builder {
 		private double rating;
-		private int thumbnail;
 		
+		private String thumbnail;
 		private String ISBN;
 		private String summary;
 		private String title;
@@ -32,8 +32,8 @@ public class Book {
 		
 		public Builder() {
 			rating = 0.0;
-			thumbnail = -1;
 			
+			thumbnail = null;
 			ISBN = null;
 			summary = null;
 			title = null;
@@ -48,7 +48,7 @@ public class Book {
 			return this;
 		}
 		
-		public Builder setThumbnail(int thumnail) {
+		public Builder setThumbnail(String thumnail) {
 			this.thumbnail = thumnail;
 			return this;
 		}
@@ -88,7 +88,7 @@ public class Book {
 		}
 	}
 	
-	private Book(double rating, int thumbnail,
+	private Book(double rating, String thumbnail,
 				 String ISBN, String summary, String title,
 				 String[] authors, String[] genres,
 				 Map<String, Double> prices) {
@@ -106,7 +106,7 @@ public class Book {
 		return rating;
 	}
 	
-	public int getThumbnail() {
+	public String getThumbnail() {
 		return thumbnail;
 	}
 	
