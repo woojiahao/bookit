@@ -155,6 +155,36 @@ public class FirebaseOperations implements IFirebaseOperations {
 				});
 	}
 	
+	@Override public void addFavourite(String isbn) {
+		User currentUser = UsersList.getCurrentUser();
+		if (currentUser != null) {
+			UsersList.addFavourite(isbn);
+			setFavourites(currentUser.uid, currentUser.favourites);
+		}
+	}
+
+	@Override public void removeFavourite(String isbn) {
+		User currentUser = UsersList.getCurrentUser();
+		if (currentUser != null) {
+			UsersList.removeFavourite(isbn);
+			setFavourites(currentUser.uid, currentUser.favourites);
+		}
+	}
+
+	private void setFavourites(String uid, List<String> favourites) {
+		DatabaseReference fav = mFirebaseDatabase
+				.child("users")
+				.child(uid)
+				.child("favourites");
+		fav
+				.setValue(favourites)
+				.addOnCompleteListener(task -> {
+					if (!task.isSuccessful()) {
+						Log.e(Error.name(), "Unable to add favourites");
+					}
+				});
+	}
+	
 	private void configureUser(final String email, final String username, final String[] genres) {
 		String uid = "";
 		if (mFirebaseAuth.getCurrentUser() != null) {

@@ -1,8 +1,11 @@
 package team.android.projects.com.bookit.utils.ui.adapters;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -15,6 +18,9 @@ import java.util.Map;
 
 import team.android.projects.com.bookit.R;
 import team.android.projects.com.bookit.dataclasses.Book;
+import team.android.projects.com.bookit.utils.database.FirebaseOperations;
+import team.android.projects.com.bookit.utils.database.IFirebaseOperations;
+import team.android.projects.com.bookit.utils.database.UsersList;
 
 import static team.android.projects.com.bookit.utils.logging.Logging.shortToast;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.displayPopupMenu;
@@ -22,6 +28,8 @@ import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
 
 public class BookCardAdapter extends RecyclerView.Adapter<BookCardAdapter.ViewHolder> {
 	private List<Book> mBooks;
+	private Context mContext;
+	private IFirebaseOperations mFirebaseOperations;
 	
 	static class ViewHolder extends RecyclerView.ViewHolder {
 		private View mView;
@@ -40,7 +48,6 @@ public class BookCardAdapter extends RecyclerView.Adapter<BookCardAdapter.ViewHo
 			super(v);
 			mView = v;
 			init();
-			connectListeners();
 		}
 		
 		private void init() {
@@ -53,10 +60,6 @@ public class BookCardAdapter extends RecyclerView.Adapter<BookCardAdapter.ViewHo
 			mRating = find(mView, R.id.bookRating);
 			
 			mCurrencyFormatter = NumberFormat.getCurrencyInstance();
-		}
-		
-		private void connectListeners() {
-			mPopupMenu.setOnClickListener(v -> displayPopupMenu(mView.getContext(), mPopupMenu));
 		}
 		
 		void setThumbnail(int thumbnailId) {
@@ -80,8 +83,10 @@ public class BookCardAdapter extends RecyclerView.Adapter<BookCardAdapter.ViewHo
 		}
 	}
 	
-	BookCardAdapter(List<Book> books) {
+	BookCardAdapter(Context c, List<Book> books) {
+		mContext = c;
 		mBooks = books;
+		mFirebaseOperations = new FirebaseOperations(mContext);
 	}
 	
 	@Override
@@ -111,6 +116,12 @@ public class BookCardAdapter extends RecyclerView.Adapter<BookCardAdapter.ViewHo
 		holder.setPrice(price);
 		holder.setThumbnail(book.getThumbnail());
 		holder.setRating(book.getRating());
+		
+		holder.mPopupMenu.setOnClickListener(v ->
+				displayPopupMenu(
+						holder.mView.getContext(), holder.mPopupMenu,
+						book.getISBN(), mFirebaseOperations)
+		);
 	}
 	
 	public int getItemCount() {

@@ -1,5 +1,6 @@
 package team.android.projects.com.bookit.utils.ui.adapters;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,12 +15,16 @@ import java.util.Map;
 
 import team.android.projects.com.bookit.R;
 import team.android.projects.com.bookit.dataclasses.Book;
+import team.android.projects.com.bookit.utils.database.FirebaseOperations;
+import team.android.projects.com.bookit.utils.database.IFirebaseOperations;
 
 import static team.android.projects.com.bookit.utils.ui.UIUtils.displayPopupMenu;
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
 
 public class BookRowAdapter extends RecyclerView.Adapter<BookRowAdapter.ViewHolder> {
 	private List<Book> mBooks;
+	private Context mContext;
+	private IFirebaseOperations mFirebaseOperations;
 	
 	static class ViewHolder extends RecyclerView.ViewHolder {
 		private View mView;
@@ -39,7 +44,6 @@ public class BookRowAdapter extends RecyclerView.Adapter<BookRowAdapter.ViewHold
 			mView = v;
 			
 			init();
-			connectListeners();
 		}
 		
 		private void init() {
@@ -53,10 +57,6 @@ public class BookRowAdapter extends RecyclerView.Adapter<BookRowAdapter.ViewHold
 			mBookPrice = find(mView, R.id.bookPrice);
 			
 			mCurrencyFormatter = NumberFormat.getCurrencyInstance();
-		}
-		
-		private void connectListeners() {
-			mPopupMenu.setOnClickListener(v -> displayPopupMenu(mView.getContext(), mPopupMenu));
 		}
 		
 		void setThumbnail(int thumbnail) {
@@ -84,8 +84,10 @@ public class BookRowAdapter extends RecyclerView.Adapter<BookRowAdapter.ViewHold
 		}
 	}
 	
-	public BookRowAdapter(List<Book> books) {
+	public BookRowAdapter(Context c, List<Book> books) {
+		mContext = c;
 		mBooks = books;
+		mFirebaseOperations = new FirebaseOperations(mContext);
 	}
 	
 	@NonNull @Override
@@ -94,9 +96,9 @@ public class BookRowAdapter extends RecyclerView.Adapter<BookRowAdapter.ViewHold
 	}
 	
 	@Override public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-		Book b = mBooks.get(position);
+		Book book = mBooks.get(position);
 		
-		Map<String, Double> prices = b.getPrices();
+		Map<String, Double> prices = book.getPrices();
 		
 		String location = null;
 		double price = 0.0;
@@ -106,12 +108,18 @@ public class BookRowAdapter extends RecyclerView.Adapter<BookRowAdapter.ViewHold
 			price = entry.getValue();
 		}
 		
-		holder.setAuthor(b.getAuthors());
+		holder.setAuthor(book.getAuthors());
 		holder.setLocation(location);
-		holder.setTitle(b.getTitle());
+		holder.setTitle(book.getTitle());
 		holder.setPrice(price);
-		holder.setThumbnail(b.getThumbnail());
-		holder.setRating(b.getRating());
+		holder.setThumbnail(book.getThumbnail());
+		holder.setRating(book.getRating());
+		
+		holder.mPopupMenu.setOnClickListener(v ->
+				displayPopupMenu(
+						holder.mView.getContext(), holder.mPopupMenu,
+						book.getISBN(), mFirebaseOperations)
+		);
 	}
 	
 	@Override public int getItemCount() {

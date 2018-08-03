@@ -29,6 +29,7 @@ public class DiscoverFragment extends Fragment {
 	private List<Book> mBooks = new ArrayList<Book>() {{
 		add(new Book.Builder()
 				.setTitle("Artemis")
+				.setISBN("12jdsfhsdfkj")
 				.setGenres(new String[] { "Action" })
 				.setAuthors(new String[] { "John Doe" })
 				.setPrices(new HashMap<String, Double>() {{
@@ -39,8 +40,9 @@ public class DiscoverFragment extends Fragment {
 				.build());
 		add(new Book.Builder()
 				.setTitle("Artemis")
+				.setISBN("dfdsjghdsf")
 				.setGenres(new String[] { "Action" })
-				.setAuthors(new String[] { "John Doe" })
+				.setAuthors(new String[] { "John Doe", "Mary Anne" })
 				.setPrices(new HashMap<String, Double>() {{
 					put("Amazon", 13.99);
 				}})
@@ -48,24 +50,26 @@ public class DiscoverFragment extends Fragment {
 				.setThumbnail(R.drawable.artemis)
 				.build());
 		add(new Book.Builder()
-				.setTitle("Artemis")
-				.setGenres(new String[] { "Action" })
+				.setTitle("Into the waters")
+				.setISBN("lfdskfhksdjfh")
+				.setGenres(new String[] { "Action", "Adventure" })
 				.setAuthors(new String[] { "John Doe" })
 				.setPrices(new HashMap<String, Double>() {{
 					put("Amazon", 13.99);
 				}})
 				.setRating(5)
-				.setThumbnail(R.drawable.artemis)
+				.setThumbnail(R.drawable.into_the_water)
 				.build());
 		add(new Book.Builder()
-				.setTitle("Artemis")
+				.setTitle("Before we were yours")
+				.setISBN("skufsidhfsid")
 				.setGenres(new String[] { "Action" })
 				.setAuthors(new String[] { "John Doe" })
 				.setPrices(new HashMap<String, Double>() {{
 					put("Amazon", 13.99);
 				}})
 				.setRating(5)
-				.setThumbnail(R.drawable.artemis)
+				.setThumbnail(R.drawable.before_we_were_yours)
 				.build());
 	}};
 

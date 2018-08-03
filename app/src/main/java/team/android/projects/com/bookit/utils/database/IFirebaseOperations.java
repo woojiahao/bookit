@@ -19,4 +19,6 @@ public interface IFirebaseOperations {
 	List<String> getGenres();
 	
 	void editGenres(String[] newGenres);
+	void addFavourite(String isbn);
+	void removeFavourite(String isbn);
 }

@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import team.android.projects.com.bookit.dataclasses.Book;
 import team.android.projects.com.bookit.dataclasses.User;
 import team.android.projects.com.bookit.dataclasses.UserKeys;
 
+// todo: move the user specific methods into another class
 public class UsersList {
 	private static List<User> mUsers = new ArrayList<User>();
 	private static User mCurrentUser = null;
@@ -45,6 +47,24 @@ public class UsersList {
 	
 	public static void updateGenres(String[] genres) {
 		getCurrentUser().genres = Arrays.asList(genres);
+	}
+
+	public static void addFavourite(String isbn) {
+		if (mCurrentUser.favourites == null) {
+			mCurrentUser.favourites = new ArrayList<String>();
+		}
+		
+		mCurrentUser.favourites.add(isbn);
+	}
+	
+	public static void removeFavourite(String isbn) {
+		if (mCurrentUser.favourites != null) {
+			mCurrentUser.favourites.remove(isbn);
+		}
+	}
+	
+	public static boolean hasFavourite(String isbn) {
+		return mCurrentUser.favourites != null && mCurrentUser.favourites.size() != 0 && mCurrentUser.favourites.contains(isbn);
 	}
 	
 	public static void setCurrentUser(String uid) {

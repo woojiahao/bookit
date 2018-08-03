@@ -14,6 +14,9 @@ import android.widget.PopupMenu;
 
 import team.android.projects.com.bookit.GenreSelectionFragment;
 import team.android.projects.com.bookit.R;
+import team.android.projects.com.bookit.dataclasses.Book;
+import team.android.projects.com.bookit.utils.database.IFirebaseOperations;
+import team.android.projects.com.bookit.utils.database.UsersList;
 import team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text.ClearableEditText;
 
 import static team.android.projects.com.bookit.utils.logging.Logging.shortToast;
@@ -115,16 +118,25 @@ public class UIUtils {
 		}
 	}
 	
-	public static void displayPopupMenu(Context c, View toAttach) {
+	// todo: generify the displaying of the popup menus
+	public static void displayPopupMenu(Context c, View toAttach,
+										String isbn,
+										IFirebaseOperations firebaseOperations) {
 		PopupMenu menu = new PopupMenu(c, toAttach);
 		menu.inflate(R.menu.popup_menu_book);
+		
+		if (UsersList.hasFavourite(isbn)) {
+			menu.getMenu().findItem(R.id.popupAdd).setVisible(false);
+			menu.getMenu().findItem(R.id.popupRemove).setVisible(true);
+		}
+		
 		menu.setOnMenuItemClickListener(item -> {
 			switch (item.getItemId()) {
 				case R.id.popupAdd:
-					shortToast(c, "Adding");
+					firebaseOperations.addFavourite(isbn);
 					return true;
 				case R.id.popupRemove:
-					shortToast(c, "Removing");
+					firebaseOperations.removeFavourite(isbn);
 					return true;
 			}
 			

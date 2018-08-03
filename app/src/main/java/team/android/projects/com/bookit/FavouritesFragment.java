@@ -12,19 +12,21 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import team.android.projects.com.bookit.dataclasses.Book;
 import team.android.projects.com.bookit.dataclasses.Genre;
+import team.android.projects.com.bookit.utils.database.UsersList;
 import team.android.projects.com.bookit.utils.ui.adapters.BookRowAdapter;
 import team.android.projects.com.bookit.utils.ui.custom_views.clearable_edit_text.ClearableEditText;
 
 import static team.android.projects.com.bookit.utils.ui.UIUtils.find;
 
-// todo: connect to firebase
 // todo: generify the searchFor
+// todo: add dynamic loading of the favourites instead of hardcoding it
 public class FavouritesFragment extends Fragment {
 	private View mView;
 	private ClearableEditText mFavouritesSearch;
@@ -50,7 +52,7 @@ public class FavouritesFragment extends Fragment {
 		mFavouritesSearch = find(mView, R.id.favouritesSearch);
 		
 		mFavouritesList = find(mView, R.id.favouritesList);
-		mAdapter = new BookRowAdapter(mDisplayedBooks);
+		mAdapter = new BookRowAdapter(getContext(), mDisplayedBooks);
 		mFavouritesList.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
 		DividerItemDecoration divider = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
 		mFavouritesList.addItemDecoration(divider);
@@ -85,7 +87,7 @@ public class FavouritesFragment extends Fragment {
 	}
 	
 	private void loadBooks() {
-		mBooks = new ArrayList<Book>() {{
+		List<Book> books = new ArrayList<Book>() {{
 			add(new Book.Builder()
 					.setTitle("Artemis")
 					.setISBN("12jdsfhsdfkj")
@@ -131,6 +133,17 @@ public class FavouritesFragment extends Fragment {
 					.setThumbnail(R.drawable.before_we_were_yours)
 					.build());
 		}};
-		mDisplayedBooks = new ArrayList<Book>(mBooks);
+		List<Book> temp = new ArrayList<Book>();
+		if (UsersList.getCurrentUser().favourites == null || UsersList.getCurrentUser().favourites.size() == 0) {
+			mDisplayedBooks = new ArrayList<Book>();
+			return;
+		}
+		for (Book b : books) {
+			if (UsersList.getCurrentUser().favourites.contains(b.getISBN())) {
+				temp.add(b);
+			}
+		}
+		mBooks = new ArrayList<Book>(temp);
+		mDisplayedBooks = new ArrayList<Book>(temp);
 	}
 }
