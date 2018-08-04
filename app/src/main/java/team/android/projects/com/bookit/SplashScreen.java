@@ -82,7 +82,7 @@ public class SplashScreen extends AppCompatActivity {
 					}
 				}
 				
-				if (App.searchEngine == null) {
+				if (App.searchEngines == null) {
 					shortToast(SplashScreen.this, "Book searching capabilities will not work");
 				}
 				

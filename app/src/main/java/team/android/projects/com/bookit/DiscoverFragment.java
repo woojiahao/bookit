@@ -21,10 +21,14 @@ import team.android.projects.com.bookit.dataclasses.Book;
 import team.android.projects.com.bookit.dataclasses.BookGroup;
 import team.android.projects.com.bookit.dataclasses.User;
 import team.android.projects.com.bookit.logging.ApplicationCodes;
+import team.android.projects.com.bookit.searchengine.SearchType;
 import team.android.projects.com.bookit.ui.adapters.DiscoverAdapter;
 import team.android.projects.com.bookit.ui.decorators.SpacingDecoration;
 import team.android.projects.com.bookit.ui.decorators.SpacingDecorationError;
 
+import static team.android.projects.com.bookit.searchengine.Engines.GoogleBooks;
+import static team.android.projects.com.bookit.searchengine.Engines.NewYorkTimes;
+import static team.android.projects.com.bookit.searchengine.SearchType.BestSellers;
 import static team.android.projects.com.bookit.util.UIUtils.find;
 
 // todo: set the discover to constantly query for new data
@@ -67,14 +71,15 @@ public class DiscoverFragment extends Fragment {
 	private void loadBooks() {
 		try {
 			generateRecommendations();
+			generateBestSellers();
 		} catch (InterruptedException | ExecutionException e) {
-			Log.e(ApplicationCodes.Error.name(), "Unable to generate recommendations");
+			Log.e(ApplicationCodes.Error.name(), "Unable to load books");
 			e.printStackTrace();
 		}
 		
 		mGroups = Arrays.asList(
 				new BookGroup("Recommended for you", mRecommendations),
-				new BookGroup("Best-sellers", mRecommendations),
+				new BookGroup("Best-sellers", mBestSellers),
 				new BookGroup("New releases", mRecommendations)
 		);
 	}
@@ -89,9 +94,21 @@ public class DiscoverFragment extends Fragment {
 			List<String> genres = currentUser.genres;
 			long chunkSize = maxDisplayed / genres.size();
 			for (String genre : genres) {
-				mRecommendations.addAll(App.searchEngine.genreSearch(genre, chunkSize));
+				mRecommendations.addAll(
+						App.searchEngines.get(GoogleBooks.mapKey)
+								.groupSearch(SearchType.Genre, genre, chunkSize));
 			}
 			Collections.shuffle(mRecommendations);
 		}
+	}
+	
+	private void generateBestSellers() throws ExecutionException, InterruptedException {
+		mBestSellers = new ArrayList<Book>();
+		
+		long querySize = 1L;
+		
+		mBestSellers.addAll(
+				App.searchEngines.get(NewYorkTimes.mapKey)
+						.groupSearch(BestSellers, null, querySize));
 	}
 }

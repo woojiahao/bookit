@@ -1,6 +1,5 @@
 package team.android.projects.com.bookit.searchengine;
 
-import android.content.Context;
 import android.os.AsyncTask;
 
 import com.google.api.client.extensions.android.http.AndroidHttp;
@@ -19,29 +18,48 @@ import java.util.concurrent.ExecutionException;
 import team.android.projects.com.bookit.BuildConfig;
 import team.android.projects.com.bookit.dataclasses.Book;
 
-// todo: remove the loading of the config file
 public class GoogleBooksSearchEngine implements ISearchEngine {
 	private static Books mBooks;
-	private Context mContext;
-	private static String mKey;
 	
-	public GoogleBooksSearchEngine(Context c, String key) {
-		mContext = c;
-		mKey = key;
+	public GoogleBooksSearchEngine() {
 		init();
 	}
 	
-	@Override
-	public List<Book> genreSearch(String genre, long querySize)
+	@Override public List<Book> groupSearch(SearchType searchType, String group, long querySize)
 			throws ExecutionException, InterruptedException {
 		if (mBooks == null) return null;
-		String query = "subject:" + genre;
 		
-		return new SearchTask().execute(query, String.valueOf(querySize)).get();
+		String prefix = "";
+		switch (searchType) {
+			case Genre:
+				prefix = "subject";
+				break;
+		}
+		
+		String query = getQuery(prefix, group);
+		
+		return new GroupSearchTask().execute(query, String.valueOf(querySize)).get();
 	}
 	
-	@Override public void bookSearch(String search) {
+	@Override public Book bookSearch(SearchType searchType, String search)
+			throws ExecutionException, InterruptedException {
+		if (mBooks == null) return null;
+		
+		String prefix = "";
+		switch (searchType) {
+			case Title:
+				prefix = "title";
+				break;
+		}
+		
+		String query = getQuery(prefix, search);
+		
+		return new GroupSearchTask().execute(query, "1").get().get(0);
+	}
 	
+	@Override public List<Book> batchTitleSearch(String[] titles)
+			throws ExecutionException, InterruptedException {
+		return new BatchSearchTask().execute(titles).get();
 	}
 	
 	private void init() {
@@ -52,50 +70,77 @@ public class GoogleBooksSearchEngine implements ISearchEngine {
 				.build();
 	}
 	
-	private static class SearchTask extends AsyncTask<String, Void, List<Book>> {
+	private String getQuery(String prefix, String suffix) {
+		return String.format("%s:%s", prefix, suffix);
+	}
+	
+	private static Book extractBookInfo(Volume v) {
+		Volume.VolumeInfo info = v.getVolumeInfo();
+		
+		double ratings = info.getAverageRating() == null ? 0.0 : info.getAverageRating();
+		
+		String title = info.getTitle();
+		String thumbnail = info.getImageLinks() == null ? "https://cdn.pixabay.com/photo/2018/01/17/18/43/book-3088777_960_720.png" : info.getImageLinks().getThumbnail();
+		
+		String[] authors = info.getAuthors().toArray(new String[info.getAuthors().size()]);
+		String[] genres = info.getCategories().toArray(new String[info.getCategories().size()]);
+		String summary = info.getDescription();
+		
+		HashMap<String, Double> prices = new HashMap<String, Double>() {{
+			Double retailPrice = 0.00;
+			if (v.getSaleInfo().getRetailPrice() == null) {
+				put("Google Books", retailPrice);
+			} else {
+				retailPrice = v.getSaleInfo().getRetailPrice().getAmount();
+				put("Google Books", retailPrice == null ? 0.00 : retailPrice);
+			}
+		}};
+		HashMap<String, String> isbn = new HashMap<String, String>();
+		for (Volume.VolumeInfo.IndustryIdentifiers i : info.getIndustryIdentifiers()) {
+			isbn.put(i.getType(), i.getIdentifier());
+		}
+		
+		return new Book.Builder()
+				.setRating(ratings)
+				.setTitle(title)
+				.setThumbnail(thumbnail)
+				.setAuthors(authors)
+				.setSummary(summary)
+				.setGenres(genres)
+				.setISBN(isbn)
+				.setPrices(prices)
+				.build();
+	}
+	
+	private static class BatchSearchTask extends AsyncTask<String, Void, List<Book>> {
+		@Override protected List<Book> doInBackground(String... titles) {
+			List<Book> books = new ArrayList<Book>();
+			try {
+				for (String title : titles) {
+					Volumes volumes = mBooks
+							.volumes()
+							.list("title:" + title)
+							.setMaxResults(1L)
+							.execute();
+					Volume v = volumes.getItems().get(0);
+					books.add(extractBookInfo(v));
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+			return books;
+		}
+	}
+	
+	private static class GroupSearchTask extends AsyncTask<String, Void, List<Book>> {
 		@Override protected List<Book> doInBackground(String... strings) {
 			String query = strings[0];
 			long querySize = Long.parseLong(strings[1]);
 			List<Book> books = new ArrayList<Book>();
 			try {
-				Books.Volumes.List result = mBooks.volumes().list(query).setMaxResults(querySize);
-				Volumes volumes = result.execute();
-				for (Volume v : volumes.getItems()) {
-					Volume.VolumeInfo info = v.getVolumeInfo();
-					
-					double ratings = info.getAverageRating() == null ? 0.0 : info.getAverageRating();
-					
-					String title = info.getTitle();
-					String thumbnail = info.getImageLinks() == null ? "https://cdn.pixabay.com/photo/2018/01/17/18/43/book-3088777_960_720.png" : info.getImageLinks().getThumbnail() ;
-					
-					String[] authors = info.getAuthors().toArray(new String[info.getAuthors().size()]);
-					String[] genres = info.getCategories().toArray(new String[info.getCategories().size()]);
-					String summary = info.getDescription();
-					
-					HashMap<String, Double> prices = new HashMap<String, Double>() {{
-						if (v.getSaleInfo().getRetailPrice() == null) {
-							put("Google Books", 0.00);
-						} else {
-							Double retailPrice = v.getSaleInfo().getRetailPrice().getAmount();
-							put("Google Books", retailPrice == null ? 0.00 : retailPrice);
-						}
-					}};
-					HashMap<String, String> isbn = new HashMap<String, String>();
-					for (Volume.VolumeInfo.IndustryIdentifiers i : info.getIndustryIdentifiers()) {
-						isbn.put(i.getType(), i.getIdentifier());
-					}
-					
-					books.add(new Book.Builder()
-							.setRating(ratings)
-							.setTitle(title)
-							.setThumbnail(thumbnail)
-							.setAuthors(authors)
-							.setSummary(summary)
-							.setGenres(genres)
-							.setISBN(isbn)
-							.setPrices(prices)
-							.build());
-				}
+				Volumes volumes = mBooks.volumes().list(query).setMaxResults(querySize).execute();
+				for (Volume v : volumes.getItems()) books.add(extractBookInfo(v));
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

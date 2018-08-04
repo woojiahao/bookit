@@ -6,18 +6,23 @@ import android.util.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Map;
 
 import team.android.projects.com.bookit.logging.ApplicationCodes;
-import team.android.projects.com.bookit.searchengine.ISearchEngine;
+import team.android.projects.com.bookit.searchengine.Engines;
 import team.android.projects.com.bookit.searchengine.GoogleBooksSearchEngine;
+import team.android.projects.com.bookit.searchengine.ISearchEngine;
+import team.android.projects.com.bookit.searchengine.NewYorkTimesSearchEngine;
+
+import static team.android.projects.com.bookit.logging.ApplicationCodes.Error;
+import static team.android.projects.com.bookit.searchengine.Engines.GoogleBooks;
+import static team.android.projects.com.bookit.searchengine.Engines.NewYorkTimes;
+import static team.android.projects.com.bookit.util.Utils.loadJSON;
 
 public class App extends MultiDexApplication {
-	private String mGoogleBooksKey;
-	
-	public static ISearchEngine searchEngine;
+	private Map<String, String> mKeys;
+	public static Map<String, ISearchEngine> searchEngines;
 	
 	@Override public void onCreate() {
 		super.onCreate();
@@ -26,36 +31,34 @@ public class App extends MultiDexApplication {
 	
 	private void init() {
 		loadConfig();
-		if (mGoogleBooksKey != null) {
-			loadEngine();
-		}
+		loadEngine();
 	}
 	
 	private void loadEngine() {
-		searchEngine = new GoogleBooksSearchEngine(this, mGoogleBooksKey);
+		searchEngines = new HashMap<String, ISearchEngine>() {{
+			put(GoogleBooks.mapKey, new GoogleBooksSearchEngine());
+			put(NewYorkTimes.mapKey, new NewYorkTimesSearchEngine(mKeys.get(NewYorkTimes.mapKey)));
+		}};
 	}
 	
 	private void loadConfig() {
+		mKeys = new HashMap<String, String>();
 		try {
-			StringBuilder json = new StringBuilder();
-			try (BufferedReader reader
-						 = new BufferedReader(
-					new InputStreamReader(getAssets().open("config.json")))) {
-				String line;
-				while ((line = reader.readLine()) != null) {
-					json.append(line).append("\n");
+			JSONObject root = new JSONObject(loadJSON(getAssets(), "config.json"));
+			
+			for (Engines engineType : Engines.values()) {
+				String key = root.getString(engineType.jsonKey);
+				if (key.equals("default")) {
+					Log.e(Error.name(), String.format("Set the api key for the %s API", engineType.mapKey));
+				} else {
+					mKeys.put(engineType.mapKey, key);
 				}
 			}
-			JSONObject object = new JSONObject(json.toString());
-			String googleBooksKey = object.getString("google-books-api");
-			if (googleBooksKey.equals("default")) {
-				Log.e(ApplicationCodes.Error.name(), "Set the api key for the Google Books API");
-			} else {
-				mGoogleBooksKey = googleBooksKey;
-			}
-		} catch (IOException | JSONException e) {
-			Log.e(ApplicationCodes.Error.name(), "Unable to read config.json");
+		} catch (JSONException e) {
+			Log.e(ApplicationCodes.Error.name(), "Error whilst working on config.json");
 			e.printStackTrace();
 		}
 	}
+	
+
 }
