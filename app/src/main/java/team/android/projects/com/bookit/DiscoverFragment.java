@@ -37,7 +37,8 @@ public class DiscoverFragment extends Fragment {
 	private View mView;
 	
 	private List<Book> mRecommendations;
-	private List<Book> mBestSellers;
+	private static List<Book> mBestSellers;
+	
 	private List<BookGroup> mGroups;
 	
 	@Override
@@ -71,7 +72,9 @@ public class DiscoverFragment extends Fragment {
 	private void loadBooks() {
 		try {
 			generateRecommendations();
-			generateBestSellers();
+			if (mBestSellers == null) {
+				generateBestSellers();
+			}
 		} catch (InterruptedException | ExecutionException e) {
 			Log.e(ApplicationCodes.Error.name(), "Unable to load books");
 			e.printStackTrace();
@@ -97,7 +100,6 @@ public class DiscoverFragment extends Fragment {
 						App.searchEngines.get(GoogleBooks.mapKey)
 								.groupSearch(SearchType.Genre, genre, chunkSize));
 			}
-			Collections.shuffle(mRecommendations);
 		}
 	}
 	
