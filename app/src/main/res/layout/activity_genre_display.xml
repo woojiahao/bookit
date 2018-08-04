@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:clipToPadding="false"
+	android:orientation="vertical"
+	android:padding="@dimen/small_padding">
+
+	<ImageView
+		android:id="@+id/backBtn"
+		style="@style/BackButton"/>
+
+	<TextView
+		android:id="@+id/displayTitle"
+		style="@style/LargeText"
+		android:layout_marginBottom="@dimen/small_padding"
+		android:layout_marginTop="@dimen/small_padding"
+		tools:text="Horror"/>
+
+	<android.support.v7.widget.RecyclerView
+		android:id="@+id/displayBooks"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_marginBottom="-16sp"
+		android:layout_marginEnd="-16sp"
+		android:layout_marginLeft="-16sp"
+		android:layout_marginRight="-16sp"
+		android:layout_marginStart="-16sp">
+
+	</android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

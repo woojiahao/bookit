@@ -19,10 +19,7 @@
 
 			<ImageView
 				android:id="@+id/backBtn"
-				android:layout_width="32sp"
-				android:layout_height="32sp"
-				android:contentDescription="@string/back_button"
-				android:src="@drawable/ic_baseline_arrow_back_24px"/>
+				style="@style/BackButton"/>
 
 			<View
 				android:layout_width="0sp"

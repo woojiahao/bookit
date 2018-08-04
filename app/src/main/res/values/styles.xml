@@ -93,4 +93,11 @@
 		<item name="android:layout_height">1sp</item>
 		<item name="android:background">@color/divider</item>
 	</style>
+
+	<style name="BackButton">
+		<item name="android:layout_width">32sp</item>
+		<item name="android:layout_height">32sp</item>
+		<item name="android:contentDescription">@string/back_button</item>
+		<item name="android:src">@drawable/ic_baseline_arrow_back_24px</item>
+	</style>
 </resources>

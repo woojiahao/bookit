@@ -27,7 +27,7 @@ android {
     lintOptions {
         disable 'RestrictedApi'
     }
-    packagingOptions{
+    packagingOptions {
         exclude 'META-INF/DEPENDENCIES'
     }
 }

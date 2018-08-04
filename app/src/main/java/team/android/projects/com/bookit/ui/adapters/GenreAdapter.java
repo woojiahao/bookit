@@ -1,5 +1,7 @@
 package team.android.projects.com.bookit.ui.adapters;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +14,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import team.android.projects.com.bookit.GenreDisplay;
 import team.android.projects.com.bookit.R;
 import team.android.projects.com.bookit.dataclasses.Genre;
 
@@ -81,7 +84,8 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder> 
 				g.setIsSelected(!g.getIsSelected());
 				holder.setSelected(g.getIsSelected());
 			} else {
-				Toast.makeText(v.getContext(), "Finishing Selection", Toast.LENGTH_SHORT).show();
+				Context c = holder.mView.getContext();
+				c.startActivity(new Intent(c, GenreDisplay.class).putExtra("title", g.getGenreTitle()));
 			}
 		});
 	}
