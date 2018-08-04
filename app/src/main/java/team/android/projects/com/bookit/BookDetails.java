@@ -10,6 +10,7 @@ import com.squareup.picasso.Picasso;
 
 import java.text.NumberFormat;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import team.android.projects.com.bookit.database.FirebaseOperations;
@@ -71,7 +72,12 @@ public class BookDetails extends AppCompatActivity {
 				.setText(String.format("ISBN: %s", mISBN != null ? mISBN : "N/A"));
 		((TextView) find(this, R.id.detailsPrice)).setText(getLowestPrice());
 		
-		mIsFavourited = UsersList.getCurrentUser().favourites.contains(mISBN);
+		List<String> favourites = UsersList.getCurrentUser().favourites;
+		if (favourites == null || favourites.size() == 0) {
+			mIsFavourited = false;
+		} else {
+			mIsFavourited = UsersList.getCurrentUser().favourites.contains(mISBN);
+		}
 		mFavouriteBtn
 				.setImageResource(mIsFavourited ?
 						R.drawable.ic_favorite_black_24dp : R.drawable.ic_favorite_border_black_24dp);
