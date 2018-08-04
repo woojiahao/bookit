@@ -1,10 +1,12 @@
 package team.android.projects.com.bookit.dataclasses;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.text.TextUtils;
 
 import java.util.Map;
 
-public class Book {
+public class Book implements Parcelable {
 	private double rating;
 	
 	private String thumbnail;
@@ -102,6 +104,15 @@ public class Book {
 		this.prices = prices;
 	}
 	
+	protected Book(Parcel in) {
+		rating = in.readDouble();
+		thumbnail = in.readString();
+		summary = in.readString();
+		title = in.readString();
+		authors = in.createStringArray();
+		genres = in.createStringArray();
+	}
+	
 	public double getRating() {
 		return rating;
 	}
@@ -132,5 +143,33 @@ public class Book {
 	
 	public Map<String, Double> getPrices() {
 		return prices;
+	}
+	
+	public static final Creator<Book> CREATOR = new Creator<Book>() {
+		@Override
+		public Book createFromParcel(Parcel in) {
+			return new Book(in);
+		}
+		
+		@Override
+		public Book[] newArray(int size) {
+			return new Book[size];
+		}
+	};
+	
+	@Override public int describeContents() {
+		return 0;
+	}
+	
+	@Override public void writeToParcel(Parcel dest, int flags) {
+		
+		dest.writeDouble(rating);
+		dest.writeString(thumbnail);
+		dest.writeString(summary);
+		dest.writeString(title);
+		dest.writeStringArray(authors);
+		dest.writeStringArray(genres);
+		dest.writeMap(ISBN);
+		dest.writeMap(prices);
 	}
 }

@@ -1,7 +1,7 @@
 package team.android.projects.com.bookit.ui.adapters;
 
 import android.content.Context;
-import android.net.Uri;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -16,12 +16,12 @@ import java.text.NumberFormat;
 import java.util.List;
 import java.util.Map;
 
+import team.android.projects.com.bookit.BookDetails;
 import team.android.projects.com.bookit.R;
-import team.android.projects.com.bookit.dataclasses.Book;
 import team.android.projects.com.bookit.database.FirebaseOperations;
 import team.android.projects.com.bookit.database.IFirebaseOperations;
+import team.android.projects.com.bookit.dataclasses.Book;
 
-import static team.android.projects.com.bookit.util.UIUtils.displayPopupMenu;
 import static team.android.projects.com.bookit.util.UIUtils.find;
 
 public class BookCardAdapter extends RecyclerView.Adapter<BookCardAdapter.ViewHolder> {
@@ -101,11 +101,9 @@ public class BookCardAdapter extends RecyclerView.Adapter<BookCardAdapter.ViewHo
 		
 		Map<String, Double> prices = book.getPrices();
 		
-		String location = null;
 		double price = 0.0;
 		
 		for (Map.Entry<String, Double> entry : prices.entrySet()) {
-			location = entry.getKey();
 			price = entry.getValue();
 		}
 		
@@ -115,6 +113,14 @@ public class BookCardAdapter extends RecyclerView.Adapter<BookCardAdapter.ViewHo
 		holder.setThumbnail(book.getThumbnail());
 		holder.setRating(book.getRating());
 		
+		holder.mView.setOnClickListener(v ->
+				mContext
+						.startActivity(
+								new Intent(
+										mContext,
+										BookDetails.class)
+										.putExtra("book", book)));
+
 //		holder.mPopupMenu.setOnClickListener(v ->
 //				displayPopupMenu(
 //						holder.mView.getContext(), holder.mPopupMenu,
