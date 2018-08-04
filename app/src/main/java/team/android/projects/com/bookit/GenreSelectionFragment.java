@@ -103,15 +103,15 @@ public class GenreSelectionFragment extends Fragment {
 		mGenres = new ArrayList<Genre>() {{
 			add(new Genre("Horror"));
 			add(new Genre("Mystery"));
-			add(new Genre("Fantasy"));
-			add(new Genre("Fantasy"));
-			add(new Genre("Fantasy"));
-			add(new Genre("Fantasy"));
-			add(new Genre("Fantasy"));
-			add(new Genre("Fantasy"));
-			add(new Genre("Fantasy"));
-			add(new Genre("Fantasy"));
-			add(new Genre("Fantasy"));
+			add(new Genre("Adventure"));
+			add(new Genre("Fiction"));
+			add(new Genre("Sci-Fi"));
+			add(new Genre("History"));
+			add(new Genre("Drama"));
+			add(new Genre("Comics"));
+			add(new Genre("Business"));
+			add(new Genre("Psychology"));
+			add(new Genre("Non-Fiction"));
 			add(new Genre("Fantasy"));
 			add(new Genre("Action"));
 			add(new Genre("Self-Help"));
