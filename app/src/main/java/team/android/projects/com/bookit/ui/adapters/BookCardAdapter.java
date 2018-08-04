@@ -115,11 +115,11 @@ public class BookCardAdapter extends RecyclerView.Adapter<BookCardAdapter.ViewHo
 		holder.setThumbnail(book.getThumbnail());
 		holder.setRating(book.getRating());
 		
-		holder.mPopupMenu.setOnClickListener(v ->
-				displayPopupMenu(
-						holder.mView.getContext(), holder.mPopupMenu,
-						book.getISBN(), mFirebaseOperations)
-		);
+//		holder.mPopupMenu.setOnClickListener(v ->
+//				displayPopupMenu(
+//						holder.mView.getContext(), holder.mPopupMenu,
+//						book.getISBN(), mFirebaseOperations)
+//		);
 	}
 	
 	public int getItemCount() {

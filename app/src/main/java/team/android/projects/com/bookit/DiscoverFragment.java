@@ -12,12 +12,14 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+import team.android.projects.com.bookit.database.UsersList;
 import team.android.projects.com.bookit.dataclasses.Book;
 import team.android.projects.com.bookit.dataclasses.BookGroup;
+import team.android.projects.com.bookit.dataclasses.User;
 import team.android.projects.com.bookit.logging.ApplicationCodes;
 import team.android.projects.com.bookit.ui.adapters.DiscoverAdapter;
 import team.android.projects.com.bookit.ui.decorators.SpacingDecoration;
@@ -25,45 +27,71 @@ import team.android.projects.com.bookit.ui.decorators.SpacingDecorationError;
 
 import static team.android.projects.com.bookit.util.UIUtils.find;
 
+// todo: set the discover to constantly query for new data
 public class DiscoverFragment extends Fragment {
 	private View mView;
-	private RecyclerView mCategories;
 	
-	private List<Book> mBooks;
+	private List<Book> mRecommendations;
+	private List<Book> mBestSellers;
+	private List<Book> mNewReleases;
+	private List<BookGroup> mGroups;
 	
 	@Override
 	public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
 		mView = inflater.inflate(R.layout.fragment_discover, container, false);
-		
-		try {
-			mBooks = App.searchEngine.genreSearch("horror");
-		} catch (ExecutionException | InterruptedException e) {
-			Log.e(ApplicationCodes.Error.name(), "Unable to retrieve books");
-			e.printStackTrace();
-		}
-		
 		init();
-		
 		return mView;
 	}
 	
 	private void init() {
-		List<BookGroup> mGroups = Arrays.asList(
-				new BookGroup("Recommended for you", mBooks),
-				new BookGroup("Best-sellers", mBooks),
-				new BookGroup("New releases", mBooks)
-		);
+		loadBooks();
+		
 		DiscoverAdapter adapter = new DiscoverAdapter(mGroups);
-		mCategories = find(mView, R.id.discoverArea);
-		mCategories.setAdapter(adapter);
+		RecyclerView categories = find(mView, R.id.discoverArea);
+		categories.setAdapter(adapter);
 		
 		try {
-			mCategories.addItemDecoration(new SpacingDecoration(0, 96, 1));
+			categories.addItemDecoration(new SpacingDecoration(0, 96, 1));
 		} catch (SpacingDecorationError e) {
 			e.printStackTrace();
 		}
 		
-		mCategories.setLayoutManager(new LinearLayoutManager(mView.getContext(), LinearLayoutManager.VERTICAL, false));
+		categories.setLayoutManager(
+				new LinearLayoutManager(
+						mView.getContext(),
+						LinearLayoutManager.VERTICAL,
+						false));
+	}
+	
+	private void loadBooks() {
+		try {
+			generateRecommendations();
+		} catch (InterruptedException | ExecutionException e) {
+			Log.e(ApplicationCodes.Error.name(), "Unable to generate recommendations");
+			e.printStackTrace();
+		}
+		
+		mGroups = Arrays.asList(
+				new BookGroup("Recommended for you", mRecommendations),
+				new BookGroup("Best-sellers", mRecommendations),
+				new BookGroup("New releases", mRecommendations)
+		);
+	}
+	
+	private void generateRecommendations() throws ExecutionException, InterruptedException {
+		mRecommendations = new ArrayList<Book>();
+		
+		long maxDisplayed = 15L;
+		User currentUser = UsersList.getCurrentUser();
+		
+		if (currentUser != null) {
+			List<String> genres = currentUser.genres;
+			long chunkSize = maxDisplayed / genres.size();
+			for (String genre : genres) {
+				mRecommendations.addAll(App.searchEngine.genreSearch(genre, chunkSize));
+			}
+			Collections.shuffle(mRecommendations);
+		}
 	}
 }

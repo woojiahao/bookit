@@ -8,26 +8,26 @@ public class Book {
 	private double rating;
 	
 	private String thumbnail;
-	private String ISBN;
 	private String summary;
 	private String title;
 	
 	private String[] authors;
 	private String[] genres;
 	
+	private Map<String, String> ISBN;
 	private Map<String, Double> prices;
 	
 	public static class Builder {
 		private double rating;
 		
 		private String thumbnail;
-		private String ISBN;
 		private String summary;
 		private String title;
 		
 		private String[] authors;
 		private String[] genres;
 		
+		private Map<String, String> ISBN;
 		private Map<String, Double> prices;
 		
 		public Builder() {
@@ -53,7 +53,7 @@ public class Book {
 			return this;
 		}
 		
-		public Builder setISBN(String ISBN) {
+		public Builder setISBN(Map<String, String> ISBN) {
 			this.ISBN = ISBN;
 			return this;
 		}
@@ -84,13 +84,13 @@ public class Book {
 		}
 		
 		public Book build() {
-			return new Book(rating, thumbnail, ISBN, summary, title, authors, genres, prices);
+			return new Book(rating, thumbnail, summary, title, authors, genres, ISBN, prices);
 		}
 	}
 	
 	private Book(double rating, String thumbnail,
-				 String ISBN, String summary, String title,
-				 String[] authors, String[] genres,
+				 String summary, String title, String[] authors, String[] genres,
+				 Map<String, String> ISBN,
 				 Map<String, Double> prices) {
 		this.rating = rating;
 		this.thumbnail = thumbnail;
@@ -110,10 +110,6 @@ public class Book {
 		return thumbnail;
 	}
 	
-	public String getISBN() {
-		return ISBN;
-	}
-	
 	public String getSummary() {
 		return summary;
 	}
@@ -128,6 +124,10 @@ public class Book {
 	
 	public String getGenres() {
 		return TextUtils.join(", ", genres);
+	}
+	
+	public Map<String, String> getISBN() {
+		return ISBN;
 	}
 	
 	public Map<String, Double> getPrices() {

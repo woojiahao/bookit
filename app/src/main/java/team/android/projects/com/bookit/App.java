@@ -12,7 +12,7 @@ import java.io.InputStreamReader;
 
 import team.android.projects.com.bookit.logging.ApplicationCodes;
 import team.android.projects.com.bookit.searchengine.ISearchEngine;
-import team.android.projects.com.bookit.searchengine.SearchEngine;
+import team.android.projects.com.bookit.searchengine.GoogleBooksSearchEngine;
 
 public class App extends MultiDexApplication {
 	private String mGoogleBooksKey;
@@ -32,7 +32,7 @@ public class App extends MultiDexApplication {
 	}
 	
 	private void loadEngine() {
-		searchEngine = new SearchEngine(this, mGoogleBooksKey);
+		searchEngine = new GoogleBooksSearchEngine(this, mGoogleBooksKey);
 	}
 	
 	private void loadConfig() {

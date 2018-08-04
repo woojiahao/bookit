@@ -19,7 +19,6 @@ import java.util.List;
 
 import team.android.projects.com.bookit.backstack.FragmentID;
 import team.android.projects.com.bookit.ocr.CameraStates;
-import team.android.projects.com.bookit.searchengine.SearchEngine;
 import team.android.projects.com.bookit.ui.helper.BottomNavigationHelper;
 
 import static team.android.projects.com.bookit.backstack.FragmentID.Discover;

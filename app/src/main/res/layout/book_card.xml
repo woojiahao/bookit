@@ -42,10 +42,11 @@
 					android:layout_gravity="center"
 					android:layout_weight="1"
 					android:ellipsize="end"
+					android:fontFamily="@font/roboto_bold"
 					android:maxLines="1"
 					android:maxWidth="90sp"
 					android:textColor="@color/secondaryTextColor"
-					android:textSize="14sp"
+					android:textSize="12sp"
 					tools:text="Literature"/>
 
 				<ImageView
