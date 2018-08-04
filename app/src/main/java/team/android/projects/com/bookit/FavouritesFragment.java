@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +14,13 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import team.android.projects.com.bookit.database.UsersList;
 import team.android.projects.com.bookit.dataclasses.Book;
+import team.android.projects.com.bookit.logging.ApplicationCodes;
+import team.android.projects.com.bookit.searchengine.Engines;
+import team.android.projects.com.bookit.searchengine.SearchType;
 import team.android.projects.com.bookit.ui.adapters.BookRowAdapter;
 import team.android.projects.com.bookit.ui.custom.clearable_edit_text.ClearableEditText;
 
@@ -23,6 +28,7 @@ import static team.android.projects.com.bookit.util.UIUtils.find;
 
 // todo: generify the searchFor
 // todo: add dynamic loading of the favourites instead of hardcoding it
+// todo: if the user has more than 40 favourites, break it down before sending all of the queries to google books
 public class FavouritesFragment extends Fragment {
 	private View mView;
 	private ClearableEditText mFavouritesSearch;
@@ -77,63 +83,23 @@ public class FavouritesFragment extends Fragment {
 	}
 	
 	private void loadBooks() {
-//		List<Book> books = new ArrayList<Book>() {{
-//			add(new Book.Builder()
-//					.setTitle("Artemis")
-//					.setISBN("12jdsfhsdfkj")
-//					.setGenres(new String[] { "Action" })
-//					.setAuthors(new String[] { "John Doe" })
-//					.setPrices(new HashMap<String, Double>() {{
-//						put("Amazon", 13.99);
-//					}})
-//					.setRating(5)
-//					.setThumbnail(R.drawable.artemis)
-//					.build());
-//			add(new Book.Builder()
-//					.setTitle("Artemis")
-//					.setISBN("dfdsjghdsf")
-//					.setGenres(new String[] { "Action" })
-//					.setAuthors(new String[] { "John Doe", "Mary Anne" })
-//					.setPrices(new HashMap<String, Double>() {{
-//						put("Amazon", 13.99);
-//					}})
-//					.setRating(5)
-//					.setThumbnail(R.drawable.artemis)
-//					.build());
-//			add(new Book.Builder()
-//					.setTitle("Into the waters")
-//					.setISBN("lfdskfhksdjfh")
-//					.setGenres(new String[] { "Action", "Adventure" })
-//					.setAuthors(new String[] { "John Doe" })
-//					.setPrices(new HashMap<String, Double>() {{
-//						put("Amazon", 13.99);
-//					}})
-//					.setRating(5)
-//					.setThumbnail(R.drawable.into_the_water)
-//					.build());
-//			add(new Book.Builder()
-//					.setTitle("Before we were yours")
-//					.setISBN("skufsidhfsid")
-//					.setGenres(new String[] { "Action" })
-//					.setAuthors(new String[] { "John Doe" })
-//					.setPrices(new HashMap<String, Double>() {{
-//						put("Amazon", 13.99);
-//					}})
-//					.setRating(5)
-//					.setThumbnail(R.drawable.before_we_were_yours)
-//					.build());
-//		}};
-//		List<Book> temp = new ArrayList<Book>();
-//		if (UsersList.getCurrentUser().favourites == null || UsersList.getCurrentUser().favourites.size() == 0) {
-//			mDisplayedBooks = new ArrayList<Book>();
-//			return;
-//		}
-//		for (Book b : books) {
-//			if (UsersList.getCurrentUser().favourites.contains(b.getISBN())) {
-//				temp.add(b);
-//			}
-//		}
-//		mBooks = new ArrayList<Book>(temp);
-//		mDisplayedBooks = new ArrayList<Book>(temp);
+		List<String> userFavourites = UsersList.getCurrentUser().favourites;
+		if (userFavourites == null || userFavourites.size() == 0) {
+			mDisplayedBooks = new ArrayList<Book>();
+			return;
+		}
+		
+		try {
+			mBooks = App
+					.searchEngines
+					.get(Engines.GoogleBooks.mapKey)
+					.batchSearch(
+							SearchType.ISBN,
+							userFavourites.toArray(new String[userFavourites.size()]));
+			mDisplayedBooks = new ArrayList<Book>(mBooks);
+		} catch (ExecutionException | InterruptedException e) {
+			Log.e(ApplicationCodes.Error.name(), "Unable to load favourites");
+			e.printStackTrace();
+		}
 	}
 }

@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.text.NumberFormat;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +22,7 @@ import team.android.projects.com.bookit.dataclasses.Book;
 
 import static team.android.projects.com.bookit.util.UIUtils.displayPopupMenu;
 import static team.android.projects.com.bookit.util.UIUtils.find;
+import static team.android.projects.com.bookit.util.UIUtils.launchBookDetails;
 
 public class BookRowAdapter extends RecyclerView.Adapter<BookRowAdapter.ViewHolder> {
 	private List<Book> mBooks;
@@ -59,8 +62,8 @@ public class BookRowAdapter extends RecyclerView.Adapter<BookRowAdapter.ViewHold
 			mCurrencyFormatter = NumberFormat.getCurrencyInstance();
 		}
 		
-		void setThumbnail(int thumbnail) {
-			mBookThumbnail.setImageResource(thumbnail);
+		void setThumbnail(String thumbnail) {
+			Picasso.get().load(thumbnail).into(mBookThumbnail);
 		}
 		
 		void setTitle(String title) {
@@ -112,20 +115,24 @@ public class BookRowAdapter extends RecyclerView.Adapter<BookRowAdapter.ViewHold
 		holder.setLocation(location);
 		holder.setTitle(book.getTitle());
 		holder.setPrice(price);
-//		holder.setThumbnail(book.getThumbnail());
+		holder.setThumbnail(book.getThumbnail());
 		holder.setRating(book.getRating());
 		
-//		holder.mPopupMenu.setOnClickListener(v -> {
-//			displayPopupMenu(
-//					holder.mView.getContext(),
-//					holder.mPopupMenu,
-//					book.getISBN(),
-//					mFirebaseOperations,
-//					() -> {
-//						mBooks.remove(book);
-//						notifyDataSetChanged();
-//					});
-//		});
+		holder.mView.setOnClickListener(v -> launchBookDetails(mContext, book));
+		
+		Map<String, String> isbns = book.getISBN();
+		String isbn = isbns.containsKey("ISBN_13") ? isbns.get("ISBN_13") : isbns.get("ISBN_10");
+		holder.mPopupMenu.setOnClickListener(v -> {
+			displayPopupMenu(
+					holder.mView.getContext(),
+					holder.mPopupMenu,
+					isbn,
+					mFirebaseOperations,
+					() -> {
+						mBooks.remove(book);
+						notifyDataSetChanged();
+					});
+		});
 	}
 	
 	@Override public int getItemCount() {

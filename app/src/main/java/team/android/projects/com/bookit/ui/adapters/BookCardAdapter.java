@@ -23,6 +23,7 @@ import team.android.projects.com.bookit.database.FirebaseOperations;
 import team.android.projects.com.bookit.database.IFirebaseOperations;
 import team.android.projects.com.bookit.dataclasses.Book;
 
+import static team.android.projects.com.bookit.util.UIUtils.displayPopupMenu;
 import static team.android.projects.com.bookit.util.UIUtils.find;
 import static team.android.projects.com.bookit.util.UIUtils.launchBookDetails;
 
@@ -115,12 +116,14 @@ public class BookCardAdapter extends RecyclerView.Adapter<BookCardAdapter.ViewHo
 		holder.setRating(book.getRating());
 		
 		holder.mView.setOnClickListener(v -> launchBookDetails(mContext, book));
-
-//		holder.mPopupMenu.setOnClickListener(v ->
-//				displayPopupMenu(
-//						holder.mView.getContext(), holder.mPopupMenu,
-//						book.getISBN(), mFirebaseOperations)
-//		);
+		
+		Map<String, String> isbns = book.getISBN();
+		String isbn = isbns.containsKey("ISBN_13") ? isbns.get("ISBN_13") : isbns.get("ISBN_10");
+		holder.mPopupMenu.setOnClickListener(v ->
+				displayPopupMenu(
+						holder.mView.getContext(), holder.mPopupMenu,
+						isbn, mFirebaseOperations)
+		);
 	}
 	
 	public int getItemCount() {

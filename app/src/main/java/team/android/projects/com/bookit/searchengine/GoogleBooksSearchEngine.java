@@ -11,6 +11,7 @@ import com.google.api.services.books.model.Volumes;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -57,9 +58,26 @@ public class GoogleBooksSearchEngine implements ISearchEngine {
 		return new GroupSearchTask().execute(query, "1").get().get(0);
 	}
 	
-	@Override public List<Book> batchTitleSearch(String[] titles)
+	@Override public List<Book> batchSearch(SearchType searchType, String[] searchTerms)
 			throws ExecutionException, InterruptedException {
-		return new BatchSearchTask().execute(titles).get();
+		if (mBooks == null) return null;
+		
+		String prefix = "";
+		switch (searchType) {
+			case Title:
+				prefix = "title";
+				break;
+			case ISBN:
+				prefix = "isbn";
+				break;
+		}
+		
+		String finalPrefix = prefix;
+		List<String> properties = new ArrayList<String>() {{
+			add(finalPrefix);
+			addAll(Arrays.asList(searchTerms));
+		}};
+		return new BatchSearchTask().execute(properties.toArray(new String[properties.size()])).get();
 	}
 	
 	private void init() {
@@ -70,7 +88,7 @@ public class GoogleBooksSearchEngine implements ISearchEngine {
 				.build();
 	}
 	
-	private String getQuery(String prefix, String suffix) {
+	private static String getQuery(String prefix, String suffix) {
 		return String.format("%s:%s", prefix, suffix);
 	}
 	
@@ -113,13 +131,15 @@ public class GoogleBooksSearchEngine implements ISearchEngine {
 	}
 	
 	private static class BatchSearchTask extends AsyncTask<String, Void, List<Book>> {
-		@Override protected List<Book> doInBackground(String... titles) {
+		@Override protected List<Book> doInBackground(String... properties) {
+			String prefix = properties[0];
+			String[] toSearch = Arrays.copyOfRange(properties, 1, properties.length);
 			List<Book> books = new ArrayList<Book>();
 			try {
-				for (String title : titles) {
+				for (String title : toSearch) {
 					Volumes volumes = mBooks
 							.volumes()
-							.list("title:" + title)
+							.list(getQuery(prefix, title))
 							.setMaxResults(1L)
 							.execute();
 					Volume v = volumes.getItems().get(0);

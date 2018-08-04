@@ -12,6 +12,6 @@ public interface ISearchEngine {
 	Book bookSearch(SearchType searchType, String search)
 			throws ExecutionException, InterruptedException;
 	
-	List<Book> batchTitleSearch(String[] titles)
+	List<Book> batchSearch(SearchType searchType, String[] searchTerms)
 			throws ExecutionException, InterruptedException;
 }

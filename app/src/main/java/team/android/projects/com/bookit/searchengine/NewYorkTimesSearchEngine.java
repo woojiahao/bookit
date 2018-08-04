@@ -19,7 +19,7 @@ import team.android.projects.com.bookit.App;
 import team.android.projects.com.bookit.dataclasses.Book;
 import team.android.projects.com.bookit.logging.ApplicationCodes;
 
-// todo: best sellers might be outdated and inaccurate
+// todo: best sellers might be outdated
 public class NewYorkTimesSearchEngine implements ISearchEngine {
 	private static String mKey;
 	
@@ -41,7 +41,8 @@ public class NewYorkTimesSearchEngine implements ISearchEngine {
 		return App
 				.searchEngines
 				.get(Engines.GoogleBooks.mapKey)
-				.batchTitleSearch(
+				.batchSearch(
+						SearchType.Title,
 						bestSellingTitles.toArray(new String[bestSellingTitles.size()]));
 	}
 	
@@ -49,7 +50,7 @@ public class NewYorkTimesSearchEngine implements ISearchEngine {
 		return null;
 	}
 	
-	@Override public List<Book> batchTitleSearch(String[] titles)
+	@Override public List<Book> batchSearch(SearchType searchType, String[] searchTerms)
 			throws ExecutionException, InterruptedException {
 		return null;
 	}
