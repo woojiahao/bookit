@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -19,11 +20,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.ExecutionException;
 
-import team.android.projects.com.bookit.dataclasses.User;
 import team.android.projects.com.bookit.database.FirebaseOperations;
 import team.android.projects.com.bookit.database.IFirebaseOperations;
 import team.android.projects.com.bookit.database.UsersList;
+import team.android.projects.com.bookit.dataclasses.User;
+import team.android.projects.com.bookit.loading.PreloadedData;
+import team.android.projects.com.bookit.logging.ApplicationCodes;
 
 import static team.android.projects.com.bookit.dataclasses.UserKeys.Uid;
 import static team.android.projects.com.bookit.logging.Logging.shortToast;
@@ -86,12 +90,19 @@ public class SplashScreen extends AppCompatActivity {
 					shortToast(SplashScreen.this, "Book searching capabilities will not work");
 				}
 				
+				try {
+					PreloadedData.loadBestSellers();
+				} catch (ExecutionException | InterruptedException e) {
+					Log.e(ApplicationCodes.Error.name(), "Unable to load best sellers");
+					e.printStackTrace();
+				}
+				
 				startActivity(
 						new Intent(
 								SplashScreen.this,
 								user != null ? Container.class : SignUp.class
 						)
-				 );
+				);
 				finish();
 			}
 			

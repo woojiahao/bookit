@@ -20,6 +20,7 @@ import team.android.projects.com.bookit.database.UsersList;
 import team.android.projects.com.bookit.dataclasses.Book;
 import team.android.projects.com.bookit.dataclasses.BookGroup;
 import team.android.projects.com.bookit.dataclasses.User;
+import team.android.projects.com.bookit.loading.PreloadedData;
 import team.android.projects.com.bookit.logging.ApplicationCodes;
 import team.android.projects.com.bookit.searchengine.SearchType;
 import team.android.projects.com.bookit.ui.adapters.DiscoverAdapter;
@@ -37,7 +38,6 @@ public class DiscoverFragment extends Fragment {
 	private View mView;
 	
 	private List<Book> mRecommendations;
-	private static List<Book> mBestSellers;
 	
 	private List<BookGroup> mGroups;
 	
@@ -72,9 +72,6 @@ public class DiscoverFragment extends Fragment {
 	private void loadBooks() {
 		try {
 			generateRecommendations();
-			if (mBestSellers == null) {
-				generateBestSellers();
-			}
 		} catch (InterruptedException | ExecutionException e) {
 			Log.e(ApplicationCodes.Error.name(), "Unable to load books");
 			e.printStackTrace();
@@ -82,7 +79,7 @@ public class DiscoverFragment extends Fragment {
 		
 		mGroups = Arrays.asList(
 				new BookGroup("Recommended for you", mRecommendations),
-				new BookGroup("Best-sellers", mBestSellers)
+				new BookGroup("Best-sellers", PreloadedData.getBestSellers())
 		);
 	}
 	
@@ -101,15 +98,5 @@ public class DiscoverFragment extends Fragment {
 								.groupSearch(SearchType.Genre, genre, chunkSize));
 			}
 		}
-	}
-	
-	private void generateBestSellers() throws ExecutionException, InterruptedException {
-		mBestSellers = new ArrayList<Book>();
-		
-		long querySize = 1L;
-		
-		mBestSellers.addAll(
-				App.searchEngines.get(NewYorkTimes.mapKey)
-						.groupSearch(BestSellers, null, querySize));
 	}
 }
