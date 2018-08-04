@@ -148,6 +148,13 @@ public class Container
 	
 	@Override protected void onResume() {
 		super.onResume();
+		if (mBottomBar.getSelectedItemId() == R.id.navigationFavourites) {
+			if (getSupportFragmentManager() == null) return;
+			getSupportFragmentManager().beginTransaction()
+					.replace(R.id.contentArea, new FavouritesFragment(), Favourites.name())
+					.commit();
+		}
+		
 		if (mCameraState != null) {
 			switch (mCameraState) {
 				case Taken:

@@ -12,7 +12,11 @@ import java.text.NumberFormat;
 import java.util.HashMap;
 import java.util.Map;
 
+import team.android.projects.com.bookit.database.FirebaseOperations;
+import team.android.projects.com.bookit.database.IFirebaseOperations;
+import team.android.projects.com.bookit.database.UsersList;
 import team.android.projects.com.bookit.dataclasses.Book;
+import team.android.projects.com.bookit.dataclasses.User;
 
 import static team.android.projects.com.bookit.logging.Logging.shortToast;
 import static team.android.projects.com.bookit.util.UIUtils.find;
@@ -22,6 +26,11 @@ public class BookDetails extends AppCompatActivity {
 	
 	private ImageView mBackBtn;
 	private ImageView mFavouriteBtn;
+	
+	private String mISBN;
+	private boolean mIsFavourited;
+	
+	private IFirebaseOperations mFirebaseOperations;
 	
 	@Override
 	protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,6 +42,8 @@ public class BookDetails extends AppCompatActivity {
 	}
 	
 	private void init() {
+		mFirebaseOperations = new FirebaseOperations(this);
+		
 		if (getIntent().getExtras() != null) {
 			mBook = (Book) getIntent().getExtras().get("book");
 		}
@@ -45,6 +56,7 @@ public class BookDetails extends AppCompatActivity {
 		mBackBtn = find(this, R.id.backBtn);
 		mFavouriteBtn = find(this, R.id.detailsFavouritesBtn);
 		
+		
 		Picasso.get().load(mBook.getThumbnail()).into((ImageView) find(this, R.id.detailsThumbnail));
 		((TextView) find(this, R.id.detailsTitle)).setText(mBook.getTitle());
 		((TextView) find(this, R.id.detailsAuthors)).setText(mBook.getAuthors());
@@ -54,15 +66,36 @@ public class BookDetails extends AppCompatActivity {
 				.setText(mBook.getSummary() == null ? "N/A" : mBook.getSummary());
 		
 		Map<String, String> isbns = mBook.getISBN();
-		String isbn = isbns.containsKey("ISBN_13") ? isbns.get("ISBN_13") : isbns.get("ISBN_10");
+		mISBN = isbns.containsKey("ISBN_13") ? isbns.get("ISBN_13") : isbns.get("ISBN_10");
 		((TextView) find(this, R.id.detailsISBN))
-				.setText(String.format("ISBN: %s", isbn != null ? isbn : "N/A"));
-		
+				.setText(String.format("ISBN: %s", mISBN != null ? mISBN : "N/A"));
 		((TextView) find(this, R.id.detailsPrice)).setText(getLowestPrice());
+		
+		mIsFavourited = UsersList.getCurrentUser().favourites.contains(mISBN);
+		mFavouriteBtn
+				.setImageResource(mIsFavourited ?
+						R.drawable.ic_favorite_black_24dp : R.drawable.ic_favorite_border_black_24dp);
 	}
 	
 	private void connectListeners() {
 		mBackBtn.setOnClickListener(v -> finish());
+		mFavouriteBtn.setOnClickListener(v -> favourite());
+	}
+	
+	private void favourite() {
+		User currentUser = UsersList.getCurrentUser();
+		if (currentUser != null) {
+			if (mIsFavourited) {
+				mFirebaseOperations.removeFavourite(mISBN);
+				mFavouriteBtn.setImageResource(R.drawable.ic_favorite_border_black_24dp);
+				shortToast(this, String.format("Removed %s from favourites", mBook.getTitle()));
+			} else {
+				mFirebaseOperations.addFavourite(mISBN);
+				mFavouriteBtn.setImageResource(R.drawable.ic_favorite_black_24dp);
+				shortToast(this, String.format("Added %s to favourites", mBook.getTitle()));
+			}
+		}
+		
 	}
 	
 	private String getLowestPrice() {

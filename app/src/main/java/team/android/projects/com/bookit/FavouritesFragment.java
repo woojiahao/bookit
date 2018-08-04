@@ -27,7 +27,6 @@ import team.android.projects.com.bookit.ui.custom.clearable_edit_text.ClearableE
 import static team.android.projects.com.bookit.util.UIUtils.find;
 
 // todo: generify the searchFor
-// todo: add dynamic loading of the favourites instead of hardcoding it
 // todo: if the user has more than 40 favourites, break it down before sending all of the queries to google books
 public class FavouritesFragment extends Fragment {
 	private View mView;
