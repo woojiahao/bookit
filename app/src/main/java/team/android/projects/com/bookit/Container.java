@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import team.android.projects.com.bookit.backstack.FragmentID;
+import team.android.projects.com.bookit.dataclasses.Book;
 import team.android.projects.com.bookit.ocr.CameraStates;
 import team.android.projects.com.bookit.ui.helper.BottomNavigationHelper;
 
@@ -30,12 +31,11 @@ import static team.android.projects.com.bookit.util.UIUtils.find;
 import static team.android.projects.com.bookit.ocr.CameraStates.Cancelled;
 import static team.android.projects.com.bookit.ocr.CameraStates.Taken;
 import static team.android.projects.com.bookit.ocr.CameraStates.Taking;
+import static team.android.projects.com.bookit.util.UIUtils.launchBookDetails;
 
 // todo: implement a proper backstack
 // todo: customize the camera
 // todo: put back the fragment addToBackStack method
-// todo: launch the book details for the book when successful
-// todo: if the user presses on the icon for the screen they already are on, ignore that
 public class Container
 		extends AppCompatActivity
 		implements BottomNavigationView.OnNavigationItemSelectedListener {
@@ -157,8 +157,8 @@ public class Container
 					String extractedText = mCameraActivityBundle.getString("extractedText");
 					
 					if (hasMatch) {
-						// if there is a successful scan, just print out the book details
-						
+						Book book = (Book) mCameraActivityBundle.get("book");
+						launchBookDetails(this, book);
 					} else {
 						f = new StatusFragment();
 						b.putBoolean("status", false);

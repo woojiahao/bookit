@@ -15,13 +15,14 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.concurrent.ExecutionException;
 
+import team.android.projects.com.bookit.dataclasses.Book;
 import team.android.projects.com.bookit.logging.ApplicationCodes;
 import team.android.projects.com.bookit.ocr.TessOCR;
+import team.android.projects.com.bookit.searchengine.Engines;
+import team.android.projects.com.bookit.searchengine.SearchType;
 
-// todo: replace the processing method with an actual processing method
-// todo: make the book object parcelable so as to be able to pass it into the bundle as a key-value pair
-// todo: pass the book object in the bundle instead of just the title
 public class ScannerLauncher extends AppCompatActivity {
 	private final int REQUEST_IMAGE_CAPTURE = 2033;
 	private String mImageFilePath;
@@ -92,10 +93,20 @@ public class ScannerLauncher extends AppCompatActivity {
 		}
 		
 		if (result != null) {
-			setResult(RESULT_OK,
-					new Intent()
-							.putExtra("false", true)
-							.putExtra("extractedText", result));
+			Book b = null;
+			try {
+				b = App.searchEngines.get(Engines.GoogleBooks.mapKey).bookSearch(SearchType.Title, result);
+			} catch (ExecutionException | InterruptedException e) {
+				Log.e(ApplicationCodes.Error.name(), "Failed to load the book with title: " + result);
+				e.printStackTrace();
+			}
+			Intent i = new Intent();
+			i.putExtra("hasMatch", b != null);
+			i.putExtra("extractedText", result);
+			if (b != null) {
+				i.putExtra("book", b);
+			}
+			setResult(RESULT_OK, i);
 			finish();
 		}
 	}
