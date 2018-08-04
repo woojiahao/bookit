@@ -73,18 +73,18 @@ public class SignIn extends AppCompatActivity {
 	private void attemptSignIn() {
 		if (!isFilled(mUsernameEmailField, mPasswordField)) {
 			shortToast(this, getString(R.string.empty_inputs_warning));
-		} else {
-			String email = mUsernameEmailField.getText();
-			String password = mPasswordField.getText();
-			
-			if (!isEmail(email)) {
-				User matchedUser = UsersList.findUser(email, Username);
-				if (matchedUser == null) {
-					shortToast(this, getString(R.string.invalid_user_account_warning));
-					return;
-				} else {
-					email = matchedUser.email;
-				}
+			return;
+		}
+		String email = mUsernameEmailField.getText();
+		String password = mPasswordField.getText();
+		
+		if (!isEmail(email)) {
+			User matchedUser = UsersList.findUser(email, Username);
+			if (matchedUser == null) {
+				shortToast(this, getString(R.string.invalid_user_account_warning));
+				return;
+			} else {
+				email = matchedUser.email;
 			}
 			
 			modifyRedButton(this, mSignInBtn, Disabled);

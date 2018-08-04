@@ -62,9 +62,9 @@ public class SignUpGenreSelection extends AppCompatActivity {
 		String[] selection = mGenreSelectionFragment.getSelection();
 		if (selection.length == 0) {
 			shortToast(this, getString(R.string.empty_selection_warning));
-		} else {
-			registerUser();
+			return;
 		}
+		registerUser();
 	}
 	
 	private void registerUser() {

@@ -56,33 +56,32 @@ public class SignUp extends AppCompatActivity {
 	private void attemptSignUp() {
 		if (!isFilled(mEmailField, mUsernameField, mPasswordField)) {
 			shortToast(this, getString(R.string.empty_inputs_warning));
-		} else {
-			String username = mUsernameField.getText();
-			String email = mEmailField.getText();
-			String password = mPasswordField.getText();
-			
-			if (!isEmail(email)) {
-				shortToast(this, getString(R.string.invalid_email_warning));
-			} else {
-				if (UsersList.findUser(email, Email) != null) {
-					shortToast(this, String.format(getString(R.string.email_used_warning), email));
-				} else {
-					if (password.length() < 6) {
-						shortToast(this, getString(R.string.password_short_warning));
-					} else {
-						if (UsersList.findUser(username, Username) != null) {
-							shortToast(this, String.format(getString(R.string.username_used), username));
-						} else {
-							startActivity(
-									new Intent(this, SignUpGenreSelection.class)
-											.putExtra("email", email)
-											.putExtra("username", username)
-											.putExtra("password", password));
-						}
-					}
-				}
-				
-			}
+			return;
 		}
+		String username = mUsernameField.getText();
+		String email = mEmailField.getText();
+		String password = mPasswordField.getText();
+		
+		if (!isEmail(email)) {
+			shortToast(this, getString(R.string.invalid_email_warning));
+			return;
+		}
+		if (UsersList.findUser(email, Email) != null) {
+			shortToast(this, String.format(getString(R.string.email_used_warning), email));
+			return;
+		}
+		if (password.length() < 6) {
+			shortToast(this, getString(R.string.password_short_warning));
+			return;
+		}
+		if (UsersList.findUser(username, Username) != null) {
+			shortToast(this, String.format(getString(R.string.username_used), username));
+			return;
+		}
+		startActivity(
+				new Intent(this, SignUpGenreSelection.class)
+						.putExtra("email", email)
+						.putExtra("username", username)
+						.putExtra("password", password));
 	}
 }
