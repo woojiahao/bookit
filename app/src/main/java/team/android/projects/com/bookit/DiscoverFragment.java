@@ -31,13 +31,13 @@ import static team.android.projects.com.bookit.searchengine.Engines.NewYorkTimes
 import static team.android.projects.com.bookit.searchengine.SearchType.BestSellers;
 import static team.android.projects.com.bookit.util.UIUtils.find;
 
-// todo: set the discover to constantly query for new data
+// todo: set the discover to constantly query for new data as the user scrolls
+// todo: reimplement the new releases section
 public class DiscoverFragment extends Fragment {
 	private View mView;
 	
 	private List<Book> mRecommendations;
 	private List<Book> mBestSellers;
-	private List<Book> mNewReleases;
 	private List<BookGroup> mGroups;
 	
 	@Override
@@ -79,8 +79,7 @@ public class DiscoverFragment extends Fragment {
 		
 		mGroups = Arrays.asList(
 				new BookGroup("Recommended for you", mRecommendations),
-				new BookGroup("Best-sellers", mBestSellers),
-				new BookGroup("New releases", mRecommendations)
+				new BookGroup("Best-sellers", mBestSellers)
 		);
 	}
 	
