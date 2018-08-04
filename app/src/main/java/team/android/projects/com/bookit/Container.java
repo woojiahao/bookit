@@ -35,6 +35,7 @@ import static team.android.projects.com.bookit.ocr.CameraStates.Taking;
 // todo: customize the camera
 // todo: put back the fragment addToBackStack method
 // todo: launch the book details for the book when successful
+// todo: if the user presses on the icon for the screen they already are on, ignore that
 public class Container
 		extends AppCompatActivity
 		implements BottomNavigationView.OnNavigationItemSelectedListener {

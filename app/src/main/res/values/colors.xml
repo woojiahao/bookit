@@ -11,4 +11,5 @@
     <color name="green">#00E676</color>
     <color name="whiteTint">#90FFFFFF</color>
     <color name="blackTint">#90000000</color>
+	<color name="divider">#BDBDBD</color>
 </resources>
