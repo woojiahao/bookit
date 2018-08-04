@@ -73,6 +73,8 @@ public class NewYorkTimesSearchEngine implements ISearchEngine {
 					while ((line = reader.readLine()) != null)
 						returnedJSON.append(line).append("\n");
 				}
+				
+				conn.disconnect();
 			} catch (java.io.IOException e) {
 				Log.e(ApplicationCodes.Error.name(), "Unable to read from API Endpoint: " + query);
 				e.printStackTrace();
