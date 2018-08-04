@@ -65,6 +65,8 @@ public class Container
 	}
 	
 	@Override public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+		if (item.getItemId() == mBottomBar.getSelectedItemId()) return true;
+		
 		FragmentManager manager = getSupportFragmentManager();
 		Fragment toInflate = null;
 		FragmentID fragmentID = null;
