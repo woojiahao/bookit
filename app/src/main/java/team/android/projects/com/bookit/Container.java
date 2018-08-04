@@ -162,7 +162,7 @@ public class Container
 					} else {
 						f = new StatusFragment();
 						b.putBoolean("status", false);
-						b.putString("message", "Cannot find " + extractedText + ".");
+						b.putString("message", "Cannot find " + extractedText);
 						f.setArguments(b);
 						getSupportFragmentManager()
 								.beginTransaction()

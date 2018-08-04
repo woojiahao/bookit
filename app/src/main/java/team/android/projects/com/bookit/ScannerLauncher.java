@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.ExecutionException;
 
@@ -95,7 +96,11 @@ public class ScannerLauncher extends AppCompatActivity {
 		if (result != null) {
 			Book b = null;
 			try {
-				b = App.searchEngines.get(Engines.GoogleBooks.mapKey).bookSearch(SearchType.Title, result);
+				List<Book> temp = App
+						.searchEngines
+						.get(Engines.GoogleBooks.mapKey)
+						.bookSearch(SearchType.Title, result);
+				if (temp != null) b = temp.get(0);
 			} catch (ExecutionException | InterruptedException e) {
 				Log.e(ApplicationCodes.Error.name(), "Failed to load the book with title: " + result);
 				e.printStackTrace();

@@ -50,11 +50,13 @@ public class BookDetails extends AppCompatActivity {
 		((TextView) find(this, R.id.detailsAuthors)).setText(mBook.getAuthors());
 		((TextView) find(this, R.id.detailsGenres)).setText(mBook.getGenres());
 		((TextView) find(this, R.id.detailsRating)).setText(String.valueOf(mBook.getRating()));
-		((TextView) find(this, R.id.detailsSummary)).setText(String.valueOf(mBook.getSummary()));
+		((TextView) find(this, R.id.detailsSummary))
+				.setText(mBook.getSummary() == null ? "N/A" : mBook.getSummary());
 		
 		Map<String, String> isbns = mBook.getISBN();
 		String isbn = isbns.containsKey("ISBN_13") ? isbns.get("ISBN_13") : isbns.get("ISBN_10");
-		((TextView) find(this, R.id.detailsISBN)).setText(String.format("ISBN: %s", isbn));
+		((TextView) find(this, R.id.detailsISBN))
+				.setText(String.format("ISBN: %s", isbn != null ? isbn : "N/A"));
 		
 		((TextView) find(this, R.id.detailsPrice)).setText(getLowestPrice());
 	}

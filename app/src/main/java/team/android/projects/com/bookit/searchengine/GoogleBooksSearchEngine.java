@@ -19,6 +19,7 @@ import java.util.concurrent.ExecutionException;
 import team.android.projects.com.bookit.BuildConfig;
 import team.android.projects.com.bookit.dataclasses.Book;
 
+// todo: add ratelimiting toast to prevent api aboos
 public class GoogleBooksSearchEngine implements ISearchEngine {
 	private static Books mBooks;
 	
@@ -35,6 +36,9 @@ public class GoogleBooksSearchEngine implements ISearchEngine {
 			case Genre:
 				prefix = "subject";
 				break;
+			case Title:
+				prefix = "title";
+				break;
 		}
 		
 		String query = getQuery(prefix, group);
@@ -42,7 +46,7 @@ public class GoogleBooksSearchEngine implements ISearchEngine {
 		return new GroupSearchTask().execute(query, String.valueOf(querySize)).get();
 	}
 	
-	@Override public Book bookSearch(SearchType searchType, String search)
+	@Override public List<Book> bookSearch(SearchType searchType, String search)
 			throws ExecutionException, InterruptedException {
 		if (mBooks == null) return null;
 		
@@ -55,7 +59,7 @@ public class GoogleBooksSearchEngine implements ISearchEngine {
 		
 		String query = getQuery(prefix, search);
 		
-		return new GroupSearchTask().execute(query, "1").get().get(0);
+		return new GroupSearchTask().execute(query, "1").get();
 	}
 	
 	@Override public List<Book> batchSearch(SearchType searchType, String[] searchTerms)
@@ -92,6 +96,7 @@ public class GoogleBooksSearchEngine implements ISearchEngine {
 		return String.format("%s:%s", prefix, suffix);
 	}
 	
+	// todo: add null checking for all aspects of the book
 	private static Book extractBookInfo(Volume v) {
 		Volume.VolumeInfo info = v.getVolumeInfo();
 		
@@ -100,8 +105,25 @@ public class GoogleBooksSearchEngine implements ISearchEngine {
 		String title = info.getTitle();
 		String thumbnail = info.getImageLinks() == null ? "https://cdn.pixabay.com/photo/2018/01/17/18/43/book-3088777_960_720.png" : info.getImageLinks().getThumbnail();
 		
-		String[] authors = info.getAuthors().toArray(new String[info.getAuthors().size()]);
-		String[] genres = info.getCategories().toArray(new String[info.getCategories().size()]);
+		List<String> auths = info.getAuthors();
+		String[] authors;
+		if (auths != null) {
+			authors = info.getAuthors().toArray(new String[info.getAuthors().size()]);
+		} else {
+			authors = new String[] {
+					"No authors"
+			};
+		}
+		
+		List<String> categories = info.getCategories();
+		String[] genres;
+		if (categories != null) {
+			genres = info.getCategories().toArray(new String[info.getCategories().size()]);
+		} else {
+			genres = new String[] {
+					"No genres"
+			};
+		}
 		String summary = info.getDescription();
 		
 		HashMap<String, Double> prices = new HashMap<String, Double>() {{

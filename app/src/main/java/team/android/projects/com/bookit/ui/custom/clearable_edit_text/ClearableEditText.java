@@ -8,10 +8,10 @@ import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import team.android.projects.com.bookit.R;
 
@@ -53,7 +53,6 @@ public class ClearableEditText extends CardView {
 			mIcon = arr.hasValue(R.styleable.ClearableEditText_sideIcon) ? arr.getDrawable(R.styleable.ClearableEditText_sideIcon) : getResources().getDrawable(R.drawable.ic_search_grey_24dp);
 			mIsClearable = arr.getBoolean(R.styleable.ClearableEditText_isClearable, true);
 			mInputType = arr.getInt(R.styleable.ClearableEditText_inputType, 0);
-			Log.d("Clearable", "Input type: " + String.valueOf(mInputType));
 			
 			arr.recycle();
 		}
@@ -97,6 +96,10 @@ public class ClearableEditText extends CardView {
 	
 	public String getText() {
 		return mEditText.getText().toString().trim();
+	}
+	
+	public void setTypingCompleteListener(TextView.OnEditorActionListener listener) {
+		mEditText.setOnEditorActionListener(listener);
 	}
 	
 	public void setOnTypingListener(IEditTextChanging listener) {

@@ -4,7 +4,11 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:orientation="vertical">
+	android:orientation="vertical"
+	android:paddingEnd="@dimen/small_padding"
+	android:paddingLeft="@dimen/small_padding"
+	android:paddingRight="@dimen/small_padding"
+	android:paddingStart="@dimen/small_padding">
 
 	<TextView
 		android:id="@+id/genreSelectionTitle"

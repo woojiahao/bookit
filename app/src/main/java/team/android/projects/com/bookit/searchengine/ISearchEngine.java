@@ -9,7 +9,7 @@ public interface ISearchEngine {
 	List<Book> groupSearch(SearchType searchType, String group, long querySize)
 			throws ExecutionException, InterruptedException;
 	
-	Book bookSearch(SearchType searchType, String search)
+	List<Book> bookSearch(SearchType searchType, String search)
 			throws ExecutionException, InterruptedException;
 	
 	List<Book> batchSearch(SearchType searchType, String[] searchTerms)

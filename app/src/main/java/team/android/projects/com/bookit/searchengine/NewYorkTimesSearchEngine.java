@@ -46,7 +46,7 @@ public class NewYorkTimesSearchEngine implements ISearchEngine {
 						bestSellingTitles.toArray(new String[bestSellingTitles.size()]));
 	}
 	
-	@Override public Book bookSearch(SearchType searchType, String search) {
+	@Override public List<Book> bookSearch(SearchType searchType, String search) {
 		return null;
 	}
 	

@@ -33,7 +33,7 @@ public class StatusFragment extends Fragment {
 		
 		if (extras != null) {
 			mStatusMessage = extras.getString("message");
-			mStatus = extras.getBoolean("message");
+			mStatus = extras.getBoolean("status");
 		}
 		
 		mStatusIcon = find(mView, R.id.statusIcon);
