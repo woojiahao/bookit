@@ -43,6 +43,7 @@ public class App extends MultiDexApplication {
 	
 	private void loadConfig() {
 		mKeys = new HashMap<String, String>();
+		
 		try {
 			JSONObject root = new JSONObject(loadJSON(getAssets(), "config.json"));
 			
@@ -60,5 +61,5 @@ public class App extends MultiDexApplication {
 		}
 	}
 	
-
+	
 }
