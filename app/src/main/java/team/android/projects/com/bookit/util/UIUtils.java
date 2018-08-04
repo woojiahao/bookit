@@ -3,6 +3,7 @@ package team.android.projects.com.bookit.util;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -12,10 +13,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.PopupMenu;
 
+import team.android.projects.com.bookit.BookDetails;
 import team.android.projects.com.bookit.GenreSelectionFragment;
 import team.android.projects.com.bookit.R;
 import team.android.projects.com.bookit.database.IFirebaseOperations;
 import team.android.projects.com.bookit.database.UsersList;
+import team.android.projects.com.bookit.dataclasses.Book;
 import team.android.projects.com.bookit.ui.ButtonStates;
 import team.android.projects.com.bookit.ui.custom.clearable_edit_text.ClearableEditText;
 
@@ -150,5 +153,9 @@ public class UIUtils {
 			return false;
 		});
 		menu.show();
+	}
+	
+	public static void launchBookDetails(Context c, Book book) {
+		c.startActivity(new Intent(c, BookDetails.class).putExtra("book", book));
 	}
 }

@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import java.text.NumberFormat;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -23,6 +24,7 @@ import team.android.projects.com.bookit.database.IFirebaseOperations;
 import team.android.projects.com.bookit.dataclasses.Book;
 
 import static team.android.projects.com.bookit.util.UIUtils.find;
+import static team.android.projects.com.bookit.util.UIUtils.launchBookDetails;
 
 public class BookCardAdapter extends RecyclerView.Adapter<BookCardAdapter.ViewHolder> {
 	private List<Book> mBooks;
@@ -40,7 +42,6 @@ public class BookCardAdapter extends RecyclerView.Adapter<BookCardAdapter.ViewHo
 		private TextView mRating;
 		
 		private NumberFormat mCurrencyFormatter;
-		
 		
 		ViewHolder(View v) {
 			super(v);
@@ -113,13 +114,7 @@ public class BookCardAdapter extends RecyclerView.Adapter<BookCardAdapter.ViewHo
 		holder.setThumbnail(book.getThumbnail());
 		holder.setRating(book.getRating());
 		
-		holder.mView.setOnClickListener(v ->
-				mContext
-						.startActivity(
-								new Intent(
-										mContext,
-										BookDetails.class)
-										.putExtra("book", book)));
+		holder.mView.setOnClickListener(v -> launchBookDetails(mContext, book));
 
 //		holder.mPopupMenu.setOnClickListener(v ->
 //				displayPopupMenu(

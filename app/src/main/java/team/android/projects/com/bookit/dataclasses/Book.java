@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.TextUtils;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Book implements Parcelable {
@@ -104,15 +105,6 @@ public class Book implements Parcelable {
 		this.prices = prices;
 	}
 	
-	protected Book(Parcel in) {
-		rating = in.readDouble();
-		thumbnail = in.readString();
-		summary = in.readString();
-		title = in.readString();
-		authors = in.createStringArray();
-		genres = in.createStringArray();
-	}
-	
 	public double getRating() {
 		return rating;
 	}
@@ -144,6 +136,20 @@ public class Book implements Parcelable {
 	public Map<String, Double> getPrices() {
 		return prices;
 	}
+	
+	protected Book(Parcel in) {
+		rating = in.readDouble();
+		thumbnail = in.readString();
+		summary = in.readString();
+		title = in.readString();
+		authors = in.createStringArray();
+		genres = in.createStringArray();
+		ISBN = new HashMap<String, String>();
+		prices = new HashMap<String, Double>();
+		in.readMap(ISBN, String.class.getClassLoader());
+		in.readMap(prices, Double.class.getClassLoader());
+	}
+	
 	
 	public static final Creator<Book> CREATOR = new Creator<Book>() {
 		@Override
