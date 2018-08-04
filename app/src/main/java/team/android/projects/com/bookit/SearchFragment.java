@@ -23,6 +23,7 @@ import team.android.projects.com.bookit.ui.custom.clearable_edit_text.ClearableE
 import static team.android.projects.com.bookit.util.UIUtils.find;
 import static team.android.projects.com.bookit.util.UIUtils.loadGenreSelection;
 
+// todo: add support to search through isbn, author and title (currently only title)
 public class SearchFragment extends Fragment {
 	private ClearableEditText mSearchField;
 	private View mView;

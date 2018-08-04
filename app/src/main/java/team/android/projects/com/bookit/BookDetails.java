@@ -3,6 +3,7 @@ package team.android.projects.com.bookit;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -12,14 +13,18 @@ import java.text.NumberFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 import team.android.projects.com.bookit.database.FirebaseOperations;
 import team.android.projects.com.bookit.database.IFirebaseOperations;
 import team.android.projects.com.bookit.database.UsersList;
 import team.android.projects.com.bookit.dataclasses.Book;
 import team.android.projects.com.bookit.dataclasses.User;
+import team.android.projects.com.bookit.logging.ApplicationCodes;
+import team.android.projects.com.bookit.searchengine.GoodReadsSearchEngine;
 
 import static team.android.projects.com.bookit.logging.Logging.shortToast;
+import static team.android.projects.com.bookit.searchengine.Engines.GoodReads;
 import static team.android.projects.com.bookit.util.UIUtils.find;
 
 public class BookDetails extends AppCompatActivity {
@@ -70,14 +75,20 @@ public class BookDetails extends AppCompatActivity {
 		mISBN = isbns.containsKey("ISBN_13") ? isbns.get("ISBN_13") : isbns.get("ISBN_10");
 		((TextView) find(this, R.id.detailsISBN))
 				.setText(String.format("ISBN: %s", mISBN != null ? mISBN : "N/A"));
-		((TextView) find(this, R.id.detailsPrice)).setText(getLowestPrice());
+		
+		Map<String, Double> prices = getPrices();
+		if (prices != null) {
+			((TextView) find(this, R.id.detailsPrice)).setText(getLowestPrice(getPrices()));
+			StringBuilder priceList = new StringBuilder();
+			for (Map.Entry<String, Double> price : prices.entrySet()) {
+				priceList.append(price.getKey()).append("\t\t").append(price.getValue());
+			}
+			((TextView) find(this, R.id.temp)).setText(priceList.toString());
+		}
+		
 		
 		List<String> favourites = UsersList.getCurrentUser().favourites;
-		if (favourites == null || favourites.size() == 0) {
-			mIsFavourited = false;
-		} else {
-			mIsFavourited = UsersList.getCurrentUser().favourites.contains(mISBN);
-		}
+		mIsFavourited = favourites != null && favourites.size() != 0 && UsersList.getCurrentUser().favourites.contains(mISBN);
 		mFavouriteBtn
 				.setImageResource(mIsFavourited ?
 						R.drawable.ic_favorite_black_24dp : R.drawable.ic_favorite_border_black_24dp);
@@ -104,12 +115,20 @@ public class BookDetails extends AppCompatActivity {
 		
 	}
 	
-	private String getLowestPrice() {
-		Map<String, Double> prices = mBook.getPrices();
+	private Map<String, Double> getPrices() {
+		try {
+			return ((GoodReadsSearchEngine)App.searchEngines.get(GoodReads.mapKey)).getPrices(mISBN);
+		} catch (ExecutionException | InterruptedException e) {
+			Log.e(ApplicationCodes.Error.name(), "Unable to load prices");
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	private String getLowestPrice(Map<String, Double> prices) {
 		NumberFormat priceFormat = NumberFormat.getCurrencyInstance();
 		
 		double min = -1;
-		
 		for (HashMap.Entry<String, Double> entry : prices.entrySet()) {
 			double price = entry.getValue();
 			if (min == -1) min = price;
