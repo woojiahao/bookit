@@ -4,8 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.TextUtils;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,7 +18,7 @@ public class Book implements Parcelable {
 	private String[] genres;
 	
 	private Map<String, String> ISBN;
-	private List<StoreLocation> prices;
+	private List<Store> prices;
 	
 	public static class Builder {
 		private double rating;
@@ -33,7 +31,7 @@ public class Book implements Parcelable {
 		private String[] genres;
 		
 		private Map<String, String> ISBN;
-		private List<StoreLocation> prices;
+		private List<Store> prices;
 		
 		public Builder() {
 			rating = 0.0;
@@ -83,7 +81,7 @@ public class Book implements Parcelable {
 			return this;
 		}
 		
-		public Builder setPrices(List<StoreLocation> prices) {
+		public Builder setPrices(List<Store> prices) {
 			this.prices = prices;
 			return this;
 		}
@@ -96,7 +94,7 @@ public class Book implements Parcelable {
 	private Book(double rating, String thumbnail,
 				 String summary, String title, String[] authors, String[] genres,
 				 Map<String, String> ISBN,
-				 List<StoreLocation> prices) {
+				 List<Store> prices) {
 		this.rating = rating;
 		this.thumbnail = thumbnail;
 		this.ISBN = ISBN;
@@ -135,7 +133,7 @@ public class Book implements Parcelable {
 		return ISBN;
 	}
 	
-	public List<StoreLocation> getPrices() {
+	public List<Store> getPrices() {
 		return prices;
 	}
 	

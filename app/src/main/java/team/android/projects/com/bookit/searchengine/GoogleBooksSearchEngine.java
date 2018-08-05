@@ -18,7 +18,7 @@ import java.util.concurrent.ExecutionException;
 
 import team.android.projects.com.bookit.BuildConfig;
 import team.android.projects.com.bookit.dataclasses.Book;
-import team.android.projects.com.bookit.dataclasses.StoreLocation;
+import team.android.projects.com.bookit.dataclasses.Store;
 
 // todo: add ratelimiting toast to prevent api aboos
 public class GoogleBooksSearchEngine implements ISearchEngine {
@@ -128,11 +128,11 @@ public class GoogleBooksSearchEngine implements ISearchEngine {
 		}
 		String summary = info.getDescription() == null ? "N/A" : info.getDescription();
 		
-		List<StoreLocation> prices = new ArrayList<StoreLocation>() {{
+		List<Store> prices = new ArrayList<Store>() {{
 			Double retailPrice;
 			if (v.getSaleInfo().getRetailPrice() != null) {
 				retailPrice = v.getSaleInfo().getRetailPrice().getAmount();
-				add(new StoreLocation(
+				add(new Store(
 						"Google Books",
 						info.getPreviewLink(),
 						retailPrice == null ? -1.00 : retailPrice));

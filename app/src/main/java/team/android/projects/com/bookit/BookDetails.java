@@ -7,13 +7,14 @@ import android.os.Looper;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
@@ -22,10 +23,13 @@ import team.android.projects.com.bookit.database.FirebaseOperations;
 import team.android.projects.com.bookit.database.IFirebaseOperations;
 import team.android.projects.com.bookit.database.UsersList;
 import team.android.projects.com.bookit.dataclasses.Book;
-import team.android.projects.com.bookit.dataclasses.StoreLocation;
+import team.android.projects.com.bookit.dataclasses.Store;
 import team.android.projects.com.bookit.dataclasses.User;
 import team.android.projects.com.bookit.logging.ApplicationCodes;
 import team.android.projects.com.bookit.searchengine.GoodReadsSearchEngine;
+import team.android.projects.com.bookit.ui.adapters.BookDetailsAdapter;
+import team.android.projects.com.bookit.ui.decorators.SpacingDecoration;
+import team.android.projects.com.bookit.ui.decorators.SpacingDecorationError;
 
 import static team.android.projects.com.bookit.logging.Logging.shortToast;
 import static team.android.projects.com.bookit.searchengine.Engines.GoodReads;
@@ -42,7 +46,7 @@ public class BookDetails extends AppCompatActivity {
 	private String mISBN;
 	private boolean mIsFavourited;
 	
-	private List<StoreLocation> mPricesList;
+	private List<Store> mPricesList;
 	private Map<String, String> mISBNs;
 	
 	private IFirebaseOperations mFirebaseOperations;
@@ -88,7 +92,6 @@ public class BookDetails extends AppCompatActivity {
 		((TextView) find(this, R.id.detailsISBN))
 				.setText(String.format("ISBN: %s", mISBN != null ? mISBN : "N/A"));
 		
-		mPrices = find(this, R.id.temp);
 		mDisplayPrices = find(this, R.id.detailsPrice);
 		
 		HandlerThread handlerThread = new HandlerThread("Retrieving Price");
@@ -98,11 +101,15 @@ public class BookDetails extends AppCompatActivity {
 			@Override public void handleMessage(Message msg) {
 				if (mPricesList != null) {
 					mDisplayPrices.setText(getLowestPrice(mPricesList));
-					StringBuilder priceList = new StringBuilder();
-					for (StoreLocation location : mPricesList) {
-						priceList.append(location).append("\n");
+					RecyclerView locations = find(BookDetails.this, R.id.detailsLocations);
+					BookDetailsAdapter adapter = new BookDetailsAdapter(mPricesList);
+					locations.setLayoutManager(new LinearLayoutManager(BookDetails.this, LinearLayoutManager.HORIZONTAL, false));
+					locations.setAdapter(adapter);
+					try {
+						locations.addItemDecoration(new SpacingDecoration(124, 0, mPricesList.size()));
+					} catch (SpacingDecorationError e) {
+						e.printStackTrace();
 					}
-					mPrices.setText(priceList.toString());
 				}
 			}
 		};
@@ -141,10 +148,10 @@ public class BookDetails extends AppCompatActivity {
 		
 	}
 	
-	private List<StoreLocation> getPrices() {
+	private List<Store> getPrices() {
 		try {
 			return ((GoodReadsSearchEngine) App.searchEngines.get(GoodReads.mapKey))
-							.getPrices(mBook.getTitle());
+					.getPrices(mBook.getTitle());
 		} catch (ExecutionException | InterruptedException e) {
 			Log.e(ApplicationCodes.Error.name(), "Unable to load prices");
 			e.printStackTrace();
@@ -152,12 +159,12 @@ public class BookDetails extends AppCompatActivity {
 		return null;
 	}
 	
-	private String getLowestPrice(List<StoreLocation> prices) {
+	private String getLowestPrice(List<Store> prices) {
 		StringBuilder priceString = new StringBuilder("SGD");
 		
 		double min = prices.get(0).getPrice();
 		for (int i = 1; i < prices.size(); i++) {
-			StoreLocation cur = prices.get(i);
+			Store cur = prices.get(i);
 			if (cur.getPrice() < min) min = cur.getPrice();
 		}
 		

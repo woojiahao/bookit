@@ -24,7 +24,7 @@ import java.util.concurrent.ExecutionException;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import team.android.projects.com.bookit.dataclasses.Book;
-import team.android.projects.com.bookit.dataclasses.StoreLocation;
+import team.android.projects.com.bookit.dataclasses.Store;
 import team.android.projects.com.bookit.logging.ApplicationCodes;
 
 public class GoodReadsSearchEngine implements ISearchEngine {
@@ -34,8 +34,8 @@ public class GoodReadsSearchEngine implements ISearchEngine {
 		mKey = key;
 	}
 	
-	public List<StoreLocation> getPrices(String title) throws ExecutionException, InterruptedException {
-		List<StoreLocation> prices = new PriceTask().execute(title).get();
+	public List<Store> getPrices(String title) throws ExecutionException, InterruptedException {
+		List<Store> prices = new PriceTask().execute(title).get();
 		Log.d("Prices", "Retrieved");
 		return prices;
 	}
@@ -52,10 +52,10 @@ public class GoodReadsSearchEngine implements ISearchEngine {
 		return null;
 	}
 	
-	private static class PriceTask extends AsyncTask<String, Void, List<StoreLocation>> {
+	private static class PriceTask extends AsyncTask<String, Void, List<Store>> {
 		private final double USD_TO_SGD_RATE = 1.37;
 		
-		@Override protected List<StoreLocation> doInBackground(String... strings) {
+		@Override protected List<Store> doInBackground(String... strings) {
 			String title = strings[0];
 			
 			String base = "https://www.goodreads.com/book/title.xml";
@@ -97,7 +97,7 @@ public class GoodReadsSearchEngine implements ISearchEngine {
 					}
 				}};
 			}
-			List<StoreLocation> prices = new ArrayList<>();
+			List<Store> prices = new ArrayList<>();
 			try {
 				prices.add(bookDepositorySearch(links.get("Book Depository")));
 				prices.add(amazonSearch(links.get("Amazon")));
@@ -107,15 +107,15 @@ public class GoodReadsSearchEngine implements ISearchEngine {
 			return prices;
 		}
 		
-		private StoreLocation bookDepositorySearch(String url) throws IOException {
+		private Store bookDepositorySearch(String url) throws IOException {
 			return search("Book Depository", url, "span.sale-price");
 		}
 		
-		private StoreLocation amazonSearch(String url) throws IOException {
-			StoreLocation location1 = search("Amazon", url, "span.offer-price");
-			StoreLocation location2 = search("Amazon", url, "span.header-price");
+		private Store amazonSearch(String url) throws IOException {
+			Store location1 = search("Amazon", url, "span.offer-price");
+			Store location2 = search("Amazon", url, "span.header-price");
 			
-			StoreLocation toReturn = null;
+			Store toReturn = null;
 			if (location1 != null && location2 != null) {
 				double type1 = location1.getPrice();
 				double type2 = location2.getPrice();
@@ -133,7 +133,7 @@ public class GoodReadsSearchEngine implements ISearchEngine {
 			return toReturn;
 		}
 		
-		private StoreLocation search(String storeName, String url, String selector) throws IOException {
+		private Store search(String storeName, String url, String selector) throws IOException {
 			String temp = "";
 			String storeURL = "";
 			
@@ -157,7 +157,7 @@ public class GoodReadsSearchEngine implements ISearchEngine {
 				storePrice = Double.parseDouble(sub);
 			}
 			
-			return new StoreLocation(storeName, storeURL, storePrice);
+			return new Store(storeName, storeURL, storePrice);
 		}
 	}
 }

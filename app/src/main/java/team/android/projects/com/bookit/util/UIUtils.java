@@ -21,7 +21,7 @@ import team.android.projects.com.bookit.R;
 import team.android.projects.com.bookit.database.IFirebaseOperations;
 import team.android.projects.com.bookit.database.UsersList;
 import team.android.projects.com.bookit.dataclasses.Book;
-import team.android.projects.com.bookit.dataclasses.StoreLocation;
+import team.android.projects.com.bookit.dataclasses.Store;
 import team.android.projects.com.bookit.ui.ButtonStates;
 import team.android.projects.com.bookit.ui.custom.clearable_edit_text.ClearableEditText;
 
@@ -161,7 +161,7 @@ public class UIUtils {
 	public static void launchBookDetails(Context c, Book book) {
 		Bundle b = new Bundle();
 		b.putParcelable("book", book);
-		b.putParcelableArrayList("prices", (ArrayList<StoreLocation>) book.getPrices());
+		b.putParcelableArrayList("prices", (ArrayList<Store>) book.getPrices());
 		b.putSerializable("isbn", (HashMap<String, String>) book.getISBN());
 		c.startActivity(
 				new Intent(c, BookDetails.class).putExtra("data", b));

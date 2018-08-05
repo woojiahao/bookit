@@ -137,11 +137,6 @@
 
 		<View style="@style/Divider"/>
 
-		<TextView
-			android:id="@+id/temp"
-			android:text="@string/loading"
-			style="@style/RegularText"/>
-
 		<android.support.v7.widget.RecyclerView
 			android:id="@+id/detailsLocations"
 			android:layout_width="match_parent"
