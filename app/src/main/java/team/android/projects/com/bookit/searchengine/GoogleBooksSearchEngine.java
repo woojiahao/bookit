@@ -132,13 +132,14 @@ public class GoogleBooksSearchEngine implements ISearchEngine {
 			Double retailPrice;
 			if (v.getSaleInfo().getRetailPrice() != null) {
 				retailPrice = v.getSaleInfo().getRetailPrice().getAmount();
-				add(new Store(
-						"Google Books",
-						info.getPreviewLink(),
-						retailPrice == null ? -1.00 : retailPrice));
+				if (retailPrice != null) {
+					if (retailPrice > 0) {
+						add(new Store("Google Books", info.getPreviewLink(), retailPrice));
+					}
+				}
 			}
 		}};
-
+		
 		HashMap<String, String> isbn = new HashMap<String, String>();
 		if (info.getIndustryIdentifiers() != null) {
 			for (Volume.VolumeInfo.IndustryIdentifiers i : info.getIndustryIdentifiers()) {

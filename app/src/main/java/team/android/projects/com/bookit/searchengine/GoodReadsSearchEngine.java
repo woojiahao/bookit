@@ -99,8 +99,15 @@ public class GoodReadsSearchEngine implements ISearchEngine {
 			}
 			List<Store> prices = new ArrayList<>();
 			try {
-				prices.add(bookDepositorySearch(links.get("Book Depository")));
-				prices.add(amazonSearch(links.get("Amazon")));
+				Store bookDepository = bookDepositorySearch(links.get("Book Depository"));
+				if (bookDepository != null) {
+					if (bookDepository.getPrice() != -1) prices.add(bookDepository);
+				}
+				
+				Store amazon = amazonSearch(links.get("Amazon"));
+				if (amazon != null) {
+					if (amazon.getPrice() != -1) prices.add(amazon);
+				}
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

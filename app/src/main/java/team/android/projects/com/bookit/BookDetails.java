@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
@@ -70,7 +71,8 @@ public class BookDetails extends AppCompatActivity {
 		if (data == null) return;
 		
 		mBook = data.getParcelable("book");
-		mPricesList = data.getParcelableArrayList("prices");
+		List<Store> prices = data.getParcelableArrayList("prices");
+		mPricesList = prices == null ? new ArrayList<Store>() : prices;
 		mISBNs = (Map<String, String>) data.getSerializable("isbn");
 		
 		if (mBook == null) {
@@ -100,28 +102,34 @@ public class BookDetails extends AppCompatActivity {
 		Handler requestHandler = new Handler(handlerThread.getLooper());
 		final Handler responseHandler = new Handler(Looper.getMainLooper()) {
 			@Override public void handleMessage(Message msg) {
-				if (mPricesList != null) {
-					mDisplayPrices.setText(getLowestPrice(mPricesList));
-					
-					find(BookDetails.this, R.id.loadingText).setVisibility(View.GONE);
-					RecyclerView locations = find(BookDetails.this, R.id.detailsLocations);
-					BookDetailsAdapter adapter = new BookDetailsAdapter(mPricesList);
-					locations.setLayoutManager(
-							new LinearLayoutManager(
-									BookDetails.this,
-									LinearLayoutManager.HORIZONTAL,
-									false));
-					locations.setAdapter(adapter);
-					try {
-						locations.addItemDecoration(new SpacingDecoration(84, 0, mPricesList.size()));
-					} catch (SpacingDecorationError e) {
-						e.printStackTrace();
-					}
+				TextView loadingText = find(BookDetails.this, R.id.loadingText);
+				
+				if (mPricesList.size() == 0 || mPricesList == null) {
+					loadingText.setText(R.string.no_prices_found);
+					mDisplayPrices.setText(R.string.no_price);
+					return;
+				}
+				mDisplayPrices.setText(getLowestPrice(mPricesList));
+				
+				loadingText.setVisibility(View.GONE);
+				RecyclerView locations = find(BookDetails.this, R.id.detailsLocations);
+				BookDetailsAdapter adapter = new BookDetailsAdapter(mPricesList);
+				locations.setLayoutManager(
+						new LinearLayoutManager(
+								BookDetails.this,
+								LinearLayoutManager.HORIZONTAL,
+								false));
+				locations.setAdapter(adapter);
+				try {
+					locations.addItemDecoration(new SpacingDecoration(84, 0, mPricesList.size()));
+				} catch (SpacingDecorationError e) {
+					e.printStackTrace();
 				}
 			}
 		};
 		Runnable runnable = () -> {
-			mPricesList.addAll(getPrices());
+			List<Store> retreivedPrices = getPrices();
+			if (retreivedPrices != null) mPricesList.addAll(retreivedPrices);
 			Message message = new Message();
 			responseHandler.sendMessage(message);
 		};
