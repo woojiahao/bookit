@@ -1,54 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:orientation="vertical">
 
-    <!-- https://stackoverflow.com/questions/22105775/imageview-in-circular-through-xml/35287222 -->
-    <android.support.v7.widget.CardView
-        android:id="@+id/bookStoreCardView"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginEnd="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginRight="24dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:innerRadius="0dp"
-        android:shape="ring"
-        android:thicknessRatio="1.9"
-        app:cardCornerRadius="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+	<!-- https://stackoverflow.com/questions/22105775/imageview-in-circular-through-xml/35287222 -->
+	<android.support.v7.widget.CardView
+		android:id="@+id/bookStoreCardView"
+		android:layout_width="60dp"
+		android:layout_height="60dp"
+		android:innerRadius="0dp"
+		android:shape="ring"
+		android:thicknessRatio="1.9"
+		app:cardCornerRadius="30dp">
 
-        <ImageView
-            android:id="@+id/bookStoreIcon"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:contentDescription="Book Store Logo"
-            android:src="@drawable/goodreads_icon" />
-    </android.support.v7.widget.CardView>
+		<ImageView
+			android:id="@+id/bookStoreIcon"
+			android:layout_width="match_parent"
+			android:layout_height="60dp"
+			android:layout_alignParentTop="true"
+			android:layout_centerHorizontal="true"
+			android:contentDescription="@string/bookstore_icon"
+			android:src="@drawable/goodreads_icon"/>
+	</android.support.v7.widget.CardView>
 
-    <TextView
-        android:id="@+id/bookStorePrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="$36.20"
-        android:textColor="@color/primaryTextColor"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/bookStoreCardView"
-        app:layout_constraintStart_toStartOf="@+id/bookStoreCardView"
-        app:layout_constraintTop_toBottomOf="@+id/bookStoreCardView" />
-
-</android.support.constraint.ConstraintLayout>
+	<TextView
+		android:id="@+id/bookStorePrice"
+		android:layout_gravity="center"
+		android:layout_marginTop="@dimen/smallest_padding"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textColor="@color/primaryTextColor"
+		android:textSize="16sp"
+		tools:text="$36.20"/>
+</LinearLayout>
