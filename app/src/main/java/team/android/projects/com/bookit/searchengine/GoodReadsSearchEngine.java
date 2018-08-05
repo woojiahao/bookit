@@ -22,6 +22,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import team.android.projects.com.bookit.dataclasses.Book;
 import team.android.projects.com.bookit.logging.ApplicationCodes;
 
+// check for invalid urls
 public class GoodReadsSearchEngine implements ISearchEngine {
 	private static String mKey;
 	private static String base = "https://www.goodreads.com/book/isbn/";
@@ -103,12 +104,18 @@ public class GoodReadsSearchEngine implements ISearchEngine {
 		}
 		
 		private Double search(String url, String selector) throws IOException {
-			org.jsoup.nodes.Document doc = Jsoup.connect(url).get();
-			org.jsoup.select.Elements prices = doc.select(selector);
 			String temp = "";
-			for (org.jsoup.nodes.Element price : prices) {
-				temp = price.childNode(0).toString();
+			
+			try {
+				org.jsoup.nodes.Document doc = Jsoup.connect(url).get();
+				org.jsoup.select.Elements prices = doc.select(selector);
+				for (org.jsoup.nodes.Element price : prices) {
+					temp = price.childNode(0).toString();
+				}
+			} catch (IllegalArgumentException e) {
+				Log.e("Prices", "Invalid url: " + url);
 			}
+			
 			return temp.equals("") ? 0.0 : Double.parseDouble(temp.substring(temp.indexOf("$") + 1));
 		}
 	}

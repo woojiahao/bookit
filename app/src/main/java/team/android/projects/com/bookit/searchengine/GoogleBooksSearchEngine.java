@@ -102,7 +102,8 @@ public class GoogleBooksSearchEngine implements ISearchEngine {
 		
 		double ratings = info.getAverageRating() == null ? 0.0 : info.getAverageRating();
 		
-		String title = info.getTitle();
+		String title = info.getTitle() == null ? "N/A" : info.getTitle();
+		
 		String thumbnail = info.getImageLinks() == null ? "https://cdn.pixabay.com/photo/2018/01/17/18/43/book-3088777_960_720.png" : info.getImageLinks().getThumbnail();
 		
 		List<String> auths = info.getAuthors();
@@ -124,7 +125,7 @@ public class GoogleBooksSearchEngine implements ISearchEngine {
 					"No genres"
 			};
 		}
-		String summary = info.getDescription();
+		String summary = info.getDescription() == null ? "N/A" : info.getDescription();
 		
 		HashMap<String, Double> prices = new HashMap<String, Double>() {{
 			Double retailPrice = 0.00;
@@ -136,8 +137,12 @@ public class GoogleBooksSearchEngine implements ISearchEngine {
 			}
 		}};
 		HashMap<String, String> isbn = new HashMap<String, String>();
-		for (Volume.VolumeInfo.IndustryIdentifiers i : info.getIndustryIdentifiers()) {
-			isbn.put(i.getType(), i.getIdentifier());
+		if (info.getIndustryIdentifiers() != null) {
+			for (Volume.VolumeInfo.IndustryIdentifiers i : info.getIndustryIdentifiers()) {
+				isbn.put(i.getType(), i.getIdentifier());
+			}
+		} else {
+			isbn.put("N/A", "N/A");
 		}
 		
 		return new Book.Builder()
