@@ -1,5 +1,7 @@
 package team.android.projects.com.bookit.ui.adapters;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -75,7 +77,10 @@ public class BookDetailsAdapter extends RecyclerView.Adapter<BookDetailsAdapter.
 		Store location = mPrices.get(position);
 		holder.setPrice(location.getPrice());
 		holder.setIcon(location.getStoreName());
-		holder.mView.setOnClickListener(v -> shortToast(holder.mView.getContext(), location.getStoreURL()));
+		holder.mView.setOnClickListener(v -> {
+			Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(location.getStoreURL()));
+			holder.mView.getContext().startActivity(browserIntent);
+		});
 	}
 	
 	@Override
