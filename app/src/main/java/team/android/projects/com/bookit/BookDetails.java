@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import java.text.NumberFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,6 +22,7 @@ import team.android.projects.com.bookit.database.FirebaseOperations;
 import team.android.projects.com.bookit.database.IFirebaseOperations;
 import team.android.projects.com.bookit.database.UsersList;
 import team.android.projects.com.bookit.dataclasses.Book;
+import team.android.projects.com.bookit.dataclasses.StoreLocation;
 import team.android.projects.com.bookit.dataclasses.User;
 import team.android.projects.com.bookit.logging.ApplicationCodes;
 import team.android.projects.com.bookit.searchengine.GoodReadsSearchEngine;
@@ -42,7 +42,8 @@ public class BookDetails extends AppCompatActivity {
 	private String mISBN;
 	private boolean mIsFavourited;
 	
-	private Map<String, Double> mPricesList;
+	private List<StoreLocation> mPricesList;
+	private Map<String, String> mISBNs;
 	
 	private IFirebaseOperations mFirebaseOperations;
 	
@@ -58,9 +59,14 @@ public class BookDetails extends AppCompatActivity {
 	private void init() {
 		mFirebaseOperations = new FirebaseOperations(this);
 		
-		if (getIntent().getExtras() != null) {
-			mBook = (Book) getIntent().getExtras().get("book");
-		}
+		if (getIntent().getExtras() == null) return;
+		Bundle data = getIntent().getExtras().getBundle("data");
+		
+		if (data == null) return;
+		
+		mBook = data.getParcelable("book");
+		mPricesList = data.getParcelableArrayList("prices");
+		mISBNs = (Map<String, String>) data.getSerializable("isbn");
 		
 		if (mBook == null) {
 			shortToast(this, "Unable to load book details");
@@ -78,8 +84,7 @@ public class BookDetails extends AppCompatActivity {
 		((TextView) find(this, R.id.detailsSummary))
 				.setText(mBook.getSummary() == null ? "N/A" : mBook.getSummary());
 		
-		Map<String, String> isbns = mBook.getISBN();
-		mISBN = isbns.containsKey("ISBN_13") ? isbns.get("ISBN_13") : isbns.get("ISBN_10");
+		mISBN = mISBNs.containsKey("ISBN_13") ? mISBNs.get("ISBN_13") : mISBNs.get("ISBN_10");
 		((TextView) find(this, R.id.detailsISBN))
 				.setText(String.format("ISBN: %s", mISBN != null ? mISBN : "N/A"));
 		
@@ -94,15 +99,15 @@ public class BookDetails extends AppCompatActivity {
 				if (mPricesList != null) {
 					mDisplayPrices.setText(getLowestPrice(mPricesList));
 					StringBuilder priceList = new StringBuilder();
-					for (Map.Entry<String, Double> price : mPricesList.entrySet()) {
-						priceList.append(price.getKey()).append("\t\t").append(price.getValue());
+					for (StoreLocation location : mPricesList) {
+						priceList.append(location).append("\n");
 					}
 					mPrices.setText(priceList.toString());
 				}
 			}
 		};
 		Runnable runnable = () -> {
-			mPricesList = getPrices();
+			mPricesList.addAll(getPrices());
 			Message message = new Message();
 			responseHandler.sendMessage(message);
 		};
@@ -136,11 +141,10 @@ public class BookDetails extends AppCompatActivity {
 		
 	}
 	
-	private Map<String, Double> getPrices() {
+	private List<StoreLocation> getPrices() {
 		try {
-			Map<String, Double> retrievedPrices = mBook.getPrices();
-			retrievedPrices.putAll(((GoodReadsSearchEngine) App.searchEngines.get(GoodReads.mapKey)).getPrices(mBook.getTitle()));
-			return retrievedPrices;
+			return ((GoodReadsSearchEngine) App.searchEngines.get(GoodReads.mapKey))
+							.getPrices(mBook.getTitle());
 		} catch (ExecutionException | InterruptedException e) {
 			Log.e(ApplicationCodes.Error.name(), "Unable to load prices");
 			e.printStackTrace();
@@ -148,14 +152,13 @@ public class BookDetails extends AppCompatActivity {
 		return null;
 	}
 	
-	private String getLowestPrice(Map<String, Double> prices) {
+	private String getLowestPrice(List<StoreLocation> prices) {
 		StringBuilder priceString = new StringBuilder("SGD");
 		
-		double min = -1;
-		for (HashMap.Entry<String, Double> entry : prices.entrySet()) {
-			double price = entry.getValue();
-			if (min == -1) min = price;
-			min = price < min ? price : min;
+		double min = prices.get(0).getPrice();
+		for (int i = 1; i < prices.size(); i++) {
+			StoreLocation cur = prices.get(i);
+			if (cur.getPrice() < min) min = cur.getPrice();
 		}
 		
 		return priceString.append(String.format("%.2f", min)).toString();

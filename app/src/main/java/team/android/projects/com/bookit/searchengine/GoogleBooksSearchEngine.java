@@ -18,6 +18,7 @@ import java.util.concurrent.ExecutionException;
 
 import team.android.projects.com.bookit.BuildConfig;
 import team.android.projects.com.bookit.dataclasses.Book;
+import team.android.projects.com.bookit.dataclasses.StoreLocation;
 
 // todo: add ratelimiting toast to prevent api aboos
 public class GoogleBooksSearchEngine implements ISearchEngine {
@@ -127,15 +128,17 @@ public class GoogleBooksSearchEngine implements ISearchEngine {
 		}
 		String summary = info.getDescription() == null ? "N/A" : info.getDescription();
 		
-		HashMap<String, Double> prices = new HashMap<String, Double>() {{
-			Double retailPrice = 0.00;
-			if (v.getSaleInfo().getRetailPrice() == null) {
-				put("Google Books", retailPrice);
-			} else {
+		List<StoreLocation> prices = new ArrayList<StoreLocation>() {{
+			Double retailPrice;
+			if (v.getSaleInfo().getRetailPrice() != null) {
 				retailPrice = v.getSaleInfo().getRetailPrice().getAmount();
-				put("Google Books", retailPrice == null ? -1.00 : retailPrice);
+				add(new StoreLocation(
+						"Google Books",
+						info.getPreviewLink(),
+						retailPrice == null ? -1.00 : retailPrice));
 			}
 		}};
+
 		HashMap<String, String> isbn = new HashMap<String, String>();
 		if (info.getIndustryIdentifiers() != null) {
 			for (Volume.VolumeInfo.IndustryIdentifiers i : info.getIndustryIdentifiers()) {
@@ -145,7 +148,7 @@ public class GoogleBooksSearchEngine implements ISearchEngine {
 			isbn.put("N/A", "N/A");
 		}
 		
-		return new Book.Builder()
+		Book b = new Book.Builder()
 				.setRating(ratings)
 				.setTitle(title)
 				.setThumbnail(thumbnail)
@@ -155,6 +158,7 @@ public class GoogleBooksSearchEngine implements ISearchEngine {
 				.setISBN(isbn)
 				.setPrices(prices)
 				.build();
+		return b;
 	}
 	
 	private static class BatchSearchTask extends AsyncTask<String, Void, List<Book>> {

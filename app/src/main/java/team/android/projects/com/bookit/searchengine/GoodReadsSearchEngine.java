@@ -15,6 +15,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,6 +24,7 @@ import java.util.concurrent.ExecutionException;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import team.android.projects.com.bookit.dataclasses.Book;
+import team.android.projects.com.bookit.dataclasses.StoreLocation;
 import team.android.projects.com.bookit.logging.ApplicationCodes;
 
 public class GoodReadsSearchEngine implements ISearchEngine {
@@ -32,8 +34,8 @@ public class GoodReadsSearchEngine implements ISearchEngine {
 		mKey = key;
 	}
 	
-	public Map<String, Double> getPrices(String title) throws ExecutionException, InterruptedException {
-		Map<String, Double> prices = new PriceTask().execute(title).get();
+	public List<StoreLocation> getPrices(String title) throws ExecutionException, InterruptedException {
+		List<StoreLocation> prices = new PriceTask().execute(title).get();
 		Log.d("Prices", "Retrieved");
 		return prices;
 	}
@@ -50,10 +52,10 @@ public class GoodReadsSearchEngine implements ISearchEngine {
 		return null;
 	}
 	
-	private static class PriceTask extends AsyncTask<String, Void, Map<String, Double>> {
+	private static class PriceTask extends AsyncTask<String, Void, List<StoreLocation>> {
 		private final double USD_TO_SGD_RATE = 1.37;
 		
-		@Override protected Map<String, Double> doInBackground(String... strings) {
+		@Override protected List<StoreLocation> doInBackground(String... strings) {
 			String title = strings[0];
 			
 			String base = "https://www.goodreads.com/book/title.xml";
@@ -95,56 +97,67 @@ public class GoodReadsSearchEngine implements ISearchEngine {
 					}
 				}};
 			}
-			Map<String, Double> prices = new HashMap<>();
+			List<StoreLocation> prices = new ArrayList<>();
 			try {
-				prices.put("Book Depository", bookDepositorySearch(links.get("Book Depository")));
-				prices.put("Amazon", amazonSearch(links.get("Amazon")));
+				prices.add(bookDepositorySearch(links.get("Book Depository")));
+				prices.add(amazonSearch(links.get("Amazon")));
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 			return prices;
 		}
 		
-		private Double bookDepositorySearch(String url) throws IOException {
-			return search(url, "span.sale-price");
+		private StoreLocation bookDepositorySearch(String url) throws IOException {
+			return search("Book Depository", url, "span.sale-price");
 		}
 		
-		private Double amazonSearch(String url) throws IOException {
-			double type1 = search(url, "span.offer-price");
-			double type2 = search(url, "span.header-price");
-			double toReturn = -1;
-			if (type1 == -1 && type2 > -1) {
-				toReturn = type2;
-			} else if (type1 > -1 && type2 == -1) {
-				toReturn = type1;
-			} else if (type1 != -1 && type2 != -1) {
-				toReturn = type1 < type2 ? type1 : type2;
+		private StoreLocation amazonSearch(String url) throws IOException {
+			StoreLocation location1 = search("Amazon", url, "span.offer-price");
+			StoreLocation location2 = search("Amazon", url, "span.header-price");
+			
+			StoreLocation toReturn = null;
+			if (location1 != null && location2 != null) {
+				double type1 = location1.getPrice();
+				double type2 = location2.getPrice();
+				if (type1 == -1 && type2 > -1) {
+					toReturn = location2;
+				} else if (type1 > -1 && type2 == -1) {
+					toReturn = location1;
+				} else if (type1 != -1 && type2 != -1) {
+					toReturn = type1 < type2 ? location1 : location2;
+				}
+				if (toReturn != null) {
+					toReturn.setPrice(toReturn.getPrice() * USD_TO_SGD_RATE);
+				}
 			}
-			return toReturn * USD_TO_SGD_RATE;
+			return toReturn;
 		}
 		
-		private Double search(String url, String selector) throws IOException {
+		private StoreLocation search(String storeName, String url, String selector) throws IOException {
 			String temp = "";
+			String storeURL = "";
 			
 			try {
-				org.jsoup.nodes.Document doc = Jsoup.connect(url).get();
+				org.jsoup.Connection conn = Jsoup.connect(url);
+				storeURL = conn.followRedirects(true).execute().url().toString();
+				org.jsoup.nodes.Document doc = conn.get();
 				org.jsoup.select.Elements prices = doc.select(selector);
 				for (org.jsoup.nodes.Element price : prices) {
 					temp = price.childNode(0).toString();
 				}
 			} catch (IllegalArgumentException | HttpStatusException e) {
 				Log.e("Prices", "Invalid url: " + url);
-				return -1.0;
+				return null;
 			}
-			double price = -1.0;
+			double storePrice = -1.0;
 			temp = temp.trim();
 			if (!temp.equals("")) {
 				int indexOfDollar = temp.indexOf("$") + 1;
 				String sub = temp.substring(indexOfDollar);
-				price = Double.parseDouble(sub);
+				storePrice = Double.parseDouble(sub);
 			}
 			
-			return price;
+			return new StoreLocation(storeName, storeURL, storePrice);
 		}
 	}
 }

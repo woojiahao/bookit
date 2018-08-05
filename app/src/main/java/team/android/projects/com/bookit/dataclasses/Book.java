@@ -4,7 +4,9 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.TextUtils;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Book implements Parcelable {
@@ -18,7 +20,7 @@ public class Book implements Parcelable {
 	private String[] genres;
 	
 	private Map<String, String> ISBN;
-	private Map<String, Double> prices;
+	private List<StoreLocation> prices;
 	
 	public static class Builder {
 		private double rating;
@@ -31,7 +33,7 @@ public class Book implements Parcelable {
 		private String[] genres;
 		
 		private Map<String, String> ISBN;
-		private Map<String, Double> prices;
+		private List<StoreLocation> prices;
 		
 		public Builder() {
 			rating = 0.0;
@@ -81,7 +83,7 @@ public class Book implements Parcelable {
 			return this;
 		}
 		
-		public Builder setPrices(Map<String, Double> prices) {
+		public Builder setPrices(List<StoreLocation> prices) {
 			this.prices = prices;
 			return this;
 		}
@@ -94,7 +96,7 @@ public class Book implements Parcelable {
 	private Book(double rating, String thumbnail,
 				 String summary, String title, String[] authors, String[] genres,
 				 Map<String, String> ISBN,
-				 Map<String, Double> prices) {
+				 List<StoreLocation> prices) {
 		this.rating = rating;
 		this.thumbnail = thumbnail;
 		this.ISBN = ISBN;
@@ -133,7 +135,7 @@ public class Book implements Parcelable {
 		return ISBN;
 	}
 	
-	public Map<String, Double> getPrices() {
+	public List<StoreLocation> getPrices() {
 		return prices;
 	}
 	
@@ -144,10 +146,6 @@ public class Book implements Parcelable {
 		title = in.readString();
 		authors = in.createStringArray();
 		genres = in.createStringArray();
-		ISBN = new HashMap<String, String>();
-		prices = new HashMap<String, Double>();
-		in.readMap(ISBN, String.class.getClassLoader());
-		in.readMap(prices, Double.class.getClassLoader());
 	}
 	
 	
@@ -175,7 +173,5 @@ public class Book implements Parcelable {
 		dest.writeString(title);
 		dest.writeStringArray(authors);
 		dest.writeStringArray(genres);
-		dest.writeMap(ISBN);
-		dest.writeMap(prices);
 	}
 }
