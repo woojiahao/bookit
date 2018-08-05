@@ -3,6 +3,7 @@ package team.android.projects.com.bookit.searchengine;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -10,8 +11,10 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,17 +25,15 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import team.android.projects.com.bookit.dataclasses.Book;
 import team.android.projects.com.bookit.logging.ApplicationCodes;
 
-// check for invalid urls
 public class GoodReadsSearchEngine implements ISearchEngine {
 	private static String mKey;
-	private static String base = "https://www.goodreads.com/book/isbn/";
 	
 	public GoodReadsSearchEngine(String key) {
 		mKey = key;
 	}
 	
-	public Map<String, Double> getPrices(String isbn) throws ExecutionException, InterruptedException {
-		Map<String, Double> prices = new PriceTask().execute(isbn).get();
+	public Map<String, Double> getPrices(String title) throws ExecutionException, InterruptedException {
+		Map<String, Double> prices = new PriceTask().execute(title).get();
 		Log.d("Prices", "Retrieved");
 		return prices;
 	}
@@ -51,9 +52,17 @@ public class GoodReadsSearchEngine implements ISearchEngine {
 	
 	private static class PriceTask extends AsyncTask<String, Void, Map<String, Double>> {
 		@Override protected Map<String, Double> doInBackground(String... strings) {
-			String isbn = strings[0];
+			String title = strings[0];
 			
-			String query = String.format("%s%s?key=%s", base, isbn, mKey);
+			String base = "https://www.goodreads.com/book/title.xml";
+			try {
+				title = URLEncoder.encode(title, "UTF-8");
+			} catch (UnsupportedEncodingException e) {
+				Log.e(ApplicationCodes.Error.name(), "Unable to encode URL");
+				e.printStackTrace();
+			}
+			String query = String.format("%s?key=%s&title=%s", base, mKey, title);
+			Log.d("Prices", query);
 			
 			Document doc = null;
 			try {
@@ -84,23 +93,32 @@ public class GoodReadsSearchEngine implements ISearchEngine {
 					}
 				}};
 			}
-			Map<String, String> finalLinks = links;
-			return new HashMap<String, Double>() {{
-				try {
-					put("Book Depository", bookDepositorySearch(finalLinks.get("Book Depository")));
-					put("Amazon", amazonSearch(finalLinks.get("Amazon")));
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}};
+			Map<String, Double> prices = new HashMap<>();
+			try {
+				prices.put("Book Depository", bookDepositorySearch(links.get("Book Depository")));
+				prices.put("Amazon", amazonSearch(links.get("Amazon")));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			return prices;
 		}
 		
 		private Double bookDepositorySearch(String url) throws IOException {
-			return search(url, "div.price > span.sale-price");
+			return search(url, "span.sale-price");
 		}
 		
 		private Double amazonSearch(String url) throws IOException {
-			return search(url, "span.offer-price");
+			double type1 = search(url, "span.offer-price");
+			double type2 = search(url, "span.header-price");
+			double toReturn = -1;
+			if (type1 == -1 && type2 > -1) {
+				toReturn = type2;
+			} else if (type1 > -1 && type2 == -1) {
+				toReturn = type1;
+			} else if (type1 != -1 && type2 != -1) {
+				toReturn = type1 < type2 ? type1 : type2;
+			}
+			return toReturn;
 		}
 		
 		private Double search(String url, String selector) throws IOException {
@@ -112,11 +130,19 @@ public class GoodReadsSearchEngine implements ISearchEngine {
 				for (org.jsoup.nodes.Element price : prices) {
 					temp = price.childNode(0).toString();
 				}
-			} catch (IllegalArgumentException e) {
+			} catch (IllegalArgumentException | HttpStatusException e) {
 				Log.e("Prices", "Invalid url: " + url);
+				return -1.0;
+			}
+			double price = -1.0;
+			temp = temp.trim();
+			if (!temp.equals("")) {
+				int indexOfDollar = temp.indexOf("$") + 1;
+				String sub = temp.substring(indexOfDollar);
+				price = Double.parseDouble(sub);
 			}
 			
-			return temp.equals("") ? 0.0 : Double.parseDouble(temp.substring(temp.indexOf("$") + 1));
+			return price;
 		}
 	}
 }

@@ -43,6 +43,8 @@
 				android:id="@+id/detailsThumbnail"
 				android:layout_width="wrap_content"
 				android:layout_height="200sp"
+				android:maxWidth="150sp"
+				android:scaleType="centerCrop"
 				android:layout_marginEnd="@dimen/small_padding"
 				android:layout_marginRight="@dimen/small_padding"
 				android:adjustViewBounds="true"

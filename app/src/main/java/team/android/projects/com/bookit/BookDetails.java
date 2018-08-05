@@ -70,7 +70,6 @@ public class BookDetails extends AppCompatActivity {
 		mBackBtn = find(this, R.id.backBtn);
 		mFavouriteBtn = find(this, R.id.detailsFavouritesBtn);
 		
-		
 		Picasso.get().load(mBook.getThumbnail()).into((ImageView) find(this, R.id.detailsThumbnail));
 		((TextView) find(this, R.id.detailsTitle)).setText(mBook.getTitle());
 		((TextView) find(this, R.id.detailsAuthors)).setText(mBook.getAuthors());
@@ -139,7 +138,7 @@ public class BookDetails extends AppCompatActivity {
 	
 	private Map<String, Double> getPrices() {
 		try {
-			return ((GoodReadsSearchEngine) App.searchEngines.get(GoodReads.mapKey)).getPrices(mISBN);
+			return ((GoodReadsSearchEngine) App.searchEngines.get(GoodReads.mapKey)).getPrices(mBook.getTitle());
 		} catch (ExecutionException | InterruptedException e) {
 			Log.e(ApplicationCodes.Error.name(), "Unable to load prices");
 			e.printStackTrace();

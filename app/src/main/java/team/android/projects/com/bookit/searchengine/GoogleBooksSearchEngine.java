@@ -133,7 +133,7 @@ public class GoogleBooksSearchEngine implements ISearchEngine {
 				put("Google Books", retailPrice);
 			} else {
 				retailPrice = v.getSaleInfo().getRetailPrice().getAmount();
-				put("Google Books", retailPrice == null ? 0.00 : retailPrice);
+				put("Google Books", retailPrice == null ? -1.00 : retailPrice);
 			}
 		}};
 		HashMap<String, String> isbn = new HashMap<String, String>();
