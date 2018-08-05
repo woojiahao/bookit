@@ -72,7 +72,7 @@
 					android:layout_height="0sp"
 					android:layout_weight="1"
 					android:ellipsize="end"
-					android:maxLines="1"
+					android:maxLines="2"
 					android:textColor="@color/secondaryTextColor"
 					tools:text="By: John Doe"/>
 

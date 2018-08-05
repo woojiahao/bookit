@@ -5,7 +5,6 @@
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	android:background="#FFFFFF"
-	android:minHeight="125sp"
 	android:orientation="horizontal">
 
 	<ImageView
@@ -71,13 +70,6 @@
 				android:textColor="@color/secondaryTextColor"
 				android:textSize="14sp"
 				tools:text="Lisa Wrangler"/>
-
-			<TextView
-				android:id="@+id/bookLocation"
-				style="@style/RegularText"
-				android:layout_gravity="center_vertical"
-				android:textSize="14sp"
-				tools:text="Found: Amazon"/>
 		</LinearLayout>
 
 		<LinearLayout
@@ -97,17 +89,6 @@
 				android:textColor="@color/primaryTextColor"
 				android:textSize="14sp"
 				tools:text="4.7"/>
-
-			<TextView
-				android:id="@+id/bookPrice"
-				style="@style/RegularText"
-				android:layout_width="0sp"
-				android:layout_gravity="end"
-				android:layout_weight="1"
-				android:textAlignment="textEnd"
-				android:textColor="@color/colorPrimary"
-				android:textSize="14sp"
-				tools:text="$15.89"/>
 		</LinearLayout>
 
 	</LinearLayout>

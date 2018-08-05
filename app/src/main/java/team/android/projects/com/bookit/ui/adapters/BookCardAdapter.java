@@ -1,7 +1,6 @@
 package team.android.projects.com.bookit.ui.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,12 +11,9 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import java.text.NumberFormat;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import team.android.projects.com.bookit.BookDetails;
 import team.android.projects.com.bookit.R;
 import team.android.projects.com.bookit.database.FirebaseOperations;
 import team.android.projects.com.bookit.database.IFirebaseOperations;
@@ -27,6 +23,7 @@ import static team.android.projects.com.bookit.util.UIUtils.displayPopupMenu;
 import static team.android.projects.com.bookit.util.UIUtils.find;
 import static team.android.projects.com.bookit.util.UIUtils.launchBookDetails;
 
+// todo: reimplement the price displayed when a more optimal api is found
 public class BookCardAdapter extends RecyclerView.Adapter<BookCardAdapter.ViewHolder> {
 	private List<Book> mBooks;
 	private Context mContext;
@@ -39,10 +36,7 @@ public class BookCardAdapter extends RecyclerView.Adapter<BookCardAdapter.ViewHo
 		
 		private TextView mTitle;
 		private TextView mGenre;
-		private TextView mPrice;
 		private TextView mRating;
-		
-		private NumberFormat mCurrencyFormatter;
 		
 		ViewHolder(View v) {
 			super(v);
@@ -56,10 +50,7 @@ public class BookCardAdapter extends RecyclerView.Adapter<BookCardAdapter.ViewHo
 			
 			mTitle = find(mView, R.id.bookTitle);
 			mGenre = find(mView, R.id.bookGenre);
-			mPrice = find(mView, R.id.bookPrice);
 			mRating = find(mView, R.id.bookRating);
-			
-			mCurrencyFormatter = NumberFormat.getCurrencyInstance();
 		}
 		
 		void setThumbnail(String thumbnailId) {
@@ -72,10 +63,6 @@ public class BookCardAdapter extends RecyclerView.Adapter<BookCardAdapter.ViewHo
 		
 		void setGenre(String genre) {
 			mGenre.setText(genre);
-		}
-		
-		void setPrice(double price) {
-			mPrice.setText(mCurrencyFormatter.format(price));
 		}
 		
 		void setRating(double rating) {
@@ -101,17 +88,8 @@ public class BookCardAdapter extends RecyclerView.Adapter<BookCardAdapter.ViewHo
 	public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 		Book book = mBooks.get(position);
 		
-		Map<String, Double> prices = book.getPrices();
-		
-		double price = 0.0;
-		
-		for (Map.Entry<String, Double> entry : prices.entrySet()) {
-			price = entry.getValue();
-		}
-		
 		holder.setTitle(book.getTitle());
 		holder.setGenre(book.getGenres());
-		holder.setPrice(price);
 		holder.setThumbnail(book.getThumbnail());
 		holder.setRating(book.getRating());
 		

@@ -92,17 +92,6 @@
 				android:textColor="@color/primaryTextColor"
 				android:textSize="14sp"
 				tools:text="4.7"/>
-
-			<TextView
-				android:id="@+id/bookPrice"
-				style="@style/RegularText"
-				android:layout_width="0sp"
-				android:layout_gravity="end"
-				android:layout_weight="1"
-				android:textAlignment="textEnd"
-				android:textColor="@color/colorPrimary"
-				android:textSize="14sp"
-				tools:text="$15.89"/>
 		</LinearLayout>
 
 	</LinearLayout>

@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import java.text.NumberFormat;
 import java.util.List;
 import java.util.Map;
 
@@ -37,10 +36,7 @@ public class BookRowAdapter extends RecyclerView.Adapter<BookRowAdapter.ViewHold
 		
 		private TextView mBookTitle;
 		private TextView mBookAuthor;
-		private TextView mBookLocation;
 		private TextView mBookRating;
-		private TextView mBookPrice;
-		private NumberFormat mCurrencyFormatter;
 		
 		ViewHolder(View v) {
 			super(v);
@@ -55,11 +51,8 @@ public class BookRowAdapter extends RecyclerView.Adapter<BookRowAdapter.ViewHold
 			
 			mBookTitle = find(mView, R.id.bookTitle);
 			mBookAuthor = find(mView, R.id.bookAuthor);
-			mBookLocation = find(mView, R.id.bookLocation);
 			mBookRating = find(mView, R.id.bookRating);
-			mBookPrice = find(mView, R.id.bookPrice);
 			
-			mCurrencyFormatter = NumberFormat.getCurrencyInstance();
 		}
 		
 		void setThumbnail(String thumbnail) {
@@ -74,16 +67,8 @@ public class BookRowAdapter extends RecyclerView.Adapter<BookRowAdapter.ViewHold
 			mBookAuthor.setText(author);
 		}
 		
-		void setLocation(String location) {
-			mBookLocation.setText(String.format("Found: %s", location));
-		}
-		
 		void setRating(double rating) {
 			mBookRating.setText(String.valueOf(rating));
-		}
-		
-		void setPrice(double price) {
-			mBookPrice.setText(mCurrencyFormatter.format(price));
 		}
 	}
 	
@@ -101,20 +86,8 @@ public class BookRowAdapter extends RecyclerView.Adapter<BookRowAdapter.ViewHold
 	@Override public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 		Book book = mBooks.get(position);
 		
-		Map<String, Double> prices = book.getPrices();
-		
-		String location = null;
-		double price = 0.0;
-		
-		for (Map.Entry<String, Double> entry : prices.entrySet()) {
-			location = entry.getKey();
-			price = entry.getValue();
-		}
-		
 		holder.setAuthor(book.getAuthors());
-		holder.setLocation(location);
 		holder.setTitle(book.getTitle());
-		holder.setPrice(price);
 		holder.setThumbnail(book.getThumbnail());
 		holder.setRating(book.getRating());
 		
