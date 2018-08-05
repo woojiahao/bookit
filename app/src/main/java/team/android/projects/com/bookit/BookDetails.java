@@ -1,6 +1,10 @@
 package team.android.projects.com.bookit;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -32,9 +36,13 @@ public class BookDetails extends AppCompatActivity {
 	
 	private ImageView mBackBtn;
 	private ImageView mFavouriteBtn;
+	private TextView mPrices;
+	private TextView mDisplayPrices;
 	
 	private String mISBN;
 	private boolean mIsFavourited;
+	
+	private Map<String, Double> mPricesList;
 	
 	private IFirebaseOperations mFirebaseOperations;
 	
@@ -76,16 +84,30 @@ public class BookDetails extends AppCompatActivity {
 		((TextView) find(this, R.id.detailsISBN))
 				.setText(String.format("ISBN: %s", mISBN != null ? mISBN : "N/A"));
 		
-		Map<String, Double> prices = getPrices();
-		if (prices != null) {
-			((TextView) find(this, R.id.detailsPrice)).setText(getLowestPrice(getPrices()));
-			StringBuilder priceList = new StringBuilder();
-			for (Map.Entry<String, Double> price : prices.entrySet()) {
-				priceList.append(price.getKey()).append("\t\t").append(price.getValue());
-			}
-			((TextView) find(this, R.id.temp)).setText(priceList.toString());
-		}
+		mPrices = find(this, R.id.temp);
+		mDisplayPrices = find(this, R.id.detailsPrice);
 		
+		HandlerThread handlerThread = new HandlerThread("Retrieving Price");
+		handlerThread.start();
+		Handler requestHandler = new Handler(handlerThread.getLooper());
+		final Handler responseHandler = new Handler(Looper.getMainLooper()) {
+			@Override public void handleMessage(Message msg) {
+				if (mPricesList != null) {
+					mDisplayPrices.setText(getLowestPrice(mPricesList));
+					StringBuilder priceList = new StringBuilder();
+					for (Map.Entry<String, Double> price : mPricesList.entrySet()) {
+						priceList.append(price.getKey()).append("\t\t").append(price.getValue());
+					}
+					mPrices.setText(priceList.toString());
+				}
+			}
+		};
+		Runnable runnable = () -> {
+			mPricesList = getPrices();
+			Message message = new Message();
+			responseHandler.sendMessage(message);
+		};
+		requestHandler.post(runnable);
 		
 		List<String> favourites = UsersList.getCurrentUser().favourites;
 		mIsFavourited = favourites != null && favourites.size() != 0 && UsersList.getCurrentUser().favourites.contains(mISBN);
@@ -117,7 +139,7 @@ public class BookDetails extends AppCompatActivity {
 	
 	private Map<String, Double> getPrices() {
 		try {
-			return ((GoodReadsSearchEngine)App.searchEngines.get(GoodReads.mapKey)).getPrices(mISBN);
+			return ((GoodReadsSearchEngine) App.searchEngines.get(GoodReads.mapKey)).getPrices(mISBN);
 		} catch (ExecutionException | InterruptedException e) {
 			Log.e(ApplicationCodes.Error.name(), "Unable to load prices");
 			e.printStackTrace();

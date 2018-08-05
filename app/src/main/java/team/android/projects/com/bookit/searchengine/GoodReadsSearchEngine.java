@@ -12,7 +12,6 @@ import org.w3c.dom.NodeList;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,7 +31,9 @@ public class GoodReadsSearchEngine implements ISearchEngine {
 	}
 	
 	public Map<String, Double> getPrices(String isbn) throws ExecutionException, InterruptedException {
-		return new PriceTask().execute(isbn).get();
+		Map<String, Double> prices = new PriceTask().execute(isbn).get();
+		Log.d("Prices", "Retrieved");
+		return prices;
 	}
 	
 	@Override public List<Book> groupSearch(SearchType searchType, String group, long querySize) {
@@ -52,7 +53,6 @@ public class GoodReadsSearchEngine implements ISearchEngine {
 			String isbn = strings[0];
 			
 			String query = String.format("%s%s?key=%s", base, isbn, mKey);
-			System.out.println(query);
 			
 			Document doc = null;
 			try {
@@ -108,8 +108,8 @@ public class GoodReadsSearchEngine implements ISearchEngine {
 			String temp = "";
 			for (org.jsoup.nodes.Element price : prices) {
 				temp = price.childNode(0).toString();
-			};
-			return Double.parseDouble(temp.substring(temp.indexOf("$") + 1));
+			}
+			return temp.equals("") ? 0.0 : Double.parseDouble(temp.substring(temp.indexOf("$") + 1));
 		}
 	}
 }

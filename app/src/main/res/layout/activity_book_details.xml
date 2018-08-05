@@ -102,7 +102,7 @@
 
 					<TextView
 						android:id="@+id/detailsRating"
-						style="@style/LargeText"
+						style="@style/RegularText"
 						android:drawableEnd="@drawable/rating_star"
 						android:drawableRight="@drawable/rating_star"
 						android:textSize="18sp"
@@ -110,13 +110,13 @@
 
 					<TextView
 						android:id="@+id/detailsPrice"
-						style="@style/LargeText"
+						style="@style/RegularText"
 						android:layout_width="0sp"
 						android:layout_weight="1"
 						android:gravity="end"
 						android:textAlignment="textEnd"
 						android:textSize="18sp"
-						tools:text="$24.65"/>
+						android:text="@string/loading"/>
 
 				</LinearLayout>
 
@@ -137,8 +137,8 @@
 
 		<TextView
 			android:id="@+id/temp"
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"/>
+			android:text="@string/loading"
+			style="@style/RegularText"/>
 
 		<android.support.v7.widget.RecyclerView
 			android:id="@+id/detailsLocations"
