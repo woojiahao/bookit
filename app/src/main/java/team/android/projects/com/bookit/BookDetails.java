@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -101,12 +102,18 @@ public class BookDetails extends AppCompatActivity {
 			@Override public void handleMessage(Message msg) {
 				if (mPricesList != null) {
 					mDisplayPrices.setText(getLowestPrice(mPricesList));
+					
+					find(BookDetails.this, R.id.loadingText).setVisibility(View.GONE);
 					RecyclerView locations = find(BookDetails.this, R.id.detailsLocations);
 					BookDetailsAdapter adapter = new BookDetailsAdapter(mPricesList);
-					locations.setLayoutManager(new LinearLayoutManager(BookDetails.this, LinearLayoutManager.HORIZONTAL, false));
+					locations.setLayoutManager(
+							new LinearLayoutManager(
+									BookDetails.this,
+									LinearLayoutManager.HORIZONTAL,
+									false));
 					locations.setAdapter(adapter);
 					try {
-						locations.addItemDecoration(new SpacingDecoration(124, 0, mPricesList.size()));
+						locations.addItemDecoration(new SpacingDecoration(84, 0, mPricesList.size()));
 					} catch (SpacingDecorationError e) {
 						e.printStackTrace();
 					}

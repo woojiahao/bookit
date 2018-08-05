@@ -43,12 +43,12 @@
 				android:id="@+id/detailsThumbnail"
 				android:layout_width="wrap_content"
 				android:layout_height="200sp"
-				android:maxWidth="150sp"
-				android:scaleType="centerCrop"
 				android:layout_marginEnd="@dimen/small_padding"
 				android:layout_marginRight="@dimen/small_padding"
 				android:adjustViewBounds="true"
 				android:contentDescription="@string/book_thumbnail"
+				android:maxWidth="150sp"
+				android:scaleType="centerCrop"
 				tools:src="@drawable/artemis"/>
 
 			<LinearLayout
@@ -116,9 +116,9 @@
 						android:layout_width="0sp"
 						android:layout_weight="1"
 						android:gravity="end"
+						android:text="@string/loading"
 						android:textAlignment="textEnd"
-						android:textSize="18sp"
-						android:text="@string/loading"/>
+						android:textSize="18sp"/>
 
 				</LinearLayout>
 
@@ -135,16 +135,27 @@
 			android:text="@string/found_at"
 			android:textSize="18sp"/>
 
-		<View style="@style/Divider"/>
+		<View
+			style="@style/Divider"
+			android:layout_marginBottom="@dimen/smallest_padding"/>
+
+		<TextView
+			android:id="@+id/loadingText"
+			style="@style/RegularText"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:text="@string/loading"
+			android:textAlignment="center"
+			android:textSize="18sp"/>
 
 		<android.support.v7.widget.RecyclerView
 			android:id="@+id/detailsLocations"
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_marginBottom="@dimen/smallest_padding"
-			android:layout_marginTop="@dimen/smallest_padding"/>
+			android:layout_height="wrap_content"/>
 
-		<View style="@style/Divider"/>
+		<View
+			style="@style/Divider"
+			android:layout_marginTop="@dimen/smallest_padding"/>
 
 		<TextView
 			style="@style/LargeText"
