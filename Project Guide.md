@@ -17,12 +17,15 @@ BookIt utilises [public book APIs](https://www.programmableweb.com/news/53-books
 **Best-Sellers:**
 * [New York Times API](https://developer.nytimes.com/)
 
+**Prices**
+* [GoodReads API](https://www.goodreads.com/api)
+
 ### API resources:
-* [Fetching data from an API using Java](https://www.mkyong.com/java/how-to-send-http-request-getpost-in-java/)
 * [What is an API?](https://www.youtube.com/watch?v=s7wmiS2mSXY)
 * [REST API Concepts](https://www.youtube.com/watch?v=7YcW25PHnAA)
 * [HTTP](https://code.tutsplus.com/tutorials/http-the-protocol-every-web-developer-must-know-part-1--net-31177)
 * [HTTP and REST](https://www.youtube.com/watch?v=Q-BpqyOT3a8&t=6s)
+* [Fetching data from an API using Java](https://www.mkyong.com/java/how-to-send-http-request-getpost-in-java/)
 
 ### Setting up APIs:
 In order to access the previous APIs, you will need to set up accounts on the previous sites as a developer and request for API keys.
@@ -37,7 +40,8 @@ Now that you have API keys for the APIs used, follow the following steps to get 
 ```json
 {
     "google-books-api": "enter your key",
-    "new-york-times-api": "enter your key"
+    "new-york-times-api": "enter your key",
+    "good-reads-api": "enter your key"
 }
 ```
 4. Run the application
