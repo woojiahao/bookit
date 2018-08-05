@@ -51,6 +51,8 @@ public class GoodReadsSearchEngine implements ISearchEngine {
 	}
 	
 	private static class PriceTask extends AsyncTask<String, Void, Map<String, Double>> {
+		private final double USD_TO_SGD_RATE = 1.37;
+		
 		@Override protected Map<String, Double> doInBackground(String... strings) {
 			String title = strings[0];
 			
@@ -118,7 +120,7 @@ public class GoodReadsSearchEngine implements ISearchEngine {
 			} else if (type1 != -1 && type2 != -1) {
 				toReturn = type1 < type2 ? type1 : type2;
 			}
-			return toReturn;
+			return toReturn * USD_TO_SGD_RATE;
 		}
 		
 		private Double search(String url, String selector) throws IOException {

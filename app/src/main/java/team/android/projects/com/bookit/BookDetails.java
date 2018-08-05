@@ -138,7 +138,9 @@ public class BookDetails extends AppCompatActivity {
 	
 	private Map<String, Double> getPrices() {
 		try {
-			return ((GoodReadsSearchEngine) App.searchEngines.get(GoodReads.mapKey)).getPrices(mBook.getTitle());
+			Map<String, Double> retrievedPrices = mBook.getPrices();
+			retrievedPrices.putAll(((GoodReadsSearchEngine) App.searchEngines.get(GoodReads.mapKey)).getPrices(mBook.getTitle()));
+			return retrievedPrices;
 		} catch (ExecutionException | InterruptedException e) {
 			Log.e(ApplicationCodes.Error.name(), "Unable to load prices");
 			e.printStackTrace();
@@ -147,7 +149,7 @@ public class BookDetails extends AppCompatActivity {
 	}
 	
 	private String getLowestPrice(Map<String, Double> prices) {
-		NumberFormat priceFormat = NumberFormat.getCurrencyInstance();
+		StringBuilder priceString = new StringBuilder("SGD");
 		
 		double min = -1;
 		for (HashMap.Entry<String, Double> entry : prices.entrySet()) {
@@ -156,6 +158,6 @@ public class BookDetails extends AppCompatActivity {
 			min = price < min ? price : min;
 		}
 		
-		return priceFormat.format(min);
+		return priceString.append(String.format("%.2f", min)).toString();
 	}
 }
