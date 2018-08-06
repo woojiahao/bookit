@@ -192,6 +192,7 @@ public class GoogleBooksSearchEngine implements ISearchEngine {
 			List<Book> books = new ArrayList<Book>();
 			try {
 				Volumes volumes = mBooks.volumes().list(query).setMaxResults(querySize).execute();
+				if (volumes == null || volumes.getTotalItems() == 0) return null;
 				for (Volume v : volumes.getItems()) books.add(extractBookInfo(v));
 			} catch (IOException e) {
 				e.printStackTrace();

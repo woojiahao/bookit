@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
@@ -62,6 +63,7 @@ public class BookDetails extends AppCompatActivity {
 		connectListeners();
 	}
 	
+	@SuppressWarnings("unchecked")
 	private void init() {
 		mFirebaseOperations = new FirebaseOperations(this);
 		
@@ -73,7 +75,9 @@ public class BookDetails extends AppCompatActivity {
 		mBook = data.getParcelable("book");
 		List<Store> prices = data.getParcelableArrayList("prices");
 		mPricesList = prices == null ? new ArrayList<Store>() : prices;
-		mISBNs = (Map<String, String>) data.getSerializable("isbn");
+		
+		Map<String, String> isbns = (Map<String, String>) data.getSerializable("isbn");
+		mISBNs = isbns == null ? new HashMap<String, String>() : isbns;
 		
 		if (mBook == null) {
 			shortToast(this, "Unable to load book details");

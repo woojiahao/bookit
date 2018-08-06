@@ -99,7 +99,7 @@ public class ScannerLauncher extends AppCompatActivity {
 				List<Book> temp = App
 						.searchEngines
 						.get(Engines.GoogleBooks.mapKey)
-						.bookSearch(SearchType.Title, result);
+						.groupSearch(SearchType.Title, result, 1L);
 				if (temp != null) b = temp.get(0);
 			} catch (ExecutionException | InterruptedException e) {
 				Log.e(ApplicationCodes.Error.name(), "Failed to load the book with title: " + result);

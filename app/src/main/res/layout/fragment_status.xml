@@ -26,8 +26,7 @@
 			style="@style/LargeText"
 			android:layout_gravity="center"
 			android:ellipsize="end"
-			android:maxLines="2"
-			android:minLines="2"
+			android:maxLines="5"
 			android:textAlignment="center"
 			tools:text="The operation was successful!"/>
 
