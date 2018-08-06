@@ -8,10 +8,10 @@ import android.widget.TextView;
 
 import java.util.Arrays;
 
-import team.android.projects.com.bookit.dataclasses.User;
 import team.android.projects.com.bookit.database.FirebaseOperations;
 import team.android.projects.com.bookit.database.IFirebaseOperations;
 import team.android.projects.com.bookit.database.UsersList;
+import team.android.projects.com.bookit.dataclasses.User;
 import team.android.projects.com.bookit.ui.custom.clearable_edit_text.ClearableEditText;
 
 import static team.android.projects.com.bookit.logging.Logging.shortToast;
@@ -55,7 +55,6 @@ public class EditGenres extends AppCompatActivity {
 		mBackBtn.setOnClickListener(v -> finish());
 		mCancelEdit.setOnClickListener(v -> finish());
 		mSelectBtn.setOnClickListener(v -> {
-			modifyRedButton(this, mSelectBtn, Disabled);
 			attemptEdit();
 		});
 		mSearch.setOnTypingListener(
@@ -67,14 +66,17 @@ public class EditGenres extends AppCompatActivity {
 		String[] selection = mGenreSelectionFragment.getSelection();
 		if (selection.length == 0) {
 			shortToast(this, getString(R.string.empty_selection_warning));
-		} else {
-			User u = UsersList.getCurrentUser();
-			String[] previousGenres = u.genres.toArray(new String[u.genres.size()]);
-			if (Arrays.equals(selection, previousGenres)) {
-				finish();
-			} else {
-				mFirebaseOperations.editGenres(selection);
-			}
+			return;
 		}
+		
+		User u = UsersList.getCurrentUser();
+		String[] previousGenres = u.genres.toArray(new String[u.genres.size()]);
+		modifyRedButton(this, mSelectBtn, Disabled);
+		if (Arrays.equals(selection, previousGenres)) {
+			finish();
+		} else {
+			mFirebaseOperations.editGenres(selection);
+		}
+		
 	}
 }
