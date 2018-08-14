@@ -12,18 +12,18 @@ import static team.android.projects.com.bookit.searchengine.SearchType.BestSelle
 
 public class PreloadedData {
 	private static List<Book> mBestSellers;
-	
+
 	public static void loadBestSellers() throws ExecutionException, InterruptedException {
 		mBestSellers = new ArrayList<Book>();
-		
+
 		long querySize = 1L;
-		
+
 		mBestSellers.addAll(
 				App.searchEngines.get(NewYorkTimes.mapKey)
-						.groupSearch(BestSellers, null, querySize));
-		
+												 .groupSearch(BestSellers, null, querySize));
+
 	}
-	
+
 	public static List<Book> getBestSellers() {
 		return mBestSellers;
 	}

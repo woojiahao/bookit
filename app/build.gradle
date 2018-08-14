@@ -1,65 +1,70 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 27
-    defaultConfig {
-        applicationId "team.android.projects.com.bookit"
-        minSdkVersion 16
-        targetSdkVersion 27
-        versionCode 1
-        multiDexEnabled true
-        versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-    compileOptions {
-        targetCompatibility 1.8
-        sourceCompatibility 1.8
-    }
-    testOptions {
-        unitTests.returnDefaultValues = true
-    }
-    lintOptions {
-        disable 'RestrictedApi'
-    }
-    packagingOptions {
-        exclude 'META-INF/DEPENDENCIES'
-    }
+	compileSdkVersion 28
+	defaultConfig {
+		applicationId "team.android.projects.com.bookit"
+		minSdkVersion 16
+		targetSdkVersion 28
+		versionCode 1
+		multiDexEnabled true
+		versionName "1.0"
+		testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+	}
+	buildTypes {
+		release {
+			minifyEnabled false
+			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+		}
+	}
+	compileOptions {
+		targetCompatibility 1.8
+		sourceCompatibility 1.8
+	}
+	testOptions {
+		unitTests.returnDefaultValues = true
+	}
+	lintOptions {
+		disable 'RestrictedApi'
+	}
+	packagingOptions {
+		exclude 'META-INF/DEPENDENCIES'
+	}
 }
 
 dependencies {
-    implementation 'com.android.support:multidex:1.0.3'
+	implementation 'com.android.support:multidex:1.0.3'
 
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+	implementation fileTree(dir: 'libs', include: ['*.jar'])
+	implementation 'com.android.support:appcompat-v7:28.0.0-rc01'
+	testImplementation 'junit:junit:4.12'
+	androidTestImplementation 'com.android.support.test:runner:1.0.2'
+	androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
-    implementation 'com.android.support:cardview-v7:27.1.1'
-    implementation 'com.android.support:gridlayout-v7:27.1.1'
-    implementation 'com.android.support:recyclerview-v7:27.1.1'
-    implementation 'com.android.support:design:27.1.1'
+	implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+	implementation 'com.android.support:cardview-v7:'
+	implementation 'com.android.support:gridlayout-v7:28.0.0-rc01'
+	implementation 'com.android.support:recyclerview-v7:28.0.0-rc01'
+	implementation 'com.android.support:design:28.0.0-rc01'
 
-    implementation 'com.google.firebase:firebase-core:16.0.1'
-    implementation "com.google.firebase:firebase-auth:16.0.2"
-    implementation "com.google.firebase:firebase-database:16.0.1"
-    implementation 'com.google.firebase:firebase-crash:16.0.1'
-    implementation 'com.rmtheis:tess-two:9.0.0'
+	implementation 'com.google.firebase:firebase-core:16.0.1'
+	implementation "com.google.firebase:firebase-auth:16.0.3"
+	implementation "com.google.firebase:firebase-database:16.0.1"
+	implementation 'com.google.firebase:firebase-crash:16.0.1'
+	implementation 'com.rmtheis:tess-two:9.0.0'
 
-    implementation 'com.google.apis:google-api-services-books:v1-rev101-1.24.1'
-    implementation 'com.google.gms:google-services:4.0.1'
-    implementation 'com.google.api-client:google-api-client-android:1.23.0'
+	implementation 'com.google.apis:google-api-services-books:v1-rev101-1.24.1'
+	implementation 'com.google.gms:google-services:4.0.1'
+	implementation 'com.google.api-client:google-api-client-android:1.23.0'
 
-    implementation 'com.squareup.picasso:picasso:2.71828'
+	implementation 'com.squareup.picasso:picasso:2.71828'
 
-    implementation 'org.jsoup:jsoup:1.11.3'
+	implementation 'org.jsoup:jsoup:1.11.3'
+	implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 
 apply plugin: 'com.google.gms.google-services'
+repositories {
+	mavenCentral()
+}
